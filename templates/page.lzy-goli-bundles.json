@@ -7,17 +7,21 @@
         {
           "type": "pack",
           "settings": {
-            "pack_label": "3-PACK",
             "pack_size": 3,
-            "default_pack": true
+            "default_pack": true,
+            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200",
+            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/59OFF-Red.png?v=1764100098&width=200",
+            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/55OFF-white.png?v=1764100098&width=200"
           }
         },
         {
           "type": "pack",
           "settings": {
-            "pack_label": "6-PACK",
             "pack_size": 6,
-            "default_pack": false
+            "default_pack": false,
+            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-6pack.jpg?v=1762269136&width=1200",
+            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/61OFF-Red.png?v=1762537161&width=200",
+            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/58OFF-white.png?v=1764100098&width=200"
           }
         }
       ]

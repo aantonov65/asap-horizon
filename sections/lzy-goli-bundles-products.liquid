@@ -17,235 +17,275 @@
     assign default_pack_block = section.blocks.first
   endif
 
-  assign default_pack_product = blank
   assign default_pack_variant = blank
   assign default_pack_allocation = blank
   assign default_pack_size = 1
+  assign default_pack_quantity = ''
+  assign default_bundle_image = ''
+  assign default_subscribe_badge = ''
+  assign default_subscribe_total_raw = 0
+  assign default_subscribe_compare_raw = 0
+  assign default_onetime_total_raw = 0
+  assign default_onetime_compare_raw = 0
 
-  if default_pack_block != blank and default_pack_block.settings.product != blank
+  if default_pack_block != blank
     assign default_pack_size = default_pack_block.settings.pack_size | at_least: 1
-    assign default_pack_product = default_pack_block.settings.product
-    assign default_pack_variant = default_pack_product.selected_or_first_available_variant
-    assign default_pack_allocation = default_pack_product.selected_or_first_available_selling_plan_allocation
+    assign default_pack_quantity = default_pack_block.settings.pack_size | append: ''
+    assign default_bundle_image = default_pack_block.settings.bundle_image_url
+    assign default_subscribe_badge = default_pack_block.settings.subscribe_badge_image_url
 
-    if default_pack_block.settings.subscribe_selling_plan_id != blank and default_pack_variant != blank
-      assign default_pack_allocation = blank
-      for allocation in default_pack_variant.selling_plan_allocations
-        if allocation.selling_plan.id == default_pack_block.settings.subscribe_selling_plan_id
-          assign default_pack_allocation = allocation
-          break
+    if default_pack_block.settings.bundle_image != blank
+      assign default_bundle_image = default_pack_block.settings.bundle_image | image_url: width: 1200
+    endif
+
+    if default_pack_block.settings.subscribe_badge_image != blank
+      assign default_subscribe_badge = default_pack_block.settings.subscribe_badge_image | image_url: width: 200
+    endif
+
+    if default_pack_block.settings.product != blank
+      assign default_pack_variant = default_pack_block.settings.product.selected_or_first_available_variant
+      assign default_pack_allocation = default_pack_block.settings.product.selected_or_first_available_selling_plan_allocation
+
+      if default_pack_variant != blank and default_pack_block.settings.subscribe_selling_plan_id != blank
+        assign default_pack_allocation = blank
+        for allocation in default_pack_variant.selling_plan_allocations
+          if allocation.selling_plan.id == default_pack_block.settings.subscribe_selling_plan_id
+            assign default_pack_allocation = allocation
+            break
+          endif
+        endfor
+      endif
+
+      if default_pack_variant != blank
+        assign default_onetime_total_raw = default_pack_variant.price
+        assign default_onetime_compare_raw = default_pack_variant.compare_at_price | default: default_pack_variant.price
+        assign default_subscribe_total_raw = default_pack_variant.price
+        assign default_subscribe_compare_raw = default_pack_variant.compare_at_price | default: default_pack_variant.price
+
+        if default_pack_allocation != blank
+          assign default_subscribe_total_raw = default_pack_allocation.price
+          assign default_subscribe_compare_raw = default_pack_allocation.compare_at_price | default: default_subscribe_compare_raw
         endif
-      endfor
+      endif
+
+      if default_bundle_image == blank and default_pack_block.settings.product.featured_image != blank
+        assign default_bundle_image = default_pack_block.settings.product.featured_image | image_url: width: 1200
+      endif
     endif
   endif
+
+  capture bundle_data_json
+    echo '{"packs":['
+    for block in section.blocks
+      if block.type == 'pack'
+        assign pack_product = block.settings.product
+        assign pack_variant = blank
+        assign pack_allocation = blank
+        assign pack_image = block.settings.bundle_image_url
+        assign pack_subscribe_badge = block.settings.subscribe_badge_image_url
+        assign pack_onetime_badge = block.settings.onetime_badge_image_url
+        assign pack_size = block.settings.pack_size | at_least: 1
+        assign pack_subscribe_total_raw = 0
+        assign pack_subscribe_compare_raw = 0
+        assign pack_onetime_total_raw = 0
+        assign pack_onetime_compare_raw = 0
+        assign pack_variant_id = 'null'
+        assign pack_selling_plan_id = 'null'
+        assign pack_subscribe_supported = false
+
+        if block.settings.bundle_image != blank
+          assign pack_image = block.settings.bundle_image | image_url: width: 1200
+        endif
+
+        if block.settings.subscribe_badge_image != blank
+          assign pack_subscribe_badge = block.settings.subscribe_badge_image | image_url: width: 200
+        endif
+
+        if block.settings.onetime_badge_image != blank
+          assign pack_onetime_badge = block.settings.onetime_badge_image | image_url: width: 200
+        endif
+
+        if pack_product != blank
+          assign pack_variant = pack_product.selected_or_first_available_variant
+          assign pack_allocation = pack_product.selected_or_first_available_selling_plan_allocation
+
+          if pack_variant != blank and block.settings.subscribe_selling_plan_id != blank
+            assign pack_allocation = blank
+            for allocation in pack_variant.selling_plan_allocations
+              if allocation.selling_plan.id == block.settings.subscribe_selling_plan_id
+                assign pack_allocation = allocation
+                break
+              endif
+            endfor
+          endif
+
+          if pack_variant != blank
+            assign pack_variant_id = pack_variant.id | json
+            assign pack_onetime_total_raw = pack_variant.price
+            assign pack_onetime_compare_raw = pack_variant.compare_at_price | default: pack_variant.price
+            assign pack_subscribe_total_raw = pack_variant.price
+            assign pack_subscribe_compare_raw = pack_variant.compare_at_price | default: pack_variant.price
+
+            if pack_allocation != blank
+              assign pack_subscribe_total_raw = pack_allocation.price
+              assign pack_subscribe_compare_raw = pack_allocation.compare_at_price | default: pack_subscribe_compare_raw
+              assign pack_selling_plan_id = pack_allocation.selling_plan.id | json
+              assign pack_subscribe_supported = true
+            endif
+          endif
+
+          if pack_image == blank and pack_product.featured_image != blank
+            assign pack_image = pack_product.featured_image | image_url: width: 1200
+          endif
+        endif
+
+        if forloop.first == false
+          echo ','
+        endif
+
+        echo '{'
+        echo '"quantity":'
+        echo pack_size | append: '' | json
+        echo ',"label":'
+        echo pack_size | append: '-Pack' | json
+        echo ',"preselect":'
+        if block.settings.default_pack
+          echo 'true'
+        else
+          echo 'false'
+        endif
+        echo ',"image":'
+        echo pack_image | json
+        echo ',"discount":{"subscribe":'
+        echo pack_subscribe_badge | json
+        echo ',"onetime":'
+        echo pack_onetime_badge | json
+        echo '}'
+        echo ',"pricing":{"subscribe":{"unit":'
+        echo pack_subscribe_total_raw | divided_by: pack_size | money | json
+        echo ',"total":'
+        echo pack_subscribe_total_raw | money | json
+        echo ',"compare":'
+        echo pack_subscribe_compare_raw | money | json
+        echo '},"onetime":{"unit":'
+        echo pack_onetime_total_raw | divided_by: pack_size | money | json
+        echo ',"total":'
+        echo pack_onetime_total_raw | money | json
+        echo ',"compare":'
+        echo pack_onetime_compare_raw | money | json
+        echo '}}'
+        echo ',"variantId":'
+        echo pack_variant_id
+        echo ',"sellingPlanId":'
+        echo pack_selling_plan_id
+        echo ',"subscribeSupported":'
+        if pack_subscribe_supported
+          echo 'true'
+        else
+          echo 'false'
+        endif
+        echo '}'
+      endif
+    endfor
+    echo ']}'
+  endcapture
 -%}
 
-<lzy-goli-bundles-products
-  class="lzy-goli-bundles-products"
+<section
+  class="lzy-bundle-builder"
   id="lzy-bundle-builder-{{ section.id }}"
+  data-lzy-bundle-builder
   data-default-mode="{{ section.settings.default_purchase_mode }}"
-  data-default-pack="{{ default_pack_index }}"
+  data-default-pack="{{ default_pack_quantity }}"
   data-cart-add-url="{{ routes.root_url }}cart/add.js"
   data-checkout-url="{{ routes.root_url }}checkout"
+  data-bundle-data='{{ bundle_data_json | strip | escape }}'
   style="
-    --lzy-goli-bundles-products-bg: {{ section.settings.section_background }};
-    --lzy-goli-bundles-products-heading: {{ section.settings.heading_color }};
-    --lzy-goli-bundles-products-card-bg: {{ section.settings.card_background }};
-    --lzy-goli-bundles-products-card-border: {{ section.settings.card_border }};
-    --lzy-goli-bundles-products-active: {{ section.settings.active_color }};
-    --lzy-goli-bundles-products-active-text: {{ section.settings.active_text_color }};
-    --lzy-goli-bundles-products-button-bg: {{ section.settings.button_background }};
-    --lzy-goli-bundles-products-button-text: {{ section.settings.button_text_color }};
+    --lzy-card-pink: {{ section.settings.section_background }};
+    --lzy-red: {{ section.settings.active_color }};
+    --lzy-button-background: {{ section.settings.button_background }};
+    --lzy-button-text: {{ section.settings.button_text_color }};
   "
 >
-  <section class="lzy-goli-bundles-products__section">
-    <div class="lzy-goli-bundles-products__inner">
-      <div class="lzy-goli-bundles-products__header">
-        <h2>{{ section.settings.heading }}</h2>
-        <p>
-          {{ section.settings.includes_label }}
-          <strong>{{ section.settings.includes_text }}</strong>
-        </p>
+  <div class="lzy-bundle-builder__inner">
+    <div class="lzy-bundle-builder__header">
+      <h1>{{ section.settings.heading }}</h1>
+      <p>
+        {{ section.settings.includes_label }}
+        <strong>{{ section.settings.includes_text }}</strong>
+      </p>
+    </div>
+
+    <div class="lzy-bundle-card" id="lzyBundleCard-{{ section.id }}">
+      <div class="lzy-bundle-card__visual">
+        <div class="lzy-bundle-card__badge">
+          <img id="lzyBundleBadge-{{ section.id }}" src="{{ default_subscribe_badge }}" alt="Bundle discount sticker" width="200" height="200">
+        </div>
+        <img id="lzyBundleImage-{{ section.id }}" src="{{ default_bundle_image }}" alt="Selected Goli bundle" width="1200" height="1200">
       </div>
 
-      <div class="lzy-goli-bundles-products__layout">
-        <div class="lzy-goli-bundles-products__visuals">
-          {%- for block in section.blocks -%}
-            {%- liquid
-              assign pack_product = block.settings.product
-              assign pack_variant = blank
-              assign pack_image = block.settings.bundle_image
-              assign pack_alt = block.settings.bundle_alt
-
-              if pack_product != blank
-                assign pack_variant = pack_product.selected_or_first_available_variant
-                if pack_image == blank
-                  assign pack_image = pack_product.featured_image
-                endif
-                if pack_alt == blank
-                  assign pack_alt = pack_product.title
-                endif
-              endif
-            -%}
-            <div
-              class="lzy-goli-bundles-products__visual{% if forloop.index0 == default_pack_index %} lzy-is-active{% endif %}"
-              data-pack-visual="{{ forloop.index0 }}"
-              {{ block.shopify_attributes }}
-            >
-              {%- if block.settings.badge_image != blank -%}
-                {{ block.settings.badge_image | image_url: width: 224 | image_tag: class: 'lzy-goli-bundles-products__badge', loading: 'lazy' }}
-              {%- endif -%}
-
-              {%- if pack_image != blank -%}
-                {{ pack_image | image_url: width: 900 | image_tag: class: 'lzy-goli-bundles-products__bundle-image', loading: 'lazy', alt: pack_alt }}
-              {%- else -%}
-                <div class="lzy-goli-bundles-products__bundle-placeholder">{{ block.settings.pack_label }}</div>
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
-        </div>
-
-        <div class="lzy-goli-bundles-products__content">
-          <div class="lzy-goli-bundles-products__purchase-toggle" role="tablist" aria-label="{{ section.settings.purchase_toggle_label }}">
-            <button
-              class="lzy-goli-bundles-products__purchase-button"
-              type="button"
-              role="tab"
-              aria-selected="{% if section.settings.default_purchase_mode == 'subscribe' %}true{% else %}false{% endif %}"
-              data-mode-button="subscribe"
-            >
-              {%- if section.settings.subscribe_badge != blank -%}
-                <span class="lzy-goli-bundles-products__purchase-badge">{{ section.settings.subscribe_badge }}</span>
-              {%- endif -%}
-              <span class="lzy-goli-bundles-products__purchase-label">{{ section.settings.subscribe_label }}</span>
-              <div class="lzy-goli-bundles-products__purchase-pricing">
-                <strong data-price-unit>
-                  {%- if default_pack_variant != blank and default_pack_block != blank -%}
-                    {%- liquid
-                      assign default_subscribe_total_raw = default_pack_variant.price
-                      assign default_subscribe_compare_raw = default_pack_variant.compare_at_price | default: default_pack_variant.price
-
-                      if default_pack_allocation != blank
-                        assign default_subscribe_total_raw = default_pack_allocation.price
-                        assign default_subscribe_compare_raw = default_pack_allocation.compare_at_price | default: default_subscribe_compare_raw
-                      endif
-                    -%}
-                    {{ default_subscribe_total_raw | divided_by: default_pack_size | money }}
-                  {%- endif -%}
-                </strong>
-                <span>{{ section.settings.each_label }}</span>
-                <em>{{ section.settings.total_label }} <b data-price-total>{%- if default_pack_variant != blank -%}{{ default_subscribe_total_raw | money }}{%- endif -%}</b></em>
-                <s data-price-compare>{%- if default_pack_variant != blank -%}{{ default_subscribe_compare_raw | money }}{%- endif -%}</s>
-              </div>
-            </button>
-
-            <button
-              class="lzy-goli-bundles-products__purchase-button"
-              type="button"
-              role="tab"
-              aria-selected="{% if section.settings.default_purchase_mode == 'onetime' %}true{% else %}false{% endif %}"
-              data-mode-button="onetime"
-            >
-              <span class="lzy-goli-bundles-products__purchase-label">{{ section.settings.onetime_label }}</span>
-              <div class="lzy-goli-bundles-products__purchase-pricing">
-                <strong data-onetime-unit>
-                  {%- if default_pack_variant != blank and default_pack_block != blank -%}
-                    {{ default_pack_variant.price | divided_by: default_pack_size | money }}
-                  {%- endif -%}
-                </strong>
-                <span>{{ section.settings.each_label }}</span>
-                <em>{{ section.settings.total_label }} <b data-onetime-total>{%- if default_pack_variant != blank -%}{{ default_pack_variant.price | money }}{%- endif -%}</b></em>
-                <s data-onetime-compare>{%- if default_pack_variant != blank -%}{{ default_pack_variant.compare_at_price | default: default_pack_variant.price | money }}{%- endif -%}</s>
-              </div>
-            </button>
-          </div>
-
-          <div class="lzy-goli-bundles-products__pack-grid" role="list" aria-label="{{ section.settings.pack_selector_label }}">
-            {%- for block in section.blocks -%}
-              {%- liquid
-                assign pack_product = block.settings.product
-                assign pack_variant = blank
-                assign pack_allocation = blank
-                assign pack_size = block.settings.pack_size | at_least: 1
-                assign pack_requires_subscription = false
-
-                if pack_product != blank
-                  assign pack_variant = pack_product.selected_or_first_available_variant
-                  assign pack_allocation = pack_product.selected_or_first_available_selling_plan_allocation
-
-                  if block.settings.subscribe_selling_plan_id != blank and pack_variant != blank
-                    assign pack_allocation = blank
-                    for allocation in pack_variant.selling_plan_allocations
-                      if allocation.selling_plan.id == block.settings.subscribe_selling_plan_id
-                        assign pack_allocation = allocation
-                        break
-                      endif
-                    endfor
-                  endif
-
-                  if pack_allocation != blank
-                    assign pack_requires_subscription = true
-                  endif
-                endif
-
-                assign pack_onetime_total_raw = 0
-                assign pack_onetime_compare_raw = 0
-                assign pack_subscribe_total_raw = 0
-                assign pack_subscribe_compare_raw = 0
-                assign pack_subscribe_selling_plan_id = ''
-
-                if pack_variant != blank
-                  assign pack_onetime_total_raw = pack_variant.price
-                  assign pack_onetime_compare_raw = pack_variant.compare_at_price | default: pack_variant.price
-                  assign pack_subscribe_total_raw = pack_variant.price
-                  assign pack_subscribe_compare_raw = pack_variant.compare_at_price | default: pack_variant.price
-
-                  if pack_allocation != blank
-                    assign pack_subscribe_total_raw = pack_allocation.price
-                    assign pack_subscribe_compare_raw = pack_allocation.compare_at_price | default: pack_subscribe_compare_raw
-                    assign pack_subscribe_selling_plan_id = pack_allocation.selling_plan.id
-                  endif
-                endif
-              -%}
-              <button
-                class="lzy-goli-bundles-products__pack-button{% if forloop.index0 == default_pack_index %} lzy-is-active{% endif %}"
-                type="button"
-                role="listitem"
-                data-pack-button="{{ forloop.index0 }}"
-                data-pack-variant-id="{% if pack_variant != blank %}{{ pack_variant.id }}{% endif %}"
-                data-pack-subscribe-selling-plan-id="{{ pack_subscribe_selling_plan_id }}"
-                data-pack-subscribe-enabled="{% if pack_requires_subscription %}true{% else %}false{% endif %}"
-                data-pack-subscribe-unit="{% if pack_variant != blank %}{{ pack_subscribe_total_raw | divided_by: pack_size | money | escape }}{% endif %}"
-                data-pack-subscribe-total="{% if pack_variant != blank %}{{ pack_subscribe_total_raw | money | escape }}{% endif %}"
-                data-pack-subscribe-compare="{% if pack_variant != blank %}{{ pack_subscribe_compare_raw | money | escape }}{% endif %}"
-                data-pack-onetime-unit="{% if pack_variant != blank %}{{ pack_onetime_total_raw | divided_by: pack_size | money | escape }}{% endif %}"
-                data-pack-onetime-total="{% if pack_variant != blank %}{{ pack_onetime_total_raw | money | escape }}{% endif %}"
-                data-pack-onetime-compare="{% if pack_variant != blank %}{{ pack_onetime_compare_raw | money | escape }}{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {{ block.settings.pack_label }}
-              </button>
-            {%- endfor -%}
-          </div>
-
+      <div class="lzy-bundle-card__content">
+        <div
+          class="lzy-purchase-toggle"
+          role="tablist"
+          aria-label="{{ section.settings.purchase_toggle_label }}"
+        >
           <button
-            class="lzy-goli-bundles-products__checkout"
+            class="lzy-purchase-toggle__button"
+            data-purchase="subscribe"
             type="button"
-            data-checkout-button
+            role="tab"
+            aria-selected="false"
           >
-            {{ section.settings.checkout_label }}
+            <span class="lzy-purchase-toggle__badge">{{ section.settings.subscribe_badge }}</span>
+            <span>{{ section.settings.subscribe_label }}</span>
+            <div class="lzy-purchase-toggle__pricing">
+              <strong id="lzyUnitPrice-{{ section.id }}">{{ default_subscribe_total_raw | divided_by: default_pack_size | money }}</strong>
+              <span>{{ section.settings.each_label }}</span>
+              <em>{{ section.settings.total_label }} <b id="lzyTotalPrice-{{ section.id }}">{{ default_subscribe_total_raw | money }}</b></em>
+              <s id="lzyComparePrice-{{ section.id }}">{{ default_subscribe_compare_raw | money }}</s>
+            </div>
+          </button>
+          <button
+            class="lzy-purchase-toggle__button"
+            data-purchase="onetime"
+            type="button"
+            role="tab"
+            aria-selected="false"
+          >
+            <span>{{ section.settings.onetime_label }}</span>
+            <div class="lzy-purchase-toggle__pricing">
+              <strong id="lzyUnitPriceSecondary-{{ section.id }}">{{ default_onetime_total_raw | divided_by: default_pack_size | money }}</strong>
+              <span>{{ section.settings.each_label }}</span>
+              <em>{{ section.settings.total_label }} <b id="lzyTotalPriceSecondary-{{ section.id }}">{{ default_onetime_total_raw | money }}</b></em>
+              <s id="lzyComparePriceSecondary-{{ section.id }}">{{ default_onetime_compare_raw | money }}</s>
+            </div>
           </button>
         </div>
+
+        <div
+          class="lzy-pack-grid"
+          id="lzyPackGrid-{{ section.id }}"
+          aria-label="{{ section.settings.pack_selector_label }}"
+        ></div>
+
+        <button
+          class="lzy-button lzy-button--dark lzy-button--wide"
+          id="lzyCheckoutButton-{{ section.id }}"
+          type="button"
+        >
+          {{ section.settings.checkout_label }}
+        </button>
       </div>
     </div>
-  </section>
-</lzy-goli-bundles-products>
+  </div>
+</section>
 
 {% schema %}
 {
-  "name": "LZY Goli Bundles Products",
+  "name": "Goli bundles products",
   "tag": "section",
-  "class": "section-lzy-goli-bundles-products",
+  "class": "section-goli-bundles-products",
   "settings": [
     {
       "type": "text",
@@ -337,44 +377,20 @@
     },
     {
       "type": "color",
-      "id": "heading_color",
-      "label": "Heading color",
-      "default": "#d63a3a"
-    },
-    {
-      "type": "color",
-      "id": "card_background",
-      "label": "Card background",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "card_border",
-      "label": "Card border",
-      "default": "#d7d0d0"
-    },
-    {
-      "type": "color",
       "id": "active_color",
-      "label": "Active card color",
-      "default": "#d63a3a"
-    },
-    {
-      "type": "color",
-      "id": "active_text_color",
-      "label": "Active text color",
-      "default": "#ffffff"
+      "label": "Active color",
+      "default": "#d7282f"
     },
     {
       "type": "color",
       "id": "button_background",
-      "label": "Checkout button background",
-      "default": "#111111"
+      "label": "Button background",
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "Checkout button text",
+      "label": "Button text color",
       "default": "#ffffff"
     }
   ],
@@ -387,12 +403,6 @@
           "type": "product",
           "id": "product",
           "label": "Bundle product"
-        },
-        {
-          "type": "text",
-          "id": "pack_label",
-          "label": "Pack label",
-          "default": "3-PACK"
         },
         {
           "type": "range",
@@ -412,17 +422,38 @@
         {
           "type": "image_picker",
           "id": "bundle_image",
-          "label": "Override bundle image"
+          "label": "Bundle image override"
+        },
+        {
+          "type": "url",
+          "id": "bundle_image_url",
+          "label": "Bundle image fallback URL"
         },
         {
           "type": "text",
           "id": "bundle_alt",
-          "label": "Bundle image alt"
+          "label": "Bundle image alt",
+          "default": "Selected Goli bundle"
         },
         {
           "type": "image_picker",
-          "id": "badge_image",
-          "label": "Badge image"
+          "id": "subscribe_badge_image",
+          "label": "Subscribe badge image"
+        },
+        {
+          "type": "url",
+          "id": "subscribe_badge_image_url",
+          "label": "Subscribe badge fallback URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "onetime_badge_image",
+          "label": "One-time badge image"
+        },
+        {
+          "type": "url",
+          "id": "onetime_badge_image_url",
+          "label": "One-time badge fallback URL"
         },
         {
           "type": "text",
@@ -435,22 +466,26 @@
   "max_blocks": 6,
   "presets": [
     {
-      "name": "LZY Goli Bundles Products",
+      "name": "Goli bundles products",
       "blocks": [
         {
           "type": "pack",
           "settings": {
-            "pack_label": "3-PACK",
             "pack_size": 3,
-            "default_pack": true
+            "default_pack": true,
+            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200",
+            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/59OFF-Red.png?v=1764100098&width=200",
+            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/55OFF-white.png?v=1764100098&width=200"
           }
         },
         {
           "type": "pack",
           "settings": {
-            "pack_label": "6-PACK",
             "pack_size": 6,
-            "default_pack": false
+            "default_pack": false,
+            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-6pack.jpg?v=1762269136&width=1200",
+            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/61OFF-Red.png?v=1762537161&width=200",
+            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/58OFF-white.png?v=1764100098&width=200"
           }
         }
       ]
