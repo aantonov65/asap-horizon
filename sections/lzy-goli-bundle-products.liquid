@@ -1,0 +1,224 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lzy-sections.js' | asset_url }}" defer="defer"></script>
+
+<section class="lzy-goli-bundle" id="product-target" data-lzy-section="goli-bundle" style="--lzy-bg: {{ section.settings.background_color }}; --lzy-accent: {{ section.settings.accent_color }};">
+  <div class="lzy-goli-bundle__inner">
+    <header class="lzy-goli-bundle__header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </header>
+    <div class="lzy-goli-bundle__shell">
+      <div class="lzy-goli-bundle__media">
+        {% assign first_pack = section.blocks | where: 'type', 'pack' | first %}
+        {% assign preview_image = first_pack.settings.image_url %}
+        {% if first_pack.settings.image != blank %}
+          {% assign preview_image = first_pack.settings.image | image_url: width: 1200 %}
+        {% endif %}
+        <img class="lzy-goli-bundle__preview" src="{{ preview_image }}" alt="{{ first_pack.settings.title | escape }}" width="1200" height="1200" loading="lazy">
+      </div>
+      <div class="lzy-goli-bundle__panel">
+        <div class="lzy-goli-bundle__purchase" role="group" aria-label="{{ section.settings.purchase_mode_label | escape }}">
+          <button class="lzy-goli-bundle__mode lzy-is-active" type="button" data-lzy-mode="subscribe">
+            <span>{{ section.settings.subscribe_label }}</span>
+            <strong data-lzy-subscribe-price>{{ first_pack.settings.subscribe_price }}</strong>
+            <small>{{ section.settings.per_bottle_label }}</small>
+          </button>
+          <button class="lzy-goli-bundle__mode" type="button" data-lzy-mode="onetime">
+            <span>{{ section.settings.onetime_label }}</span>
+            <strong data-lzy-onetime-price>{{ first_pack.settings.onetime_price }}</strong>
+            <small>{{ section.settings.per_bottle_label }}</small>
+          </button>
+        </div>
+        <div class="lzy-goli-bundle__packs" role="group" aria-label="{{ section.settings.pack_selector_label | escape }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'pack' %}
+              {% assign block_image = block.settings.image_url %}
+              {% if block.settings.image != blank %}
+                {% assign block_image = block.settings.image | image_url: width: 1200 %}
+              {% endif %}
+              <button class="lzy-goli-bundle__pack {% if block.settings.default_pack %}lzy-is-active{% endif %}" type="button" data-lzy-pack data-image="{{ block_image | escape }}" data-title="{{ block.settings.title | escape }}" data-subscribe-price="{{ block.settings.subscribe_price | escape }}" data-onetime-price="{{ block.settings.onetime_price | escape }}" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.title }}</span>
+                {% if block.settings.badge != blank %}<small>{{ block.settings.badge }}</small>{% endif %}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <form class="lzy-goli-bundle__form" method="post" action="{{ routes.cart_add_url }}">
+          <input type="hidden" name="quantity" value="1">
+          <button class="lzy-goli-bundle__checkout" type="submit">{{ section.settings.button_label }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Goli Bundle Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Zero Sugar Essentials Bundle"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Three powerful formulas. Zero sugar. One clean routine."
+    },
+    {
+      "type": "text",
+      "id": "subscribe_label",
+      "label": "Subscribe label",
+      "default": "Subscribe & Save"
+    },
+    {
+      "type": "text",
+      "id": "onetime_label",
+      "label": "One-time label",
+      "default": "One-time Purchase"
+    },
+    {
+      "type": "text",
+      "id": "per_bottle_label",
+      "label": "Per bottle label",
+      "default": "per bottle"
+    },
+    {
+      "type": "text",
+      "id": "purchase_mode_label",
+      "label": "Purchase mode label",
+      "default": "Purchase type"
+    },
+    {
+      "type": "text",
+      "id": "pack_selector_label",
+      "label": "Pack selector label",
+      "default": "Choose your pack"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Checkout Now"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f7d8df"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#d22730"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pack",
+      "name": "Pack",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "3 Pack"
+        },
+        {
+          "type": "range",
+          "id": "pack_size",
+          "label": "Pack size",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "BEST VALUE"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Pack image"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Pack image fallback URL",
+          "default": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200"
+        },
+        {
+          "type": "text",
+          "id": "subscribe_price",
+          "label": "Subscribe price",
+          "default": "$13.32"
+        },
+        {
+          "type": "text",
+          "id": "onetime_price",
+          "label": "One-time price",
+          "default": "$14.66"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare price",
+          "default": "$32.67"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Shopify product"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_pack",
+          "label": "Default selected pack",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Goli Bundle Products",
+      "blocks": [
+        {
+          "type": "pack",
+          "settings": {
+            "title": "3 Pack",
+            "pack_size": 3,
+            "badge": "BEST VALUE",
+            "image_url": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200",
+            "subscribe_price": "$13.32",
+            "onetime_price": "$14.66",
+            "compare_price": "$32.67",
+            "default_pack": true
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "title": "6 Pack",
+            "pack_size": 6,
+            "badge": "MOST SAVINGS",
+            "image_url": "https://goli.com/cdn/shop/files/ZSEssentials-6pack.jpg?v=1762269136&width=1200",
+            "subscribe_price": "$12.66",
+            "onetime_price": "$13.99",
+            "compare_price": "$32.67",
+            "default_pack": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

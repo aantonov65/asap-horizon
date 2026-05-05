@@ -1,0 +1,99 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="lzy-goli-social">
+  <div class="lzy-goli-social__grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'image' %}
+        {% assign item_image = block.settings.image_url %}
+        {% if block.settings.image != blank %}
+          {% assign item_image = block.settings.image | image_url: width: 700 %}
+        {% endif %}
+        <div class="lzy-goli-social__item" {{ block.shopify_attributes }}>
+          <img src="{{ item_image }}" alt="{{ block.settings.alt | escape }}" loading="lazy" width="600" height="600">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Goli Social Proof",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Image fallback URL",
+          "default": "https://goli.com/cdn/shop/files/zs-5.jpg?v=1753812801&width=600"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Goli customer lifestyle image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Goli Social Proof",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-5.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 1"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-4.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 2"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-2.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 3"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-6.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 4"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-3.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 5"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/zs-1.jpg?v=1753812800&width=600",
+            "alt": "Goli customer lifestyle image 6"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

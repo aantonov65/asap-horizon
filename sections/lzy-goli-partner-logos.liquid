@@ -1,0 +1,94 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="lzy-goli-logos">
+  <div class="lzy-goli-logos__inner" style="--lzy-bg: {{ section.settings.background_color }};">
+    {% for block in section.blocks %}
+      {% if block.type == 'logo' %}
+        {% assign logo = block.settings.image_url %}
+        {% if block.settings.image != blank %}
+          {% assign logo = block.settings.image | image_url: width: 500 %}
+        {% endif %}
+        <div class="lzy-goli-logos__item {% if block.settings.wide_mobile %}lzy-goli-logos__item--wide{% endif %}" {{ block.shopify_attributes }}>
+          <img src="{{ logo }}" alt="{{ block.settings.alt | escape }}" loading="lazy" width="240" height="120">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Goli Partner Logos",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Logo image fallback URL",
+          "default": "https://goli.com/cdn/shop/files/aam-bcorp-certified.png?v=1753393253&width=400"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Certification logo"
+        },
+        {
+          "type": "checkbox",
+          "id": "wide_mobile",
+          "label": "Span two columns on mobile",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Goli Partner Logos",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/aam-bcorp-certified.png?v=1753393253&width=400",
+            "alt": "B Corp certified",
+            "wide_mobile": false
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/aam-edenprojects.png?v=1753393253&width=400",
+            "alt": "Eden Projects",
+            "wide_mobile": false
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "image_url": "https://goli.com/cdn/shop/files/aam-vitaminangels.png?v=1753393253&width=400",
+            "alt": "Vitamin Angels",
+            "wide_mobile": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

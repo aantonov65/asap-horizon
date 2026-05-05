@@ -1,64 +1,62 @@
 {
   "sections": {
-    "lzy_goli_bundles_bootstrap_01": {
-      "type": "lzy-goli-bundles-bootstrap",
-      "settings": {}
+    "lzy_goli_hero_01": {
+      "type": "lzy-goli-hero",
+      "settings": {
+        "desktop_image_url": "https://goli.com/cdn/shop/files/EVERGREENQ12026-Home-DESKTOP.jpg?v=1771024138&width=5760",
+        "mobile_image_url": "https://goli.com/cdn/shop/files/EVERGREENQ12026-Home-MOBILE.jpg?v=1771024088&width=900",
+        "image_alt": "Goli Zero Sugar Essentials bundle promotion",
+        "section_link": "#product-target"
+      }
     },
-    "lzy_goli_bundles_header_02": {
-      "type": "lzy-goli-bundles-header",
-      "settings": {}
-    },
-    "lzy_goli_bundles_floating_cart_03": {
-      "type": "lzy-goli-bundles-floating-cart",
-      "settings": {}
-    },
-    "lzy_goli_bundles_hero_04": {
-      "type": "lzy-goli-bundles-hero",
-      "settings": {}
-    },
-    "lzy_goli_bundles_products_05": {
-      "type": "lzy-goli-bundles-products",
+    "lzy_goli_bundle_products_02": {
+      "type": "lzy-goli-bundle-products",
       "settings": {},
       "blocks": [
         {
           "type": "pack",
           "settings": {
+            "title": "3 Pack",
             "pack_size": 3,
-            "default_pack": true,
-            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200",
-            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/59OFF-Red.png?v=1764100098&width=200",
-            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/55OFF-white.png?v=1764100098&width=200"
+            "badge": "BEST VALUE",
+            "image_url": "https://goli.com/cdn/shop/files/ZSEssentials-3pack.jpg?v=1762269135&width=1200",
+            "subscribe_price": "$13.32",
+            "onetime_price": "$14.66",
+            "compare_price": "$32.67",
+            "default_pack": true
           }
         },
         {
           "type": "pack",
           "settings": {
+            "title": "6 Pack",
             "pack_size": 6,
-            "default_pack": false,
-            "bundle_image_url": "https://goli.com/cdn/shop/files/ZSEssentials-6pack.jpg?v=1762269136&width=1200",
-            "subscribe_badge_image_url": "https://goli.com/cdn/shop/files/61OFF-Red.png?v=1762537161&width=200",
-            "onetime_badge_image_url": "https://goli.com/cdn/shop/files/58OFF-white.png?v=1764100098&width=200"
+            "badge": "MOST SAVINGS",
+            "image_url": "https://goli.com/cdn/shop/files/ZSEssentials-6pack.jpg?v=1762269136&width=1200",
+            "subscribe_price": "$12.66",
+            "onetime_price": "$13.99",
+            "compare_price": "$32.67",
+            "default_pack": false
           }
         }
       ]
     },
-    "lzy_goli_bundles_benefits_06": {
-      "type": "lzy-goli-bundles-benefits",
+    "lzy_goli_benefits_03": {
+      "type": "lzy-goli-benefits",
       "settings": {}
     },
-    "lzy_goli_bundles_product_slider_07": {
-      "type": "lzy-goli-bundles-product-slider",
+    "lzy_goli_product_cards_04": {
+      "type": "lzy-goli-product-cards",
       "settings": {},
       "blocks": [
         {
           "type": "product_card",
           "settings": {
             "title": "Zero Sugar Ashwagandha+ Gummies",
-            "description": "Made with clinically studied KSM-66® Ashwagandha, L-Theanine, and Maca to help reduce stress, support sleep quality, and enhance focus — all in a delicious zero sugar gummy you’ll enjoy adding to your routine.",
+            "description": "Made with clinically studied KSM-66 Ashwagandha, L-Theanine, and Maca to help reduce stress, support sleep quality, and enhance focus — all in a delicious zero sugar gummy you’ll enjoy adding to your routine.",
             "support_items": "Stress Relief & Relaxation\nSleep Quality\nFocus & Calm",
             "background_color": "#d7f6ff",
             "accent_color": "#00a9e0",
-            "text_color": "#000000",
             "image_1_url": "https://goli.com/cdn/shop/files/tt-zs-ash-listing-2-v2.jpg?v=1753707479&width=600",
             "image_2_url": "https://goli.com/cdn/shop/files/tt-zs-ash-listing-3-v2.jpg?v=1753707479&width=600",
             "image_3_url": "https://goli.com/cdn/shop/files/tt-zs-ash-listing-9-v2.jpg?v=1753707481&width=600"
@@ -67,12 +65,11 @@
         {
           "type": "product_card",
           "settings": {
-            "title": "Zero Sugar Apple Cider<br>Vinegar+ Gummies",
-            "description": "Our flagship formula, now with zero sugar. Includes Apple Cider Vinegar, Vitamin B12, and SNZ Tribac® probiotics to help support digestion, reduce occasional bloating, and promote energy metabolism, immune function, and overall wellness.",
+            "title": "Zero Sugar Apple Cider Vinegar+ Gummies",
+            "description": "Our flagship formula, now with zero sugar. Includes Apple Cider Vinegar, Vitamin B12, and SNZ Tribac probiotics to help support digestion, reduce occasional bloating, and promote energy metabolism, immune function, and overall wellness.",
             "support_items": "Digestive Health & Bloating\nEnergy Metabolism\nImmune Function",
-            "background_color": "#ffd6d6",
+            "background_color": "#ffd7dc",
             "accent_color": "#d22730",
-            "text_color": "#000000",
             "image_1_url": "https://goli.com/cdn/shop/files/tt-zs-acv-listing-2.png?v=1753479911&width=600",
             "image_2_url": "https://goli.com/cdn/shop/files/tt-zs-acv-listing-4.png?v=1753479911&width=600",
             "image_3_url": "https://goli.com/cdn/shop/files/tt-zs-acv-listing-5.png?v=1753479911&width=600"
@@ -82,11 +79,10 @@
           "type": "product_card",
           "settings": {
             "title": "Zero Sugar Pre+Post+Probiotics Gummies",
-            "description": "The world’s first 3-in-1 gummy with prebiotics (XOS), probiotics (DE111®), and postbiotics (MCC1849) — all in a zero sugar format. Helps support digestion, gut flora balance, immune health, and daily digestive well-being.",
-            "support_items": "Gut Health and Microbiome\nBalance Prebiotic and Probiotic\nSupport Immune function",
-            "background_color": "#d7f3eb",
+            "description": "The world's first 3-in-1 gummy with prebiotics, probiotics, and postbiotics — all in a zero sugar format. Helps support digestion, gut flora balance, immune health, and daily digestive well-being.",
+            "support_items": "Gut Health and Microbiome\nBalance Prebiotic and Probiotic\nSupport Immune Function",
+            "background_color": "#d9f2ea",
             "accent_color": "#34b78f",
-            "text_color": "#000000",
             "image_1_url": "https://goli.com/cdn/shop/files/tt-ppp-listing-1.jpg?v=1753708774&width=600",
             "image_2_url": "https://goli.com/cdn/shop/files/tt-ppp-listing-2.jpg?v=1753708774&width=600",
             "image_3_url": "https://goli.com/cdn/shop/files/tt-ppp-listing-3.jpg?v=1753708775&width=600"
@@ -94,62 +90,66 @@
         }
       ]
     },
-    "lzy_goli_bundles_social_proof_08": {
-      "type": "lzy-goli-bundles-social-proof",
+    "lzy_goli_clinician_reviews_05": {
+      "type": "lzy-goli-clinician-reviews",
+      "settings": {}
+    },
+    "lzy_goli_social_proof_06": {
+      "type": "lzy-goli-social-proof",
       "settings": {},
       "blocks": [
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-5.jpg?v=1753812801",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-5.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 1"
           }
         },
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-4.jpg?v=1753812801",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-4.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 2"
           }
         },
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-2.jpg?v=1753812801",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-2.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 3"
           }
         },
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-6.jpg?v=1753812801",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-6.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 4"
           }
         },
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-3.jpg?v=1753812801",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-3.jpg?v=1753812801&width=600",
+            "alt": "Goli customer lifestyle image 5"
           }
         },
         {
           "type": "image",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/zs-1.jpg?v=1753812800",
-            "alt": "Social proof image"
+            "image_url": "https://goli.com/cdn/shop/files/zs-1.jpg?v=1753812800&width=600",
+            "alt": "Goli customer lifestyle image 6"
           }
         }
       ]
     },
-    "lzy_goli_bundles_partner_logos_09": {
-      "type": "lzy-goli-bundles-partner-logos",
+    "lzy_goli_partner_logos_07": {
+      "type": "lzy-goli-partner-logos",
       "settings": {},
       "blocks": [
         {
           "type": "logo",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/aam-bcorp-certified.png?v=1753393253",
+            "image_url": "https://goli.com/cdn/shop/files/aam-bcorp-certified.png?v=1753393253&width=400",
             "alt": "B Corp certified",
             "wide_mobile": false
           }
@@ -157,7 +157,7 @@
         {
           "type": "logo",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/aam-edenprojects.png?v=1753393253",
+            "image_url": "https://goli.com/cdn/shop/files/aam-edenprojects.png?v=1753393253&width=400",
             "alt": "Eden Projects",
             "wide_mobile": false
           }
@@ -165,7 +165,7 @@
         {
           "type": "logo",
           "settings": {
-            "image_url": "https://goli.com/cdn/shop/files/aam-vitaminangels.png?v=1753393253",
+            "image_url": "https://goli.com/cdn/shop/files/aam-vitaminangels.png?v=1753393253&width=400",
             "alt": "Vitamin Angels",
             "wide_mobile": true
           }
@@ -174,14 +174,12 @@
     }
   },
   "order": [
-    "lzy_goli_bundles_bootstrap_01",
-    "lzy_goli_bundles_header_02",
-    "lzy_goli_bundles_floating_cart_03",
-    "lzy_goli_bundles_hero_04",
-    "lzy_goli_bundles_products_05",
-    "lzy_goli_bundles_benefits_06",
-    "lzy_goli_bundles_product_slider_07",
-    "lzy_goli_bundles_social_proof_08",
-    "lzy_goli_bundles_partner_logos_09"
+    "lzy_goli_hero_01",
+    "lzy_goli_bundle_products_02",
+    "lzy_goli_benefits_03",
+    "lzy_goli_product_cards_04",
+    "lzy_goli_clinician_reviews_05",
+    "lzy_goli_social_proof_06",
+    "lzy_goli_partner_logos_07"
   ]
 }
