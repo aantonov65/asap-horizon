@@ -1,0 +1,63 @@
+<section class="lzy-goli-root lzy-goli-certifications" data-lzy-section="certification-logos" aria-label="{{ section.settings.aria_label }}">{% for block in section.blocks %}<img src="{{ block.settings.asset_file | asset_url }}" width="738" height="390" alt="{{ block.settings.alt }}" loading="lazy" {{ block.shopify_attributes }}>{% endfor %}</section>
+
+{% schema %}
+{
+  "name": "Goli Certifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Aria label",
+      "default": "Certification logos"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "asset_file",
+          "label": "Asset file",
+          "default": "cert-bcorp.png"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Certified B Corporation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goli Certifications",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-bcorp.png",
+            "alt": "Certified B Corporation"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-eden.png",
+            "alt": "Eden People and Planet"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-vitamin-angels.png",
+            "alt": "Vitamin Angels"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

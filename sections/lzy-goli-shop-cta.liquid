@@ -1,0 +1,28 @@
+<section class="lzy-goli-root lzy-goli-shop-cta" data-lzy-section="shop-cta"><a href="{{ section.settings.url }}">{{ section.settings.label }}</a></section>
+
+{% schema %}
+{
+  "name": "Goli Shop CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Shop the Bundle & Save"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "URL",
+      "default": "#product-target"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Goli Shop CTA",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

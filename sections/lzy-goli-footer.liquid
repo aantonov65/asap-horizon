@@ -1,0 +1,262 @@
+<footer class="lzy-goli-root lzy-goli-footer" id="footer" data-lzy-section="footer">
+  <div class="lzy-goli-footer-main">
+    <div class="lzy-goli-newsletter">
+      <h2>{{ section.settings.newsletter_heading }}</h2><p>{{ section.settings.newsletter_copy }}</p>
+      <form data-lzy-newsletter><label for="newsletter-email-{{ section.id }}">Email</label><div><input id="newsletter-email-{{ section.id }}" name="email" type="email" placeholder="Email" required><button type="submit" aria-label="Subscribe">+</button></div><span class="lzy-goli-newsletter-message" role="status"></span></form>
+      <p class="lzy-goli-follow">{{ section.settings.follow_label }}</p>
+      <div class="lzy-goli-social-links" aria-label="Social links">{% for block in section.blocks %}{% if block.type == 'social_link' %}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>{% endif %}{% endfor %}</div>
+    </div>
+    <nav class="lzy-goli-footer-links" aria-label="Footer navigation">{% for block in section.blocks %}{% if block.type == 'footer_link' %}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>{% endif %}{% endfor %}</nav>
+    <div class="lzy-goli-footer-marks"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDQ1IDQyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zOnNlcmlmPSJodHRwOi8vd3d3LnNlcmlmLmNvbS8iIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MjsiPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoMS41ODIyNiwwLDAsMS41ODIyNiwtMTQuNDgxNCwtMTAuNDEzNykiPgogICAgICAgIDxwYXRoIGQ9Ik0yOC40MTUsMjUuMjc2QzI4LjUwOSwyNi45MTcgMjcuODEzLDI4LjUwOSAyNi41NDUsMjkuNTU2QzI1LjI4MiwzMC41NTYgMjMuNzA2LDMxLjA4MSAyMi4wOTUsMzEuMDM2QzE5LjQ4NSwzMS4wMzYgMTcuNDI1LDMwLjAzNiAxNi4zNjUsMjguMDg2TDE5LjAyNSwyNi41NTZDMTkuNjUsMjcuNjk5IDIwLjg5NywyOC4zNjggMjIuMTk1LDI4LjI1NkMyNC4xOTUsMjguMjU2IDI1LjM2NSwyNy4xODYgMjUuMzY1LDI1LjI1NkwyNS4zNjUsMjMuOTY2QzI0LjQ2OSwyNS4xOTEgMjMuMDExLDI1Ljg4NCAyMS40OTUsMjUuODA2QzE5Ljg3MSwyNS44NDMgMTguMzA1LDI1LjE5MiAxNy4xODUsMjQuMDE2QzE2LjA2MSwyMi44MzEgMTUuNDQ2LDIxLjI0OSAxNS40NzUsMTkuNjE2QzE1LjQ0MywxNy45ODIgMTYuMDcsMTYuNDAyIDE3LjIxNSwxNS4yMzZDMTguMzIsMTQuMDUyIDE5Ljg3NywxMy4zOTQgMjEuNDk1LDEzLjQyNkMyMy4wMTEsMTMuMzQ4IDI0LjQ2OSwxNC4wNDEgMjUuMzY1LDE1LjI2NkwyNS4zNjUsMTMuNzY2TDI4LjQxNSwxMy43NjZMMjguNDE1LDI1LjI3NlpNMjEuOTc1LDE2LjMyNkMyMS4wNjcsMTYuMjk4IDIwLjE4NiwxNi42NDEgMTkuNTM1LDE3LjI3NkMxOC45MDYsMTcuODg4IDE4LjU2NCwxOC43MzggMTguNTk1LDE5LjYxNkMxOC42OTIsMjEuNDAzIDIwLjE5LDIyLjgyMiAyMS45OCwyMi44MjJDMjMuNzcxLDIyLjgyMiAyNS4yNjgsMjEuNDAzIDI1LjM2NSwxOS42MTZDMjUuMzg3LDE4LjcyOCAyNS4wMjIsMTcuODczIDI0LjM2NSwxNy4yNzZDMjMuNzMyLDE2LjY0NiAyMi44NjgsMTYuMzAzIDIxLjk3NSwxNi4zMjZaTTI3Ljg0NSwxMS40ODZMMjUuNjg1LDExLjQ4NkMyNS42OTEsOS42OSAyNy4xNyw4LjIxNiAyOC45NjUsOC4yMTZMMzEuMTM1LDguMjE2QzMxLjEyNCwxMC4wMTMgMjkuNjQzLDExLjQ4NiAyNy44NDUsMTEuNDg2WiIgc3R5bGU9ImZpbGw6cmdiKDIxMCwzOCw0OCk7ZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=" width="45" height="42" alt="Goli G" loading="lazy"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDcuNTYgMjEwLjU2Ij48ZyBpZD0iTG9nbyI+PGc+PHBhdGggZD0ibTU1Ljk2LDc0LjcxaDE3LjdjNC4zLDAsOS45OCwwLDEyLjkxLDEuNzgsMy4yMiwxLjkxLDUuNzQsNS4zOSw1Ljc0LDEwLjE5LDAsNS4xOS0yLjczLDkuMDktNy4yNSwxMC45M3YuMTRjNi4wMSwxLjIzLDkuMjksNS43NCw5LjI5LDExLjc1LDAsNy4xNy01LjEzLDE0LjAxLTE0LjgzLDE0LjAxaC0yMy41N3YtNDguOFptNi40OSwyMC45N2gxMi45OWM3LjM4LDAsMTAuMzktMi42NywxMC4zOS03Ljc5LDAtNi43Ny00Ljc4LTcuNzItMTAuMzktNy43MmgtMTIuOTl2MTUuNTJabTAsMjIuMzVoMTYuMjdjNS42LDAsOS4xNi0zLjQyLDkuMTYtOC43NCwwLTYuMzYtNS4xMy04LjEzLTEwLjU5LTguMTNoLTE0Ljg0djE2Ljg3WiIvPjxwYXRoIGQ9Im0xMTAuOTYsOTkuMTJjMCwyMC41LTE2LjYyLDM3LjExLTM3LjEyLDM3LjExcy0zNy4xMS0xNi42Mi0zNy4xMS0zNy4xMSwxNi42Mi0zNy4xMSwzNy4xMS0zNy4xMWMyMC41LDAsMzcuMTIsMTYuNjIsMzcuMTIsMzcuMTFabS0zNy4xMS00Mi43NmMtMjMuNiwwLTQyLjc0LDE5LjE0LTQyLjc0LDQyLjc0czE5LjE0LDQyLjc0LDQyLjc0LDQyLjc0LDQyLjc1LTE5LjE0LDQyLjc1LTQyLjc0YzAtMjMuNi0xOS4xNC00Mi43NC00Mi43NS00Mi43NFoiLz48L2c+PGc+PHJlY3QgeD0iMzEuMTkiIHk9IjE1MC44OCIgd2lkdGg9Ijg1LjMyIiBoZWlnaHQ9IjUuNjEiLz48cGF0aCBkPSJtMTEzLjg0LDE0NC43Yy4xMSwwLC4yLDAsLjMsMCwuMDksMCwuMTgtLjAzLjI1LS4wNS4wOC0uMDQuMTMtLjA5LjE4LS4xNS4wNC0uMDcuMDYtLjE2LjA2LS4yNywwLS4xLS4wMi0uMTktLjA1LS4yNC0uMDQtLjA2LS4wOS0uMTEtLjE1LS4xMy0uMDYtLjA0LS4xMi0uMDUtLjIxLS4wNy0uMDgsMC0uMTUsMC0uMjQsMGgtLjYxdi45NWguNDhabS4yLTEuMzRjLjM1LDAsLjYxLjA3Ljc5LjIxLjE3LjE0LjI2LjM1LjI2LjY1LDAsLjI3LS4wOC40Ni0uMjIuNTktLjE1LjEyLS4zNC4xOS0uNTcuMjJsLjg1LDEuMzFoLS41bC0uODEtMS4yOGgtLjQ5djEuMjhoLS40N3YtMi45OGgxLjE2Wm0tMi4wOSwyLjM0Yy4xLjI3LjI1LjUuNDQuNy4xOS4xOS40MS4zNS42Ni40Ni4yNS4xMS41My4xNi44Mi4xNnMuNTgtLjA1LjgyLS4xNmMuMjYtLjEyLjQ4LS4yNy42Ni0uNDZzLjM0LS40My40My0uN2MuMTEtLjI3LjE3LS41NS4xNy0uODZzLS4wNS0uNTktLjE3LS44NmMtLjExLS4yNy0uMjYtLjUtLjQzLS42OS0uMTktLjE5LS40Mi0uMzUtLjY2LS40NXMtLjUzLS4xNy0uODItLjE3LS41OC4wNi0uODIuMTdjLS4yNi4xMi0uNDkuMjctLjY2LjQ1LS4xOS4xOS0uMzQuNDMtLjQ0LjY5cy0uMTYuNTQtLjE2Ljg2YzAsLjMuMDQuNTkuMTYuODZtLS40My0xLjg3Yy4xMy0uMzEuMzItLjU3LjU1LS44cy41LS40LjgxLS41M2MuMzEtLjEzLjY1LS4xOS45OC0uMTkuMzUsMCwuNjguMDYsMSwuMTkuMy4xMy41OC4zLjguNTMuMjMuMjMuNDMuNS41NS44LjE0LjMxLjIuNjUuMiwxLjAxcy0uMDYuNy0uMiwxLjAxYy0uMTMuMzItLjMyLjU4LS41NS44MS0uMjMuMjQtLjUuNDEtLjguNTQtLjMyLjEyLS42NS4xOS0xLC4xOXMtLjY3LS4wNi0uOTgtLjE5Yy0uMzEtLjEzLS41OC0uMy0uODEtLjU0LS4yMy0uMjMtLjQyLS41LS41NS0uODEtLjE0LS4zMS0uMTktLjY1LS4xOS0xLjAxLDAtLjM2LjA1LS43LjE5LTEuMDEiLz48L2c+PGc+PHBhdGggZD0ibTQxLjUzLDM3LjU3Yy0uMi0uMzMtLjQ1LS42MS0uNzUtLjg1LS4zLS4yNS0uNjUtLjQzLTEuMDMtLjU4LS4zOC0uMTMtLjc4LS4yLTEuMi0uMi0uNzYsMC0xLjQxLjE1LTEuOTUuNDQtLjUzLjI5LS45Ny42OS0xLjI5LDEuMTktLjMzLjUtLjU4LDEuMDYtLjczLDEuN3MtLjIzLDEuMjktLjIzLDEuOTcuMDcsMS4yOC4yMywxLjg5Yy4xNS42MS4zOSwxLjE2LjczLDEuNjYuMzMuNDkuNzYuODksMS4yOSwxLjE4LjUzLjI5LDEuMTguNDQsMS45NS40NCwxLjA0LDAsMS44NS0uMzIsMi40My0uOTUuNTgtLjY0Ljk0LTEuNDcsMS4wNy0yLjUxaDMuMjljLS4wOS45Ny0uMzEsMS44My0uNjcsMi42MS0uMzYuNzgtLjgzLDEuNDQtMS40MywxLjk4LS41OS41NS0xLjI4Ljk3LTIuMDcsMS4yNi0uNzkuMjgtMS42Ny40My0yLjYxLjQzLTEuMTgsMC0yLjI0LS4yLTMuMTktLjYyLS45NS0uNDEtMS43NC0uOTctMi4zOS0xLjctLjY1LS43Mi0xLjE0LTEuNTctMS40OS0yLjU0LS4zNS0uOTctLjUyLTIuMDItLjUyLTMuMTRzLjE3LTIuMjIuNTItMy4yMWMuMzUtLjk4Ljg0LTEuODUsMS40OS0yLjU4LjY1LS43NCwxLjQ0LTEuMzEsMi4zOS0xLjczLjk0LS40MiwyLS42MywzLjE5LS42My44NSwwLDEuNjYuMTIsMi40MS4zNi43NS4yNSwxLjQzLjYsMi4wMywxLjA3LjU5LjQ3LDEuMDksMS4wNSwxLjQ4LDEuNzQuMzkuNjkuNjQsMS40OS43NCwyLjM3aC0zLjI5Yy0uMDYtLjM5LS4xOS0uNzQtLjM5LTEuMDZaIi8+PHBhdGggZD0ibTQ5Ljc2LDQ2LjJjLjQ2LjQ0LDEuMTIuNjcsMS45OC42Ny42MiwwLDEuMTUtLjE1LDEuNi0uNDYuNDQtLjMxLjcyLS42NC44Mi0uOThoMi43Yy0uNDMsMS4zNC0xLjEsMi4zLTEuOTksMi44OHMtMS45OC44Ny0zLjI0Ljg3Yy0uODgsMC0xLjY3LS4xNC0yLjM3LS40My0uNzEtLjI4LTEuMy0uNjgtMS44LTEuMi0uNDktLjUxLS44Ny0xLjEzLTEuMTMtMS44Ni0uMjctLjcyLS40LTEuNTEtLjQtMi4zN3MuMTMtMS42MS40MS0yLjMzYy4yNy0uNzIuNjYtMS4zNSwxLjE3LTEuODdzMS4xMS0uOTQsMS44MS0xLjI0LDEuNDctLjQ1LDIuMzItLjQ1Yy45NSwwLDEuNzguMTksMi40OS41NS43MS4zNywxLjI4Ljg2LDEuNzQsMS40OHMuNzgsMS4zMy45OCwyLjEyLjI3LDEuNjIuMjEsMi40OWgtOC4wNmMuMDQuOTcuMjksMS42OS43NiwyLjEzWm0zLjQ2LTUuODdjLS4zNy0uNC0uOTMtLjYtMS42Ny0uNi0uNDksMC0uODkuMDgtMS4yMi4yNS0uMzMuMTctLjU4LjM3LS43OC42MS0uMTkuMjUtLjMzLjUtLjQxLjc4cy0uMTIuNTEtLjE0Ljc0aDVjLS4xNC0uNzgtLjQtMS4zNy0uNzctMS43N1oiLz48cGF0aCBkPSJtNjEuMzYsMzcuN3YyLjA3aC4wNGMuMTQtLjM1LjM0LS42Ni41OC0uOTcuMjUtLjI5LjUyLS41NS44NC0uNzVzLjY2LS4zNywxLjAyLS40OS43NC0uMTcsMS4xMi0uMTdjLjIsMCwuNDMuMDQuNjcuMTF2Mi44NWMtLjE0LS4wMy0uMzItLjA1LS41Mi0uMDdzLS40LS4wNC0uNTgtLjA0Yy0uNTYsMC0xLjA0LjEtMS40My4yOC0uMzkuMTktLjcuNDQtLjk0Ljc3cy0uNDEuNy0uNSwxLjEzLS4xNS45LS4xNSwxLjQxdjUuMDRoLTMuMDZ2LTExLjE5aDIuOTFaIi8+PHBhdGggZD0ibTczLjg1LDM3Ljd2Mi4wNWgtMi4yNXY1LjU0YzAsLjUyLjA5Ljg3LjI2LDEuMDRzLjUyLjI2LDEuMDQuMjZjLjE4LDAsLjM0LDAsLjUtLjAyLjE2LS4wMi4zMS0uMDQuNDUtLjA2djIuMzdjLS4yNi4wNC0uNTUuMDctLjg3LjA5LS4zMi4wMi0uNjMuMDMtLjkzLjAzLS40OCwwLS45My0uMDQtMS4zNS0uMS0uNDMtLjA2LS44LS4xOS0xLjEyLS4zOC0uMzMtLjE5LS41OC0uNDUtLjc3LS44LS4xOS0uMzUtLjI4LS44LS4yOC0xLjM2di02LjU5aC0xLjg2di0yLjA1aDEuODZ2LTMuMzVoMy4wNnYzLjM1aDIuMjdaIi8+PHBhdGggZD0ibTc1LjY0LDM1Ljk3di0yLjUzaDMuMDZ2Mi41M2gtMy4wNlptMy4wNiwxLjczdjExLjE3aC0zLjA2di0xMS4xN2gzLjA2WiIvPjxwYXRoIGQ9Im03OS45MywzOS43NnYtMi4wNWgxLjgzdi0uODdjMC0uOTkuMzEtMS44MS45My0yLjQ0LjYyLS42NCwxLjU2LS45NSwyLjgxLS45NS4yNywwLC41NSwwLC44Mi4wNC4yNy4wMi41NC4wNC44LjA1djIuMjljLS4zNi0uMDQtLjc0LS4wNi0xLjEyLS4wNi0uNDIsMC0uNzIuMS0uODkuMjktLjE4LjE5LS4yNy41Mi0uMjcuOTh2LjY3aDIuMTJ2Mi4wNWgtMi4xMnY5LjEyaC0zLjA3di05LjEyaC0xLjgzWiIvPjxwYXRoIGQ9Im04OS4wMiwzNS45N3YtMi41M2gzLjA2djIuNTNoLTMuMDZabTMuMDcsMS43M3YxMS4xN2gtMy4wN3YtMTEuMTdoMy4wN1oiLz48cGF0aCBkPSJtOTYuOTMsNDYuMmMuNDYuNDQsMS4xMi42NywxLjk4LjY3LjYyLDAsMS4xNS0uMTUsMS42LS40Ni40NC0uMzEuNzItLjY0LjgyLS45OGgyLjdjLS40MywxLjM0LTEuMSwyLjMtMS45OCwyLjg4LS44OS41OC0xLjk4Ljg3LTMuMjQuODctLjg4LDAtMS42Ny0uMTQtMi4zNy0uNDMtLjcxLS4yOC0xLjMtLjY4LTEuOC0xLjItLjQ5LS41MS0uODctMS4xMy0xLjEzLTEuODYtLjI3LS43Mi0uNC0xLjUxLS40LTIuMzdzLjE0LTEuNjEuNDEtMi4zM2MuMjctLjc0LjY2LTEuMzYsMS4xNy0xLjg5czEuMTEtLjk0LDEuODEtMS4yNCwxLjQ3LS40NSwyLjMyLS40NWMuOTUsMCwxLjc4LjE5LDIuNDkuNTUuNzEuMzcsMS4yOC44NiwxLjc0LDEuNDhzLjc4LDEuMzMuOTgsMi4xMi4yNywxLjYyLjIyLDIuNDloLTguMDZjLjA0Ljk4LjI4LDEuNzEuNzQsMi4xNVptMy40Ny01Ljg3Yy0uMzYtLjQtLjkzLS42LTEuNjctLjYtLjQ5LDAtLjg5LjA4LTEuMjIuMjUtLjMzLjE3LS41OC4zNy0uNzguNjEtLjE5LjI1LS4zMy41LS40MS43OHMtLjEyLjUxLS4xNC43NGg0Ljk5Yy0uMTQtLjc4LS40LTEuMzctLjc2LTEuNzdaIi8+PHBhdGggZD0ibTExMy41Niw0Ny40NWMtLjM2LjYtLjgzLDEuMDUtMS40MiwxLjMxLS41OC4yNy0xLjI0LjQtMS45OC40LS44MywwLTEuNTctLjE2LTIuMjEtLjQ5cy0xLjE2LS43Ni0xLjU3LTEuMzItLjcyLTEuMi0uOTMtMS45MWMtLjIxLS43Mi0uMzEtMS40Ny0uMzEtMi4yNXMuMTEtMS40Ny4zMS0yLjE3Yy4yLS43LjUyLTEuMzEuOTMtMS44NS40MS0uNTMuOTMtLjk3LDEuNTQtMS4yOC42Mi0uMzMsMS4zNC0uNDksMi4xNi0uNDkuNjYsMCwxLjI5LjE0LDEuODkuNDMuNi4yOCwxLjA3LjY5LDEuNDIsMS4yNGguMDR2LTUuNjJoMy4wNnYxNS40M2gtMi45MXYtMS40M3MtLjA0LDAtLjA0LDBabS0uMTMtNS41M2MtLjA5LS40My0uMjMtLjgtLjQ0LTEuMTJzLS40OC0uNTgtLjgxLS43OWMtLjMzLS4yLS43NS0uMy0xLjI1LS4zcy0uOTMuMS0xLjI4LjMtLjYyLjQ3LS44My44Yy0uMi4zMy0uMzUuNzEtLjQ1LDEuMTMtLjEuNDMtLjE0Ljg3LS4xNCwxLjMzLDAsLjQzLjA1Ljg3LjE1LDEuMjkuMS40My4yNy44MS40OSwxLjE2LjIyLjM0LjUuNjEuODQuODJzLjc0LjMxLDEuMjIuMzFjLjUsMCwuOTItLjEsMS4yNy0uMy4zNC0uMi42MS0uNDcuODEtLjgxLjItLjM0LjM1LS43My40My0xLjE1LjA5LS40My4xMy0uODguMTMtMS4zNCwwLS40Ni0uMDUtLjktLjE0LTEuMzNaIi8+PC9nPjxnPjxwYXRoIGQ9Im0zOC42NywxNjcuNDljLS4xNS0xLjA4LTEuMTktMS45LTIuMzctMS45LTIuMTQsMC0yLjk1LDEuODItMi45NSwzLjczcy44MSwzLjYzLDIuOTUsMy42M2MxLjQ2LDAsMi4yOS0xLDIuNDYtMi40NGgyLjMyYy0uMjUsMi43MS0yLjEyLDQuNDUtNC43OCw0LjQ1LTMuMzcsMC01LjM0LTIuNTItNS4zNC01LjY0czEuOTgtNS43NCw1LjM0LTUuNzRjMi4zOSwwLDQuMzksMS40LDQuNjksMy45MWgtMi4zMVoiLz48cGF0aCBkPSJtNDYuMDcsMTY2LjYyYzIuNDgsMCw0LjA3LDEuNjQsNC4wNyw0LjE1cy0xLjU5LDQuMTQtNC4wNyw0LjE0LTQuMDctMS42NS00LjA3LTQuMTQsMS42LTQuMTUsNC4wNy00LjE1Wm0wLDYuNjdjMS40OCwwLDEuOTEtMS4yNywxLjkxLTIuNTFzLS40NC0yLjUyLTEuOTEtMi41Mi0xLjksMS4yNy0xLjksMi41MmMwLDEuMjQuNDQsMi41MSwxLjksMi41MVoiLz48cGF0aCBkPSJtNTEuNDgsMTY2LjgzaDIuMDV2MS40NmguMDRjLjM5LS45OSwxLjQ2LTEuNjcsMi41Mi0xLjY3LjE1LDAsLjM0LjAzLjQ3LjA3djIuMDFjLS4yLS4wNC0uNTItLjA3LS43OC0uMDctMS41OSwwLTIuMTMsMS4xNC0yLjEzLDIuNTJ2My41NGgtMi4xNnYtNy44N1oiLz48cGF0aCBkPSJtNTcuMzksMTY2Ljg0aDIuMDV2MWguMDNjLjUxLS44MywxLjM2LTEuMjEsMi4zNC0xLjIxLDIuNDcsMCwzLjU4LDEuOTksMy41OCw0LjIyLDAsMi4xLTEuMTUsNC4wNy0zLjQ1LDQuMDctLjk0LDAtMS44NC0uNDEtMi4zNi0xLjE5aC0uMDR2My43NWgtMi4xNnYtMTAuNjRoMFptNS44NCwzLjk2YzAtMS4yNS0uNS0yLjU0LTEuODktMi41NHMtMS44NywxLjI3LTEuODcsMi41NC40OSwyLjUsMS44OSwyLjUsMS44Ny0xLjIyLDEuODctMi41WiIvPjxwYXRoIGQ9Im03MC4xMywxNjYuNjJjMi40OCwwLDQuMDgsMS42NCw0LjA4LDQuMTVzLTEuNiw0LjE0LTQuMDgsNC4xNC00LjA2LTEuNjUtNC4wNi00LjE0YzAtMi41MSwxLjU5LTQuMTUsNC4wNi00LjE1Wm0wLDYuNjdjMS40OCwwLDEuOTItMS4yNywxLjkyLTIuNTFzLS40NC0yLjUyLTEuOTItMi41Mi0xLjksMS4yNy0xLjksMi41MmMwLDEuMjQuNDUsMi41MSwxLjksMi41MVoiLz48cGF0aCBkPSJtNzUuNTUsMTY2LjgzaDIuMDV2MS40NmguMDRjLjM5LS45OSwxLjQ2LTEuNjcsMi41MS0xLjY3LjE1LDAsLjM0LjAzLjQ3LjA3djIuMDFjLS4xOS0uMDQtLjUxLS4wNy0uNzgtLjA3LTEuNTksMC0yLjEzLDEuMTQtMi4xMywyLjUydjMuNTRoLTIuMTZ2LTcuODdoMFoiLz48cGF0aCBkPSJtODEuMjYsMTY5LjI1Yy4xMi0yLjAzLDEuOTMtMi42MywzLjctMi42MywxLjU3LDAsMy40NS4zNSwzLjQ1LDIuMjN2NC4wOWMwLC43Mi4wNywxLjQzLjI3LDEuNzVoLTIuMmMtLjA3LS4yNS0uMTQtLjUtLjE1LS43Ni0uNjguNzItMS42OC45Ny0yLjY1Ljk3LTEuNDksMC0yLjY3LS43NC0yLjY3LTIuMzYsMC0xLjc4LDEuMzQtMi4yMSwyLjY3LTIuMzksMS4zMy0uMTksMi41Ni0uMTUsMi41Ni0xLjA0LDAtLjkzLS42NS0xLjA2LTEuNC0xLjA2LS44MiwwLTEuMzYuMzQtMS40MywxLjE5aC0yLjE2Wm00Ljk5LDEuNmMtLjM3LjMyLTEuMTIuMzQtMS44LjQ2LS42Ny4xMy0xLjI4LjM2LTEuMjgsMS4xNnMuNjIsMSwxLjMzLDFjMS42OCwwLDEuNzUtMS4zNCwxLjc1LTEuODF2LS44MWgwWiIvPjxwYXRoIGQ9Im05Mi43NywxNjYuODRoMS41OXYxLjQ0aC0xLjU5djMuOWMwLC43NC4xOS45MS45MS45MS4yMywwLC40NC0uMDIuNjctLjA2djEuNjljLS4zNi4wNi0uODQuMDgtMS4yNy4wOC0xLjMyLDAtMi40OC0uMzEtMi40OC0xLjg3di00LjY0aC0xLjMxdi0xLjQ0aDEuMzF2LTIuMzZoMi4xNnYyLjM1WiIvPjxwYXRoIGQ9Im05OC4xNSwxNjUuNjJoLTIuMTZ2LTEuNzhoMi4xNnYxLjc4Wm0tMi4xNiwxLjIxaDIuMTZ2Ny44N2gtMi4xNnYtNy44N1oiLz48cGF0aCBkPSJtMTAzLjY1LDE2Ni42MmMyLjQ4LDAsNC4wOCwxLjY0LDQuMDgsNC4xNXMtMS42LDQuMTQtNC4wOCw0LjE0LTQuMDYtMS42NS00LjA2LTQuMTQsMS41OS00LjE1LDQuMDYtNC4xNVptMCw2LjY3YzEuNDgsMCwxLjkyLTEuMjcsMS45Mi0yLjUxcy0uNDQtMi41Mi0xLjkyLTIuNTItMS45LDEuMjctMS45LDIuNTIuNDQsMi41MSwxLjksMi41MVoiLz48cGF0aCBkPSJtMTA5LjEzLDE2Ni44NGgyLjA1djEuMWguMDRjLjU1LS44OSwxLjQ5LTEuMzEsMi40MS0xLjMxLDIuMjksMCwyLjg4LDEuMjksMi44OCwzLjI0djQuODRoLTIuMTZ2LTQuNDVjMC0xLjI5LS4zOC0xLjkzLTEuMzgtMS45My0xLjE4LDAtMS42Ny42Ni0xLjY3LDIuMjZ2NC4xM2gtMi4xNnYtNy44N2gwWiIvPjwvZz48L2c+PC9zdmc+" width="148" height="211" alt="B-Corp Logo" loading="lazy"></div>
+  </div>
+  <div class="lzy-goli-legal-links">{% for block in section.blocks %}{% if block.type == 'legal_link' %}<a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>{% endif %}{% endfor %}</div>
+  <p class="lzy-goli-legal">{{ section.settings.legal_copy }}</p><p class="lzy-goli-copyright">{{ section.settings.copyright }}</p>
+</footer>
+
+{% schema %}
+{
+  "name": "Goli Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Keep well with Goli®"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_copy",
+      "label": "Newsletter copy",
+      "default": "Subscribe to our newsletter for exclusive offers!"
+    },
+    {
+      "type": "text",
+      "id": "follow_label",
+      "label": "Follow label",
+      "default": "FOLLOW US:"
+    },
+    {
+      "type": "textarea",
+      "id": "legal_copy",
+      "label": "Legal copy",
+      "default": "†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease. The views and nutritional advice expressed by Goli® Nutrition are not intended for the purpose of providing medical advice. Please always consult your health care provider if you are taking any medications or have any medical conditions. Individual results may vary."
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "© 2026 Goli Nutrition Inc. All Rights Reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_link",
+      "name": "Social link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "f"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL",
+          "default": "#"
+        }
+      ]
+    },
+    {
+      "type": "footer_link",
+      "name": "Footer link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "About Goli"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL",
+          "default": "#"
+        }
+      ]
+    },
+    {
+      "type": "legal_link",
+      "name": "Legal link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Privacy Policy"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL",
+          "default": "#"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goli Footer",
+      "blocks": [
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "f",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "ig",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "x",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "yt",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "p",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "tk",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Become an Ambassador",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "About Goli",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Goli® for Good",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "About Us",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Inside the Gummy",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "FAQ",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale Login",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale Sign up",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Manage my Subscription",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Contact Us",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Terms & Conditions",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Privacy Policy",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Goli® Rewards Gift Cards",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Digital Accessibility Statement",
+            "url": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
