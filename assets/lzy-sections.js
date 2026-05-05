@@ -142,3 +142,21 @@
 
     document.querySelectorAll('[data-lzy-bundle-builder]').forEach((root) => initializeBundleCard(root));
   })();
+
+(() => {
+  function initProductCardSliders(root = document) {
+    if (typeof Swiper === 'undefined') return;
+    root.querySelectorAll('[class*="product-card-slider-"]').forEach((slider) => {
+      if (slider.dataset.lzySwiperInit === 'true') return;
+      slider.dataset.lzySwiperInit = 'true';
+      const suffix = [...slider.classList].find((name) => name.startsWith('product-card-slider-'))?.replace('product-card-slider-', '');
+      new Swiper(slider, {
+        slidesPerView: 1,
+        pagination: { el: '.product-card-pagination-' + suffix, clickable: true },
+        navigation: { nextEl: '.slide-arrow-' + suffix + '.swiper-button-next', prevEl: '.slide-arrow-' + suffix + '.swiper-button-prev' }
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => initProductCardSliders());
+  document.addEventListener('shopify:section:load', (event) => initProductCardSliders(event.target));
+})();

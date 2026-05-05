@@ -11,7 +11,7 @@
                 <button
                     type="button" x-on:click="$store.w_cart.is_open = ! $store.w_cart.is_open"  class="absolute font-black right-0 toggle-floating-cart"><i
                         class="fas fa-times text-black"></i>
-				</button><span x-text="$store.w_cart.itemCount > 0 ? 'Your Cart is Ready' : 'Your Cart'">Your Cart</span>
+				</button><span x-text="$store.w_cart.itemCount > 0 ? '{{ section.settings.ready_title | escape }}' : '{{ section.settings.empty_title | escape }}">Your Cart</span>
 				
             </div>
         </div>
@@ -36,7 +36,7 @@
 					class="rounded-[0.2em] text-[4em] py-[0.7em] text-white flex justify-center items-center">
 						<span class="w-[1.5em] h-[1.5em] text-black font-bold bg-white rounded-[100%] mr-[1em] flex justify-center items-center" 
 							data-ajax-cart-bind="item_count">
-							0</span>CHECKOUT &#183; <span class="total-price-display"><span class=money>$0.00 USD</span>	
+							0</span>{{ section.settings.checkout_label }} &#183; <span class="total-price-display"><span class=money>$0.00 USD</span>	
 						</span>
 				</button>
 				<div  x-show="loader" style="display: none;"  class="fixed overflow-scroll inset-0 flex items-center justify-center bg-white bg-opacity-50"><i class="fa fa-spinner text-[40px] animate-spin text-black" aria-hidden="true"></i></div>
@@ -53,7 +53,26 @@
 {% schema %}
 {
   "name": "Goli Floating Cart",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty cart title",
+      "default": "Your Cart"
+    },
+    {
+      "type": "text",
+      "id": "ready_title",
+      "label": "Ready cart title",
+      "default": "Your Cart is Ready"
+    },
+    {
+      "type": "text",
+      "id": "checkout_label",
+      "label": "Checkout label",
+      "default": "CHECKOUT"
+    }
+  ],
   "presets": [
     {
       "name": "Goli Floating Cart"

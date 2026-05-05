@@ -1,3 +1,4 @@
+{% if section.settings.load_source_assets %}
 {% comment %}
 This bootstrap section loads the original landing-page CSS/JS bundle required by the split Goli bundle sections below.
 Keep this section first in the template order.
@@ -279,11 +280,19 @@ Keep this section first in the template order.
 	
 	<script src="{{ 'lzy-goli-theme-goli-v-82623245782180614881772127246.js' | asset_url }}" type="text/javascript" defer></script>
 	<script src="{{ 'lzy-goli-swiper-bundle-min-v-181550739200531974951772127238.js' | asset_url }}" type="text/javascript" defer></script>
+{% endif %}
 
 {% schema %}
 {
   "name": "Goli Bundles Bootstrap",
-  "settings": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "load_source_assets",
+      "label": "Load original Goli CSS/JS assets",
+      "default": true
+    }
+  ],
   "presets": [
     {
       "name": "Goli Bundles Bootstrap"
