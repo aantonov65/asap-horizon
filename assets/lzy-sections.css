@@ -1,3 +1,67 @@
+.cart-icon-v3{
+		background-image: url("https://goli.com/cdn/shop/t/54/assets/cart_v3.svg?v=60419950707257672141772127236");
+		background-size: cover;
+	}
+	.caret_multilink::after {
+			font-family: "Font Awesome 5 Pro";
+			font-weight: 900;
+			content: "\f0d7";
+			margin-left: 5px;
+	}
+	.menu-hamburger::after {
+			font-family: "Font Awesome 5 Pro";
+			font-weight: 900;
+			content: "\f0c9";
+	}
+
+#frontrow-sticker{
+    position:absolute;
+    z-index:3;
+    border-radius: 0 !important;
+    bottom: -40px !important; /* Adjust the placement for the banner badge on the bottom of the image */
+    
+  }
+
+  @media only screen and (max-width: 480px) {
+      #frontrow-sticker{position: relative !important;}
+  }
+
+  .iframe.frontrow{display:none;position:fixed;left:0;top:0;z-index:99999997;right:0;bottom:0;width:100%;height:100%;overflow:hidden}
+#frontrow-sticker{
+    position:absolute;
+    z-index:3;
+    border-radius: 0 !important;
+    bottom: -40px !important; /* Adjust the placement for the banner badge on the bottom of the image */
+    
+  }
+
+  @media only screen and (max-width: 480px) {
+      #frontrow-sticker{position: relative !important;}
+  }
+
+  .iframe.frontrow{display:none;position:fixed;left:0;top:0;z-index:99999997;right:0;bottom:0;width:100%;height:100%;overflow:hidden}
+@media only screen and (max-width: 480px) {
+  .frontrow-desktop-only {
+    display: none !important;
+  }
+
+.frontrow-mobile-only #frontrow-sticker{
+  left: calc(9vw - 20px) !important;
+  }
+
+}
+
+@media only screen and (min-width: 481px) {
+  .frontrow-mobile-only {
+ 	 display: none !important;
+  }
+  #frontrow-sticker{
+    -webkit-filter: drop-shadow(0 0 .1px black) drop-shadow(0 0 1px black) !important; 
+    filter: drop-shadow(0 0 .1px black) drop-shadow(0 0 1px black) !important; 
+}
+
+}
+
 .lzy-button {
     border: none;
     border-radius: 999px;
@@ -233,3 +297,5 @@
       grid-template-columns: 1fr 1fr;
     }
   }
+
+iframe.iframe-frontrow-testimonials { width: 100%; } iframe.iframe-modal-testimonials { z-index: 99999998; }

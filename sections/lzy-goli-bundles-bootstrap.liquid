@@ -1,0 +1,293 @@
+{% comment %}
+This bootstrap section loads the original landing-page CSS/JS bundle required by the split Goli bundle sections below.
+Keep this section first in the template order.
+{% endcomment %}
+
+<link href="{{ 'lzy-goli-theme-bootstrap-min-v-133925860776674579011772127238.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ 'lzy-goli-bootstrap-menu-multilevel-min-v-144276237868081910201772127237.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ 'lzy-goli-animate-min-v-7717165436794287701772127236.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ 'lzy-goli-theme-goli-scss-v-158909288011504828831772127246.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ 'lzy-goli-swiper-bundle-min-v-104561930517569505991772127238.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<link href="{{ 'lzy-goli-theme-005d6da7-min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+
+<script src="{{ 'lzy-goli-global-v-26131930807380250131772127242.js' | asset_url }}" type="text/javascript" defer></script>
+<script src="{{ 'lzy-goli-js-cookie-min-v-90280881545131116191772127236.js' | asset_url }}" type="text/javascript" defer></script>
+<script type="module" src="{{ 'lzy-goli-theme-6afc9303-min.js' | asset_url }}" crossorigin="anonymous"></script>
+<link rel="modulepreload" href="{{ 'lzy-goli-cart-b7833e12-min.js' | asset_url }}" crossorigin="anonymous">
+<link rel="modulepreload" href="{{ 'lzy-goli-bundlerc-a0cbb6c7-min.js' | asset_url }}" crossorigin="anonymous">
+<link rel="modulepreload" href="{{ 'lzy-goli-index-0fa819ad-min.js' | asset_url }}" crossorigin="anonymous">
+<link rel="modulepreload" href="{{ 'lzy-goli-module-esm-a991edb9-min.js' | asset_url }}" crossorigin="anonymous">
+<link rel="modulepreload" href="{{ 'lzy-goli-checkoutwithoptionalprogressivegifts-c8a7d331-min.js' | asset_url }}" crossorigin="anonymous">
+<link rel="modulepreload" href="{{ 'lzy-goli-commonjshelpers-23102255-min.js' | asset_url }}" crossorigin="anonymous">
+
+<script>
+  const country_iso_code = {{ localization.country.iso_code | default: 'US' | json }};
+  window.codebase = window.codebase || {};
+  window.codebase.iid = 'C81FD92FD386';
+  window._template = {
+    directory: '',
+    name: 'page',
+    suffix: 'goli-bundles'
+  };
+</script>
+
+<script src="{{ 'lzy-goli-theme-bootstrap-min-v-39564474806961312471772127238.js' | asset_url }}" type="text/javascript" defer></script>
+	<script src="{{ 'lzy-goli-bootstrap-menu-multilevel-min-v-99974821671961022501772127237.js' | asset_url }}" type="text/javascript" defer></script>
+	<script src="{{ 'lzy-goli-jquery-min-v-172596495919052813691772127236.js' | asset_url }}" type="text/javascript" defer></script>
+	<script src="{{ 'lzy-goli-dayjs-min-v-160933994874996829211772127237.js' | asset_url }}" type="text/javascript" defer></script>
+  <script src="{{ 'lzy-goli-loadingoverlay-min-v-83345831542795446801772127237.js' | asset_url }}" type="text/javascript" defer></script>
+  <script>
+		function cleanHtmlEntities(data) {
+			return data.map(item => {
+				const cleanedItem = {};
+				for (const key in item) {
+					if (typeof item[key] === 'string') {
+						cleanedItem[key] = item[key]
+							.replace(/&amp;/g, '&')
+							.replace(/&lt;br&gt;/g, '<br>')
+							.replace(/&lt;sup&gt;/g, '<sup>')
+							.replace(/&lt;\/sup&gt;/g, '</sup>');
+					} else {
+						cleanedItem[key] = item[key];
+					}
+				}
+				return cleanedItem;
+			});
+		}
+	</script>
+
+  
+
+	<script src="{{ 'lzy-goli-cart-min-v-156585583159371723031772127236.js' | asset_url }}" type="text/javascript" defer></script>
+<script>
+	Cookies.set('tokenizer_product_variant_id', '');
+	Cookies.set('tokenizer_product_variant_selling_plan_id', '');
+
+	var cartProductKeyMap                  = {};
+	var cartProductVariantMap              = { one_time: {}, recurring: {} };
+	var cartProductVariantTotalQuantityMap = { one_time: {}, recurring: {} };
+
+	function cartProductTypeHandle(is_recurring) {
+		return (is_recurring) ? 'recurring' : 'one_time';
+	}
+
+	function cartProcessCartProductMap() {
+		cartProductKeyMap                  = {};
+		cartProductVariantMap              = { one_time: {}, recurring: {} };
+		cartProductVariantTotalQuantityMap = { one_time: {}, recurring: {} };
+		CartJS.cart.items.forEach(function(item, i) {
+			let product_type = cartProductTypeHandle(item.hasOwnProperty('selling_plan_allocation'));
+			if (!cartProductVariantTotalQuantityMap[product_type].hasOwnProperty('item.variant_id')) {
+				cartProductVariantTotalQuantityMap[product_type][item.variant_id] = 0;
+			}
+			cartProductKeyMap[item.key]                                        = i;
+			cartProductVariantMap[product_type][item.variant_id]               = i;
+			cartProductVariantTotalQuantityMap[product_type][item.variant_id] += parseInt(item['quantity']);
+		});
+	}
+
+	function cartGetItemIndexByKey(product_key) {
+		return cartProductKeyMap[product_key];
+	}
+
+	function cartGetItemByKey(product_key) {
+		return CartJS.cart.items[cartGetItemIndexByKey(product_key)];
+	}
+
+	function cartGetItemLineNumberByKey(product_key) {
+		return cartGetItemIndexByKey(product_key)+1;
+	}
+
+	function cartGetItemByVariantId(product_variant_id, is_recurring=false) {
+		let cart_index = cartProductVariantMap[cartProductTypeHandle(is_recurring)][product_variant_id];
+		return CartJS.cart.items[cart_index];
+	}
+
+	function cartContainsSubscription() {
+		return Object.keys(cartProductVariantTotalQuantityMap[cartProductTypeHandle(true)]).length > 0;
+	}
+
+	function cartItemToOneTime(product_key) {
+		return new Promise((resolve, reject) => {
+			try {
+				let item = cartGetItemByKey(product_key);
+
+				if (item.hasOwnProperty('selling_plan_allocation')) {
+					let line_item_id       = cartGetItemLineNumberByKey(product_key);
+					let product_properties = item.properties;
+
+					product_properties['selling_plan'] = '';
+					CartJS.updateItem(line_item_id, item.quantity, product_properties, {
+						'success': function(data, textStatus, jqXHR) {
+							resolve();
+						},
+						'error': function(jqXHR, textStatus, errorThrown) {
+							reject('Failed to convert to one-time purchase, please try again later or contact our support team.');
+						}
+					});
+				} else {
+					resolve();
+				}
+			} catch (e) {
+				reject('Failed to convert to one-time purchase, please contact our support team.');
+			}
+		});
+	}
+
+	function cartItemToSubscription(product_key) {
+		return new Promise((resolve, reject) => {
+			try {
+				let item = cartGetItemByKey(product_key);
+
+				if (item.hasOwnProperty('selling_plan_allocation')) {
+					resolve();
+				} else {
+					let line_item_id       = cartGetItemLineNumberByKey(product_key);
+					let product_properties = item.properties;
+
+					jQuery.getJSON(window.Shopify.routes.root+'products/'+item.handle+'.js', function(product) {
+						let product_variant_index = product.variants.findIndex(variant => variant.id === item.variant_id);
+						let product_variant       = (product_variant_index >= 0) ? product.variants[product_variant_index] : null;
+						if (product_variant && product_variant.hasOwnProperty('selling_plan_allocations') && product_variant.selling_plan_allocations.length > 0) {
+							product_properties['selling_plan'] = product_variant.selling_plan_allocations[0].selling_plan_id;
+							CartJS.updateItem(line_item_id, item.quantity, product_properties, {
+								'success': function(data, textStatus, jqXHR) {
+									resolve();
+								},
+								'error': function(jqXHR, textStatus, errorThrown) {
+									reject('Failed to convert to subscription, please try again later or contact our support team.');
+								}
+							});
+						} else {
+							reject('Product not available as a subscription.');
+						}
+					});
+				}
+			} catch (e) {
+				reject('Failed to convert to subscription, please contact our support team.');
+			}
+		});
+	}
+
+	function cartToSubscription(callback, index=0) {
+		let product_keys = Object.keys(cartProductKeyMap);
+		if (typeof product_keys[index+1] === 'undefined') {
+			// Final product in the array.
+			cartItemToSubscription(product_keys[index]).then(() => {
+				if (typeof callback === 'function') { callback(); }
+			}).catch((error) => {
+				console.log(error);
+				if (typeof callback === 'function') { callback(); }
+			});
+		} else {
+			cartItemToSubscription(product_keys[index]).then(() => {
+				cartToSubscription(callback, index+1);
+			}).catch((error) => {
+				console.log(error);
+				cartToSubscription(callback, index+1);
+			});
+		}
+	}
+
+
+	jQuery(function() {
+		CartJS.init({"note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[],"checkout_charge_amount":0}, {
+			'debug': false
+		});
+	});
+
+	$(document).on('cart.ready cart.requestComplete', function(event, cart) {
+		cartProcessCartProductMap();
+		if (typeof cartUpdateEvents == 'function') {
+			cartUpdateEvents(cart);
+		}
+	});
+</script>
+	<script>
+	if (!Cookies.get('cart_attribute_landing_domain')) { Cookies.set('cart_attribute_landing_domain', window.location.hostname, { expires: 1 }); }
+	if (!Cookies.get('cart_attribute_landing_page'))   { Cookies.set('cart_attribute_landing_page', window.location.href, { expires: 1 });   }
+	if (!Cookies.get('cart_attribute_user_agent'))     { Cookies.set('cart_attribute_user_agent', navigator.userAgent, { expires: 1 });      }
+
+	$(document).on('cart.ready', function(event, cart) {
+		let cart_new_attributes      = {};
+		let cart_existing_attributes = CartJS.getAttributes();
+
+		if (!('cart_landing_domain' in cart_existing_attributes) && Cookies.get('cart_attribute_landing_domain')) { cart_new_attributes['cart_landing_domain'] = Cookies.get('cart_attribute_landing_domain'); }
+		if (!('cart_landing_page' in cart_existing_attributes)   && Cookies.get('cart_attribute_landing_page'))   { cart_new_attributes['cart_landing_page'] = Cookies.get('cart_attribute_landing_page');     }
+		if (!('cart_user_agent' in cart_existing_attributes)     && Cookies.get('cart_attribute_user_agent'))     { cart_new_attributes['cart_user_agent'] = Cookies.get('cart_attribute_user_agent');         }
+		if (!('cart_landing_fbp' in cart_existing_attributes)    && Cookies.get('_fbp'))                          { cart_new_attributes['cart_landing_fbp'] = Cookies.get('_fbp');                             }
+
+		if (!(Object.keys(cart_new_attributes).length === 0)) {
+			CartJS.setAttributes(cart_new_attributes);
+		}
+	});
+</script>
+	<script>
+	class AddToCartItem {
+		constructor(variant_id, quantity, sku, amount, currency) {
+			this.variant_id = (variant_id === undefined || variant_id === null) ? 0 : variant_id;
+			this.quantity   = (quantity === undefined || quantity === null) ? 1 : quantity;
+			this.sku        = (sku === undefined || sku === null) ? 'UNKNOWN' : sku;
+			this.amount     = (amount === undefined || amount === null) ? 0 : amount;
+			this.currency   = (currency === undefined || currency === null) ? 'USD' : currency;
+		}
+	}
+
+	class AddToCartData {
+		constructor(add_to_cart_item_array) {
+			this.items = (add_to_cart_item_array === undefined || add_to_cart_item_array === null || typeof add_to_cart_item_array !== 'object') ? [] : (Array.isArray(add_to_cart_item_array)) ? add_to_cart_item_array : [ add_to_cart_item_array ];
+		}
+		addItem(item_details_array) {
+			this.items.push(new AddToCartItem(
+				item_details_array['variant_id'],
+				item_details_array['quantity'],
+				item_details_array['sku'],
+				item_details_array['amount'],
+				item_details_array['currency']
+			));
+		}
+		getItems() {
+			return this.items;
+		}
+		getCartAmount() {
+			let cart_amount = 0;
+			this.getItems().forEach(function(cart_item) {
+				cart_amount += cart_item.amount;
+			});
+			return cart_amount;
+		}
+		getCartQuantity() {
+			let cart_quantity = 0;
+			this.getItems().forEach(function(cart_item) {
+				cart_quantity += cart_item.quantity;
+			});
+			return cart_quantity;
+		}
+	}
+
+	function pixelsAddToCart(add_to_cart_data) {
+		try {
+			if (typeof golipixelAddToCart == 'function') { golipixelAddToCart(add_to_cart_data); } 
+			if (typeof pinterestAddToCart == 'function') { pinterestAddToCart(add_to_cart_data); }
+			if (typeof klaviyoAddToCart == 'function')   { klaviyoAddToCart(); }
+			if (typeof gtmAddCart == 'function')    { gtmAddCart(add_to_cart_data); }
+		} catch (e) {
+			console.log(e);
+		}
+	}
+</script>
+	
+	<script src="{{ 'lzy-goli-theme-goli-v-82623245782180614881772127246.js' | asset_url }}" type="text/javascript" defer></script>
+	<script src="{{ 'lzy-goli-swiper-bundle-min-v-181550739200531974951772127238.js' | asset_url }}" type="text/javascript" defer></script>
+
+{% schema %}
+{
+  "name": "Goli Bundles Bootstrap",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Goli Bundles Bootstrap"
+    }
+  ]
+}
+{% endschema %}

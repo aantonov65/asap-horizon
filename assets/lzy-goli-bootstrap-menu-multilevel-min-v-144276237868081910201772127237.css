@@ -1,0 +1,6 @@
+/*!
+ * Bootstrap Menu - Multilevel (2021-09-08)
+ * https://bootstrap-menu.com/detail-multilevel.html
+ * https://github.com/vosidiy
+ */
+.dropdown .btn-group{display:block}.dropdown .btn-group>.dropdown-toggle-split{padding-right:0;padding-left:.255rem}@media (min-width:768px){.dropdown-menu li{position:relative}.dropdown-menu .dropdown-submenu{position:absolute;left:100%;top:-7px}.dropdown-menu .dropdown-submenu-left{right:100%;left:auto}}@media (max-width:767px){.dropdown-menu .dropdown-menu{margin-left:.7rem;margin-right:.7rem;margin-bottom:.5rem}.dropdown .btn-group{padding:0}.dropdown .btn-group>:not(ul){padding-top:.25rem;padding-bottom:.25rem}.dropdown .btn-group>:not(ul):first-child{padding-left:1rem}.dropdown .btn-group>:not(ul):last-child{padding-right:1rem}.dropdown .btn-group.nav-link{padding:.5rem 0}.dropdown .btn-group.nav-link>:not(ul){padding:0}}

@@ -1,0 +1,63 @@
+<div id="floating-cart" x-data x-show="$store.w_cart.is_open" @click.away="$store.w_cart.is_open = false" x-transition:enter="transition duration-300 transform ease-out" x-transition:enter-start="opacity-0 translate-x-full -translate-y-full" x-transition:enter-end="opacity-100 translate-x-0 translate-y-0" x-transition:leave="transition duration-300 transform ease-in" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-x-full -translate-y-full" class="my-floating-cart fixed z-[1021] w-[100%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.53)]" style="display:none;"> <div id="shopify-section-cart_2023" class="shopify-section">
+
+<form action="{{ routes.cart_url }}" method="post" class="my-cart bg-white lg:w-[30rem] phone-horizontal:absolute phone-horizontal:w-[22em] phone-horizontal:right-0  lg:absolute lg:right-0 shadow-lg">
+
+  <!-- data-ajax-cart-section makes the element's HTML update
+  when the cart gets changed -->    
+  <section id="float-cart" class="text-[1vw]  shadow-[#0000007a 0px 12px 25px]">
+    <div class="mx-auto px-[3em] pb-[3em]">
+        <div class="cart-head">
+			<div class="relative text-center text-[#D22730] text-[5em] font-black py-[0.5em]"> 
+                <button
+                    type="button" x-on:click="$store.w_cart.is_open = ! $store.w_cart.is_open"  class="absolute font-black right-0 toggle-floating-cart"><i
+                        class="fas fa-times text-black"></i>
+				</button><span x-text="$store.w_cart.itemCount > 0 ? 'Your Cart is Ready' : 'Your Cart'">Your Cart</span>
+				
+            </div>
+        </div>
+		<div data-ajax-cart-section>
+        	<div class="cart-content text-[4em] py-[1em]  border-solid border-y-[.15em]  border-black">
+				
+					<div class="text-center text-[1em] font-bold py-[2em]">Your cart is currently empty.</div>
+				
+			</div>
+
+			<div class="flex justify-center py-[1em] text-[4em] flex justify-center font-bold items-center phone-horizontal:hidden"> 
+				<button type="button" class="underline continue-shoping toggle-floating-cart"  x-on:click="$store.w_cart.is_open = ! $store.w_cart.is_open">
+					Continue Shopping <i class="fa fa-chevron-right"></i>
+				</button>
+			</div>
+
+			<div x-data="{loader: false, link:'/checkout', color1:'grey' , color2:'#D22730' } " class="grid grid-cols-[1fr]"> 
+				<button type="button"
+					:disabled="$store.w_cart.itemCount == 0 ? true : false ;" 
+					@click="$store.w_cart.goToCheckout;" :style="$store.w_cart.itemCount == 0 ? `background:${color1}`: `background:${color2}`;"  
+					id="ps-add-control-holder"
+					class="rounded-[0.2em] text-[4em] py-[0.7em] text-white flex justify-center items-center">
+						<span class="w-[1.5em] h-[1.5em] text-black font-bold bg-white rounded-[100%] mr-[1em] flex justify-center items-center" 
+							data-ajax-cart-bind="item_count">
+							0</span>CHECKOUT &#183; <span class="total-price-display"><span class=money>$0.00 USD</span>	
+						</span>
+				</button>
+				<div  x-show="loader" style="display: none;"  class="fixed overflow-scroll inset-0 flex items-center justify-center bg-white bg-opacity-50"><i class="fa fa-spinner text-[40px] animate-spin text-black" aria-hidden="true"></i></div>
+			</div>
+			<!-- data-ajax-cart-static-element keeps the container unchanged
+			when the cart and the surrounding HTML get updated -->
+			<div data-ajax-cart-static-element class="my-cart__app-container"></div>
+		</div>
+    </div>
+</section>
+</form>
+</div> </div>
+
+{% schema %}
+{
+  "name": "Goli Floating Cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Goli Floating Cart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,6 +1,22 @@
 {
   "sections": {
-    "lzy_goli_bundles_products_01": {
+    "lzy_goli_bundles_bootstrap_01": {
+      "type": "lzy-goli-bundles-bootstrap",
+      "settings": {}
+    },
+    "lzy_goli_bundles_header_02": {
+      "type": "lzy-goli-bundles-header",
+      "settings": {}
+    },
+    "lzy_goli_bundles_floating_cart_03": {
+      "type": "lzy-goli-bundles-floating-cart",
+      "settings": {}
+    },
+    "lzy_goli_bundles_hero_04": {
+      "type": "lzy-goli-bundles-hero",
+      "settings": {}
+    },
+    "lzy_goli_bundles_products_05": {
       "type": "lzy-goli-bundles-products",
       "settings": {},
       "blocks": [
@@ -25,9 +41,33 @@
           }
         }
       ]
+    },
+    "lzy_goli_bundles_benefits_06": {
+      "type": "lzy-goli-bundles-benefits",
+      "settings": {}
+    },
+    "lzy_goli_bundles_product_slider_07": {
+      "type": "lzy-goli-bundles-product-slider",
+      "settings": {}
+    },
+    "lzy_goli_bundles_social_proof_08": {
+      "type": "lzy-goli-bundles-social-proof",
+      "settings": {}
+    },
+    "lzy_goli_bundles_partner_logos_09": {
+      "type": "lzy-goli-bundles-partner-logos",
+      "settings": {}
     }
   },
   "order": [
-    "lzy_goli_bundles_products_01"
+    "lzy_goli_bundles_bootstrap_01",
+    "lzy_goli_bundles_header_02",
+    "lzy_goli_bundles_floating_cart_03",
+    "lzy_goli_bundles_hero_04",
+    "lzy_goli_bundles_products_05",
+    "lzy_goli_bundles_benefits_06",
+    "lzy_goli_bundles_product_slider_07",
+    "lzy_goli_bundles_social_proof_08",
+    "lzy_goli_bundles_partner_logos_09"
   ]
 }

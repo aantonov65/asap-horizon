@@ -1,0 +1,549 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+
+<div id="shopify-section-header-v3" class="shopify-section">
+
+
+
+
+<script>
+	const menu =[
+	
+		{ 
+			link: "/",
+			title: "Products",
+			collapsed: true,
+			inner_links: [
+				
+					{ link: "https://goli.com/pages/goli-acv", title: "Apple Cider Vinegar Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-ashwagandha", title: "Ashwagandha Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-superfruits", title: "Superfruits Beauty Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-supergreens", title: "Supergreens Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-immune", title: "Triple Action Immune Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-sleep", title: "Dreamy Sleep Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-womens-multi", title: "Women's Complete Multi Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-extra-strength-sleep", title: "Extra-Strength Sleep Gummies" }, 
+				
+					{ link: "https://goli.com/pages/probioticplus", title: "Probiotic+ Gummies" }, 
+				
+					{ link: "https://goli.com/pages/goli-beets-cardio", title: "Beets Cardio Gummies" }, 
+				
+					{ link: "https://goli.com/pages/matcha-mind", title: "Matcha Mind Gummies" }, 
+				
+					{ link: "https://goli.com/pages/renew-nad", title: "Renew NAD+" }, 
+				
+			]
+		},
+	
+		{ 
+			link: "#product-target",
+			title: "Shop",
+			collapsed: true,
+			inner_links: [
+				
+			]
+		},
+	
+		{ 
+			link: "https://goli.com/pages/about-us",
+			title: "About Us",
+			collapsed: true,
+			inner_links: [
+				
+					{ link: "https://goli.com/pages/about-us", title: "Our Story" }, 
+				
+					{ link: "https://goli.com/pages/goli-for-good", title: "Goli® for Good" }, 
+				
+					{ link: "https://goli.com/pages/inside-the-gummy", title: "Inside the Gummy" }, 
+				
+			]
+		},
+	
+		{ 
+			link: "https://goli.com/pages/faq",
+			title: "FAQ",
+			collapsed: true,
+			inner_links: [
+				
+			]
+		},
+	
+	]
+	const mobileMenu =  [
+		
+			
+				{
+					link: "https://goli.com/pages/renew-nad",
+					product_type: "nad",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "NAD+<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/renew-hamburger_200x200.png?v=1772477812",
+					color1: "#822829",
+					color2: "#eddedb",
+					text_color: "#ffffff",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-ashwagandha",
+					product_type: "ashwagandha",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Ashwagandha<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/ashwa-hamburger_200x200.jpg?v=1650394382",
+					color1: "#d2eae7",
+					color2: "#90d7ed",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-acv",
+					product_type: "acv",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Apple Cider <br> Vinegar Gummies",
+					image: "https://goli.com/cdn/shop/files/acv-hamburger_200x200.jpg?v=1650394335",
+					color1: "#eddedb",
+					color2: "#ff8b91",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/probioticplus",
+					product_type: "probiotic",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Probiotic+<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/ppp-hamburger_200x200.jpg?v=1679347399",
+					color1: "#66bfa3",
+					color2: "#2a9272",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/matcha-mind",
+					product_type: "matcha",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Matcha Mind<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/mm-hamburger_200x200.jpg?v=1712670948",
+					color1: "#448e87",
+					color2: "#6fb6b1",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-beets-cardio",
+					product_type: "beets",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Beets Cardio<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/beets-hamburger_200x200.jpg?v=1680242632",
+					color1: "#9c586c",
+					color2: "#861f41",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-extra-strength-sleep",
+					product_type: "xssleep",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Extra-Strength Sleep<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/xssleep-hamburger_200x200.jpg?v=1678844181",
+					color1: "#6c4e7a",
+					color2: "#413049",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-sleep",
+					product_type: "sleep",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Dreamy Sleep <br> Gummie",
+					image: "https://goli.com/cdn/shop/files/sleep-hamburger_200x200.jpg?v=1655790494",
+					color1: "#e0ccf1",
+					color2: "#500878",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-womens-multi",
+					product_type: "womens_multi",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Women's Multi<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/womens-multi-hamburger_200x200.jpg?v=1668445452",
+					color1: "#e7bcce",
+					color2: "#f22b7b",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-supergreens",
+					product_type: "supergreens",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Supergreens<br>Gummies",
+					image: "https://goli.com/cdn/shop/files/sg-hamburger_200x200.jpg?v=1650642669",
+					color1: "#d3e9d8",
+					color2: "#32b05d",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-superfruits",
+					product_type: "superfruits",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Superfruits<br>Beauty Gummies",
+					image: "https://goli.com/cdn/shop/files/sf-hamburger_200x200.jpg?v=1650394407",
+					color1: "#f8dabe",
+					color2: "#f37124",
+					text_color: "#000000",
+				},					
+			
+		
+			
+				{
+					link: "https://goli.com/pages/goli-immune",
+					product_type: "immune",
+					is_new: "false",
+					menu_item_new_banner_text: " ",
+					menu_item_link_text: " ",
+					name: "Triple Action<br>Immune Gummies",
+					image: "https://goli.com/cdn/shop/files/immune-hamburger_200x200.jpg?v=1650398008",
+					color1: "#ffac7e",
+					color2: "#e8350c",
+					text_color: "#000000",
+				},					
+			
+		
+		]
+		const is_homepage = false;
+		const is_planpage = false;
+		let page_type = '';
+		
+		
+			
+				page_type = "landing_page";
+			
+		
+		
+		function redirectToOrderPage() {
+			if (page_type == "landing_page") {
+				// Try to find the target element
+				const targetElement = document.getElementById("shopify_single_shop_product") || 
+									 document.querySelector('[id*="product"]') || 
+									 document.querySelector('.brand-aam-products') ||
+									 document.querySelector('#products_aam');
+				
+				if (targetElement) {
+					// Calculate the position with -120px offset
+					const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+					const offsetPosition = elementPosition - 120;
+					
+					// Smooth scroll to the offset position
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
+				} else {
+					window.location = '#product-target';
+				}
+			} else {
+				window.location = '#product-target';
+			}
+		}</script>
+
+
+<div x-data="{ menu: menu, mobile_m: mobileMenu,showMobileMenu:false, shop_now:'Buy it now', is_plan_page: is_planpage , is_homepage: is_homepage, redirect: redirectToOrderPage }" >
+	
+	<div >
+		<div class="fixed w-[100%] h-[100vh] top-0 grid grid-cols-1 z-[3000] overflow-hidden bg-black bg-opacity-50" style="display:none;" x-show="showMobileMenu"  >
+			<div class="overflow-y-auto max-w-[425px]" x-show="showMobileMenu" x-transition:enter="transition ease-out duration-300 transform"
+			x-transition:enter-start="opacity-0 -translate-x-full"
+			x-transition:enter-end="opacity-100 translate-x-0"
+			x-transition:leave="transition ease-in duration-300 transform"
+			x-transition:leave-start="opacity-100 translate-x-0"
+			x-transition:leave-end="opacity-0 -translate-x-full"
+			@click.away="showMobileMenu = false">
+				<div class="bg-white ">
+					<div class="flex justify-end text-black font-bold px-[1em] py-[1em]">
+						<button type="button" @click="showMobileMenu = !showMobileMenu"> 
+							<i class='fas fa-times'></i>
+						</button>
+					</div>
+					<div class="grid grid-cols-2 gap-[.5em] px-[.5em] pt-[.5em] justify-center ">
+						<template x-for="(mdx, idyy) in mobileMenu" :key="idyy">
+							<a :href="mdx.link" class="h-[4em] grid items-center"  :style="`background:${mdx.color1};color:${mdx.text_color || '#000000'}`">
+								
+								<div class="grid grid-cols-[60%] font-bold justify-end items-center ">
+									<div class="relative z-10 leading-none"><span class="decoration-[50%] line-through" :style="`text-decoration-color:${mdx.color2}80`">EXPLORE</span>
+										<div class="absolute w-[3em] h-[3em] left-[-3em] top-[-.2em] z-[-1]">
+											<img class="w-[100%] h-auto" :src="`${mdx.image}`" alt="" width="1" height="1" loading="lazy">
+										</div>
+									</div>
+									<div x-html="mdx.name" class="leading-none text-[.7em] z-10"></div>
+									
+								</div>
+							</a>
+						</template>
+					</div>
+					<div class="grid grid-cols-1 gap-[.5em] px-[.5em] mt-[0.5em] justify-center">
+						<button type="button" @click="redirect" class="block bg-black text-white py-[1em] text-[.8em] font-bold">ORDER NOW</button>
+					</div>
+					<div class="py-[1em]">
+						<ul class="grid grid-cols-1 gap-[1em] justify-center items-center text-center">
+							<template x-for="(menulinks, idx) in menu" :key="idx">
+								<li class="font-bold">
+									<a class="hover:text-gray-600" :href="menulinks.link" @click.away="menulinks.collapsed = true" :class="{'caret_multilink': menulinks.inner_links.length > 0}" x-text="menulinks.title" :style="menulinks.inner_links.length > 0 ? 'caret_multilink': ''; " @click.prevent="menulinks.inner_links.length > 0 ? menulinks.collapsed = !menulinks.collapsed : window.location = menulinks.link"></a>
+									<ul class="grid grid-cols-1 gap-1 bg-white font-normal  border-gray-400 border-y-[1px] px-[2em] py-[2em]" x-show="!menulinks.collapsed && menulinks.inner_links.length > 0">
+										<template x-for="(subLink, subIdx) in menulinks.inner_links" :key="subIdx">
+											<li><a class="hover:text-gray-600" :href="subLink.link" x-text="subLink.title"></a></li>
+										</template>
+									</ul>
+								</li>
+							</template>
+						</ul>
+					</div>
+					<div class="bg-[#017789] grid-cols-[5em,1fr] grid px-[1em] py-[1em] text-[7vw] ssm:text-[1.5rem] text-white items-center">
+						<div class="filter invert">
+							<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyOTQuNTYgMjEwLjU2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyOTQuNTYgMjEwLjU2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0QyMjYzMDt9Cgkuc3Qxe2ZpbGw6IzFEOTkxMDt9Cjwvc3R5bGU+CjxnPgoJPHBhdGggZD0iTTEwOC40NywxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NCwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0xMjcuNjQsMTU2LjY3di03YzAtMC40MSwwLjM0LTAuNzUsMC43My0wLjc1YzAuNDEsMCwwLjc1LDAuMzQsMC43NSwwLjc1djYuOWMwLDIuODQsMS41Miw0LjQ0LDQuMDIsNC40NAoJCWMyLjQyLDAsMy45Ny0xLjQ3LDMuOTctNC4zNHYtN2MwLTAuNDEsMC4zNC0wLjc1LDAuNzUtMC43NWMwLjQsMCwwLjczLDAuMzQsMC43MywwLjc1djYuODhjMCwzLjg0LTIuMiw1LjgzLTUuNDksNS44MwoJCUMxMjkuODUsMTYyLjM4LDEyNy42NCwxNjAuMzksMTI3LjY0LDE1Ni42NyIvPgoJPHBhdGggZD0iTTE1MC4xMiwxNTAuMzloLTMuODJjLTAuMzgsMC0wLjctMC4zLTAuNy0wLjY4YzAtMC4zOCwwLjMyLTAuNywwLjctMC43aDkuMTRjMC4zOCwwLDAuNywwLjMyLDAuNywwLjcKCQljMCwwLjM4LTAuMzIsMC42OC0wLjcsMC42OGgtMy44MnYxMS4xM2MwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NWMtMC40MSwwLTAuNzUtMC4zNC0wLjc1LTAuNzVWMTUwLjM5eiIvPgoJPHBhdGggZD0iTTE2My4zNCwxNDkuNzdjMC0wLjQxLDAuMzQtMC43NSwwLjczLTAuNzVIMTY5YzEuNjIsMCwyLjkxLDAuNDksMy43NCwxLjMyYzAuNjQsMC42NCwxLjAyLDEuNTYsMS4wMiwyLjU5djAuMDQKCQljMCwyLjE2LTEuNDcsMy40Mi0zLjUyLDMuODJsMy4yNyw0LjIxYzAuMTUsMC4xNywwLjI0LDAuMzQsMC4yNCwwLjU1YzAsMC40LTAuMzgsMC43My0wLjc1LDAuNzNjLTAuMywwLTAuNTMtMC4xNy0wLjctMC40CgkJbC0zLjctNC44MWgtMy43OHY0LjQ2YzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQsMC0wLjczLTAuMzQtMC43My0wLjc1VjE0OS43N3ogTTE2OC44NywxNTUuNzNjMS45NywwLDMuMzgtMS4wMiwzLjM4LTIuNzEKCQl2LTAuMDRjMC0xLjYyLTEuMjQtMi41OS0zLjM3LTIuNTloLTQuMDZ2NS4zNEgxNjguODd6Ii8+Cgk8cGF0aCBkPSJNMTgxLjU5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC40LDAtMC43My0wLjM0LTAuNzMtMC43NVYxNDkuNjd6Ii8+Cgk8cGF0aCBkPSJNMTk0LjkzLDE1MC4zOWgtMy44MmMtMC4zOCwwLTAuNy0wLjMtMC43LTAuNjhjMC0wLjM4LDAuMzItMC43LDAuNy0wLjdoOS4xNGMwLjM4LDAsMC43LDAuMzIsMC43LDAuNwoJCWMwLDAuMzgtMC4zMiwwLjY4LTAuNywwLjY4aC0zLjgydjExLjEzYzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQxLDAtMC43NS0wLjM0LTAuNzUtMC43NVYxNTAuMzl6Ii8+Cgk8cGF0aCBkPSJNMjA4LjI5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC4zOSwwLTAuNzMtMC4zNC0wLjczLTAuNzVWMTQ5LjY3eiIvPgoJPHBhdGggZD0iTTIxNy41NiwxNTUuNjN2LTAuMDRjMC0zLjYzLDIuNzMtNi44MSw2LjczLTYuODFjNC4wMSwwLDYuNjksMy4xNCw2LjY5LDYuNzd2MC4wNGMwLDMuNjMtMi43Myw2LjgxLTYuNzMsNi44MQoJCUMyMjAuMjUsMTYyLjQsMjE3LjU2LDE1OS4yNiwyMTcuNTYsMTU1LjYzIE0yMjkuNDUsMTU1LjYzdi0wLjA0YzAtMi45OS0yLjE4LTUuNDMtNS4xOS01LjQzYy0zLjAxLDAtNS4xNSwyLjQxLTUuMTUsNS40djAuMDQKCQljMCwyLjk5LDIuMTgsNS40Myw1LjE5LDUuNDNDMjI3LjMsMTYxLjAzLDIyOS40NSwxNTguNjIsMjI5LjQ1LDE1NS42MyIvPgoJPHBhdGggZD0iTTIzOC42NSwxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NSwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0yNTAuODEsMzAuNjZoMC4wOWwxMi44NCwwLjA2Yy0wLjA1LDEwLjgxLTguODMsMTkuNTUtMTkuNjMsMTkuNTVoLTAuMDlsLTEyLjg0LTAuMDUKCQlDMjMxLjIzLDM5LjQsMjQwLjAxLDMwLjY2LDI1MC44MSwzMC42NiIvPgoJPHBhdGggZD0iTTc0Ljc2LDYzLjg1aDE4LjE4djY4LjdjMCwxMS4xMS0zLjc1LDE5LjYyLTExLjExLDI1LjU0Yy03LjM2LDUuOTItMTYuMTYsOC44MS0yNi41NSw4LjgxCgkJYy0xNS41OSwwLTI3Ljg1LTYuMDYtMzQuMjEtMTcuNjFsMTUuODctOS4wOWMzLjYxLDYuNzgsOS45NiwxMC4xLDE4LjkxLDEwLjFjMTEuNjksMCwxOC45MS02LjM1LDE4LjkxLTE3Ljc1di03Ljc5CgkJYy01LjQ4LDcuMzYtMTMuMTMsMTAuOTctMjMuMDksMTAuOTdjLTEwLjI1LDAtMTguNzYtMy42MS0yNS42OS0xMC42OGMtNi43OC03LjIyLTEwLjI0LTE2LjAyLTEwLjI0LTI2LjI3CgkJYzAtMTAuMjUsMy40Ni0xOC45MSwxMC4zOS0yNi4xMmM2LjkzLTcuMjIsMTUuNDQtMTAuODIsMjUuNTQtMTAuODJjOS45NiwwLDE3LjYxLDMuNjEsMjMuMDksMTAuOTdWNjMuODV6IE02OC45OSw4NC43OAoJCWMtMy43NS0zLjc1LTguNTEtNS42My0xNC40My01LjYzYy01LjkyLDAtMTAuNjgsMS44OC0xNC41OCw1LjYzYy0zLjc2LDMuNjEtNS42Myw4LjM3LTUuNjMsMTRjMCwxMS41NCw4LjUxLDE5Ljc3LDIwLjIsMTkuNzcKCQlzMjAuMi04LjIzLDIwLjItMTkuNzdDNzQuNzYsOTMuMTUsNzIuODksODguMzksNjguOTksODQuNzgiLz4KCTxwYXRoIGQ9Ik0xNDQuMTcsMTM4LjAzYy0xMC42OCwwLTE5Ljc3LTMuNjEtMjcuMTMtMTAuOTdjLTcuMzUtNy4zNi0xMC45Ni0xNi40NS0xMC45Ni0yNy4xM2MwLTEwLjY4LDMuNjEtMTkuNjMsMTAuOTYtMjYuOTkKCQljNy4zNi03LjM2LDE2LjQ1LTExLjExLDI3LjEzLTExLjExYzEwLjY4LDAsMTkuNzcsMy43NSwyNy4xMywxMS4xMWM3LjM2LDcuMzYsMTEuMTEsMTYuMzEsMTEuMTEsMjYuOTkKCQljMCwxMC42OC0zLjc1LDE5Ljc3LTExLjExLDI3LjEzQzE2My45NCwxMzQuNDMsMTU0Ljg1LDEzOC4wMywxNDQuMTcsMTM4LjAzIE0xNDQuMTcsMTE5Ljg1YzUuNjMsMCwxMC4yNS0xLjg3LDE0LTUuNjMKCQljMy43NS0zLjc2LDUuNjMtOC41MSw1LjYzLTE0LjI5YzAtNS43Ny0xLjg4LTEwLjU0LTUuNjMtMTQuMjljLTMuNzYtMy43NS04LjM4LTUuNjMtMTQtNS42M2MtNS42MywwLTEwLjI1LDEuODctMTQsNS42MwoJCWMtMy42MSwzLjc1LTUuNDgsOC41Mi01LjQ4LDE0LjI5YzAsNS43OCwxLjg3LDEwLjUzLDUuNDgsMTQuMjlDMTMzLjkzLDExNy45NywxMzguNTQsMTE5Ljg1LDE0NC4xNywxMTkuODUiLz4KCTxyZWN0IHg9IjE5NS41NCIgeT0iMzAuNjYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSIxMDUuMzUiLz4KCTxyZWN0IHg9IjIzMS4xOCIgeT0iNjMuODYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSI3Mi4xNiIvPgo8L2c+CjxnPgoJPHBhdGggZD0iTTI3NC45NywzNC4zNmMwLDIuMDgtMS42MywzLjcxLTMuNzYsMy43MWMtMi4xLDAtMy43OC0xLjYzLTMuNzgtMy43MWMwLTIuMDMsMS42OC0zLjY3LDMuNzgtMy42NwoJCUMyNzMuMzQsMzAuNjksMjc0Ljk3LDMyLjMyLDI3NC45NywzNC4zNnogTTI2OC4zNywzNC4zNmMwLDEuNjMsMS4yMSwyLjkzLDIuODYsMi45M2MxLjYxLDAsMi44LTEuMywyLjgtMi45MQoJCWMwLTEuNjMtMS4xOS0yLjk1LTIuODItMi45NUMyNjkuNTgsMzEuNDMsMjY4LjM3LDMyLjc1LDI2OC4zNywzNC4zNnogTTI3MC42MywzNi4yOGgtMC44NXYtMy42N2MwLjM0LTAuMDcsMC44LTAuMTEsMS40MS0wLjExCgkJYzAuNjksMCwxLjAxLDAuMTEsMS4yNywwLjI3YzAuMiwwLjE2LDAuMzYsMC40NSwwLjM2LDAuOGMwLDAuNC0wLjMxLDAuNzItMC43NiwwLjg1djAuMDRjMC4zNiwwLjEzLDAuNTYsMC40LDAuNjcsMC44OQoJCWMwLjExLDAuNTYsMC4xOCwwLjc4LDAuMjcsMC45MmgtMC45MmMtMC4xMS0wLjEzLTAuMTgtMC40Ny0wLjI5LTAuODljLTAuMDctMC40LTAuMjktMC41OC0wLjc2LTAuNThoLTAuNFYzNi4yOHogTTI3MC42NSwzNC4yaDAuNAoJCWMwLjQ3LDAsMC44NS0wLjE2LDAuODUtMC41NGMwLTAuMzQtMC4yNS0wLjU2LTAuNzgtMC41NmMtMC4yMiwwLTAuMzgsMC4wMi0wLjQ3LDAuMDRWMzQuMnoiLz4KPC9nPgo8L3N2Zz4K" class="img-fluid nav-goli-logo" alt="Goli® Nutrition Home" width="1" height="1" loading="lazy">
+						</div>
+						<div class="text-[.5em] border-l-[1px] border-white pl-[1em]">
+							<span>With every order, Goli<sup>®</sup> Nutrition will donate a 6-month supply of essential vitamins to a child in need through our 1-for-1 grant with Vitamin Angels and plant a tree with the Eden Reforestation projects.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div  id="header_goli" class="fixed w-[100%] block z-[2000]" x-data="{ 
+		  content:'Free Shipping - Fully Tracked,&lt;br class=&quot;md:hidden&quot;&gt; &lt;span class=&quot;font-bold&quot;&gt;Taxes &amp; Duties Covered.&lt;/span&gt; Delivered Right to Your Door!' ,easter_banner:'Easter Sale Live Now! Use Code &lt;span class=&quot;font-bold&quot;&gt;25EASTER&lt;/span&gt; for 25% OFF Sitewide!',
+	}">
+		
+			
+		
+	
+				
+			
+				<div class="bg-black text-white phone-horizontal:text-[.2em] text-[.2em] flex justify-center items-center text-center"> 
+					
+					<span class="text-[3.6em] py-[1em] md:text-[1rem] xl:text-[1.3rem] leading-none" ><p><strong>OVER 60% OFF SITEWIDE</strong>- USE CODE:<strong>DAILY25</strong></p></span>  
+					
+				</div>
+			
+			
+
+				
+		
+			<div class=" block">
+
+				<div class="grid grid-cols-[1fr,200px] py-1 bg-white md:hidden phone-horizontal:hidden">
+					<div class="flex justify-start items-center pl-[1em]">
+						<div class="menu-hamburger" @click="showMobileMenu = !showMobileMenu"></div>
+						<div class="logo w-[4em] h-[3em] ml-[1em]"><a href="{{ routes.root_url }}"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyOTQuNTYgMjEwLjU2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyOTQuNTYgMjEwLjU2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0QyMjYzMDt9Cgkuc3Qxe2ZpbGw6IzFEOTkxMDt9Cjwvc3R5bGU+CjxnPgoJPHBhdGggZD0iTTEwOC40NywxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NCwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0xMjcuNjQsMTU2LjY3di03YzAtMC40MSwwLjM0LTAuNzUsMC43My0wLjc1YzAuNDEsMCwwLjc1LDAuMzQsMC43NSwwLjc1djYuOWMwLDIuODQsMS41Miw0LjQ0LDQuMDIsNC40NAoJCWMyLjQyLDAsMy45Ny0xLjQ3LDMuOTctNC4zNHYtN2MwLTAuNDEsMC4zNC0wLjc1LDAuNzUtMC43NWMwLjQsMCwwLjczLDAuMzQsMC43MywwLjc1djYuODhjMCwzLjg0LTIuMiw1LjgzLTUuNDksNS44MwoJCUMxMjkuODUsMTYyLjM4LDEyNy42NCwxNjAuMzksMTI3LjY0LDE1Ni42NyIvPgoJPHBhdGggZD0iTTE1MC4xMiwxNTAuMzloLTMuODJjLTAuMzgsMC0wLjctMC4zLTAuNy0wLjY4YzAtMC4zOCwwLjMyLTAuNywwLjctMC43aDkuMTRjMC4zOCwwLDAuNywwLjMyLDAuNywwLjcKCQljMCwwLjM4LTAuMzIsMC42OC0wLjcsMC42OGgtMy44MnYxMS4xM2MwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NWMtMC40MSwwLTAuNzUtMC4zNC0wLjc1LTAuNzVWMTUwLjM5eiIvPgoJPHBhdGggZD0iTTE2My4zNCwxNDkuNzdjMC0wLjQxLDAuMzQtMC43NSwwLjczLTAuNzVIMTY5YzEuNjIsMCwyLjkxLDAuNDksMy43NCwxLjMyYzAuNjQsMC42NCwxLjAyLDEuNTYsMS4wMiwyLjU5djAuMDQKCQljMCwyLjE2LTEuNDcsMy40Mi0zLjUyLDMuODJsMy4yNyw0LjIxYzAuMTUsMC4xNywwLjI0LDAuMzQsMC4yNCwwLjU1YzAsMC40LTAuMzgsMC43My0wLjc1LDAuNzNjLTAuMywwLTAuNTMtMC4xNy0wLjctMC40CgkJbC0zLjctNC44MWgtMy43OHY0LjQ2YzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQsMC0wLjczLTAuMzQtMC43My0wLjc1VjE0OS43N3ogTTE2OC44NywxNTUuNzNjMS45NywwLDMuMzgtMS4wMiwzLjM4LTIuNzEKCQl2LTAuMDRjMC0xLjYyLTEuMjQtMi41OS0zLjM3LTIuNTloLTQuMDZ2NS4zNEgxNjguODd6Ii8+Cgk8cGF0aCBkPSJNMTgxLjU5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC40LDAtMC43My0wLjM0LTAuNzMtMC43NVYxNDkuNjd6Ii8+Cgk8cGF0aCBkPSJNMTk0LjkzLDE1MC4zOWgtMy44MmMtMC4zOCwwLTAuNy0wLjMtMC43LTAuNjhjMC0wLjM4LDAuMzItMC43LDAuNy0wLjdoOS4xNGMwLjM4LDAsMC43LDAuMzIsMC43LDAuNwoJCWMwLDAuMzgtMC4zMiwwLjY4LTAuNywwLjY4aC0zLjgydjExLjEzYzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQxLDAtMC43NS0wLjM0LTAuNzUtMC43NVYxNTAuMzl6Ii8+Cgk8cGF0aCBkPSJNMjA4LjI5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC4zOSwwLTAuNzMtMC4zNC0wLjczLTAuNzVWMTQ5LjY3eiIvPgoJPHBhdGggZD0iTTIxNy41NiwxNTUuNjN2LTAuMDRjMC0zLjYzLDIuNzMtNi44MSw2LjczLTYuODFjNC4wMSwwLDYuNjksMy4xNCw2LjY5LDYuNzd2MC4wNGMwLDMuNjMtMi43Myw2LjgxLTYuNzMsNi44MQoJCUMyMjAuMjUsMTYyLjQsMjE3LjU2LDE1OS4yNiwyMTcuNTYsMTU1LjYzIE0yMjkuNDUsMTU1LjYzdi0wLjA0YzAtMi45OS0yLjE4LTUuNDMtNS4xOS01LjQzYy0zLjAxLDAtNS4xNSwyLjQxLTUuMTUsNS40djAuMDQKCQljMCwyLjk5LDIuMTgsNS40Myw1LjE5LDUuNDNDMjI3LjMsMTYxLjAzLDIyOS40NSwxNTguNjIsMjI5LjQ1LDE1NS42MyIvPgoJPHBhdGggZD0iTTIzOC42NSwxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NSwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0yNTAuODEsMzAuNjZoMC4wOWwxMi44NCwwLjA2Yy0wLjA1LDEwLjgxLTguODMsMTkuNTUtMTkuNjMsMTkuNTVoLTAuMDlsLTEyLjg0LTAuMDUKCQlDMjMxLjIzLDM5LjQsMjQwLjAxLDMwLjY2LDI1MC44MSwzMC42NiIvPgoJPHBhdGggZD0iTTc0Ljc2LDYzLjg1aDE4LjE4djY4LjdjMCwxMS4xMS0zLjc1LDE5LjYyLTExLjExLDI1LjU0Yy03LjM2LDUuOTItMTYuMTYsOC44MS0yNi41NSw4LjgxCgkJYy0xNS41OSwwLTI3Ljg1LTYuMDYtMzQuMjEtMTcuNjFsMTUuODctOS4wOWMzLjYxLDYuNzgsOS45NiwxMC4xLDE4LjkxLDEwLjFjMTEuNjksMCwxOC45MS02LjM1LDE4LjkxLTE3Ljc1di03Ljc5CgkJYy01LjQ4LDcuMzYtMTMuMTMsMTAuOTctMjMuMDksMTAuOTdjLTEwLjI1LDAtMTguNzYtMy42MS0yNS42OS0xMC42OGMtNi43OC03LjIyLTEwLjI0LTE2LjAyLTEwLjI0LTI2LjI3CgkJYzAtMTAuMjUsMy40Ni0xOC45MSwxMC4zOS0yNi4xMmM2LjkzLTcuMjIsMTUuNDQtMTAuODIsMjUuNTQtMTAuODJjOS45NiwwLDE3LjYxLDMuNjEsMjMuMDksMTAuOTdWNjMuODV6IE02OC45OSw4NC43OAoJCWMtMy43NS0zLjc1LTguNTEtNS42My0xNC40My01LjYzYy01LjkyLDAtMTAuNjgsMS44OC0xNC41OCw1LjYzYy0zLjc2LDMuNjEtNS42Myw4LjM3LTUuNjMsMTRjMCwxMS41NCw4LjUxLDE5Ljc3LDIwLjIsMTkuNzcKCQlzMjAuMi04LjIzLDIwLjItMTkuNzdDNzQuNzYsOTMuMTUsNzIuODksODguMzksNjguOTksODQuNzgiLz4KCTxwYXRoIGQ9Ik0xNDQuMTcsMTM4LjAzYy0xMC42OCwwLTE5Ljc3LTMuNjEtMjcuMTMtMTAuOTdjLTcuMzUtNy4zNi0xMC45Ni0xNi40NS0xMC45Ni0yNy4xM2MwLTEwLjY4LDMuNjEtMTkuNjMsMTAuOTYtMjYuOTkKCQljNy4zNi03LjM2LDE2LjQ1LTExLjExLDI3LjEzLTExLjExYzEwLjY4LDAsMTkuNzcsMy43NSwyNy4xMywxMS4xMWM3LjM2LDcuMzYsMTEuMTEsMTYuMzEsMTEuMTEsMjYuOTkKCQljMCwxMC42OC0zLjc1LDE5Ljc3LTExLjExLDI3LjEzQzE2My45NCwxMzQuNDMsMTU0Ljg1LDEzOC4wMywxNDQuMTcsMTM4LjAzIE0xNDQuMTcsMTE5Ljg1YzUuNjMsMCwxMC4yNS0xLjg3LDE0LTUuNjMKCQljMy43NS0zLjc2LDUuNjMtOC41MSw1LjYzLTE0LjI5YzAtNS43Ny0xLjg4LTEwLjU0LTUuNjMtMTQuMjljLTMuNzYtMy43NS04LjM4LTUuNjMtMTQtNS42M2MtNS42MywwLTEwLjI1LDEuODctMTQsNS42MwoJCWMtMy42MSwzLjc1LTUuNDgsOC41Mi01LjQ4LDE0LjI5YzAsNS43OCwxLjg3LDEwLjUzLDUuNDgsMTQuMjlDMTMzLjkzLDExNy45NywxMzguNTQsMTE5Ljg1LDE0NC4xNywxMTkuODUiLz4KCTxyZWN0IHg9IjE5NS41NCIgeT0iMzAuNjYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSIxMDUuMzUiLz4KCTxyZWN0IHg9IjIzMS4xOCIgeT0iNjMuODYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSI3Mi4xNiIvPgo8L2c+CjxnPgoJPHBhdGggZD0iTTI3NC45NywzNC4zNmMwLDIuMDgtMS42MywzLjcxLTMuNzYsMy43MWMtMi4xLDAtMy43OC0xLjYzLTMuNzgtMy43MWMwLTIuMDMsMS42OC0zLjY3LDMuNzgtMy42NwoJCUMyNzMuMzQsMzAuNjksMjc0Ljk3LDMyLjMyLDI3NC45NywzNC4zNnogTTI2OC4zNywzNC4zNmMwLDEuNjMsMS4yMSwyLjkzLDIuODYsMi45M2MxLjYxLDAsMi44LTEuMywyLjgtMi45MQoJCWMwLTEuNjMtMS4xOS0yLjk1LTIuODItMi45NUMyNjkuNTgsMzEuNDMsMjY4LjM3LDMyLjc1LDI2OC4zNywzNC4zNnogTTI3MC42MywzNi4yOGgtMC44NXYtMy42N2MwLjM0LTAuMDcsMC44LTAuMTEsMS40MS0wLjExCgkJYzAuNjksMCwxLjAxLDAuMTEsMS4yNywwLjI3YzAuMiwwLjE2LDAuMzYsMC40NSwwLjM2LDAuOGMwLDAuNC0wLjMxLDAuNzItMC43NiwwLjg1djAuMDRjMC4zNiwwLjEzLDAuNTYsMC40LDAuNjcsMC44OQoJCWMwLjExLDAuNTYsMC4xOCwwLjc4LDAuMjcsMC45MmgtMC45MmMtMC4xMS0wLjEzLTAuMTgtMC40Ny0wLjI5LTAuODljLTAuMDctMC40LTAuMjktMC41OC0wLjc2LTAuNThoLTAuNFYzNi4yOHogTTI3MC42NSwzNC4yaDAuNAoJCWMwLjQ3LDAsMC44NS0wLjE2LDAuODUtMC41NGMwLTAuMzQtMC4yNS0wLjU2LTAuNzgtMC41NmMtMC4yMiwwLTAuMzgsMC4wMi0wLjQ3LDAuMDRWMzQuMnoiLz4KPC9nPgo8L3N2Zz4K" class="img-fluid nav-goli-logo" alt="Goli® Nutrition Home" width="1" height="1" loading="lazy"></a></div>
+					</div>
+					<div class="flex justify-end items-center pr-[1em]">
+						
+							<button type="button" @click="redirect()" class="" x-show="!is_plan_page">
+								<div class="bg-black text-white text-[.8em] font-medium justify-center items-center grid w-[110px] h-[30px] px-[5px] leading-none">Shop Now</div>
+								<div class="font-bold text-black text-[.7em]">Free Shipping</div>
+							</button>
+						
+					
+						
+						 <a href="#" x-data x-on:click="$store.w_cart.is_open = ! $store.w_cart.is_open" class="link-unstyled ml-3 animateCarttarget md:hidden phone-horizontal:hidden"  aria="go to the cart">
+							<span  class="text-[1.4em] w-[1em] h-[1em] inline-block cart-icon-v3 relative">
+								<span  class="rounded-pill w-[.8em] h-[.8em] absolute  bg-[#D22730] top-[-8px] right-[-6px]" x-show="$store.w_cart.itemCount > 0">
+									<span class="text-white text-[.5em] grid justify-center items-center" x-text="$store.w_cart.itemCount"></span>
+								</span>
+							</span>					
+						</a> 
+					</div>
+				</div>
+			</div>
+
+			<div  class="hidden md:block phone-horizontal:block bg-white py-1">
+				<div class="container">
+					<div class="grid grid-cols-[10em,1fr,15em] phone-horizontal:grid-cols-[10em,1fr,11em]">
+						<div class="logo phone-horizontal:text-[1em] text-[1.5em] w-[4em] h-[3em] grid grid-cols-[1fr]  justify-center items-center"><a href="{{ routes.root_url }}"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyOTQuNTYgMjEwLjU2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyOTQuNTYgMjEwLjU2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0QyMjYzMDt9Cgkuc3Qxe2ZpbGw6IzFEOTkxMDt9Cjwvc3R5bGU+CjxnPgoJPHBhdGggZD0iTTEwOC40NywxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NCwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0xMjcuNjQsMTU2LjY3di03YzAtMC40MSwwLjM0LTAuNzUsMC43My0wLjc1YzAuNDEsMCwwLjc1LDAuMzQsMC43NSwwLjc1djYuOWMwLDIuODQsMS41Miw0LjQ0LDQuMDIsNC40NAoJCWMyLjQyLDAsMy45Ny0xLjQ3LDMuOTctNC4zNHYtN2MwLTAuNDEsMC4zNC0wLjc1LDAuNzUtMC43NWMwLjQsMCwwLjczLDAuMzQsMC43MywwLjc1djYuODhjMCwzLjg0LTIuMiw1LjgzLTUuNDksNS44MwoJCUMxMjkuODUsMTYyLjM4LDEyNy42NCwxNjAuMzksMTI3LjY0LDE1Ni42NyIvPgoJPHBhdGggZD0iTTE1MC4xMiwxNTAuMzloLTMuODJjLTAuMzgsMC0wLjctMC4zLTAuNy0wLjY4YzAtMC4zOCwwLjMyLTAuNywwLjctMC43aDkuMTRjMC4zOCwwLDAuNywwLjMyLDAuNywwLjcKCQljMCwwLjM4LTAuMzIsMC42OC0wLjcsMC42OGgtMy44MnYxMS4xM2MwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NWMtMC40MSwwLTAuNzUtMC4zNC0wLjc1LTAuNzVWMTUwLjM5eiIvPgoJPHBhdGggZD0iTTE2My4zNCwxNDkuNzdjMC0wLjQxLDAuMzQtMC43NSwwLjczLTAuNzVIMTY5YzEuNjIsMCwyLjkxLDAuNDksMy43NCwxLjMyYzAuNjQsMC42NCwxLjAyLDEuNTYsMS4wMiwyLjU5djAuMDQKCQljMCwyLjE2LTEuNDcsMy40Mi0zLjUyLDMuODJsMy4yNyw0LjIxYzAuMTUsMC4xNywwLjI0LDAuMzQsMC4yNCwwLjU1YzAsMC40LTAuMzgsMC43My0wLjc1LDAuNzNjLTAuMywwLTAuNTMtMC4xNy0wLjctMC40CgkJbC0zLjctNC44MWgtMy43OHY0LjQ2YzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQsMC0wLjczLTAuMzQtMC43My0wLjc1VjE0OS43N3ogTTE2OC44NywxNTUuNzNjMS45NywwLDMuMzgtMS4wMiwzLjM4LTIuNzEKCQl2LTAuMDRjMC0xLjYyLTEuMjQtMi41OS0zLjM3LTIuNTloLTQuMDZ2NS4zNEgxNjguODd6Ii8+Cgk8cGF0aCBkPSJNMTgxLjU5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC40LDAtMC43My0wLjM0LTAuNzMtMC43NVYxNDkuNjd6Ii8+Cgk8cGF0aCBkPSJNMTk0LjkzLDE1MC4zOWgtMy44MmMtMC4zOCwwLTAuNy0wLjMtMC43LTAuNjhjMC0wLjM4LDAuMzItMC43LDAuNy0wLjdoOS4xNGMwLjM4LDAsMC43LDAuMzIsMC43LDAuNwoJCWMwLDAuMzgtMC4zMiwwLjY4LTAuNywwLjY4aC0zLjgydjExLjEzYzAsMC40MS0wLjM0LDAuNzUtMC43NSwwLjc1Yy0wLjQxLDAtMC43NS0wLjM0LTAuNzUtMC43NVYxNTAuMzl6Ii8+Cgk8cGF0aCBkPSJNMjA4LjI5LDE0OS42N2MwLTAuNDEsMC4zNC0wLjc1LDAuNzMtMC43NWMwLjQxLDAsMC43NSwwLjM0LDAuNzUsMC43NXYxMS44NWMwLDAuNDEtMC4zNCwwLjc1LTAuNzUsMC43NQoJCWMtMC4zOSwwLTAuNzMtMC4zNC0wLjczLTAuNzVWMTQ5LjY3eiIvPgoJPHBhdGggZD0iTTIxNy41NiwxNTUuNjN2LTAuMDRjMC0zLjYzLDIuNzMtNi44MSw2LjczLTYuODFjNC4wMSwwLDYuNjksMy4xNCw2LjY5LDYuNzd2MC4wNGMwLDMuNjMtMi43Myw2LjgxLTYuNzMsNi44MQoJCUMyMjAuMjUsMTYyLjQsMjE3LjU2LDE1OS4yNiwyMTcuNTYsMTU1LjYzIE0yMjkuNDUsMTU1LjYzdi0wLjA0YzAtMi45OS0yLjE4LTUuNDMtNS4xOS01LjQzYy0zLjAxLDAtNS4xNSwyLjQxLTUuMTUsNS40djAuMDQKCQljMCwyLjk5LDIuMTgsNS40Myw1LjE5LDUuNDNDMjI3LjMsMTYxLjAzLDIyOS40NSwxNTguNjIsMjI5LjQ1LDE1NS42MyIvPgoJPHBhdGggZD0iTTIzOC42NSwxNDkuNjljMC0wLjM5LDAuMzQtMC43MywwLjczLTAuNzNoMC4yMWMwLjM0LDAsMC41NSwwLjE3LDAuNzUsMC40M2w3Ljk5LDEwLjE5di05LjkzYzAtMC40LDAuMzItMC43MywwLjczLTAuNzMKCQljMC40LDAsMC43MSwwLjM0LDAuNzEsMC43M3YxMS44OGMwLDAuNC0wLjI4LDAuNjktMC42OCwwLjY5aC0wLjA4Yy0wLjMyLDAtMC41NC0wLjE5LTAuNzctMC40NWwtOC4xNi0xMC40M3YxMC4xOQoJCWMwLDAuNC0wLjMyLDAuNzMtMC43MywwLjczYy0wLjQsMC0wLjcxLTAuMzQtMC43MS0wLjczVjE0OS42OXoiLz4KCTxwYXRoIGQ9Ik0yNTAuODEsMzAuNjZoMC4wOWwxMi44NCwwLjA2Yy0wLjA1LDEwLjgxLTguODMsMTkuNTUtMTkuNjMsMTkuNTVoLTAuMDlsLTEyLjg0LTAuMDUKCQlDMjMxLjIzLDM5LjQsMjQwLjAxLDMwLjY2LDI1MC44MSwzMC42NiIvPgoJPHBhdGggZD0iTTc0Ljc2LDYzLjg1aDE4LjE4djY4LjdjMCwxMS4xMS0zLjc1LDE5LjYyLTExLjExLDI1LjU0Yy03LjM2LDUuOTItMTYuMTYsOC44MS0yNi41NSw4LjgxCgkJYy0xNS41OSwwLTI3Ljg1LTYuMDYtMzQuMjEtMTcuNjFsMTUuODctOS4wOWMzLjYxLDYuNzgsOS45NiwxMC4xLDE4LjkxLDEwLjFjMTEuNjksMCwxOC45MS02LjM1LDE4LjkxLTE3Ljc1di03Ljc5CgkJYy01LjQ4LDcuMzYtMTMuMTMsMTAuOTctMjMuMDksMTAuOTdjLTEwLjI1LDAtMTguNzYtMy42MS0yNS42OS0xMC42OGMtNi43OC03LjIyLTEwLjI0LTE2LjAyLTEwLjI0LTI2LjI3CgkJYzAtMTAuMjUsMy40Ni0xOC45MSwxMC4zOS0yNi4xMmM2LjkzLTcuMjIsMTUuNDQtMTAuODIsMjUuNTQtMTAuODJjOS45NiwwLDE3LjYxLDMuNjEsMjMuMDksMTAuOTdWNjMuODV6IE02OC45OSw4NC43OAoJCWMtMy43NS0zLjc1LTguNTEtNS42My0xNC40My01LjYzYy01LjkyLDAtMTAuNjgsMS44OC0xNC41OCw1LjYzYy0zLjc2LDMuNjEtNS42Myw4LjM3LTUuNjMsMTRjMCwxMS41NCw4LjUxLDE5Ljc3LDIwLjIsMTkuNzcKCQlzMjAuMi04LjIzLDIwLjItMTkuNzdDNzQuNzYsOTMuMTUsNzIuODksODguMzksNjguOTksODQuNzgiLz4KCTxwYXRoIGQ9Ik0xNDQuMTcsMTM4LjAzYy0xMC42OCwwLTE5Ljc3LTMuNjEtMjcuMTMtMTAuOTdjLTcuMzUtNy4zNi0xMC45Ni0xNi40NS0xMC45Ni0yNy4xM2MwLTEwLjY4LDMuNjEtMTkuNjMsMTAuOTYtMjYuOTkKCQljNy4zNi03LjM2LDE2LjQ1LTExLjExLDI3LjEzLTExLjExYzEwLjY4LDAsMTkuNzcsMy43NSwyNy4xMywxMS4xMWM3LjM2LDcuMzYsMTEuMTEsMTYuMzEsMTEuMTEsMjYuOTkKCQljMCwxMC42OC0zLjc1LDE5Ljc3LTExLjExLDI3LjEzQzE2My45NCwxMzQuNDMsMTU0Ljg1LDEzOC4wMywxNDQuMTcsMTM4LjAzIE0xNDQuMTcsMTE5Ljg1YzUuNjMsMCwxMC4yNS0xLjg3LDE0LTUuNjMKCQljMy43NS0zLjc2LDUuNjMtOC41MSw1LjYzLTE0LjI5YzAtNS43Ny0xLjg4LTEwLjU0LTUuNjMtMTQuMjljLTMuNzYtMy43NS04LjM4LTUuNjMtMTQtNS42M2MtNS42MywwLTEwLjI1LDEuODctMTQsNS42MwoJCWMtMy42MSwzLjc1LTUuNDgsOC41Mi01LjQ4LDE0LjI5YzAsNS43OCwxLjg3LDEwLjUzLDUuNDgsMTQuMjlDMTMzLjkzLDExNy45NywxMzguNTQsMTE5Ljg1LDE0NC4xNywxMTkuODUiLz4KCTxyZWN0IHg9IjE5NS41NCIgeT0iMzAuNjYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSIxMDUuMzUiLz4KCTxyZWN0IHg9IjIzMS4xOCIgeT0iNjMuODYiIHdpZHRoPSIxOC42MiIgaGVpZ2h0PSI3Mi4xNiIvPgo8L2c+CjxnPgoJPHBhdGggZD0iTTI3NC45NywzNC4zNmMwLDIuMDgtMS42MywzLjcxLTMuNzYsMy43MWMtMi4xLDAtMy43OC0xLjYzLTMuNzgtMy43MWMwLTIuMDMsMS42OC0zLjY3LDMuNzgtMy42NwoJCUMyNzMuMzQsMzAuNjksMjc0Ljk3LDMyLjMyLDI3NC45NywzNC4zNnogTTI2OC4zNywzNC4zNmMwLDEuNjMsMS4yMSwyLjkzLDIuODYsMi45M2MxLjYxLDAsMi44LTEuMywyLjgtMi45MQoJCWMwLTEuNjMtMS4xOS0yLjk1LTIuODItMi45NUMyNjkuNTgsMzEuNDMsMjY4LjM3LDMyLjc1LDI2OC4zNywzNC4zNnogTTI3MC42MywzNi4yOGgtMC44NXYtMy42N2MwLjM0LTAuMDcsMC44LTAuMTEsMS40MS0wLjExCgkJYzAuNjksMCwxLjAxLDAuMTEsMS4yNywwLjI3YzAuMiwwLjE2LDAuMzYsMC40NSwwLjM2LDAuOGMwLDAuNC0wLjMxLDAuNzItMC43NiwwLjg1djAuMDRjMC4zNiwwLjEzLDAuNTYsMC40LDAuNjcsMC44OQoJCWMwLjExLDAuNTYsMC4xOCwwLjc4LDAuMjcsMC45MmgtMC45MmMtMC4xMS0wLjEzLTAuMTgtMC40Ny0wLjI5LTAuODljLTAuMDctMC40LTAuMjktMC41OC0wLjc2LTAuNThoLTAuNFYzNi4yOHogTTI3MC42NSwzNC4yaDAuNAoJCWMwLjQ3LDAsMC44NS0wLjE2LDAuODUtMC41NGMwLTAuMzQtMC4yNS0wLjU2LTAuNzgtMC41NmMtMC4yMiwwLTAuMzgsMC4wMi0wLjQ3LDAuMDRWMzQuMnoiLz4KPC9nPgo8L3N2Zz4K" class="img-fluid nav-goli-logo" alt="Goli® Nutrition Home" width="1" height="1" loading="lazy"></a></div>
+						<ul class="flex gap-[1em] lg:gap-[5em] lg:mr-[4em]  justify-center lg:justify-end items-center">
+							<template x-for="(menulinks, idx) in menu" :key="idx">
+								<li class="font-bold">
+									<a class="hover:text-gray-600 relative phone-horizontal:text-[.7em]" :href="menulinks.link" @click.away="menulinks.collapsed = true" :class="{'caret_multilink': menulinks.inner_links.length > 0}" x-text="menulinks.title" :style="menulinks.inner_links.length > 0 ? 'caret_multilink': ''; " @click.prevent="menulinks.inner_links.length > 0 ? menulinks.collapsed = !menulinks.collapsed : window.location = menulinks.link"></a>
+									<ul class="grid grid-cols-1 gap-1 absolute z-[1000] bg-white font-normal  border-gray-400 border-[1px] px-[2em] py-[2em]" x-show="!menulinks.collapsed && menulinks.inner_links.length > 0">
+										<template x-for="(subLink, subIdx) in menulinks.inner_links" :key="subIdx">
+											<li><a class="hover:text-gray-600" :href="subLink.link" x-text="subLink.title"></a></li>
+										</template>
+									</ul>
+								</li>
+							</template>
+						</ul>
+						<div class="flex justify-end items-center">
+							<button type="button" @click="redirect()" class=""  x-show="!is_plan_page" >
+								<div class="bg-black text-white font-medium justify-center items-center grid w-[150px] h-[50px]  phone-horizontal:w-[100px] phone-horizontal:h-[35px] phone-horizontal:text-[.7rem] "  >Shop Now</div>
+								<div class="font-bold text-black text-[.9em] phone-horizontal:text-[.6em]">Free Shipping</div>
+							</button>
+							<a href="#" x-data x-on:click="$store.w_cart.is_open = ! $store.w_cart.is_open" class="animateCarttarget link-unstyled ml-3 hidden md:block phone-horizontal:block"  aria="go to the cart">
+								<span  class="text-[1.4em] w-[1em] h-[1em] inline-block cart-icon-v3 relative">
+									<span  class="rounded-pill w-[.8em] h-[.8em] absolute  bg-[#D22730] top-[-8px] right-[-6px]" x-show="$store.w_cart.itemCount > 0">
+										<span class="text-white text-[.5em] grid justify-center items-center" x-text="$store.w_cart.itemCount"></span>
+									</span>
+								</span>					
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="header_goli_space" ></div>
+</div>
+
+<script>
+	function goli_scroll_to_hash_target() {
+		const hash = window.location.hash;
+
+		if (!hash || hash === '#') {
+			return;
+		}
+
+		if (hash === '#shopify_single_shop_product' || hash === '#shopify-section-add_to_the_cart_nad') {
+			return;
+		}
+
+		const normalizedHash = decodeURIComponent(hash);
+		const targetId = normalizedHash.substring(1);
+		let attempts = 0;
+		const maxAttempts = 40;
+
+		const tryScroll = function() {
+			const target = document.getElementById(targetId) || document.querySelector(normalizedHash);
+
+			if (target) {
+				const header = document.getElementById('header_goli');
+				const headerOffset = header ? header.offsetHeight : 120;
+				const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+				window.scrollTo({
+					top: targetTop,
+					behavior: 'smooth'
+				});
+
+				return;
+			}
+
+			attempts += 1;
+			if (attempts < maxAttempts) {
+				setTimeout(tryScroll, 150);
+			}
+		};
+
+		setTimeout(tryScroll, 120);
+	}
+
+	function on_resize_nav_menu() {
+		let header = $('#header_goli');  
+		let header_section = $('#header_goli_space');
+
+		if (header_section.length && header.length) {
+			let header_section_height = header_section.height();
+			let header_height         = header.height();
+
+			if (header_section_height !== header_height) {
+				let header_section_height_attribute = header_height+'px';
+				header_section.css('height', header_section_height_attribute);
+				header_section.attr('data-header-height', header_height);
+			}
+		}
+	}
+
+
+	function updateNavbarCart(cart) {
+		try {
+			let cart_item_count = parseInt(cart.item_count);
+			if (Number.isInteger(cart_item_count)) {	
+			}
+		} catch (e) {
+			console.log('Could not update navbar cart amount.', e);
+		}
+	}
+
+	$(document).on('cart.requestComplete', function(event, cart) {
+		updateNavbarCart(cart);
+	});
+
+	$(window).resize(function () {
+		on_resize_nav_menu();
+	});
+
+	$(window).on('hashchange', function() {
+		goli_scroll_to_hash_target();
+	});
+
+	$(window).on('load', function() {
+		goli_scroll_to_hash_target();
+	});
+
+	on_resize_nav_menu();
+
+	$(document).ready(function() {
+		on_resize_nav_menu();
+		goli_scroll_to_hash_target();
+	});
+
+</script>
+
+</div>
+
+{% schema %}
+{
+  "name": "Goli Bundles Header",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Goli Bundles Header"
+    }
+  ]
+}
+{% endschema %}
