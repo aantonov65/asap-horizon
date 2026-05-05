@@ -1,0 +1,259 @@
+lzy-goli-bundles-products {
+    display: block;
+  }
+
+  .lzy-goli-bundles-products__section {
+    background: var(--lzy-goli-bundles-products-bg);
+    padding: 72px 24px;
+  }
+
+  .lzy-goli-bundles-products__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .lzy-goli-bundles-products__header {
+    text-align: center;
+    padding-bottom: 28px;
+  }
+
+  .lzy-goli-bundles-products__header h2 {
+    margin: 0 0 12px;
+    color: var(--lzy-goli-bundles-products-heading);
+    font-size: clamp(32px, 4vw, 58px);
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+  }
+
+  .lzy-goli-bundles-products__header p {
+    margin: 0;
+    color: #111111;
+    font-size: clamp(16px, 1.4vw, 22px);
+    line-height: 1.35;
+  }
+
+  .lzy-goli-bundles-products__header strong {
+    font-weight: 800;
+  }
+
+  .lzy-goli-bundles-products__layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.82fr) minmax(520px, 1.18fr);
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .lzy-goli-bundles-products__visuals {
+    position: relative;
+    min-height: 500px;
+  }
+
+  .lzy-goli-bundles-products__visual {
+    position: absolute;
+    inset: 0;
+    display: none;
+    border-radius: 28px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .lzy-goli-bundles-products__visual.lzy-is-active {
+    display: block;
+  }
+
+  .lzy-goli-bundles-products__bundle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lzy-goli-bundles-products__bundle-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #111111;
+  }
+
+  .lzy-goli-bundles-products__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 1;
+    width: 112px;
+    height: auto;
+  }
+
+  .lzy-goli-bundles-products__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lzy-goli-bundles-products__purchase-toggle {
+    display: grid;
+    gap: 12px;
+  }
+
+  .lzy-goli-bundles-products__purchase-button {
+    position: relative;
+    border: 2px solid var(--lzy-goli-bundles-products-card-border);
+    border-radius: 24px;
+    background: var(--lzy-goli-bundles-products-card-bg);
+    color: #111111;
+    text-align: left;
+    padding: 18px 18px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .lzy-goli-bundles-products__purchase-button.lzy-is-active {
+    background: var(--lzy-goli-bundles-products-active);
+    border-color: var(--lzy-goli-bundles-products-active);
+    color: var(--lzy-goli-bundles-products-active-text);
+  }
+
+  .lzy-goli-bundles-products__purchase-button.lzy-is-active s {
+    color: var(--lzy-goli-bundles-products-active-text);
+  }
+
+  .lzy-goli-bundles-products__purchase-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .lzy-goli-bundles-products__purchase-label {
+    display: block;
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 800;
+  }
+
+  .lzy-goli-bundles-products__purchase-badge {
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 11px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .lzy-goli-bundles-products__purchase-pricing {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 8px;
+    row-gap: 6px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .lzy-goli-bundles-products__purchase-pricing strong {
+    font-size: 74px;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .lzy-goli-bundles-products__purchase-pricing span,
+  .lzy-goli-bundles-products__purchase-pricing em,
+  .lzy-goli-bundles-products__purchase-pricing s {
+    font-size: 20px;
+    font-style: normal;
+  }
+
+  .lzy-goli-bundles-products__purchase-pricing s {
+    color: var(--lzy-goli-bundles-products-active);
+  }
+
+  .lzy-goli-bundles-products__pack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lzy-goli-bundles-products__pack-button {
+    border: 2px solid var(--lzy-goli-bundles-products-card-border);
+    border-radius: 18px;
+    background: var(--lzy-goli-bundles-products-card-bg);
+    color: #111111;
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .lzy-goli-bundles-products__pack-button.lzy-is-active {
+    background: var(--lzy-goli-bundles-products-active);
+    border-color: var(--lzy-goli-bundles-products-active);
+    color: var(--lzy-goli-bundles-products-active-text);
+  }
+
+  .lzy-goli-bundles-products__checkout {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 62px;
+    border: 0;
+    background: var(--lzy-goli-bundles-products-button-bg);
+    color: var(--lzy-goli-bundles-products-button-text);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .lzy-goli-bundles-products__checkout[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 1024px) {
+    .lzy-goli-bundles-products__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .lzy-goli-bundles-products__visuals {
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .lzy-goli-bundles-products__section {
+      padding: 56px 16px;
+    }
+
+    .lzy-goli-bundles-products__visuals {
+      min-height: 320px;
+    }
+
+    .lzy-goli-bundles-products__purchase-label {
+      font-size: 24px;
+    }
+
+    .lzy-goli-bundles-products__purchase-pricing strong {
+      font-size: 52px;
+    }
+
+    .lzy-goli-bundles-products__purchase-pricing span,
+    .lzy-goli-bundles-products__purchase-pricing em,
+    .lzy-goli-bundles-products__purchase-pricing s,
+    .lzy-goli-bundles-products__pack-button,
+    .lzy-goli-bundles-products__checkout {
+      font-size: 18px;
+    }
+  }

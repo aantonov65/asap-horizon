@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "lzy_goli_bundles_products_01": {
+      "type": "lzy-goli-bundles-products",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "pack",
+          "settings": {
+            "pack_label": "3-PACK",
+            "pack_size": 3,
+            "default_pack": true
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "pack_label": "6-PACK",
+            "pack_size": 6,
+            "default_pack": false
+          }
+        }
+      ]
+    }
+  },
+  "order": [
+    "lzy_goli_bundles_products_01"
+  ]
+}
