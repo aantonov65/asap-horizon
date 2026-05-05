@@ -17,25 +17,6 @@
         return bundleData.packs.find((pack) => pack.quantity === bundleState.selectedPack) ?? bundleData.packs[0];
       }
 
-      function renderBundlePackOptions() {
-        const packGrid = root.querySelector('[id^="lzyPackGrid-"]');
-        if (!packGrid) return;
-        packGrid.innerHTML = '';
-
-        bundleData.packs.forEach((pack) => {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = `lzy-pack-option${pack.quantity === bundleState.selectedPack ? ' lzy-is-active' : ''}`;
-          button.textContent = `${pack.quantity}-PACK`;
-          button.disabled = !pack.variantId;
-          button.addEventListener('click', () => {
-            bundleState.selectedPack = pack.quantity;
-            syncBundleCard();
-          });
-          packGrid.appendChild(button);
-        });
-      }
-
       function syncBundleCard() {
         const pack = getSelectedPack();
         if (!pack) return;
@@ -43,6 +24,7 @@
         const subscribePricing = pack.pricing.subscribe;
         const onetimePricing = pack.pricing.onetime;
         const purchaseButtons = root.querySelectorAll('.lzy-purchase-toggle__button');
+        const packButtons = root.querySelectorAll('[data-pack-option]');
         const bundleImage = root.querySelector('[id^="lzyBundleImage-"]');
         const bundleBadge = root.querySelector('[id^="lzyBundleBadge-"]');
         const unitPrice = root.querySelector('[id^="lzyUnitPrice-"]');
@@ -59,6 +41,7 @@
         }
 
         if (bundleImage) bundleImage.src = pack.image || '';
+        if (bundleImage) bundleImage.alt = pack.alt || 'Selected Goli bundle';
         if (bundleBadge) bundleBadge.src = pack.discount[bundleState.purchaseMode] || '';
         if (unitPrice) unitPrice.textContent = subscribePricing.unit;
         if (totalPrice) totalPrice.textContent = subscribePricing.total;
@@ -73,6 +56,13 @@
           button.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
+        packButtons.forEach((button) => {
+          const isActive = button.dataset.packQuantity === bundleState.selectedPack;
+          button.classList.toggle('lzy-is-active', isActive);
+          button.disabled = !button.dataset.packQuantity || !bundleData.packs.find((item) => item.quantity === button.dataset.packQuantity && item.variantId);
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
         if (subscribeButton) {
           subscribeButton.disabled = !pack.subscribeSupported;
         }
@@ -80,13 +70,12 @@
         if (checkoutButton) {
           checkoutButton.disabled = !pack.variantId;
         }
-
-        renderBundlePackOptions();
       }
 
       const subscribeButton = root.querySelector('[data-purchase="subscribe"]');
       const onetimeButton = root.querySelector('[data-purchase="onetime"]');
       const checkoutButton = root.querySelector('[id^="lzyCheckoutButton-"]');
+      const packButtons = root.querySelectorAll('[data-pack-option]');
 
       if (subscribeButton) {
         subscribeButton.addEventListener('click', () => {
@@ -102,6 +91,14 @@
           syncBundleCard();
         });
       }
+
+      packButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          if (button.disabled) return;
+          bundleState.selectedPack = button.dataset.packQuantity || bundleState.selectedPack;
+          syncBundleCard();
+        });
+      });
 
       if (checkoutButton) {
         checkoutButton.addEventListener('click', async () => {

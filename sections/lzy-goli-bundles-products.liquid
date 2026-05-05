@@ -92,6 +92,7 @@
         assign pack_variant_id = 'null'
         assign pack_selling_plan_id = 'null'
         assign pack_subscribe_supported = false
+        assign pack_alt = block.settings.bundle_alt
 
         if block.settings.bundle_image != blank
           assign pack_image = block.settings.bundle_image | image_url: width: 1200
@@ -156,6 +157,8 @@
         endif
         echo ',"image":'
         echo pack_image | json
+        echo ',"alt":'
+        echo pack_alt | json
         echo ',"discount":{"subscribe":'
         echo pack_subscribe_badge | json
         echo ',"onetime":'
@@ -267,7 +270,31 @@
           class="lzy-pack-grid"
           id="lzyPackGrid-{{ section.id }}"
           aria-label="{{ section.settings.pack_selector_label }}"
-        ></div>
+        >
+          {% for block in section.blocks %}
+            {% if block.type == 'pack' %}
+              {% liquid
+                assign pack_product = block.settings.product
+                assign pack_variant = blank
+                assign pack_size = block.settings.pack_size | at_least: 1
+
+                if pack_product != blank
+                  assign pack_variant = pack_product.selected_or_first_available_variant
+                endif
+              %}
+              <button
+                class="lzy-pack-option"
+                type="button"
+                data-pack-option
+                data-pack-quantity="{{ pack_size }}"
+                {% if pack_variant == blank %}disabled{% endif %}
+                {{ block.shopify_attributes }}
+              >
+                {{ pack_size }}-PACK
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
 
         <button
           class="lzy-button lzy-button--dark lzy-button--wide"
@@ -283,9 +310,9 @@
 
 {% schema %}
 {
-  "name": "Goli bundles products",
+  "name": "LZY Goli bundles products",
   "tag": "section",
-  "class": "section-goli-bundles-products",
+  "class": "section-lzy-goli-bundles-products",
   "settings": [
     {
       "type": "text",
