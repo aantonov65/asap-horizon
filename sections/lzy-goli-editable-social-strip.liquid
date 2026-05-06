@@ -1,0 +1,92 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lzy-sections.js' | asset_url }}" defer="defer"></script>
+
+<section class="lzy-goli-root lzy-goli-social-strip" data-lzy-section="social-strip" aria-label="{{ section.settings.aria_label }}">{% for block in section.blocks %}{% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 900 }}" width="900" height="900" alt="{{ block.settings.alt | escape }}" loading="lazy" {{ block.shopify_attributes }}>{% else %}<img src="{{ block.settings.asset_file | asset_url }}" width="900" height="900" alt="{{ block.settings.alt | escape }}" loading="lazy" {{ block.shopify_attributes }}>{% endif %}{% endfor %}</section>
+
+{% schema %}
+{
+  "name": "Goli Editable Social",
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Aria label",
+      "default": "Customer social proof images"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_image",
+      "name": "Social image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "asset_file",
+          "label": "Asset file",
+          "default": "social-1.jpg"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Social proof image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goli Editable Social",
+      "blocks": [
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-1.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-2.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-3.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-4.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-5.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-6.jpg",
+            "alt": "Social proof image"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
