@@ -1,0 +1,71 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lzy-sections.js' | asset_url }}" defer="defer"></script>
+
+<section class="lzy-goli-root lzy-goli-certifications" data-lzy-section="certification-logos" aria-label="{{ section.settings.aria_label }}">{% for block in section.blocks %}{% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 738 }}" width="738" height="390" alt="{{ block.settings.alt | escape }}" loading="lazy" {{ block.shopify_attributes }}>{% else %}<img src="{{ block.settings.asset_file | asset_url }}" width="738" height="390" alt="{{ block.settings.alt | escape }}" loading="lazy" {{ block.shopify_attributes }}>{% endif %}{% endfor %}</section>
+
+{% schema %}
+{
+  "name": "Goli Editable Certs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Aria label",
+      "default": "Certification logos"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "asset_file",
+          "label": "Asset file",
+          "default": "cert-bcorp.png"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Certified B Corporation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goli Editable Certs",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-bcorp.png",
+            "alt": "Certified B Corporation"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-eden.png",
+            "alt": "Eden People and Planet"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-vitamin-angels.png",
+            "alt": "Vitamin Angels"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

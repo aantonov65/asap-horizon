@@ -1,0 +1,153 @@
+{{ 'lzy-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lzy-sections.js' | asset_url }}" defer="defer"></script>
+
+<section class="lzy-goli-root lzy-goli-products" data-lzy-section="product-cards">
+  <div class="lzy-goli-product-grid">
+    {% for block in section.blocks %}
+      {% assign card_images = block.settings.image_files | split: ',' %}
+      {% assign first_image = card_images.first | strip %}
+      <article class="lzy-goli-product-card lzy-goli-product-card-{{ block.settings.variant }}" data-lzy-product-slider {{ block.shopify_attributes }}>
+        <div class="lzy-goli-product-image">
+          {% if block.settings.primary_image != blank %}
+            <img src="{{ block.settings.primary_image | image_url: width: 600 }}" data-images="{{ block.settings.primary_image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | strip_html | escape }}" loading="lazy">
+          {% else %}
+            <img src="{{ first_image | asset_url }}" data-images="{% for image_file in card_images %}{{ image_file | strip | asset_url }}{% unless forloop.last %},{% endunless %}{% endfor %}" width="600" height="600" alt="{{ block.settings.title | strip_html | escape }}" loading="lazy">
+          {% endif %}
+          <div class="lzy-goli-slider-controls"><button class="lzy-goli-slider-arrow lzy-goli-slider-prev" type="button" aria-label="Previous image">‹</button><div class="lzy-goli-slider-dots" aria-label="Image slide controls"></div><button class="lzy-goli-slider-arrow lzy-goli-slider-next" type="button" aria-label="Next image">›</button></div>
+        </div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.copy }}</p>
+        <strong>{{ block.settings.support_label }}</strong>
+        <ul><li>{{ block.settings.support_1 }}</li><li>{{ block.settings.support_2 }}</li><li>{{ block.settings.support_3 }}</li></ul>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Goli Product Cards",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Color variant",
+          "default": "blue",
+          "options": [
+            {
+              "value": "blue",
+              "label": "Blue"
+            },
+            {
+              "value": "red",
+              "label": "Red"
+            },
+            {
+              "value": "green",
+              "label": "Green"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Zero Sugar<br>Ashwagandha+ Gummies"
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Copy",
+          "default": "Made with clinically studied KSM-66® Ashwagandha, L-Theanine, and Maca to help reduce stress, support sleep quality, and enhance focus — all in a delicious zero sugar gummy you’ll enjoy adding to your routine."
+        },
+        {
+          "type": "text",
+          "id": "support_label",
+          "label": "Support label",
+          "default": "Helps support:"
+        },
+        {
+          "type": "text",
+          "id": "support_1",
+          "label": "Support 1",
+          "default": "Stress Relief & Relaxation"
+        },
+        {
+          "type": "text",
+          "id": "support_2",
+          "label": "Support 2",
+          "default": "Sleep Quality"
+        },
+        {
+          "type": "text",
+          "id": "support_3",
+          "label": "Support 3",
+          "default": "Focus & Cognitive Health"
+        },
+        {
+          "type": "image_picker",
+          "id": "primary_image",
+          "label": "Primary image"
+        },
+        {
+          "type": "text",
+          "id": "image_files",
+          "label": "Fallback slider asset files",
+          "default": "product-ash-1.jpg,product-ash-2.jpg,product-ash-3.jpg,product-ash-4.jpg,product-ash-5.jpg,product-ash-6.jpg,product-ash-7.jpg,product-ash-8.jpg,product-ash-9.jpg,product-ash-10.jpg"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goli Product Cards",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "blue",
+            "title": "Zero Sugar<br>Ashwagandha+ Gummies",
+            "copy": "Made with clinically studied KSM-66® Ashwagandha, L-Theanine, and Maca to help reduce stress, support sleep quality, and enhance focus — all in a delicious zero sugar gummy you’ll enjoy adding to your routine.",
+            "support_label": "Helps support:",
+            "support_1": "Stress Relief & Relaxation",
+            "support_2": "Sleep Quality",
+            "support_3": "Focus & Cognitive Health",
+            "image_files": "product-ash-1.jpg,product-ash-2.jpg,product-ash-3.jpg,product-ash-4.jpg,product-ash-5.jpg,product-ash-6.jpg,product-ash-7.jpg,product-ash-8.jpg,product-ash-9.jpg,product-ash-10.jpg"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "red",
+            "title": "Zero Sugar Apple Cider<br>Vinegar+ Gummies",
+            "copy": "Our flagship formula, now with zero sugar. Includes Apple Cider Vinegar, Vitamin B12, and SNZ Tribac® probiotics to help support digestion, reduce occasional bloating, and promote energy metabolism, immune function, and overall wellness.",
+            "support_label": "Helps support:",
+            "support_1": "Digestive Health & Bloating",
+            "support_2": "Energy Metabolism",
+            "support_3": "Immune Function",
+            "image_files": "product-acv-1.png,product-acv-2.jpg,product-acv-3.png,product-acv-4.png,product-acv-5.png,product-acv-6.png"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "green",
+            "title": "Zero Sugar<br>Pre+Post+Probiotics Gummies",
+            "copy": "The world’s first 3-in-1 gummy with prebiotics (XOS), probiotics (DE111®), and postbiotics (MCC1849) — all in a zero sugar format. Helps support digestion, gut flora balance, immune health, and daily digestive well-being.",
+            "support_label": "Helps support:",
+            "support_1": "Gut Health and Microbiome Balance",
+            "support_2": "Prebiotic and Probiotic Support",
+            "support_3": "Immune function",
+            "image_files": "product-ppp-1.jpg,product-ppp-2.jpg,product-ppp-3.jpg,product-ppp-4.jpg,product-ppp-5.jpg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

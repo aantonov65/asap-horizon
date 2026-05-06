@@ -1,0 +1,443 @@
+{
+  "sections": {
+    "lzy_goli_editable_announcement_header_01": {
+      "type": "lzy-goli-editable-announcement-header",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Apple Cider Vinegar Gummies",
+            "url": "#"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Ashwagandha Gummies",
+            "url": "#"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Pre+Post+Probiotics Gummies",
+            "url": "#"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Superfruits Beauty Gummies",
+            "url": "#"
+          }
+        },
+        {
+          "type": "product_link",
+          "settings": {
+            "label": "Supergreens Gummies",
+            "url": "#"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop",
+            "url": "#product-target"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "About Us",
+            "url": "#footer"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "FAQ",
+            "url": "#footer"
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_hero_banner_02": {
+      "type": "lzy-goli-editable-hero-banner",
+      "settings": {}
+    },
+    "lzy_goli_editable_bundle_purchase_03": {
+      "type": "lzy-goli-editable-bundle-purchase",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "plan",
+          "settings": {
+            "label": "Subscribe & Save",
+            "plan_key": "subscribe",
+            "each_price": "$10.13",
+            "total_price": "$30.38",
+            "compare_price": "$75.00",
+            "default_selected": true
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "label": "One-time Purchase",
+            "plan_key": "onetime",
+            "each_price": "$11.25",
+            "total_price": "$33.75",
+            "compare_price": "$75.00",
+            "default_selected": false
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "label": "3-PACK",
+            "default_selected": true
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "label": "6-PACK",
+            "default_selected": false
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_benefit_band_04": {
+      "type": "lzy-goli-editable-benefit-band",
+      "settings": {}
+    },
+    "lzy_goli_editable_clinician_reviews_05": {
+      "type": "lzy-goli-editable-clinician-reviews",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "name": "Dr. Suryadutt Venkat",
+            "credential": "Verified clinician",
+            "initials": "SV",
+            "use_initials": false,
+            "specialty": "Family medicine",
+            "years": "26",
+            "title": "Natural ingredients help patients boost mental clarity and focus",
+            "review": "<strong>Product reviewed: Zero Sugar Ashwagandha+ Gummies |</strong> Goli makes use of several adaptogens here (ashwagandha, L-Theanine, and maca root) that have been tested for their potential benefits on relaxation and mental clarity. For example, ashwagandha can support clearer thinking by helping the body manage stress-related hormones. L-Theanine can also soothe your mental state; however, it works by supporting the production of alpha waves in the brain, which can foster a sense of calm focus during work hours or as you relax in the evening. Maca root has also been researched for its ability to support energy, focus, and mental stamina. For patients, these ingredients can have a meaningful effect on mental clarity and focus, especially when they are struggling to cope with stress.†",
+            "highlight_1": "Increases focus",
+            "highlight_2": "Cognitive clarity",
+            "highlight_3": "Steady energy"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Dr. Daniel Altman",
+            "credential": "Verified clinician",
+            "initials": "DA",
+            "use_initials": true,
+            "specialty": "Primary care",
+            "years": "32",
+            "title": "Ashwagandha mixes with vitamin D to improve sleep quality",
+            "review": "<strong>Product reviewed: Zero Sugar Ashwagandha+ Gummies |</strong> I want to suggest this product for patients who have trouble settling down before bed. When you are feeling stressed during the day, the body releases a hormone called cortisol that can contribute to feelings of alertness, even at night. Ashwagandha may help modulate cortisol levels so that you can feel calm and fall asleep more easily. Vitamin D has a relationship to sleep as well. Though vitamin D is mostly used for the development of bones and teeth, it can also influence levels of serotonin, a neurotransmitter involved in sleep regulation. Early research suggests ashwagandha and vitamin D can both influence sleep quality, which is why these gummies can be impactful for patients with sleep troubles.†",
+            "highlight_1": "Sleep support",
+            "highlight_2": "Nighttime calm",
+            "highlight_3": "Lower cortisol"
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_product_cards_06": {
+      "type": "lzy-goli-editable-product-cards",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "blue",
+            "title": "Zero Sugar<br>Ashwagandha+ Gummies",
+            "copy": "Made with clinically studied KSM-66® Ashwagandha, L-Theanine, and Maca to help reduce stress, support sleep quality, and enhance focus — all in a delicious zero sugar gummy you’ll enjoy adding to your routine.",
+            "support_label": "Helps support:",
+            "support_1": "Stress Relief & Relaxation",
+            "support_2": "Sleep Quality",
+            "support_3": "Focus & Cognitive Health",
+            "image_files": "product-ash-1.jpg,product-ash-2.jpg,product-ash-3.jpg,product-ash-4.jpg,product-ash-5.jpg,product-ash-6.jpg,product-ash-7.jpg,product-ash-8.jpg,product-ash-9.jpg,product-ash-10.jpg"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "red",
+            "title": "Zero Sugar Apple Cider<br>Vinegar+ Gummies",
+            "copy": "Our flagship formula, now with zero sugar. Includes Apple Cider Vinegar, Vitamin B12, and SNZ Tribac® probiotics to help support digestion, reduce occasional bloating, and promote energy metabolism, immune function, and overall wellness.",
+            "support_label": "Helps support:",
+            "support_1": "Digestive Health & Bloating",
+            "support_2": "Energy Metabolism",
+            "support_3": "Immune Function",
+            "image_files": "product-acv-1.png,product-acv-2.jpg,product-acv-3.png,product-acv-4.png,product-acv-5.png,product-acv-6.png"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "variant": "green",
+            "title": "Zero Sugar<br>Pre+Post+Probiotics Gummies",
+            "copy": "The world’s first 3-in-1 gummy with prebiotics (XOS), probiotics (DE111®), and postbiotics (MCC1849) — all in a zero sugar format. Helps support digestion, gut flora balance, immune health, and daily digestive well-being.",
+            "support_label": "Helps support:",
+            "support_1": "Gut Health and Microbiome Balance",
+            "support_2": "Prebiotic and Probiotic Support",
+            "support_3": "Immune function",
+            "image_files": "product-ppp-1.jpg,product-ppp-2.jpg,product-ppp-3.jpg,product-ppp-4.jpg,product-ppp-5.jpg"
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_shop_cta_07": {
+      "type": "lzy-goli-editable-shop-cta",
+      "settings": {}
+    },
+    "lzy_goli_editable_social_strip_08": {
+      "type": "lzy-goli-editable-social-strip",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-1.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-2.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-3.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-4.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-5.jpg",
+            "alt": "Social proof image"
+          }
+        },
+        {
+          "type": "social_image",
+          "settings": {
+            "asset_file": "social-6.jpg",
+            "alt": "Social proof image"
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_certification_logos_09": {
+      "type": "lzy-goli-editable-certification-logos",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-bcorp.png",
+            "alt": "Certified B Corporation"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-eden.png",
+            "alt": "Eden People and Planet"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "asset_file": "cert-vitamin-angels.png",
+            "alt": "Vitamin Angels"
+          }
+        }
+      ]
+    },
+    "lzy_goli_editable_footer_10": {
+      "type": "lzy-goli-editable-footer",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "f",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "ig",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "x",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "yt",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "p",
+            "url": "#"
+          }
+        },
+        {
+          "type": "social_link",
+          "settings": {
+            "label": "tk",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Become an Ambassador",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "About Goli",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Goli® for Good",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "About Us",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Inside the Gummy",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "FAQ",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale Login",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Wholesale Sign up",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Manage my Subscription",
+            "url": "#"
+          }
+        },
+        {
+          "type": "footer_link",
+          "settings": {
+            "label": "Contact Us",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Terms & Conditions",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Privacy Policy",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Goli® Rewards Gift Cards",
+            "url": "#"
+          }
+        },
+        {
+          "type": "legal_link",
+          "settings": {
+            "label": "Digital Accessibility Statement",
+            "url": "#"
+          }
+        }
+      ]
+    }
+  },
+  "order": [
+    "lzy_goli_editable_announcement_header_01",
+    "lzy_goli_editable_hero_banner_02",
+    "lzy_goli_editable_bundle_purchase_03",
+    "lzy_goli_editable_benefit_band_04",
+    "lzy_goli_editable_clinician_reviews_05",
+    "lzy_goli_editable_product_cards_06",
+    "lzy_goli_editable_shop_cta_07",
+    "lzy_goli_editable_social_strip_08",
+    "lzy_goli_editable_certification_logos_09",
+    "lzy_goli_editable_footer_10"
+  ]
+}
