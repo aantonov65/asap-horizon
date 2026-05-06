@@ -37,27 +37,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -65,7 +80,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -96,7 +111,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -213,27 +228,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -241,7 +271,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -272,7 +302,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -389,27 +419,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -417,7 +462,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -448,7 +493,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -565,27 +610,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -593,7 +653,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -624,7 +684,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -741,27 +801,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -769,7 +844,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -800,7 +875,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -917,27 +992,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -945,7 +1035,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -976,7 +1066,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -1093,27 +1183,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1121,7 +1226,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1152,7 +1257,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -1269,27 +1374,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1297,7 +1417,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1328,7 +1448,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -1445,27 +1565,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1473,7 +1608,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1504,7 +1639,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
@@ -1621,27 +1756,42 @@
     root.dataset.lzyInitializedBundle = "true";
     const plans = [...root.querySelectorAll(".lzy-goli-plan")];
     const packs = [...root.querySelectorAll(".lzy-goli-pack")];
+    const productImage = root.querySelector("[data-lzy-bundle-product-image]");
     const cartPlan = root.querySelector("[data-lzy-cart-plan]");
     const cartPack = root.querySelector("[data-lzy-cart-pack]");
     const cartPrice = root.querySelector("[data-lzy-cart-price]");
     const cartTotal = root.querySelector("[data-lzy-cart-total]");
 
-    const updateCart = () => {
+    const updateBundle = () => {
       const activePlan = root.querySelector(".lzy-goli-plan." + activeClass);
       const activePack = root.querySelector(".lzy-goli-pack." + activeClass);
-      const label = activePlan?.dataset.plan === "subscribe" ? "Subscribe & Save" : "One-time Purchase";
-      const price = activePlan?.dataset.price || "$30.38";
-      if (cartPlan) cartPlan.textContent = label;
+      const isSubscribe = activePlan?.dataset.plan === "subscribe";
+      const eachPrice = isSubscribe ? activePack?.dataset.subscribeEach : activePack?.dataset.onetimeEach;
+      const totalPrice = isSubscribe ? activePack?.dataset.subscribeTotal : activePack?.dataset.onetimeTotal;
+      const comparePrice = activePack?.dataset.comparePrice || "";
+
+      plans.forEach((plan) => {
+        const each = plan.querySelector("[data-lzy-plan-each]");
+        const total = plan.querySelector("[data-lzy-plan-total]");
+        const compare = plan.querySelector("[data-lzy-plan-compare]");
+        const planSubscribe = plan.dataset.plan === "subscribe";
+        if (each) each.textContent = planSubscribe ? activePack?.dataset.subscribeEach || "" : activePack?.dataset.onetimeEach || "";
+        if (total) total.textContent = planSubscribe ? activePack?.dataset.subscribeTotal || "" : activePack?.dataset.onetimeTotal || "";
+        if (compare) compare.textContent = comparePrice;
+      });
+
+      if (productImage && activePack?.dataset.packImage) productImage.src = activePack.dataset.packImage;
+      if (cartPlan) cartPlan.textContent = isSubscribe ? "Subscribe & Save" : "One-time Purchase";
       if (cartPack) cartPack.textContent = activePack?.dataset.pack || "3-PACK";
-      if (cartPrice) cartPrice.textContent = price;
-      if (cartTotal) cartTotal.textContent = price;
+      if (cartPrice) cartPrice.textContent = totalPrice || "$30.38";
+      if (cartTotal) cartTotal.textContent = totalPrice || "$30.38";
     };
 
     plans.forEach((plan) => {
       plan.addEventListener("click", () => {
         plans.forEach((item) => item.classList.remove(activeClass));
         plan.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1649,7 +1799,7 @@
       pack.addEventListener("click", () => {
         packs.forEach((item) => item.classList.remove(activeClass));
         pack.classList.add(activeClass);
-        updateCart();
+        updateBundle();
       });
     });
 
@@ -1680,7 +1830,7 @@
     });
     closeButton?.addEventListener("click", close);
     overlay?.addEventListener("click", close);
-    updateCart();
+    updateBundle();
   };
 
   const initProductSliders = (root) => {
