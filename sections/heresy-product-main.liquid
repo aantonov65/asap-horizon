@@ -24,10 +24,13 @@
         {% for block in media_blocks %}
           {% liquid
             assign thumbnail = block.settings.image
+            assign is_video_thumbnail = false
             if block.settings.video != blank
               assign thumbnail = block.settings.video.preview_image
+              assign is_video_thumbnail = true
             elsif block.settings.mobile_video != blank
               assign thumbnail = block.settings.mobile_video.preview_image
+              assign is_video_thumbnail = true
             endif
             case block.settings.fallback
               when 'hero_1'
@@ -36,18 +39,22 @@
                 assign fallback_thumbnail = 'heresy-product-hero-2-desktop.jpg'
               when 'video_1'
                 assign fallback_thumbnail = 'heresy-product-video-1-poster.jpg'
+                assign is_video_thumbnail = true
               else
                 assign fallback_thumbnail = 'heresy-product-video-2-poster.jpg'
+                assign is_video_thumbnail = true
             endcase
           %}
           <button
             type="button"
-            class="Product-slider-thumbnail js-slider-navigation{% if forloop.first %} Product-slider-thumbnail__active{% endif %}"
+            class="Product-slider-thumbnail js-slider-navigation{% if is_video_thumbnail %} heresy-product-main__thumbnail--video{% endif %}{% if forloop.first %} Product-slider-thumbnail__active{% endif %}"
             data-heresy-media-button="{{ forloop.index0 }}"
             aria-label="Show media {{ forloop.index }}"
             aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
           >
-            {% render 'heresy-responsive-image', image: thumbnail, fallback_asset: fallback_thumbnail, alt: block.settings.alt, class: 'heresy-product-main__thumbnail-image', width: 160, height: 160 %}
+            {% unless is_video_thumbnail %}
+              {% render 'heresy-responsive-image', image: thumbnail, fallback_asset: fallback_thumbnail, alt: block.settings.alt, class: 'heresy-product-main__thumbnail-image', width: 160, height: 160 %}
+            {% endunless %}
           </button>
         {% endfor %}
       </div>
@@ -137,14 +144,18 @@
 
     <div class="Product-main-card js-product-main-card heresy-product-main__card">
       {% if section.settings.eyebrow != blank %}<p class="heresy-product-main__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-      <h1 class="u-fontRektorat u-hSize--Medium Product-main-card-title">{{ product.title }}</h1>
+      <h1 class="u-fontRektorat u-hSize--Medium Product-main-card-title">{{ section.settings.title | default: product.title }}</h1>
       <div class="Product-main-card-content-price-container u-noMargin">
         <div class="Product-main-card-subtitle">
-          <div class="Product-main-card-subtitle-inner">{{ section.settings.subtitle }}</div>
-        </div>
-        <div class="heresy-product-main__price" aria-live="polite">
-          <span data-heresy-product-price>{{ current_variant.price | money }}</span>
-          <s data-heresy-product-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+          <div class="Product-main-card-subtitle-inner">
+            <strong>{{ section.settings.subtitle }}</strong>
+            {% if section.settings.show_reviews %}
+              <span class="Product-review-score-short heresy-product-main__reviews" aria-label="5 out of 5 stars, {{ section.settings.review_count }} reviews">
+                <span class="heresy-product-main__stars" aria-hidden="true">★★★★★</span>
+                <span>({{ section.settings.review_count }})</span>
+              </span>
+            {% endif %}
+          </div>
         </div>
       </div>
 
@@ -153,7 +164,6 @@
       {% elsif section.settings.description != blank %}
         <div class="Product-main-card-description u-pSize rte">{{ section.settings.description }}</div>
       {% endif %}
-      {% if section.settings.size_text != blank %}<p class="heresy-product-main__size">{{ section.settings.size_text }}</p>{% endif %}
 
       {% form 'product', product, id: product_form_id, class: 'heresy-product-main__form', novalidate: 'novalidate' %}
         <input type="hidden" name="id" value="{{ current_variant.id }}" data-heresy-variant-id>
@@ -217,6 +227,25 @@
                 </div>
               </fieldset>
             {% endfor %}
+          </div>
+        {% else %}
+          <div class="Product-swatches-container heresy-product-main__shade" data-show-swatches="false">
+            <div class="Product-swatches-wrapper">
+              <div class="Product-swatches-container-titleRow">
+                <p class="Product-swatches-container-title u-pSize u-noMargin">
+                  {{ section.settings.shade_label }}:
+                  <span class="Product-swatches-container-info">
+                    <span class="Product-swatches-popup-color" style="background-color: {{ section.settings.shade_color }};"></span>
+                    <b>{{ section.settings.shade_name }} -</b>
+                    <span class="Product-swatches-description">{{ section.settings.shade_description }}</span>
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                      <path d="M4.29296 5.292 0.707479 1.70717C0.0774266 1.07723.523574 0 1.41452 0h7.17096c.89095 0 1.33709 1.07723.70704 1.70717L5.70704 5.292a1 1 0 0 1-1.41408 0Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </p>
+              </div>
+              <button type="button" class="Product-swatches-shades" data-heresy-shade-jump>{{ section.settings.meet_shades_label }}</button>
+            </div>
           </div>
         {% endunless %}
 
@@ -315,11 +344,18 @@
   "class": "heresy-product-main-section",
   "settings": [
     {"type": "text", "id": "eyebrow", "label": "Eyebrow"},
+    {"type": "text", "id": "title", "label": "Display title", "default": "peptide lip shape"},
     {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "The contouring lip shaper"},
+    {"type": "checkbox", "id": "show_reviews", "label": "Show review summary", "default": true},
+    {"type": "text", "id": "review_count", "label": "Review count", "default": "2,387"},
     {"type": "checkbox", "id": "use_product_description", "label": "Use product description", "default": true},
     {"type": "richtext", "id": "description", "label": "Custom description", "default": "<p>A creamy lip contour that glides on to visibly shape and enhance lips.</p>"},
-    {"type": "text", "id": "size_text", "label": "Size", "default": "Size: 0.75 g / 0.026 oz."},
-    {"type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "ADD TO BAG"},
+    {"type": "text", "id": "shade_label", "label": "Shade label", "default": "Shade"},
+    {"type": "text", "id": "shade_name", "label": "Shade name", "default": "push"},
+    {"type": "text", "id": "shade_description", "label": "Shade description", "default": "soft neutral beige"},
+    {"type": "color", "id": "shade_color", "label": "Shade color", "default": "#b68574"},
+    {"type": "text", "id": "meet_shades_label", "label": "Meet shades label", "default": "Meet the shades"},
+    {"type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "BUY LIP SHAPE"},
     {"type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "SOLD OUT"},
     {"type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false},
     {"type": "text", "id": "quantity_label", "label": "Quantity label", "default": "Quantity"},

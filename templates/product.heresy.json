@@ -79,6 +79,7 @@
     },
     "meet_shades": {
       "type": "heresy-meet-shades",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "shade_01": {
@@ -227,6 +228,7 @@
     },
     "claims": {
       "type": "heresy-product-claims",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "claim_01": {
@@ -275,6 +277,7 @@
     },
     "ugc_primary": {
       "type": "heresy-ugc-video",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "video_card_01": {
@@ -290,6 +293,7 @@
     },
     "ugc_secondary": {
       "type": "heresy-ugc-video",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "video_card_01": {
@@ -305,6 +309,7 @@
     },
     "ingredients": {
       "type": "heresy-key-ingredients",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "ingredient_01": {
@@ -329,6 +334,7 @@
     },
     "application": {
       "type": "heresy-application-steps",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "step_01": {
@@ -364,6 +370,7 @@
     },
     "study_results": {
       "type": "heresy-study-results",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "result_01": {
@@ -472,10 +479,12 @@
     },
     "image_banner": {
       "type": "heresy-image-banner",
+      "disabled": true,
       "settings": {}
     },
     "creator_reviews": {
       "type": "heresy-creator-reviews",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "creator_01": {
@@ -544,6 +553,7 @@
     },
     "layer_lips": {
       "type": "heresy-layer-your-lips",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "step_01": {
@@ -585,6 +595,7 @@
     },
     "summer_routine": {
       "type": "heresy-summer-routine",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "step_01": {
@@ -643,6 +654,7 @@
     },
     "recycling": {
       "type": "heresy-recycling-guide",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "panel_01": {
@@ -677,6 +689,7 @@
     },
     "reviews": {
       "type": "heresy-reviews",
+      "disabled": true,
       "settings": {},
       "blocks": {
         "review_01": {
@@ -707,6 +720,7 @@
     },
     "recommendations": {
       "type": "heresy-product-recommendations",
+      "disabled": true,
       "settings": {}
     }
   },
