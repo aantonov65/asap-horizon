@@ -17,12 +17,12 @@
   width: 100%;
 }
 
-.heresy-study-results .Tabbed-content-multi-container {
+.heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"] {
   display: none;
 }
 
-.heresy-study-results .Tabbed-content-multi-container.heresy-is-active {
-  display: block;
+.heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"].heresy-is-active {
+  display: flex;
 }
 
 .heresy-study-results .Tabbed-content-multi-group__toggle,
