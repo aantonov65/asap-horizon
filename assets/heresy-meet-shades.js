@@ -9,13 +9,14 @@
     const previousButtons = [...root.querySelectorAll('[data-heresy-shades-prev]')];
     const nextButtons = [...root.querySelectorAll('[data-heresy-shades-next]')];
     let active = Math.max(0, swatches.findIndex((swatch) => swatch.getAttribute('aria-pressed') === 'true'));
+    let inView = false;
 
-    const contentOffset = () => window.innerWidth >= 861 ? 175 : 72;
+    const contentOffset = () => window.innerWidth >= 861 ? 175 : 96;
 
     const setActive = (index, scroll = true) => {
       if (!cards.length) return;
       active = Math.max(0, Math.min(index, cards.length - 1));
-      for (let offset = 0; offset < 3; offset += 1) {
+      if (inView || scroll === 'smooth') for (let offset = 0; offset < 3; offset += 1) {
         window.HeresyMedia?.hydrateWithin(cards[Math.min(active + offset, cards.length - 1)]);
       }
       swatches.forEach((swatch, swatchIndex) => {
@@ -42,6 +43,19 @@
       if (nearest !== active) setActive(nearest, false);
     }, { passive: true });
     requestAnimationFrame(() => setActive(active, 'instant'));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        if (!inView) return;
+        for (let offset = 0; offset < 3; offset += 1) {
+          window.HeresyMedia?.hydrateWithin(cards[Math.min(active + offset, cards.length - 1)]);
+        }
+      }, { rootMargin: '700px 0px' });
+      observer.observe(root);
+    } else {
+      inView = true;
+      setActive(active, false);
+    }
   };
 
   const initAll = (scope = document) => scope.querySelectorAll('[data-heresy-shades]').forEach(init);

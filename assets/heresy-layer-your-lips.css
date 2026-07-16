@@ -39,5 +39,5 @@
 .heresy-layer-your-lips .Image { padding-bottom: 0 !important; }
 
 @media screen and (max-width: 819px) {
-  .heresy-layer-your-lips { margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
+  .heresy-layer-your-lips { margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
 }

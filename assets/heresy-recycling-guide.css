@@ -33,13 +33,17 @@
 .heresy-recycling-guide .Slider-with-video-backdrop-content .u-pSize { letter-spacing: .03em; text-transform: uppercase; }
 
 @media screen and (max-width: 819px) {
-  .heresy-recycling-guide { height: auto; min-height: 46rem !important; margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
+  .heresy-recycling-guide { height: auto; min-height: 46rem !important; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
   .heresy-recycling-guide .Slider-with-video { min-height: 46rem; margin-right: 0; grid-template-columns: 1fr; }
   .heresy-recycling-guide .Slider-with-video-content-wrapper { padding: 1.5rem 1rem; }
   .heresy-recycling-guide .Slider-with-video-image-container { min-height: 30rem; }
   .heresy-recycling-guide .heresy-recycling-guide__navigation { width: 100%; height: 5rem; top: auto; }
   .heresy-recycling-guide .Slider-with-video-backdrop-content { align-items: center; display: flex; justify-content: space-between; }
   .heresy-recycling-guide .Slider-with-video-backdrop-content > span { position: static; transform: none; writing-mode: initial; }
+  .heresy-recycling-guide [data-heresy-recycling-kind="packaging"] .heresy-recycling-guide__image { height: 78%; margin: 11% auto; width: 78%; }
+  .heresy-recycling-guide .product-description-text { font-size: .7rem; line-height: 1.15; max-width: 8rem; }
+  .heresy-recycling-guide .product-description-text--left { left: 49% !important; top: 22% !important; }
+  .heresy-recycling-guide .product-description-text--right { right: 5% !important; top: 68% !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

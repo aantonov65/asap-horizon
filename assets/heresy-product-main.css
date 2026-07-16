@@ -956,6 +956,25 @@
     width: 100%;
   }
 
+  [data-heresy-section] .heresy-product-main__card::before,
+  [data-heresy-section] .heresy-product-main__card::after {
+    content: "";
+    height: 1px;
+    left: 1rem;
+    position: absolute;
+    top: 1rem;
+  }
+
+  [data-heresy-section] .heresy-product-main__card::before {
+    background: #c4c4c4;
+    right: 1rem;
+  }
+
+  [data-heresy-section] .heresy-product-main__card::after {
+    background: var(--heresy-ink);
+    width: calc((100% - 2rem) / 4);
+  }
+
   [data-heresy-section] .Product-main-card-title {
     font-size: min(2.5rem, 12vw);
     line-height: 1.2;
@@ -967,7 +986,13 @@
   }
 
   [data-heresy-section] .Product-main-card-subtitle-inner {
-    align-items: flex-end;
+    align-items: flex-start;
+    display: block;
+  }
+
+  [data-heresy-section] .heresy-product-main__reviews {
+    justify-content: flex-start;
+    margin-top: 1rem;
   }
 
   [data-heresy-section] .Product-main-card-subtitle-inner > strong,
@@ -979,6 +1004,16 @@
 
   [data-heresy-section] .Product-main-card-description {
     margin: 1.25rem 0;
+  }
+
+  [data-heresy-section] .Product-main-card-description p:first-child,
+  [data-heresy-section] .Product-main-card-description p:nth-child(2) {
+    display: inline;
+    margin: 0;
+  }
+
+  [data-heresy-section] .Product-main-card-description p:nth-child(3) {
+    margin-top: 1.25rem;
   }
 
   [data-heresy-section] .heresy-product-main__shade .Product-swatches-wrapper {
@@ -1002,6 +1037,11 @@
   [data-heresy-section] .Product-sticky-cta {
     min-width: 100%;
     width: 100%;
+  }
+
+  [data-heresy-section] .heresy-complete-routine__add {
+    border-radius: 3.125rem !important;
+    min-height: 2.375rem;
   }
 }
 

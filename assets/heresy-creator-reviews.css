@@ -61,12 +61,22 @@
 .heresy-creator-reviews .Image { padding-bottom: 0 !important; }
 
 @media screen and (max-width: 819px) {
-  .heresy-creator-reviews { height: auto; margin-top: .75rem !important; width: calc(100% - 1.5rem) !important; }
+  .heresy-creator-reviews { height: auto; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
   .heresy-creator-reviews .heresy-creator-reviews__panel { grid-template-columns: 1fr; }
-  .heresy-creator-reviews .mod_before_after_AAAprW_Videos { aspect-ratio: 11 / 12; }
-  .heresy-creator-reviews .mod_before_after_AAAprW_Right { min-height: 28rem !important; padding: 2rem 1rem 7rem; }
-  .heresy-creator-reviews .mod_before_after_AAAprW_Navigation { bottom: 1rem; right: 1rem; top: auto; width: calc(100% - 2rem); }
-  .heresy-creator-reviews .mod_before_after_AAAprW_Title { font-size: 1.75rem; }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Videos { aspect-ratio: 24 / 25; }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Right {
+    align-items: flex-start;
+    min-height: 24rem !important;
+    padding: 10rem 1rem 1.5rem;
+  }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Navigation {
+    bottom: auto;
+    right: 1rem;
+    top: calc((100vw - 2rem) * 25 / 24 + 1rem);
+    width: calc(100% - 2rem);
+  }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Title { font-size: 1.25rem; line-height: 1.25; }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Notes { gap: 1rem; margin-top: 2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

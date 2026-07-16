@@ -156,9 +156,12 @@
 }
 
 @media screen and (max-width: 819px) {
-  .heresy-meet-shades { margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
+  .heresy-meet-shades { background: #f1f0ed !important; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
   .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatches { width: 100%; overflow-x: auto; }
   .heresy-meet-shades .heresy-meet-shades__swatch-track { width: max-content; }
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-next,
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev,
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__button { border-radius: 50% !important; }
 }
 
 @media screen and (min-width: 510px) {

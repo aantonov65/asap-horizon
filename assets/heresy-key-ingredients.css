@@ -26,9 +26,23 @@
   border-radius: 0;
 }
 
+@media screen and (min-width: 820px) {
+  .heresy-key-ingredients .Highlights-wrapper,
+  .heresy-key-ingredients .Highlights-container {
+    align-items: center;
+  }
+
+  .heresy-key-ingredients .Highlights-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+}
+
 @media screen and (max-width: 819px) {
   .heresy-key-ingredients {
-    margin-top: 0.75rem !important;
-    width: calc(100% - 1.5rem) !important;
+    margin-top: 1rem !important;
+    width: calc(100% - 2rem) !important;
   }
 }

@@ -41,6 +41,18 @@
             </span>
           </div>
           <div class="Slider-with-video-image-container u-hideMobile__flex Slider-with-video-image-container--mobile">
+            {% if block.settings.callout_one_title != blank %}
+              <div class="product-description-text product-description-text--left" style="top: {{ block.settings.callout_one_y }}%; left: {{ block.settings.callout_one_x }}%;">
+                <p class="u-pSize u-bold description-title">{{ block.settings.callout_one_title }}<span class="description-title__arrow"></span></p>
+                <div class="u-pSize">{{ block.settings.callout_one_text }}</div>
+              </div>
+            {% endif %}
+            {% if block.settings.callout_two_title != blank %}
+              <div class="product-description-text product-description-text--right" style="top: {{ block.settings.callout_two_y }}%; right: {{ block.settings.callout_two_x }}%;">
+                <p class="u-pSize u-bold description-title">{{ block.settings.callout_two_title }}<span class="description-title__arrow"></span></p>
+                <div class="u-pSize">{{ block.settings.callout_two_text }}</div>
+              </div>
+            {% endif %}
             <span class="Image Image--mobile o-placeholder bg-full-height skip-animation">
               {% render 'heresy-responsive-image', image: block.settings.mobile_image, fallback_asset: mobile_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 750, height: 1055, sizes: '100vw', defer_image: defer_recycling_image %}
             </span>

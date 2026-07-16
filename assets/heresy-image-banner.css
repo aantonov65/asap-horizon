@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 819px) {
   .heresy-image-banner {
-    margin-top: 0.75rem !important;
-    width: calc(100% - 1.5rem) !important;
+    margin-top: 1rem !important;
+    width: calc(100% - 2rem) !important;
   }
 }

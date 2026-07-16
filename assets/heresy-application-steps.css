@@ -129,8 +129,8 @@
 
 @media print, screen and (max-width: 819px) {
   .heresy-application-steps {
-    margin-top: 0.75rem !important;
-    width: calc(100% - 1.5rem) !important;
+    margin-top: 1rem !important;
+    width: calc(100% - 2rem) !important;
   }
 
   .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnail:nth-child(3) {

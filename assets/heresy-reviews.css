@@ -69,7 +69,7 @@
 .heresy-reviews__more { background: transparent; border: 1px solid #67645e; border-radius: 999px; display: block; font-size: .875rem; height: 2.5rem; margin: 1.5rem auto 0 !important; min-width: 10rem; padding: 0 1.5rem; }
 
 @media screen and (max-width: 819px) {
-  .heresy-reviews { margin-top: .75rem !important; padding: 2rem 1rem; width: calc(100% - 1.5rem) !important; }
+  .heresy-reviews { margin-top: 1rem !important; padding: 2rem 1rem; width: calc(100% - 2rem) !important; }
   .heresy-reviews__header { min-height: 5rem; }
   .heresy-reviews__average strong { font-size: 2.25rem; }
   .heresy-reviews__controls { gap: .75rem; }

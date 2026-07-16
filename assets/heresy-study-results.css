@@ -1,11 +1,21 @@
 .heresy-study-results {
+  --heresy-results-group-index: 0;
+  --heresy-results-index: 0;
   margin: 2.25vw auto 0 !important;
   width: calc(100% - 4.5vw) !important;
 }
 
 .heresy-study-results .heresy-study-results__panels {
-  position: relative;
   min-height: 25.4375rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.heresy-study-results .heresy-study-results__track {
+  display: flex;
+  min-height: 25.4375rem;
+  transform: translate3d(calc(var(--heresy-results-index) * -100%), 0, 0);
+  transition: transform 950ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .heresy-study-results .heresy-study-results__type-toggles {
@@ -18,11 +28,8 @@
 }
 
 .heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"] {
-  display: none !important;
-}
-
-.heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"].heresy-is-active {
   display: flex !important;
+  flex: 0 0 100%;
 }
 
 .heresy-study-results .Tabbed-content-multi-group__toggle,
@@ -38,12 +45,22 @@
   opacity: .45;
 }
 
+.heresy-study-results .Tabbed-content-multi-group__toggles__indicator {
+  transform: translate3d(calc(var(--heresy-results-group-index) * 100%), 0, 0);
+  transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+}
+
 .heresy-study-results .heresy-study-results__image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heresy-study-results .heresy-study-results__track,
+  .heresy-study-results .Tabbed-content-multi-group__toggles__indicator { transition-duration: 1ms; }
 }
 
 .heresy-study-results .Tabbed-content-multi-image-container .Image {
@@ -54,7 +71,7 @@
 
 @media screen and (max-width: 819px) {
   .heresy-study-results {
-    margin-top: 0.75rem !important;
-    width: calc(100% - 1.5rem) !important;
+    margin-top: 1rem !important;
+    width: calc(100% - 2rem) !important;
   }
 }

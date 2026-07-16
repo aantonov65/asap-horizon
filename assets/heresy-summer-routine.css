@@ -1,4 +1,5 @@
 .heresy-summer-routine {
+  --heresy-routine-index: 0;
   display: block !important;
   height: 50vw;
   margin: 2.25vw auto 0 !important;
@@ -40,11 +41,13 @@
 }
 
 .heresy-summer-routine .heresy-summer-routine__subheading { margin-top: .5rem; }
+.heresy-summer-routine .heresy-summer-routine__swatch-slides,
+.heresy-summer-routine .heresy-summer-routine__model-slides { display: flex; transform: translate3d(calc(var(--heresy-routine-index) * -100%), 0, 0); transition: transform 1050ms cubic-bezier(.22, 1, .36, 1); }
+.heresy-summer-routine .heresy-summer-routine__swatch-slides { margin: 1.5rem 0; overflow: hidden; }
+.heresy-summer-routine .heresy-summer-routine__model-slides { height: 100%; }
 .heresy-summer-routine .Slider-with-navigation-content-image,
-.heresy-summer-routine .Slider-with-navigation-image-container { display: none !important; }
-.heresy-summer-routine .Slider-with-navigation-content-image.heresy-is-active,
-.heresy-summer-routine .Slider-with-navigation-image-container.heresy-is-active { display: block !important; }
-.heresy-summer-routine .Slider-with-navigation-content-image { position: relative; margin: 2rem 0; }
+.heresy-summer-routine .Slider-with-navigation-image-container { display: block !important; flex: 0 0 100%; }
+.heresy-summer-routine .Slider-with-navigation-content-image { margin: 0; position: relative; }
 .heresy-summer-routine .Slider-with-navigation-content-image .Image { aspect-ratio: 1; width: 100%; }
 .heresy-summer-routine .heresy-summer-routine__swatch-image { width: 100%; height: 100%; object-fit: cover; }
 .heresy-summer-routine .Slider-with-navigation-content-image-content { color: #67645e; padding: 1rem; position: absolute; inset: auto 0 0; }
@@ -53,18 +56,84 @@
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item { color: #67645e; border-top: 1px solid #aaa8a3; border-radius: 0; padding: .75rem .25rem; text-align: left; opacity: .45; }
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item__active { border-top-color: #67645e; opacity: 1; }
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item-label { display: block; margin-top: .25rem; font-size: .75rem; }
-.heresy-summer-routine .heresy-summer-routine__model-slides,
 .heresy-summer-routine .Slider-with-navigation-image-container,
 .heresy-summer-routine .Slider-with-navigation-image-container .Image { width: 100% !important; height: 100% !important; min-height: 0 !important; }
-.heresy-summer-routine .Slider-with-navigation-image-container { inset: 0 !important; position: absolute !important; }
+.heresy-summer-routine .Slider-with-navigation-image-container { position: relative !important; }
 .heresy-summer-routine .heresy-summer-routine__model-image { width: 100%; height: 100%; object-fit: cover; }
 .heresy-summer-routine .Image { padding-bottom: 0 !important; }
 
 @media screen and (max-width: 819px) {
-  .heresy-summer-routine { height: auto; margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
-  .heresy-summer-routine .Slider-with-navigation-wrapper { grid-template-columns: 1fr !important; gap: 1rem; }
-  .heresy-summer-routine .Slider-with-navigation-content { grid-column: 1 !important; grid-row: 2 !important; order: 2; }
+  .heresy-summer-routine { height: auto; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
+  .heresy-summer-routine .Slider-with-navigation-wrapper { grid-template-columns: 1fr !important; gap: 0; }
+  .heresy-summer-routine .Slider-with-navigation-content {
+    display: flex !important;
+    flex-direction: column;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    min-height: 23rem;
+    order: 2;
+    padding: 1rem !important;
+  }
   .heresy-summer-routine .Slider-with-navigation-images-container { grid-column: 1 !important; grid-row: 1 !important; }
-  .heresy-summer-routine .Slider-with-navigation-images-container { aspect-ratio: 1; }
-  .heresy-summer-routine .Slider-with-navigation-content-navigation-item-label { writing-mode: vertical-rl; transform: rotate(180deg); }
+  .heresy-summer-routine .Slider-with-navigation-images-container { aspect-ratio: 11 / 12; border-radius: .75rem .75rem 0 0; }
+  .heresy-summer-routine .heresy-summer-routine__model-slides { height: 100% !important; position: absolute; inset: 0; }
+  .heresy-summer-routine .Slider-with-navigation-content { border-radius: 0 0 .75rem .75rem; }
+  .heresy-summer-routine .Slider-with-navigation-content h2 { font-size: 1.5rem; line-height: 1.15; }
+  .heresy-summer-routine .heresy-summer-routine__subheading { font-size: .875rem; line-height: 1.45; }
+  .heresy-summer-routine .heresy-summer-routine__swatch-slides { height: 7.75rem; margin: 1rem 0; }
+  .heresy-summer-routine .Slider-with-navigation-content-image { height: 7.75rem; overflow: hidden; }
+  .heresy-summer-routine .Slider-with-navigation-content-image .Image {
+    aspect-ratio: auto;
+    height: 100% !important;
+    left: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58%;
+  }
+  .heresy-summer-routine .heresy-summer-routine__swatch-image { object-fit: contain; }
+  .heresy-summer-routine .Slider-with-navigation-content-image-content {
+    bottom: auto;
+    inset: auto;
+    left: 0;
+    padding: .5rem 0;
+    position: relative;
+    top: 0;
+    width: 48%;
+    z-index: 2;
+  }
+  .heresy-summer-routine .Slider-with-navigation-content-navigation { gap: .45rem; margin-top: auto; }
+  .heresy-summer-routine .Slider-with-navigation-content-navigation-item {
+    background: transparent;
+    border: 0;
+    height: 4.75rem;
+    opacity: 1;
+    padding: 0;
+    text-align: center;
+  }
+  .heresy-summer-routine .Slider-with-navigation-content-navigation-item > span:first-child {
+    align-items: center;
+    border: 1px solid #67645e;
+    border-radius: 50%;
+    display: flex;
+    height: 2.75rem;
+    justify-content: center;
+    margin: 0 auto;
+    transition: background-color .5s cubic-bezier(.22, 1, .36, 1), color .5s cubic-bezier(.22, 1, .36, 1);
+    width: 2.75rem;
+  }
+  .heresy-summer-routine .Slider-with-navigation-content-navigation-item__active > span:first-child { background: #b68574; color: #fff; }
+  .heresy-summer-routine .Slider-with-navigation-content-navigation-item-label {
+    display: block;
+    font-size: .625rem;
+    margin-top: .45rem;
+    transform: none;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heresy-summer-routine .heresy-summer-routine__swatch-slides,
+  .heresy-summer-routine .heresy-summer-routine__model-slides { transition-duration: 1ms; }
 }
