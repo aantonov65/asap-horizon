@@ -1,0 +1,68 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-image-banner.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="heresy-image-banner mod_banner__Z5PZG_Banner"
+  data-heresy-section="{{ section.id }}"
+  data-desktop-content-position="{{ section.settings.desktop_position }}"
+  data-mobile-content-position="{{ section.settings.mobile_position }}"
+  style="--heresy-banner-bg: {{ section.settings.background }}; --heresy-banner-overlay: {{ section.settings.overlay }}; --heresy-banner-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+>
+  <div class="mod_banner__Z5PZG_Banner__overlay"></div>
+  <div class="mod_banner__Z5PZG_Banner__image">
+    <div class="u-hideMd">
+      <span class="Image Image--mobile o-placeholder bg-full-height skip-animation">
+        {% render 'heresy-responsive-image', image: section.settings.mobile_image, fallback_asset: 'heresy-image-banner-mobile.jpg', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', width: 1024, height: 1823 %}
+      </span>
+    </div>
+    <div class="u-showMd">
+      <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
+        {% render 'heresy-responsive-image', image: section.settings.desktop_image, fallback_asset: 'heresy-image-banner-desktop.png', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', loading: 'eager', width: 1924, height: 1082 %}
+      </span>
+    </div>
+  </div>
+  {% if section.settings.heading != blank or section.settings.text != blank or section.settings.button_label != blank %}
+    <div
+      class="mod_banner__Z5PZG_Banner__content"
+      data-desktop-content-alignment="{{ section.settings.desktop_alignment }}"
+      data-desktop-content-position="{{ section.settings.desktop_position }}"
+      data-mobile-content-alignment="{{ section.settings.mobile_alignment }}"
+      data-mobile-content-position="{{ section.settings.mobile_position }}"
+      data-spacing-size="{{ section.settings.spacing }}"
+      data-with-image="true"
+    >
+      <div class="mod_banner__Z5PZG_Banner__content__container">
+        {% if section.settings.heading != blank %}<h2 data-font-size="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>{% endif %}
+        {% if section.settings.text != blank %}<div>{{ section.settings.text }}</div>{% endif %}
+        {% if section.settings.button_label != blank %}
+          <a class="Button mod_banner__Z5PZG_Banner__content__cta" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Heresy image banner",
+  "settings": [
+    {"type": "image_picker", "id": "desktop_image", "label": "Desktop image"},
+    {"type": "image_picker", "id": "mobile_image", "label": "Mobile image"},
+    {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Peptide lip shape shade range"},
+    {"type": "inline_richtext", "id": "heading", "label": "Heading"},
+    {"type": "richtext", "id": "text", "label": "Text"},
+    {"type": "text", "id": "button_label", "label": "Button label"},
+    {"type": "url", "id": "button_link", "label": "Button link"},
+    {"type": "color", "id": "background", "label": "Background", "default": "#f1f0ed"},
+    {"type": "color", "id": "overlay", "label": "Overlay", "default": "#000000"},
+    {"type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0},
+    {"type": "select", "id": "heading_size", "label": "Heading size", "options": [{"value": "s", "label": "Small"}, {"value": "m", "label": "Medium"}, {"value": "l", "label": "Large"}, {"value": "xl", "label": "Extra large"}], "default": "l"},
+    {"type": "select", "id": "spacing", "label": "Content spacing", "options": [{"value": "xs", "label": "Extra small"}, {"value": "s", "label": "Small"}, {"value": "m", "label": "Medium"}, {"value": "l", "label": "Large"}], "default": "s"},
+    {"type": "select", "id": "desktop_position", "label": "Desktop position", "options": [{"value": "top-left", "label": "Top left"}, {"value": "top-center", "label": "Top center"}, {"value": "top-right", "label": "Top right"}, {"value": "center-left", "label": "Center left"}, {"value": "center", "label": "Center"}, {"value": "center-right", "label": "Center right"}, {"value": "bottom-left", "label": "Bottom left"}, {"value": "bottom-center", "label": "Bottom center"}, {"value": "bottom-right", "label": "Bottom right"}], "default": "center"},
+    {"type": "select", "id": "mobile_position", "label": "Mobile position", "options": [{"value": "top-left", "label": "Top left"}, {"value": "top-center", "label": "Top center"}, {"value": "top-right", "label": "Top right"}, {"value": "center-left", "label": "Center left"}, {"value": "center", "label": "Center"}, {"value": "center-right", "label": "Center right"}, {"value": "bottom-left", "label": "Bottom left"}, {"value": "bottom-center", "label": "Bottom center"}, {"value": "bottom-right", "label": "Bottom right"}], "default": "center"},
+    {"type": "text_alignment", "id": "desktop_alignment", "label": "Desktop text alignment", "default": "center"},
+    {"type": "text_alignment", "id": "mobile_alignment", "label": "Mobile text alignment", "default": "center"}
+  ],
+  "presets": [{"name": "Heresy image banner"}]
+}
+{% endschema %}

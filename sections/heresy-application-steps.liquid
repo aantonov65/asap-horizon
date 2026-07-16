@@ -1,0 +1,101 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-application-steps.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-application-steps.js' | asset_url }}" defer></script>
+
+<section class="heresy-application-steps mod_slider_content_ZWt2zW_Section" data-heresy-section="{{ section.id }}" data-heresy-application>
+  <div class="mod_slider_content_ZWt2zW_Content-slider">
+    <div class="mod_slider_content_ZWt2zW_Content-slider-wrapper">
+      <div class="mod_slider_content_ZWt2zW_Content-slider-thumbnails">
+        {% for block in section.blocks %}
+          {% liquid
+            assign fallback_asset = 'heresy-application-step-1.jpg'
+            if block.settings.fallback == 'step_2'
+              assign fallback_asset = 'heresy-application-step-2.jpg'
+            elsif block.settings.fallback == 'step_3'
+              assign fallback_asset = 'heresy-application-step-3.jpg'
+            endif
+          %}
+          <button type="button" class="mod_slider_content_ZWt2zW_Content-slider-thumbnail" data-heresy-application-go="{{ forloop.index0 }}" aria-label="Show step {{ forloop.index }}" {{ block.shopify_attributes }}>
+            <span class="Image Image--desktop o-placeholder bg-full-height">
+              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1320, height: 1440 %}
+            </span>
+          </button>
+        {% endfor %}
+      </div>
+      <div class="mod_slider_content_ZWt2zW_Content-slider-content-container">
+        <div class="mod_slider_content_ZWt2zW_Content-slider-content">
+          <div class="heresy-application-steps__content-slides" aria-live="polite">
+            {% for block in section.blocks %}
+              <div class="swiper-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-application-content="{{ forloop.index0 }}">
+                <h2 class="u-pSize u-bold u-noMargin">{{ block.settings.eyebrow }}</h2>
+                <div class="u-hSize">
+                  <span class="mod_slider_content_ZWt2zW_Content-slider-content-index">({{ forloop.index | prepend: '0' | slice: -2, 2 }})</span>
+                  {{ block.settings.text }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="button" class="heresy-application-steps__next" data-heresy-application-next aria-label="Show next step">
+            <svg fill="none" height="64" viewBox="0 0 64 64" width="64" aria-hidden="true">
+              <circle cx="31.7481" cy="31.7906" r="30.9235" stroke="#67645E" stroke-width="0.703921"></circle>
+              <path d="M37.1201 39.8857L45.6914 31.7906L37.1201 23.6956" stroke="#67645E" stroke-width="1.05588"></path>
+              <line stroke="#67645E" stroke-width="1.05588" x1="45.5664" x2="17.4095" y1="31.732" y2="31.732"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mod_slider_content_ZWt2zW_Content-slider-images-container u-showMd">
+      <div class="heresy-application-steps__image-slides">
+        {% for block in section.blocks %}
+          {% liquid
+            assign fallback_asset = 'heresy-application-step-1.jpg'
+            if block.settings.fallback == 'step_2'
+              assign fallback_asset = 'heresy-application-step-2.jpg'
+            elsif block.settings.fallback == 'step_3'
+              assign fallback_asset = 'heresy-application-step-3.jpg'
+            endif
+          %}
+          <div class="swiper-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-application-image="{{ forloop.index0 }}">
+            <div class="mod_slider_content_ZWt2zW_Content-slider-image-container">
+              <span class="Image Image--desktop o-placeholder bg-full-height">
+                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1320, height: 1440 %}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy application",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Application step",
+      "settings": [
+        {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "APPLICATION"},
+        {"type": "richtext", "id": "text", "label": "Instruction", "default": "<p>Glide Peptide Lip Shape along the outline of your lips.</p>"},
+        {"type": "image_picker", "id": "image", "label": "Image"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Peptide lip shape application"},
+        {"type": "select", "id": "fallback", "label": "Bundled fallback", "options": [{"value": "step_1", "label": "Step one"}, {"value": "step_2", "label": "Step two"}, {"value": "step_3", "label": "Step three"}], "default": "step_1"}
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Heresy application",
+      "blocks": [
+        {"type": "step", "settings": {"eyebrow": "APPLICATION", "text": "<p>Glide Peptide Lip Shape along the outline of your lips.</p>", "fallback": "step_1"}},
+        {"type": "step", "settings": {"eyebrow": "APPLICATION", "text": "<p>Use your finger to diffuse the color.</p>", "fallback": "step_2"}},
+        {"type": "step", "settings": {"eyebrow": "APPLICATION", "text": "<p>You can follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>", "fallback": "step_3"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

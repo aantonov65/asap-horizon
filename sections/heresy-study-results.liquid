@@ -1,0 +1,108 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-study-results.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-study-results.js' | asset_url }}" defer></script>
+
+<section class="heresy-study-results Tabbed-content-multi Section__min" data-heresy-section="{{ section.id }}" data-heresy-results>
+  <div class="Tabbed-content-multi-wrapper">
+    <div class="Tabbed-content-multi-group__toggles">
+      <button type="button" class="Tabbed-content-multi-group__toggle" data-heresy-results-group="immediate" aria-pressed="true">{{ section.settings.immediate_label }}</button>
+      <span class="Tabbed-content-multi-group__toggle__divider"></span>
+      <button type="button" class="Tabbed-content-multi-group__toggle" data-heresy-results-group="four_week" aria-pressed="false">{{ section.settings.four_week_label }}</button>
+      <span class="Tabbed-content-multi-group__toggle__divider"></span>
+      <div class="Tabbed-content-multi-group__toggles__indicator"></div>
+    </div>
+
+    {% assign groups = 'immediate,four_week' | split: ',' %}
+    {% assign result_types = 'consumer,clinical' | split: ',' %}
+    <div class="heresy-study-results__panels" aria-live="polite">
+      {% for group in groups %}
+        {% for result_type in result_types %}
+          <div class="Tabbed-content-multi-container{% if group == 'immediate' and result_type == 'consumer' %} heresy-is-active{% endif %}" data-heresy-results-panel="{{ group }}-{{ result_type }}">
+            <ul class="Tabbed-content-multi-result-container">
+              {% for block in section.blocks %}
+                {% if block.settings.group == group and block.settings.result_type == result_type %}
+                  <li class="Tabbed-content-multi-result" {{ block.shopify_attributes }}>
+                    <div class="Tabbed-content-multi-result-percentage">{{ block.settings.value }}</div>
+                    <div class="Tabbed-content-multi-result-claim u-noMargin">{{ block.settings.claim }}</div>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+            <div class="Tabbed-content-multi-result-disclaimer">
+              {% if result_type == 'clinical' %}
+                {{ section.settings.clinical_disclaimer }}
+              {% elsif group == 'immediate' %}
+                {{ section.settings.immediate_disclaimer }}
+              {% else %}
+                {{ section.settings.four_week_disclaimer }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <div class="heresy-study-results__type-toggles">
+      <button type="button" class="Tabbed-content-multi-toggle Tabbed-content-multi-toggle__active" data-heresy-results-type="consumer" aria-pressed="true">
+        <span class="u-pSize__Large u-noMargin">{{ section.settings.consumer_label }}</span>
+      </button>
+      <button type="button" class="Tabbed-content-multi-toggle" data-heresy-results-type="clinical" aria-pressed="false">
+        <span class="u-pSize__Large u-noMargin">{{ section.settings.clinical_label }}</span>
+      </button>
+    </div>
+  </div>
+  <div class="Tabbed-content-multi-images-container Tabbed-content-multi-images-container__left">
+    <div class="Tabbed-content-multi-image-container">
+      <span class="Image Image--desktop o-placeholder bg-full-height">
+        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-study-results.jpg', alt: section.settings.image_alt, class: 'heresy-study-results__image', width: 1320, height: 1440 %}
+      </span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy study results",
+  "settings": [
+    {"type": "text", "id": "immediate_label", "label": "Immediate tab", "default": "IMMEDIATE RESULTS"},
+    {"type": "text", "id": "four_week_label", "label": "Four week tab", "default": "AFTER 4 WEEKS"},
+    {"type": "text", "id": "consumer_label", "label": "Consumer tab", "default": "consumer study results"},
+    {"type": "text", "id": "clinical_label", "label": "Clinical tab", "default": "clinical results"},
+    {"type": "richtext", "id": "immediate_disclaimer", "label": "Immediate disclaimer", "default": "<p>*based on a 34-subject consumer perception study immediately after use.</p>"},
+    {"type": "richtext", "id": "four_week_disclaimer", "label": "Four week disclaimer", "default": "<p>*based on a 34-subject consumer perception study after 4 weeks of use.</p>"},
+    {"type": "richtext", "id": "clinical_disclaimer", "label": "Clinical disclaimer", "default": "<p>*based on a 34-subject clinical study after immediate and 4 weeks of use.</p>"},
+    {"type": "image_picker", "id": "image", "label": "Image"},
+    {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Model wearing peptide lip shape"}
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Study result",
+      "settings": [
+        {"type": "select", "id": "group", "label": "Timeframe", "options": [{"value": "immediate", "label": "Immediate"}, {"value": "four_week", "label": "After four weeks"}], "default": "immediate"},
+        {"type": "select", "id": "result_type", "label": "Study type", "options": [{"value": "consumer", "label": "Consumer"}, {"value": "clinical", "label": "Clinical"}], "default": "consumer"},
+        {"type": "text", "id": "value", "label": "Value", "default": "94%"},
+        {"type": "richtext", "id": "claim", "label": "Claim", "default": "<p>AGREED THE FORMULA APPLIES EVENLY</p>"}
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "Heresy study results",
+      "blocks": [
+        {"type": "result", "settings": {"group": "immediate", "result_type": "consumer", "value": "94%", "claim": "<p>AGREED THE FORMULA APPLIES EVENLY</p>"}},
+        {"type": "result", "settings": {"group": "immediate", "result_type": "consumer", "value": "91%", "claim": "<p>AGREED THE TEXTURE GLIDES ON SMOOTHLY</p>"}},
+        {"type": "result", "settings": {"group": "immediate", "result_type": "consumer", "value": "91%", "claim": "<p>AGREED THEIR LIPS LOOK MORE DEFINED</p>"}},
+        {"type": "result", "settings": {"group": "immediate", "result_type": "consumer", "value": "88%", "claim": "<p>AGREED THEIR LIP BORDER LOOKS MORE CONTOURED</p>"}},
+        {"type": "result", "settings": {"group": "four_week", "result_type": "consumer", "value": "100%", "claim": "<p>AGREED LIPS FEEL SOFTER AND SMOOTHER</p>"}},
+        {"type": "result", "settings": {"group": "four_week", "result_type": "consumer", "value": "97%", "claim": "<p>AGREED LIPS FEEL MORE HYDRATED</p>"}},
+        {"type": "result", "settings": {"group": "four_week", "result_type": "consumer", "value": "97%", "claim": "<p>AGREED IT IMPROVED OVERALL LIP CONDITION</p>"}},
+        {"type": "result", "settings": {"group": "four_week", "result_type": "consumer", "value": "94%", "claim": "<p>AGREED LIPS APPEAR FIRMER</p>"}},
+        {"type": "result", "settings": {"group": "immediate", "result_type": "clinical", "value": "clinical results", "claim": "<p>Peptide Lip Shape is clinically proven to enhance the appearance of lip fullness instantly and over time.</p>"}},
+        {"type": "result", "settings": {"group": "four_week", "result_type": "clinical", "value": "clinical results", "claim": "<p>Peptide Lip Shape is clinically proven to enhance the appearance of lip fullness instantly and over time.</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

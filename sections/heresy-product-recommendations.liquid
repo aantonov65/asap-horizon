@@ -1,0 +1,53 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-product-recommendations.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-product-recommendations.js' | asset_url }}" defer></script>
+
+<section
+  class="heresy-product-recommendations"
+  data-heresy-section="{{ section.id }}"
+  data-heresy-recommendations
+  {% unless recommendations.performed? %}data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent=related"{% endunless %}
+>
+  {% if recommendations.performed? %}
+    {% if recommendations.products_count > 0 %}
+      <header class="heresy-product-recommendations__header">
+        <h2>{{ section.settings.heading }}</h2>
+        <span>{{ section.settings.swipe_label }}</span>
+      </header>
+      <div class="heresy-product-recommendations__track">
+        {% for recommended_product in recommendations.products %}
+          <article class="heresy-product-recommendations__card">
+            <a href="{{ recommended_product.url }}">
+              <div class="heresy-product-recommendations__image-wrap">
+                {% if recommended_product.featured_image != blank %}
+                  {{ recommended_product.featured_image | image_url: width: 1200 | image_tag: class: 'heresy-product-recommendations__image', loading: 'lazy', widths: '320, 480, 640, 800, 960, 1200', sizes: '(min-width: 990px) 25vw, 75vw', alt: recommended_product.featured_image.alt }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'heresy-product-recommendations__image placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="heresy-product-recommendations__meta">
+                <h3>{{ recommended_product.title }}</h3>
+                <span>{{ recommended_product.price | money }}</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% else %}
+    <span class="heresy-product-recommendations__loading" aria-live="polite">{{ section.settings.loading_label }}</span>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Heresy recommendations",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "you may also like"},
+    {"type": "text", "id": "swipe_label", "label": "Swipe label", "default": "swipe"},
+    {"type": "text", "id": "loading_label", "label": "Loading label", "default": "Loading recommendations…"},
+    {"type": "range", "id": "limit", "label": "Maximum products", "min": 2, "max": 10, "step": 1, "default": 4}
+  ],
+  "presets": [{"name": "Heresy recommendations"}]
+}
+{% endschema %}

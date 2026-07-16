@@ -1,0 +1,93 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-creator-reviews.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-creator-reviews.js' | asset_url }}" defer></script>
+
+<section class="heresy-creator-reviews mod_before_after_AAAprW_Section Section Section__min" data-heresy-section="{{ section.id }}" data-heresy-creators>
+  <div class="heresy-creator-reviews__panels">
+    {% for block in section.blocks %}
+      {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.jpg' %}
+      <article class="heresy-creator-reviews__panel{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-creator-panel="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        <div class="mod_before_after_AAAprW_Videos">
+          <div class="mod_before_after_AAAprW_Video">
+            <div class="mod_before_after_AAAprW_Video-poster" data-heresy-creator-poster>
+              <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
+                {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', width: 1320, height: 1440 %}
+              </span>
+              {% if block.settings.video != blank %}
+                <button type="button" aria-label="Play {{ block.settings.creator | escape }} video" class="mod_before_after_AAAprW_Play-cursor" data-heresy-creator-play>
+                  <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M19.1328 11.0005L0.932812 21.5083L0.932812 0.492746L19.1328 11.0005Z" fill="white"></path></svg>
+                </button>
+              {% endif %}
+            </div>
+            {% if block.settings.video != blank %}
+              {{ block.settings.video | video_tag: class: 'heresy-creator-reviews__video', controls: true, loop: true, muted: true, playsinline: true, preload: 'metadata' }}
+            {% endif %}
+          </div>
+        </div>
+        <div class="mod_before_after_AAAprW_Right">
+          <div class="mod_before_after_AAAprW_ContentBlock">
+            <div class="mod_before_after_AAAprW_Title">{{ block.settings.quote }}</div>
+            <div class="mod_before_after_AAAprW_Notes">
+              <div class="mod_before_after_AAAprW_Note">
+                <h3 class="mod_before_after_AAAprW_Note__title">{{ section.settings.creator_label }}</h3>
+                <div class="mod_before_after_AAAprW_Note__subtitle"><p>{{ block.settings.creator }}</p></div>
+              </div>
+              <div class="mod_before_after_AAAprW_Note">
+                <h3 class="mod_before_after_AAAprW_Note__title">{{ block.settings.picks_heading }}</h3>
+                <div class="mod_before_after_AAAprW_Note__subtitle">{{ block.settings.picks }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <nav class="mod_before_after_AAAprW_Navigation" aria-label="Creator reviews">
+    {% for block in section.blocks %}
+      {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.jpg' %}
+      <button type="button" class="mod_before_after_AAAprW_Navigation__block{% if forloop.first %} heresy-is-selected{% endif %}" data-heresy-creator-go="{{ forloop.index0 }}" aria-label="Show {{ block.settings.creator | escape }} review" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+        <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
+          {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', width: 1320, height: 1440 %}
+        </span>
+      </button>
+    {% endfor %}
+  </nav>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy creator reviews",
+  "settings": [
+    {"type": "text", "id": "creator_label", "label": "Creator label", "default": "CREATOR"}
+  ],
+  "blocks": [
+    {
+      "type": "creator",
+      "name": "Creator review",
+      "settings": [
+        {"type": "text", "id": "creator", "label": "Creator", "default": "@gabbiesul"},
+        {"type": "richtext", "id": "quote", "label": "Quote", "default": "<p>“It’s creamy, buildable, and blendable which I really love.”</p>"},
+        {"type": "text", "id": "picks_heading", "label": "Picks heading", "default": "Gabbie's picks"},
+        {"type": "richtext", "id": "picks", "label": "Picks", "default": "<p>Lip Shape in Balance<br>Blush in Toasted Teddy<br>Lip Tint in Ribbon</p>"},
+        {"type": "image_picker", "id": "poster", "label": "Poster image"},
+        {"type": "video", "id": "video", "label": "Video"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Creator wearing peptide lip shape"},
+        {"type": "select", "id": "fallback", "label": "Bundled fallback", "options": [{"value": "gabbie", "label": "Gabbie"}, {"value": "bella", "label": "Bella"}, {"value": "ivy", "label": "Ivy"}, {"value": "kendall", "label": "Kendall"}, {"value": "ria", "label": "Ria"}], "default": "gabbie"}
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Heresy creator reviews",
+      "blocks": [
+        {"type": "creator", "settings": {"creator": "@gabbiesul", "quote": "<p>“It’s creamy, buildable, and blendable which I really love.”</p>", "picks_heading": "Gabbie's picks", "picks": "<p>Lip Shape in Balance<br>Blush in Toasted Teddy<br>Lip Tint in Ribbon</p>", "fallback": "gabbie"}},
+        {"type": "creator", "settings": {"creator": "@bellakrys", "quote": "<p>“There’s skincare infused in these… actually help to enhance lip volume and fullness.”</p>", "picks_heading": "Bella's picks", "picks": "<p>Lip Shape in Lift + Bend<br>Lip Tint in Toast</p>", "fallback": "bella"}},
+        {"type": "creator", "settings": {"creator": "@ivy4eva", "quote": "<p>“This is the ultimate my lips but better lip combo. I can confidently say that this is my new go-to lip.”</p>", "picks_heading": "ivy's picks", "picks": "<p>Lip Shape in Move<br>Lip Tint in Raspberry Jelly</p>", "fallback": "ivy"}},
+        {"type": "creator", "settings": {"creator": "@kendalldair", "quote": "<p>“The color builds so easily and it’s so easy to use. When I go over the lip, it really helps give it a poutier look.”</p>", "picks_heading": "kendall's picks", "picks": "<p>Lip Shape in Stretch<br>Blush in Sleepy Girl<br>Lip Treatment in Watermelon Slice</p>", "fallback": "kendall"}},
+        {"type": "creator", "settings": {"creator": "@ria.caeliya", "quote": "<p>“Usually I blend with my finger but not anymore because the Lip Shape comes with a little smudger at the back to give you that beautiful blend without making your fingers messy.”</p>", "picks_heading": "ria's picks", "picks": "<p>Lip Shape in Spin<br>Lip Tint in Toast</p>", "fallback": "ria"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

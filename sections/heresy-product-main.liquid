@@ -1,0 +1,359 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-product-main.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-product-main.js' | asset_url }}" defer></script>
+
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'heresy-product-form-' | append: section.id
+  assign media_blocks = section.blocks | where: 'type', 'media'
+  assign tab_blocks = section.blocks | where: 'type', 'tab'
+%}
+
+<section
+  class="heresy-product-main Product Product__new"
+  id="heresy-product-main-{{ section.id }}"
+  data-heresy-section="{{ section.id }}"
+  data-heresy-product
+  data-add-label="{{ section.settings.add_to_cart_label | escape }}"
+  data-sold-out-label="{{ section.settings.sold_out_label | escape }}"
+  data-currency="{{ cart.currency.iso_code | default: shop.currency | escape }}"
+>
+  <div class="heresy-product-main__layout">
+    <div class="Product-slider heresy-product-main__gallery" data-heresy-product-gallery>
+      <div class="Product-slider-thumbnails" aria-label="{{ 'Products media' | escape }}">
+        {% for block in media_blocks %}
+          {% liquid
+            assign thumbnail = block.settings.image
+            if block.settings.video != blank
+              assign thumbnail = block.settings.video.preview_image
+            elsif block.settings.mobile_video != blank
+              assign thumbnail = block.settings.mobile_video.preview_image
+            endif
+            case block.settings.fallback
+              when 'hero_1'
+                assign fallback_thumbnail = 'heresy-product-hero-1-desktop.jpg'
+              when 'hero_2'
+                assign fallback_thumbnail = 'heresy-product-hero-2-desktop.jpg'
+              when 'video_1'
+                assign fallback_thumbnail = 'heresy-product-video-1-poster.jpg'
+              else
+                assign fallback_thumbnail = 'heresy-product-video-2-poster.jpg'
+            endcase
+          %}
+          <button
+            type="button"
+            class="Product-slider-thumbnail js-slider-navigation{% if forloop.first %} Product-slider-thumbnail__active{% endif %}"
+            data-heresy-media-button="{{ forloop.index0 }}"
+            aria-label="Show media {{ forloop.index }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          >
+            {% render 'heresy-responsive-image', image: thumbnail, fallback_asset: fallback_thumbnail, alt: block.settings.alt, class: 'heresy-product-main__thumbnail-image', width: 160, height: 160 %}
+          </button>
+        {% endfor %}
+      </div>
+
+      <div class="heresy-product-main__media-track">
+        {% for block in media_blocks %}
+          {% liquid
+            case block.settings.fallback
+              when 'hero_1'
+                assign fallback_desktop = 'heresy-product-hero-1-desktop.jpg'
+                assign fallback_mobile = 'heresy-product-hero-1-mobile.jpg'
+                assign fallback_width = 2400
+                assign fallback_height = 1993
+              when 'hero_2'
+                assign fallback_desktop = 'heresy-product-hero-2-desktop.jpg'
+                assign fallback_mobile = 'heresy-product-hero-2-mobile.jpg'
+                assign fallback_width = 2400
+                assign fallback_height = 1993
+              when 'video_1'
+                assign fallback_desktop = 'heresy-product-video-1-poster.jpg'
+                assign fallback_mobile = fallback_desktop
+                assign fallback_width = 100
+                assign fallback_height = 100
+              else
+                assign fallback_desktop = 'heresy-product-video-2-poster.jpg'
+                assign fallback_mobile = fallback_desktop
+                assign fallback_width = 100
+                assign fallback_height = 100
+            endcase
+          %}
+          <div
+            class="Product-slider-image-container heresy-product-main__media{% if block.settings.mobile_video != blank %} heresy-has-mobile-video{% endif %}{% if forloop.first %} heresy-is-active{% endif %}"
+            data-heresy-media="{{ forloop.index0 }}"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.video != blank or block.settings.mobile_video != blank %}
+              {% if block.settings.video != blank %}
+                {{ block.settings.video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--desktop', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1600x' }}
+              {% else %}
+                <img src="{{ fallback_desktop | asset_url }}" class="heresy-product-main__hero-image heresy-product-main__video--desktop" width="{{ fallback_width }}" height="{{ fallback_height }}" loading="lazy" alt="{{ block.settings.alt | escape }}">
+              {% endif %}
+              {% if block.settings.mobile_video != blank %}
+                {{ block.settings.mobile_video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--mobile', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1024x' }}
+              {% endif %}
+            {% elsif block.settings.image != blank %}
+              <picture>
+                {% if block.settings.mobile_image != blank %}
+                  <source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 1024 }}">
+                {% endif %}
+                {{ block.settings.image | image_url: width: 2480 | image_tag: class: 'heresy-product-main__hero-image', loading: 'eager', widths: '640, 960, 1280, 1600, 2000, 2480', sizes: '(min-width: 990px) 67vw, 100vw', alt: block.settings.alt }}
+              </picture>
+            {% else %}
+              <picture>
+                <source media="(max-width: 749px)" srcset="{{ fallback_mobile | asset_url }}">
+                <img
+                  src="{{ fallback_desktop | asset_url }}"
+                  class="heresy-product-main__hero-image"
+                  width="{{ fallback_width }}"
+                  height="{{ fallback_height }}"
+                  {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+                  alt="{{ block.settings.alt | escape }}"
+                >
+              </picture>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="Product-slider-image-container heresy-product-main__media heresy-is-active">
+            {% render 'heresy-responsive-image', image: product.featured_image, fallback_asset: 'heresy-product-hero-1-desktop.jpg', alt: product.title, class: 'heresy-product-main__hero-image', loading: 'eager', width: 2400, height: 1993 %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="Product-main-card js-product-main-card heresy-product-main__card">
+      {% if section.settings.eyebrow != blank %}<p class="heresy-product-main__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="u-fontRektorat u-hSize--Medium Product-main-card-title">{{ product.title }}</h1>
+      <div class="Product-main-card-content-price-container u-noMargin">
+        <div class="Product-main-card-subtitle">
+          <div class="Product-main-card-subtitle-inner">{{ section.settings.subtitle }}</div>
+        </div>
+        <div class="heresy-product-main__price" aria-live="polite">
+          <span data-heresy-product-price>{{ current_variant.price | money }}</span>
+          <s data-heresy-product-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money }}</s>
+        </div>
+      </div>
+
+      {% if section.settings.use_product_description %}
+        <div class="Product-main-card-description u-pSize rte">{{ product.description }}</div>
+      {% elsif section.settings.description != blank %}
+        <div class="Product-main-card-description u-pSize rte">{{ section.settings.description }}</div>
+      {% endif %}
+      {% if section.settings.size_text != blank %}<p class="heresy-product-main__size">{{ section.settings.size_text }}</p>{% endif %}
+
+      {% form 'product', product, id: product_form_id, class: 'heresy-product-main__form', novalidate: 'novalidate' %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-heresy-variant-id>
+        <input type="hidden" name="quantity" value="1" data-heresy-quantity-input>
+
+        {% unless product.has_only_default_variant %}
+          <div class="Product-swatches-container js-product-swatches-container" data-heresy-options>
+            {% for option in product.options_with_values %}
+              <fieldset class="heresy-product-main__option" data-heresy-option="{{ option.position | minus: 1 }}">
+                <legend class="Product-swatches-container-title u-pSize u-noMargin">
+                  {{ option.name }}:
+                  <span data-heresy-option-label="{{ option.position | minus: 1 }}">{{ option.selected_value }}</span>
+                </legend>
+                <div class="Product-swatches-popup__group" role="list">
+                  {% for value in option.values %}
+                    {% liquid
+                      assign swatch_color = '#b68574'
+                      assign normalized_value = value | downcase
+                      case normalized_value
+                        when 'lift'
+                          assign swatch_color = '#c18d93'
+                        when 'push'
+                          assign swatch_color = '#b68574'
+                        when 'press'
+                          assign swatch_color = '#be7984'
+                        when 'bend'
+                          assign swatch_color = '#b6806a'
+                        when 'squeeze'
+                          assign swatch_color = '#bb7055'
+                        when 'lunge'
+                          assign swatch_color = '#ab7265'
+                        when 'twist'
+                          assign swatch_color = '#a57462'
+                        when 'balance'
+                          assign swatch_color = '#906650'
+                        when 'lean'
+                          assign swatch_color = '#96665d'
+                        when 'jump'
+                          assign swatch_color = '#874936'
+                        when 'stretch'
+                          assign swatch_color = '#81594a'
+                        when 'flex'
+                          assign swatch_color = '#5c4237'
+                        when 'spin'
+                          assign swatch_color = '#4c3941'
+                        when 'move'
+                          assign swatch_color = '#463832'
+                      endcase
+                    %}
+                    <button
+                      type="button"
+                      class="heresy-product-main__option-value{% if value.selected %} heresy-is-selected{% endif %}"
+                      data-heresy-option-value="{{ value | escape }}"
+                      aria-pressed="{% if value.selected %}true{% else %}false{% endif %}"
+                      role="listitem"
+                    >
+                      <span class="Product-swatches-popup-color" style="background-color: {{ swatch_color }};"></span>
+                      <span>{{ value }}</span>
+                    </button>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        {% if section.settings.show_quantity %}
+          <div class="heresy-product-main__quantity" data-heresy-quantity>
+            <span>{{ section.settings.quantity_label }}</span>
+            <button type="button" data-heresy-quantity-change="-1" aria-label="Decrease quantity">−</button>
+            <output data-heresy-quantity-output>1</output>
+            <button type="button" data-heresy-quantity-change="1" aria-label="Increase quantity">+</button>
+          </div>
+        {% endif %}
+
+        <div class="Product-main-card-cta js-sticky-bar-trigger js-available">
+          <button
+            type="submit"
+            name="add"
+            class="Button Button--primary heresy-product-main__add"
+            data-heresy-add-button
+            {% unless current_variant.available %}disabled{% endunless %}
+          >
+            <span data-heresy-add-label>{% if current_variant.available %}{{ section.settings.add_to_cart_label }}{% else %}{{ section.settings.sold_out_label }}{% endif %}</span>
+            <span aria-hidden="true">—</span>
+            <span data-heresy-product-price>{{ current_variant.price | money }}</span>
+          </button>
+        </div>
+      {% endform %}
+
+      {% if tab_blocks.size > 0 %}
+        <div class="Product-tabs">
+          {% for block in tab_blocks %}
+            <details class="Product-tab" {{ block.shopify_attributes }}>
+              <summary class="Product-tab-toggle-container">
+                <span>{{ block.settings.heading }}</span>
+                <span class="Product-tab-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="u-pSize Product-tab-content-container" role="region">
+                <div class="u-pSize Product-tab-content rte">{{ block.settings.content }}</div>
+                {% if block.settings.link != blank %}<a class="heresy-product-main__tab-link" href="{{ block.settings.link }}">{{ block.settings.link_label }}</a>{% endif %}
+              </div>
+            </details>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.enable_sticky_bar %}
+    <div class="Product-sticky-bar js-sticky-bar" data-heresy-sticky-bar>
+      <div class="Product-sticky-bar-content-container">
+        <div class="Product-sticky-bar-content">
+          <div>
+            <strong>{{ product.title }}</strong>
+            <span data-heresy-sticky-variant>{{ current_variant.title }}</span>
+          </div>
+          <div class="Product-sticky-cta js-available">
+            <button
+              type="submit"
+              form="{{ product_form_id }}"
+              name="add"
+              class="Button Button--primary"
+              data-heresy-sticky-add
+              {% unless current_variant.available %}disabled{% endunless %}
+            >
+              <span data-heresy-sticky-label>{% if current_variant.available %}{{ section.settings.add_to_cart_label }}{% else %}{{ section.settings.sold_out_label }}{% endif %}</span>
+              <span aria-hidden="true">—</span>
+              <span data-heresy-product-price>{{ current_variant.price | money }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <script type="application/json" data-heresy-product-variants>
+    [
+      {% for variant in product.variants %}
+        {
+          "id": {{ variant.id | json }},
+          "title": {{ variant.title | json }},
+          "available": {{ variant.available | json }},
+          "options": {{ variant.options | json }},
+          "price": {{ variant.price | json }},
+          "formatted_price": {{ variant.price | money | json }},
+          "compare_at_price": {{ variant.compare_at_price | default: 0 | json }},
+          "formatted_compare_at_price": {% if variant.compare_at_price != blank %}{{ variant.compare_at_price | money | json }}{% else %}""{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy product main",
+  "tag": "section",
+  "class": "heresy-product-main-section",
+  "settings": [
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow"},
+    {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "The contouring lip shaper"},
+    {"type": "checkbox", "id": "use_product_description", "label": "Use product description", "default": true},
+    {"type": "richtext", "id": "description", "label": "Custom description", "default": "<p>A creamy lip contour that glides on to visibly shape and enhance lips.</p>"},
+    {"type": "text", "id": "size_text", "label": "Size", "default": "Size: 0.75 g / 0.026 oz."},
+    {"type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "ADD TO BAG"},
+    {"type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "SOLD OUT"},
+    {"type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false},
+    {"type": "text", "id": "quantity_label", "label": "Quantity label", "default": "Quantity"},
+    {"type": "checkbox", "id": "enable_sticky_bar", "label": "Enable sticky add bar", "default": true}
+  ],
+  "blocks": [
+    {
+      "type": "media",
+      "name": "Gallery media",
+      "settings": [
+        {"type": "image_picker", "id": "image", "label": "Desktop image"},
+        {"type": "image_picker", "id": "mobile_image", "label": "Mobile image"},
+        {"type": "video", "id": "video", "label": "Desktop Shopify-hosted video"},
+        {"type": "video", "id": "mobile_video", "label": "Mobile Shopify-hosted video"},
+        {"type": "text", "id": "alt", "label": "Alt text", "default": "Peptide lip shape product media"},
+        {"type": "select", "id": "fallback", "label": "Bundled fallback", "options": [
+          {"value": "hero_1", "label": "Hero image 1"},
+          {"value": "hero_2", "label": "Hero image 2"},
+          {"value": "video_1", "label": "Video poster 1"},
+          {"value": "video_2", "label": "Video poster 2"}
+        ], "default": "hero_1"}
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "Information tab",
+      "settings": [
+        {"type": "text", "id": "heading", "label": "Heading", "default": "Benefits"},
+        {"type": "richtext", "id": "content", "label": "Content", "default": "<p>Add product information here.</p>"},
+        {"type": "url", "id": "link", "label": "Optional link"},
+        {"type": "text", "id": "link_label", "label": "Link label", "default": "SEE FULL INGREDIENTS"}
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Heresy product main",
+      "blocks": [
+        {"type": "media", "settings": {"fallback": "hero_1", "alt": "Peptide lip shape hero image one"}},
+        {"type": "media", "settings": {"fallback": "hero_2", "alt": "Peptide lip shape hero image two"}},
+        {"type": "media", "settings": {"fallback": "video_1", "alt": "Hailey with peptide lip shape"}},
+        {"type": "media", "settings": {"fallback": "video_2", "alt": "Peptide lip shape push video"}},
+        {"type": "tab", "settings": {"heading": "Benefits", "content": "<ul><li>Creamy color glides on for a contoured effect</li><li>Clinically proven to enhance the appearance of lip fullness</li><li>Helps lips feel smoother and more hydrated over time</li></ul>"}},
+        {"type": "tab", "settings": {"heading": "Application", "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. Follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"}},
+        {"type": "tab", "settings": {"heading": "Key Ingredients", "content": "<p><strong>PEPTIDE</strong> — a short chain of 3 amino acids that helps soften lips for a visibly smoother appearance and is known to boost hydration.</p><p><strong>FENUGREEK EXTRACT</strong> — derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance.</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

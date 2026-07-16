@@ -1,0 +1,74 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-ugc-video.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-ugc-video.js' | asset_url }}" defer></script>
+
+<section class="heresy-ugc-video" data-heresy-section="{{ section.id }}" data-heresy-ugc>
+  {% if section.settings.heading != blank %}<h2 class="heresy-ugc-video__heading">{{ section.settings.heading }}</h2>{% endif %}
+  <div class="heresy-ugc-video__track">
+    {% for block in section.blocks %}
+      {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.jpg' %}
+      <article class="heresy-ugc-video__card" {{ block.shopify_attributes }}>
+        <div class="heresy-ugc-video__media">
+          <div class="heresy-ugc-video__poster" data-heresy-ugc-poster>
+            {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', width: 1320, height: 1440 %}
+            {% if block.settings.video != blank %}
+              <button type="button" class="heresy-ugc-video__play" data-heresy-ugc-play aria-label="Play {{ block.settings.title | escape }} video">
+                <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M19.1328 11.0005L0.932812 21.5083L0.932812 0.492746L19.1328 11.0005Z" fill="currentColor"></path></svg>
+              </button>
+            {% endif %}
+          </div>
+          {% if block.settings.video != blank %}
+            {{ block.settings.video | video_tag: class: 'heresy-ugc-video__video', controls: true, loop: true, muted: true, playsinline: true, preload: 'metadata', image_size: '1320x' }}
+          {% endif %}
+        </div>
+        {% if block.settings.title != blank or block.settings.product != blank %}
+          <div class="heresy-ugc-video__meta">
+            <span>{{ block.settings.title }}</span>
+            {% if block.settings.product != blank %}<a href="{{ block.settings.product.url }}">{{ section.settings.shop_label }}</a>{% endif %}
+          </div>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy UGC videos",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading"},
+    {"type": "text", "id": "shop_label", "label": "Product link label", "default": "SHOP"}
+  ],
+  "blocks": [
+    {
+      "type": "video_card",
+      "name": "Video card",
+      "settings": [
+        {"type": "video", "id": "video", "label": "Shopify-hosted video"},
+        {"type": "image_picker", "id": "poster", "label": "Poster"},
+        {"type": "product", "id": "product", "label": "Linked product"},
+        {"type": "text", "id": "title", "label": "Caption", "default": "peptide lip shape"},
+        {"type": "text", "id": "alt", "label": "Poster alt text", "default": "Creator wearing peptide lip shape"},
+        {"type": "select", "id": "fallback", "label": "Bundled poster", "options": [
+          {"value": "gabbie", "label": "Gabbie"},
+          {"value": "bella", "label": "Bella"},
+          {"value": "ivy", "label": "Ivy"},
+          {"value": "kendall", "label": "Kendall"},
+          {"value": "ria", "label": "Ria"}
+        ], "default": "gabbie"}
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Heresy UGC videos",
+      "blocks": [
+        {"type": "video_card", "settings": {"fallback": "gabbie"}},
+        {"type": "video_card", "settings": {"fallback": "bella"}},
+        {"type": "video_card", "settings": {"fallback": "ivy"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,122 @@
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider {
+  grid-gap: 1rem;
+  border-radius: .75rem;
+  flex-flow: column-reverse;
+  display: flex;
+  overflow: hidden;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider > div {
+  background: #f1f0ed;
+  border-radius: .75rem;
+  overflow: hidden;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-wrapper {
+  text-align: center;
+  color: #67645e;
+  background-color: #f1f0ed;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnails {
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  display: grid;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnail {
+  cursor: pointer;
+  border-radius: .75rem;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnail .Image {
+  position: absolute;
+  inset: 0;
+}
+
+.heresy-application-steps .heresy-application-steps__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-content {
+  text-align: left;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  display: flex;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-content p { display: inline; }
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-content-index { font-size: 1.2rem; }
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-content-container {
+  text-align: left;
+  flex-flow: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0 0;
+  display: flex;
+}
+
+.heresy-application-steps .heresy-application-steps__content-slides .swiper-slide,
+.heresy-application-steps .heresy-application-steps__image-slides .swiper-slide {
+  display: none;
+}
+
+.heresy-application-steps .heresy-application-steps__content-slides .heresy-is-active,
+.heresy-application-steps .heresy-application-steps__image-slides .heresy-is-active {
+  display: block;
+}
+
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-images-container {
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heresy-application-steps .heresy-application-steps__image-slides,
+.heresy-application-steps .heresy-application-steps__image-slides .swiper-slide,
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-image-container,
+.heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-image-container .Image {
+  width: 100%;
+  height: 100%;
+}
+
+@media print, screen and (min-width: 1040px) {
+  .heresy-application-steps { min-height: 50vw; }
+}
+
+@media print, screen and (min-width: 820px) {
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider {
+    grid-gap: 2.25vw;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+  }
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-wrapper { padding: 2rem; }
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnails { grid-template-columns: 1fr 1fr 1fr; }
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-content-index { margin-right: .75rem; }
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-images-container { height: 0; padding-bottom: 110%; }
+  .heresy-application-steps .heresy-application-steps__image-slides { position: absolute; inset: 0; }
+}
+
+@media print, screen and (max-width: 819px) {
+  .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnail:nth-child(3) {
+    grid-column: 1 / span 2;
+    padding-bottom: 50%;
+  }
+}

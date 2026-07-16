@@ -1,0 +1,100 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-recycling-guide.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-recycling-guide.js' | asset_url }}" defer></script>
+
+<section class="heresy-recycling-guide Slider-with-video-container Section" data-heresy-section="{{ section.id }}" data-heresy-recycling>
+  <div class="heresy-recycling-guide__slides" aria-live="polite">
+    {% for block in section.blocks %}
+      {% assign desktop_asset = block.settings.fallback | prepend: 'heresy-recycling-' | append: '-desktop.' %}
+      {% assign mobile_asset = block.settings.fallback | prepend: 'heresy-recycling-' | append: '-mobile.' %}
+      {% if block.settings.fallback == 'packaging' %}
+        {% assign desktop_asset = desktop_asset | append: 'png' %}
+        {% assign mobile_asset = mobile_asset | append: 'png' %}
+      {% else %}
+        {% assign desktop_asset = desktop_asset | append: 'jpg' %}
+        {% assign mobile_asset = mobile_asset | append: 'jpg' %}
+      {% endif %}
+      <article class="heresy-recycling-guide__slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-recycling-slide="{{ forloop.index0 }}" data-heresy-recycling-kind="{{ block.settings.fallback }}" {{ block.shopify_attributes }}>
+        <div class="Slider-with-video Image-position--RIGHT Image-position--image">
+          <div class="Slider-with-video-content-wrapper">
+            <h2 class="u-noMargin u-hSize Slider-with-video-content-title">{{ block.settings.title }}</h2>
+            <div>{{ block.settings.body }}</div>
+          </div>
+          <div class="Slider-with-video-image-container u-showMobile Slider-with-video-image-container--desktop">
+            {% if block.settings.callout_one_title != blank %}
+              <div class="product-description-text product-description-text--left" style="top: {{ block.settings.callout_one_y }}%; left: {{ block.settings.callout_one_x }}%;">
+                <p class="u-pSize u-bold description-title">{{ block.settings.callout_one_title }}<span class="description-title__arrow"></span></p>
+                <div class="u-pSize">{{ block.settings.callout_one_text }}</div>
+              </div>
+            {% endif %}
+            {% if block.settings.callout_two_title != blank %}
+              <div class="product-description-text product-description-text--right" style="top: {{ block.settings.callout_two_y }}%; right: {{ block.settings.callout_two_x }}%;">
+                <p class="u-pSize u-bold description-title">{{ block.settings.callout_two_title }}<span class="description-title__arrow"></span></p>
+                <div class="u-pSize">{{ block.settings.callout_two_text }}</div>
+              </div>
+            {% endif %}
+            <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
+              {% render 'heresy-responsive-image', image: block.settings.desktop_image, fallback_asset: desktop_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 1320, height: 1440 %}
+            </span>
+          </div>
+          <div class="Slider-with-video-image-container u-hideMobile__flex Slider-with-video-image-container--mobile">
+            <span class="Image Image--mobile o-placeholder bg-full-height skip-animation">
+              {% render 'heresy-responsive-image', image: block.settings.mobile_image, fallback_asset: mobile_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 1024, height: 1440 %}
+            </span>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="heresy-recycling-guide__navigation">
+    {% for block in section.blocks %}
+      <button type="button" class="Slider-with-video-backdrop{% if forloop.first %} heresy-is-selected{% endif %}" data-heresy-recycling-go="{{ forloop.index0 }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+        <span class="Slider-with-video-backdrop-content">
+          <span class="u-fontRektorat u-noMargin">{{ block.settings.navigation_title }}</span>
+          <span class="u-pSize u-bold">{{ block.settings.navigation_label }}</span>
+        </span>
+      </button>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy recycling",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Recycling panel",
+      "settings": [
+        {"type": "inline_richtext", "id": "title", "label": "Title", "default": "less harm, more shape."},
+        {"type": "richtext", "id": "body", "label": "Body", "default": "<p>Peptide Lip Shape packaging is made with upcycled post-consumer (PCR) materials.</p>"},
+        {"type": "text", "id": "navigation_title", "label": "Navigation title", "default": "how to recycle"},
+        {"type": "text", "id": "navigation_label", "label": "Navigation label", "default": "click here"},
+        {"type": "image_picker", "id": "desktop_image", "label": "Desktop image"},
+        {"type": "image_picker", "id": "mobile_image", "label": "Mobile image"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Peptide lip shape packaging"},
+        {"type": "select", "id": "fallback", "label": "Bundled fallback", "options": [{"value": "packaging", "label": "Packaging"}, {"value": "program", "label": "Recycling program"}], "default": "packaging"},
+        {"type": "text", "id": "callout_one_title", "label": "First callout title", "default": "Unit Carton"},
+        {"type": "richtext", "id": "callout_one_text", "label": "First callout", "default": "<p>100% recyclable and made from FSC-certified paper</p>"},
+        {"type": "range", "id": "callout_one_x", "label": "First callout horizontal", "min": 0, "max": 50, "step": 1, "unit": "%", "default": 4},
+        {"type": "range", "id": "callout_one_y", "label": "First callout vertical", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 45},
+        {"type": "text", "id": "callout_two_title", "label": "Second callout title", "default": "Cap + Shaper"},
+        {"type": "richtext", "id": "callout_two_text", "label": "Second callout", "default": "<p>30% PCR PP #5</p>"},
+        {"type": "range", "id": "callout_two_x", "label": "Second callout horizontal", "min": 0, "max": 50, "step": 1, "unit": "%", "default": 4},
+        {"type": "range", "id": "callout_two_y", "label": "Second callout vertical", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50}
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Heresy recycling",
+      "blocks": [
+        {"type": "panel", "settings": {"title": "less harm, more shape.", "body": "<p>Peptide Lip Shape packaging is made with upcycled post-consumer (PCR) materials.</p><p>*Please note, we're updating our packaging and some shades may not include a smudger.</p>", "navigation_title": "how to recycle", "navigation_label": "click here", "fallback": "packaging"}},
+        {"type": "panel", "settings": {"title": "recycling 101", "body": "<p>We'll recycle your empties for you. Here's how it works:</p><p>1. Gather at least 3 empty products you'd like us to recycle. Clean out any remainder of the formula and place them in a small box.</p><p>2. Contact us with the subject line 'rhode recycling' for a complimentary shipping label.</p><p>3. Drop off at your closest mailbox or USPS location and you're all set. ♡</p><p><em>We work with our recycling partner to process your empties into raw materials that can be reused instead of sent to landfills.</em></p>", "navigation_title": "packaging", "navigation_label": "see details", "fallback": "program", "callout_one_title": "", "callout_one_text": "<p></p>", "callout_two_title": "", "callout_two_text": "<p></p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

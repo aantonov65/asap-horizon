@@ -1,0 +1,32 @@
+.heresy-product-recommendations {
+  background: #f1f0ed;
+  border-radius: .75rem;
+  color: #67645e;
+  min-height: 8rem;
+  overflow: hidden;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.heresy-product-recommendations:empty { display: none; }
+.heresy-product-recommendations__header { align-items: end; display: flex; justify-content: space-between; margin-bottom: 1.25rem; }
+.heresy-product-recommendations__header h2 { font-family: HeresyRektorat, serif; font-size: clamp(3rem, 6vw, 6rem); font-weight: 400; line-height: .85; margin: 0; }
+.heresy-product-recommendations__header span { font-size: .75rem; text-transform: uppercase; }
+.heresy-product-recommendations__track { display: grid; gap: .5rem; grid-auto-columns: minmax(17rem, 1fr); grid-auto-flow: column; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.heresy-product-recommendations__track::-webkit-scrollbar { display: none; }
+.heresy-product-recommendations__card { min-width: 0; scroll-snap-align: start; }
+.heresy-product-recommendations__card a { color: inherit; text-decoration: none; }
+.heresy-product-recommendations__image-wrap { aspect-ratio: 1; background: #e6e3dc; border-radius: .65rem; overflow: hidden; }
+.heresy-product-recommendations__image { display: block; height: 100%; object-fit: cover; transition: transform 320ms ease; width: 100%; }
+.heresy-product-recommendations__card a:hover .heresy-product-recommendations__image { transform: scale(1.02); }
+.heresy-product-recommendations__meta { align-items: start; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem .25rem; }
+.heresy-product-recommendations__meta h3 { font-size: .9rem; font-weight: 400; margin: 0; }
+.heresy-product-recommendations__meta span { flex-shrink: 0; font-size: .9rem; }
+.heresy-product-recommendations__loading { display: block; padding: 3rem; text-align: center; }
+
+@media (max-width: 749px) {
+  .heresy-product-recommendations__track { grid-auto-columns: 75vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heresy-product-recommendations__image { transition: none; }
+}

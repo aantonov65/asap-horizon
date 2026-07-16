@@ -1,0 +1,30 @@
+{% doc %}
+Renders a merchant-selected image with a bundled Heresy asset fallback.
+
+@param {image} image - Optional Shopify image setting.
+@param {string} fallback_asset - Bundled asset filename.
+@param {string} alt - Alternative text.
+@param {string} class - CSS classes for the image.
+@param {string} [loading] - Image loading strategy.
+@param {number} [width] - Fallback intrinsic width.
+@param {number} [height] - Fallback intrinsic height.
+{% enddoc %}
+
+{% liquid
+  assign image_loading = loading | default: 'lazy'
+  assign image_width = width | default: 1600
+  assign image_height = height | default: 1600
+%}
+
+{% if image != blank %}
+  {{ image | image_url: width: 2480 | image_tag: class: class, loading: image_loading, widths: '320, 480, 640, 800, 960, 1024, 1280, 1440, 1800, 2000, 2480', sizes: '100vw', alt: alt }}
+{% else %}
+  <img
+    src="{{ fallback_asset | asset_url }}"
+    class="{{ class }}"
+    width="{{ image_width }}"
+    height="{{ image_height }}"
+    loading="{{ image_loading }}"
+    alt="{{ alt | escape }}"
+  >
+{% endif %}

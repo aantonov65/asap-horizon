@@ -1,0 +1,712 @@
+{
+  "sections": {
+    "main": {
+      "type": "heresy-product-main",
+      "settings": {},
+      "blocks": {
+        "media_01": {
+          "type": "media",
+          "settings": {
+            "fallback": "hero_1",
+            "alt": "Peptide lip shape hero image one"
+          }
+        },
+        "media_02": {
+          "type": "media",
+          "settings": {
+            "fallback": "hero_2",
+            "alt": "Peptide lip shape hero image two"
+          }
+        },
+        "media_03": {
+          "type": "media",
+          "settings": {
+            "fallback": "video_1",
+            "alt": "Hailey with peptide lip shape"
+          }
+        },
+        "media_04": {
+          "type": "media",
+          "settings": {
+            "fallback": "video_2",
+            "alt": "Peptide lip shape push video"
+          }
+        },
+        "tab_05": {
+          "type": "tab",
+          "settings": {
+            "heading": "Benefits",
+            "content": "<ul><li>Creamy color glides on for a contoured effect</li><li>Clinically proven to enhance the appearance of lip fullness</li><li>Helps lips feel smoother and more hydrated over time</li></ul>"
+          }
+        },
+        "tab_06": {
+          "type": "tab",
+          "settings": {
+            "heading": "Application",
+            "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. Follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"
+          }
+        },
+        "tab_07": {
+          "type": "tab",
+          "settings": {
+            "heading": "Key Ingredients",
+            "content": "<p><strong>PEPTIDE</strong> — a short chain of 3 amino acids that helps soften lips for a visibly smoother appearance and is known to boost hydration.</p><p><strong>FENUGREEK EXTRACT</strong> — derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "media_01",
+        "media_02",
+        "media_03",
+        "media_04",
+        "tab_05",
+        "tab_06",
+        "tab_07"
+      ]
+    },
+    "meet_shades": {
+      "type": "heresy-meet-shades",
+      "settings": {},
+      "blocks": {
+        "shade_01": {
+          "type": "shade",
+          "settings": {
+            "title": "lift",
+            "description": "soft neutral pink",
+            "color": "#c18d93",
+            "fallback": "lift"
+          }
+        },
+        "shade_02": {
+          "type": "shade",
+          "settings": {
+            "title": "push",
+            "description": "soft neutral beige",
+            "color": "#b68574",
+            "fallback": "push"
+          }
+        },
+        "shade_03": {
+          "type": "shade",
+          "settings": {
+            "title": "press",
+            "description": "warm pinky mauve",
+            "color": "#be7984",
+            "fallback": "press"
+          }
+        },
+        "shade_04": {
+          "type": "shade",
+          "settings": {
+            "title": "bend",
+            "description": "soft peachy beige",
+            "color": "#b6806a",
+            "fallback": "bend"
+          }
+        },
+        "shade_05": {
+          "type": "shade",
+          "settings": {
+            "title": "squeeze",
+            "description": "cool taupe",
+            "color": "#bb7055",
+            "fallback": "squeeze"
+          }
+        },
+        "shade_06": {
+          "type": "shade",
+          "settings": {
+            "title": "lunge",
+            "description": "rosy beige",
+            "color": "#ab7265",
+            "fallback": "lunge"
+          }
+        },
+        "shade_07": {
+          "type": "shade",
+          "settings": {
+            "title": "twist",
+            "description": "warm taupe",
+            "color": "#a57462",
+            "fallback": "twist"
+          }
+        },
+        "shade_08": {
+          "type": "shade",
+          "settings": {
+            "title": "balance",
+            "description": "caramel brown",
+            "color": "#906650",
+            "fallback": "balance"
+          }
+        },
+        "shade_09": {
+          "type": "shade",
+          "settings": {
+            "title": "lean",
+            "description": "warm medium brown",
+            "color": "#96665d",
+            "fallback": "lean"
+          }
+        },
+        "shade_10": {
+          "type": "shade",
+          "settings": {
+            "title": "jump",
+            "description": "chocolate brown",
+            "color": "#874936",
+            "fallback": "jump"
+          }
+        },
+        "shade_11": {
+          "type": "shade",
+          "settings": {
+            "title": "stretch",
+            "description": "neutral mocha brown",
+            "color": "#81594a",
+            "fallback": "stretch"
+          }
+        },
+        "shade_12": {
+          "type": "shade",
+          "settings": {
+            "title": "flex",
+            "description": "rich neutral brown",
+            "color": "#5c4237",
+            "fallback": "flex"
+          }
+        },
+        "shade_13": {
+          "type": "shade",
+          "settings": {
+            "title": "spin",
+            "description": "rich plum brown",
+            "color": "#4c3941",
+            "fallback": "spin"
+          }
+        },
+        "shade_14": {
+          "type": "shade",
+          "settings": {
+            "title": "move",
+            "description": "deep cool brown",
+            "color": "#463832",
+            "fallback": "move"
+          }
+        }
+      },
+      "block_order": [
+        "shade_01",
+        "shade_02",
+        "shade_03",
+        "shade_04",
+        "shade_05",
+        "shade_06",
+        "shade_07",
+        "shade_08",
+        "shade_09",
+        "shade_10",
+        "shade_11",
+        "shade_12",
+        "shade_13",
+        "shade_14"
+      ]
+    },
+    "claims": {
+      "type": "heresy-product-claims",
+      "settings": {},
+      "blocks": {
+        "claim_01": {
+          "type": "claim",
+          "settings": {
+            "title": "GOOD FOR:",
+            "content": "<p>All skin types</p>"
+          }
+        },
+        "claim_02": {
+          "type": "claim",
+          "settings": {
+            "title": "FEELS LIKE:",
+            "content": "<p>A creamy texture that glides on effortlessly</p>"
+          }
+        },
+        "claim_03": {
+          "type": "claim",
+          "settings": {
+            "title": "LOOKS LIKE:",
+            "content": "<p>A soft-focus contour that enhances your lips</p>"
+          }
+        },
+        "claim_04": {
+          "type": "claim",
+          "settings": {
+            "title": "SMELLS LIKE:",
+            "content": "<p>Fragrance-Free</p>"
+          }
+        },
+        "claim_05": {
+          "type": "claim",
+          "settings": {
+            "title": "FYI:",
+            "content": "<p>Cruelty-Free • Vegan • Gluten-Free<br>Dermatologist-Tested</p>"
+          }
+        }
+      },
+      "block_order": [
+        "claim_01",
+        "claim_02",
+        "claim_03",
+        "claim_04",
+        "claim_05"
+      ]
+    },
+    "ugc_primary": {
+      "type": "heresy-ugc-video",
+      "settings": {},
+      "blocks": {
+        "video_card_01": {
+          "type": "video_card",
+          "settings": {
+            "fallback": "gabbie"
+          }
+        }
+      },
+      "block_order": [
+        "video_card_01"
+      ]
+    },
+    "ugc_secondary": {
+      "type": "heresy-ugc-video",
+      "settings": {},
+      "blocks": {
+        "video_card_01": {
+          "type": "video_card",
+          "settings": {
+            "fallback": "ivy"
+          }
+        }
+      },
+      "block_order": [
+        "video_card_01"
+      ]
+    },
+    "ingredients": {
+      "type": "heresy-key-ingredients",
+      "settings": {},
+      "blocks": {
+        "ingredient_01": {
+          "type": "ingredient",
+          "settings": {
+            "title": "peptide",
+            "description": "<p>a short chain of 3 amino acids that help soften lips for a visibly smoother appearance and are known to boost hydration</p>"
+          }
+        },
+        "ingredient_02": {
+          "type": "ingredient",
+          "settings": {
+            "title": "FENUGREEK EXTRACT",
+            "description": "<p>derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_01",
+        "ingredient_02"
+      ]
+    },
+    "application": {
+      "type": "heresy-application-steps",
+      "settings": {},
+      "blocks": {
+        "step_01": {
+          "type": "step",
+          "settings": {
+            "eyebrow": "APPLICATION",
+            "text": "<p>Glide Peptide Lip Shape along the outline of your lips.</p>",
+            "fallback": "step_1"
+          }
+        },
+        "step_02": {
+          "type": "step",
+          "settings": {
+            "eyebrow": "APPLICATION",
+            "text": "<p>Use your finger to diffuse the color.</p>",
+            "fallback": "step_2"
+          }
+        },
+        "step_03": {
+          "type": "step",
+          "settings": {
+            "eyebrow": "APPLICATION",
+            "text": "<p>You can follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>",
+            "fallback": "step_3"
+          }
+        }
+      },
+      "block_order": [
+        "step_01",
+        "step_02",
+        "step_03"
+      ]
+    },
+    "study_results": {
+      "type": "heresy-study-results",
+      "settings": {},
+      "blocks": {
+        "result_01": {
+          "type": "result",
+          "settings": {
+            "group": "immediate",
+            "result_type": "consumer",
+            "value": "94%",
+            "claim": "<p>AGREED THE FORMULA APPLIES EVENLY</p>"
+          }
+        },
+        "result_02": {
+          "type": "result",
+          "settings": {
+            "group": "immediate",
+            "result_type": "consumer",
+            "value": "91%",
+            "claim": "<p>AGREED THE TEXTURE GLIDES ON SMOOTHLY</p>"
+          }
+        },
+        "result_03": {
+          "type": "result",
+          "settings": {
+            "group": "immediate",
+            "result_type": "consumer",
+            "value": "91%",
+            "claim": "<p>AGREED THEIR LIPS LOOK MORE DEFINED</p>"
+          }
+        },
+        "result_04": {
+          "type": "result",
+          "settings": {
+            "group": "immediate",
+            "result_type": "consumer",
+            "value": "88%",
+            "claim": "<p>AGREED THEIR LIP BORDER LOOKS MORE CONTOURED</p>"
+          }
+        },
+        "result_05": {
+          "type": "result",
+          "settings": {
+            "group": "four_week",
+            "result_type": "consumer",
+            "value": "100%",
+            "claim": "<p>AGREED LIPS FEEL SOFTER AND SMOOTHER</p>"
+          }
+        },
+        "result_06": {
+          "type": "result",
+          "settings": {
+            "group": "four_week",
+            "result_type": "consumer",
+            "value": "97%",
+            "claim": "<p>AGREED LIPS FEEL MORE HYDRATED</p>"
+          }
+        },
+        "result_07": {
+          "type": "result",
+          "settings": {
+            "group": "four_week",
+            "result_type": "consumer",
+            "value": "97%",
+            "claim": "<p>AGREED IT IMPROVED OVERALL LIP CONDITION</p>"
+          }
+        },
+        "result_08": {
+          "type": "result",
+          "settings": {
+            "group": "four_week",
+            "result_type": "consumer",
+            "value": "94%",
+            "claim": "<p>AGREED LIPS APPEAR FIRMER</p>"
+          }
+        },
+        "result_09": {
+          "type": "result",
+          "settings": {
+            "group": "immediate",
+            "result_type": "clinical",
+            "value": "clinical results",
+            "claim": "<p>Peptide Lip Shape is clinically proven to enhance the appearance of lip fullness instantly and over time.</p>"
+          }
+        },
+        "result_10": {
+          "type": "result",
+          "settings": {
+            "group": "four_week",
+            "result_type": "clinical",
+            "value": "clinical results",
+            "claim": "<p>Peptide Lip Shape is clinically proven to enhance the appearance of lip fullness instantly and over time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_01",
+        "result_02",
+        "result_03",
+        "result_04",
+        "result_05",
+        "result_06",
+        "result_07",
+        "result_08",
+        "result_09",
+        "result_10"
+      ]
+    },
+    "image_banner": {
+      "type": "heresy-image-banner",
+      "settings": {}
+    },
+    "creator_reviews": {
+      "type": "heresy-creator-reviews",
+      "settings": {},
+      "blocks": {
+        "creator_01": {
+          "type": "creator",
+          "settings": {
+            "creator": "@gabbiesul",
+            "quote": "<p>“It’s creamy, buildable, and blendable which I really love.”</p>",
+            "picks_heading": "Gabbie's picks",
+            "picks": "<p>Lip Shape in Balance<br>Blush in Toasted Teddy<br>Lip Tint in Ribbon</p>",
+            "fallback": "gabbie"
+          }
+        },
+        "creator_02": {
+          "type": "creator",
+          "settings": {
+            "creator": "@bellakrys",
+            "quote": "<p>“There’s skincare infused in these… actually help to enhance lip volume and fullness.”</p>",
+            "picks_heading": "Bella's picks",
+            "picks": "<p>Lip Shape in Lift + Bend<br>Lip Tint in Toast</p>",
+            "fallback": "bella"
+          }
+        },
+        "creator_03": {
+          "type": "creator",
+          "settings": {
+            "creator": "@ivy4eva",
+            "quote": "<p>“This is the ultimate my lips but better lip combo. I can confidently say that this is my new go-to lip.”</p>",
+            "picks_heading": "ivy's picks",
+            "picks": "<p>Lip Shape in Move<br>Lip Tint in Raspberry Jelly</p>",
+            "fallback": "ivy"
+          }
+        },
+        "creator_04": {
+          "type": "creator",
+          "settings": {
+            "creator": "@kendalldair",
+            "quote": "<p>“The color builds so easily and it’s so easy to use. When I go over the lip, it really helps give it a poutier look.”</p>",
+            "picks_heading": "kendall's picks",
+            "picks": "<p>Lip Shape in Stretch<br>Blush in Sleepy Girl<br>Lip Treatment in Watermelon Slice</p>",
+            "fallback": "kendall"
+          }
+        },
+        "creator_05": {
+          "type": "creator",
+          "settings": {
+            "creator": "@ria.caeliya",
+            "quote": "<p>“Usually I blend with my finger but not anymore because the Lip Shape comes with a little smudger at the back to give you that beautiful blend without making your fingers messy.”</p>",
+            "picks_heading": "ria's picks",
+            "picks": "<p>Lip Shape in Spin<br>Lip Tint in Toast</p>",
+            "fallback": "ria"
+          }
+        }
+      },
+      "block_order": [
+        "creator_01",
+        "creator_02",
+        "creator_03",
+        "creator_04",
+        "creator_05"
+      ]
+    },
+    "layer_lips": {
+      "type": "heresy-layer-your-lips",
+      "settings": {},
+      "blocks": {
+        "step_01": {
+          "type": "step",
+          "settings": {
+            "title": "shape",
+            "description": "<p>Glide Peptide Lip Shape along the outline of your lips.</p>",
+            "fallback": "shape",
+            "x": 60,
+            "y": 72
+          }
+        },
+        "step_02": {
+          "type": "step",
+          "settings": {
+            "title": "flush",
+            "description": "<p>Tap on Pocket Blush to the center of your lips for creamy color.</p>",
+            "fallback": "flush",
+            "x": 51,
+            "y": 67
+          }
+        },
+        "step_03": {
+          "type": "step",
+          "settings": {
+            "title": "tint",
+            "description": "<p>Swipe on Peptide Lip Tint for nourishing hydration and a hint of tint.</p>",
+            "fallback": "tint",
+            "x": 54,
+            "y": 65
+          }
+        }
+      },
+      "block_order": [
+        "step_01",
+        "step_02",
+        "step_03"
+      ]
+    },
+    "summer_routine": {
+      "type": "heresy-summer-routine",
+      "settings": {},
+      "blocks": {
+        "step_01": {
+          "type": "step",
+          "settings": {
+            "navigation_label": "HIGHLIGHT",
+            "product_name": "highlight milk",
+            "description": "<p>apply to bare skin or mix with foundation for a natural, pearly glow</p>",
+            "fallback": "milk"
+          }
+        },
+        "step_02": {
+          "type": "step",
+          "settings": {
+            "navigation_label": "BRONZE",
+            "product_name": "pocket bronze",
+            "description": "<p>tap onto forehead, cheeks, nose, and jawline for long-wearing warmth</p>",
+            "fallback": "bronze"
+          }
+        },
+        "step_03": {
+          "type": "step",
+          "settings": {
+            "navigation_label": "FLUSH",
+            "product_name": "pocket blush",
+            "description": "<p>tap onto cheeks and lips for satiny, buildable color</p>",
+            "fallback": "blush"
+          }
+        },
+        "step_04": {
+          "type": "step",
+          "settings": {
+            "navigation_label": "SHAPE",
+            "product_name": "peptide lip shape",
+            "description": "<p>glide along the outline of your lips for a soft-focus, contoured effect</p>",
+            "fallback": "shape"
+          }
+        },
+        "step_05": {
+          "type": "step",
+          "settings": {
+            "navigation_label": "TINT",
+            "product_name": "peptide lip tint",
+            "description": "<p>swipe it on for a hint of tint and high-shine finish</p>",
+            "fallback": "tint"
+          }
+        }
+      },
+      "block_order": [
+        "step_01",
+        "step_02",
+        "step_03",
+        "step_04",
+        "step_05"
+      ]
+    },
+    "recycling": {
+      "type": "heresy-recycling-guide",
+      "settings": {},
+      "blocks": {
+        "panel_01": {
+          "type": "panel",
+          "settings": {
+            "title": "less harm, more shape.",
+            "body": "<p>Peptide Lip Shape packaging is made with upcycled post-consumer (PCR) materials.</p><p>*Please note, we're updating our packaging and some shades may not include a smudger.</p>",
+            "navigation_title": "how to recycle",
+            "navigation_label": "click here",
+            "fallback": "packaging"
+          }
+        },
+        "panel_02": {
+          "type": "panel",
+          "settings": {
+            "title": "recycling 101",
+            "body": "<p>We'll recycle your empties for you. Here's how it works:</p><p>1. Gather at least 3 empty products you'd like us to recycle. Clean out any remainder of the formula and place them in a small box.</p><p>2. Contact us with the subject line 'rhode recycling' for a complimentary shipping label.</p><p>3. Drop off at your closest mailbox or USPS location and you're all set. ♡</p><p><em>We work with our recycling partner to process your empties into raw materials that can be reused instead of sent to landfills.</em></p>",
+            "navigation_title": "packaging",
+            "navigation_label": "see details",
+            "fallback": "program",
+            "callout_one_title": "",
+            "callout_one_text": "<p></p>",
+            "callout_two_title": "",
+            "callout_two_text": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "panel_01",
+        "panel_02"
+      ]
+    },
+    "reviews": {
+      "type": "heresy-reviews",
+      "settings": {},
+      "blocks": {
+        "review_01": {
+          "type": "review",
+          "settings": {
+            "author": "Mónica M.",
+            "date": "1 day ago",
+            "title": "pretty",
+            "body": "<p>love this shade</p>",
+            "reviewing": "peptide lip shape lean"
+          }
+        },
+        "review_02": {
+          "type": "review",
+          "settings": {
+            "author": "Andjela V.",
+            "date": "2 days ago",
+            "title": "the best!!",
+            "body": "<p>i love that i can use it in combo with the pocket blush 💕 and twist is the best shade</p>",
+            "reviewing": "peptide lip shape lean"
+          }
+        }
+      },
+      "block_order": [
+        "review_01",
+        "review_02"
+      ]
+    },
+    "recommendations": {
+      "type": "heresy-product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "meet_shades",
+    "claims",
+    "ugc_primary",
+    "ugc_secondary",
+    "ingredients",
+    "application",
+    "study_results",
+    "image_banner",
+    "creator_reviews",
+    "layer_lips",
+    "summer_routine",
+    "recycling",
+    "reviews",
+    "recommendations"
+  ]
+}

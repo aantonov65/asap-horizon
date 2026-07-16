@@ -1,0 +1,25 @@
+.heresy-key-ingredients {
+  --heresy-highlight-accent: #b68574;
+}
+
+.heresy-key-ingredients .heresy-key-ingredients__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.heresy-key-ingredients .Highlights-toggle__active svg path {
+  stroke: var(--heresy-highlight-accent);
+}
+
+.heresy-key-ingredients .Highlights-toggle {
+  border-radius: 0;
+  text-align: left;
+}
+
+.heresy-key-ingredients .Highlights-ingredients-wrapper-toggle {
+  border-radius: 0;
+}

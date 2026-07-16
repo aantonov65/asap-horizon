@@ -1,0 +1,32 @@
+.heresy-layer-your-lips .heresy-layer-your-lips__slides,
+.heresy-layer-your-lips .heresy-layer-your-lips__slides .swiper-slide,
+.heresy-layer-your-lips .Highlights-image-container,
+.heresy-layer-your-lips .Image {
+  width: 100%;
+  height: 100%;
+}
+
+.heresy-layer-your-lips .heresy-layer-your-lips__slides .swiper-slide {
+  display: none;
+}
+
+.heresy-layer-your-lips .heresy-layer-your-lips__slides .heresy-is-active {
+  display: block;
+}
+
+.heresy-layer-your-lips .heresy-layer-your-lips__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heresy-layer-your-lips .Highlights-toggle {
+  border-radius: 0;
+  text-align: left;
+}
+
+.heresy-layer-your-lips .Highlights-toggle__active svg path {
+  stroke: var(--heresy-layer-accent);
+}

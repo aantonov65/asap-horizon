@@ -1,0 +1,48 @@
+.heresy-image-banner {
+  background-color: var(--heresy-banner-bg);
+  border-radius: 12px;
+  flex-flow: column;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.heresy-image-banner .mod_banner__Z5PZG_Banner__overlay {
+  background-color: var(--heresy-banner-overlay);
+  opacity: var(--heresy-banner-overlay-opacity);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heresy-image-banner .mod_banner__Z5PZG_Banner__image {
+  width: 100%;
+  position: relative;
+}
+
+.heresy-image-banner .Image {
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.heresy-image-banner .u-hideMd .Image { aspect-ratio: 360 / 641; }
+.heresy-image-banner .u-showMd .Image { aspect-ratio: 1604 / 902; }
+
+.heresy-image-banner .heresy-image-banner__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.heresy-image-banner .mod_banner__Z5PZG_Banner__content {
+  z-index: 2;
+}

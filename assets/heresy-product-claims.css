@@ -1,0 +1,13 @@
+.heresy-product-claims {
+  color: #67645e;
+  overflow: hidden;
+}
+
+.heresy-product-claims .heresy-product-claims__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}

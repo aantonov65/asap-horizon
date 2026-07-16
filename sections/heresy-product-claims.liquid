@@ -1,0 +1,57 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-product-claims.css' | asset_url | stylesheet_tag }}
+
+<section class="heresy-product-claims List-content Section" data-heresy-section="{{ section.id }}">
+  <div class="List-content-wrapper">
+    <div>
+      <h2 class="u-hSize List-content-title">{{ section.settings.heading }}</h2>
+    </div>
+    <div>
+      {% for block in section.blocks %}
+        <div class="List-content-list-item" {{ block.shopify_attributes }}>
+          <div class="u-pSize--Medium u-bold u-noMargin List-content-list-item-title">{{ block.settings.title }}</div>
+          <div class="u-pSize u-noMargin List-content-list-item-content">{{ block.settings.content }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="List-content-image-container">
+    <span class="Image Image--desktop o-placeholder bg-full-height">
+      {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-product-claims.jpg', alt: section.settings.image_alt, class: 'heresy-product-claims__image', width: 1320, height: 1440 %}
+    </span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy claims",
+  "settings": [
+    {"type": "inline_richtext", "id": "heading", "label": "Heading", "default": "A VOLUMIZING lip shaper for contoured lips."},
+    {"type": "image_picker", "id": "image", "label": "Image"},
+    {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Model wearing peptide lip shape"}
+  ],
+  "blocks": [
+    {
+      "type": "claim",
+      "name": "Claim",
+      "settings": [
+        {"type": "inline_richtext", "id": "title", "label": "Label", "default": "GOOD FOR:"},
+        {"type": "richtext", "id": "content", "label": "Content", "default": "<p>All skin types</p>"}
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Heresy claims",
+      "blocks": [
+        {"type": "claim", "settings": {"title": "GOOD FOR:", "content": "<p>All skin types</p>"}},
+        {"type": "claim", "settings": {"title": "FEELS LIKE:", "content": "<p>A creamy texture that glides on effortlessly</p>"}},
+        {"type": "claim", "settings": {"title": "LOOKS LIKE:", "content": "<p>A soft-focus contour that enhances your lips</p>"}},
+        {"type": "claim", "settings": {"title": "SMELLS LIKE:", "content": "<p>Fragrance-Free</p>"}},
+        {"type": "claim", "settings": {"title": "FYI:", "content": "<p>Cruelty-Free • Vegan • Gluten-Free<br>Dermatologist-Tested</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

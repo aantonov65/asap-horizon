@@ -1,0 +1,101 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-key-ingredients.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-highlights.js' | asset_url }}" defer></script>
+
+<section class="heresy-key-ingredients Highlights Section" id="heresy-ingredients-{{ section.id }}" data-heresy-section="{{ section.id }}" data-heresy-highlights style="--heresy-highlight-accent: {{ section.settings.accent }};">
+  <div class="Highlights-images-container">
+    <div aria-live="polite" class="Highlights-image-container">
+      <span class="Image Image--desktop o-placeholder bg-full-height">
+        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-key-ingredients.jpg', alt: section.settings.image_alt, class: 'heresy-key-ingredients__image', width: 1320, height: 1440 %}
+      </span>
+      {% for block in section.blocks %}
+        <div
+          class="Highlights-image-dot u-white u-noMargin{% if forloop.first %} Highlights-image-dot__active{% endif %}"
+          data-heresy-highlight-panel="{{ forloop.index0 }}"
+          style="top: {{ block.settings.y }}%; left: {{ block.settings.x }}%;"
+        >
+          <span class="Highlights-image-dot-dot"></span>
+          <div class="u-pSize--Small">{{ block.settings.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="Highlights-wrapper Highlights-wrapper-with-cta">
+    <div class="Highlights-ingredients-wrapper" data-heresy-ingredients-drawer tabindex="-1">
+      <button type="button" aria-label="Close ingredients" class="Highlights-ingredients-wrapper-toggle" data-heresy-ingredients-close>
+        <span></span><span></span>
+      </button>
+      <h3 class="u-hSize u-hSize--Medium u-noMargin u-fontRektorat">{{ section.settings.drawer_heading }}</h3>
+      <div class="u-pSize Highlights-ingredients-content">{{ section.settings.full_ingredients }}</div>
+      <div class="u-pSize u-pSize__Small Highlights-ingredients-note">{{ section.settings.note }}</div>
+    </div>
+    <div class="Highlights-cta">
+      <div class="Button-container">
+        <button type="button" class="Button Button__dark" data-heresy-ingredients-open>
+          <span class="Button-base-text">{{ section.settings.button_label }}</span>
+        </button>
+      </div>
+    </div>
+    <div class="Highlights-container">
+      {% for block in section.blocks %}
+        {% assign title_words = block.settings.title | split: ' ' %}
+        <button
+          type="button"
+          class="Highlights-toggle Highlights-toggle-wave{% if forloop.first %} Highlights-toggle__active{% endif %}"
+          data-heresy-highlight-toggle="{{ forloop.index0 }}"
+          aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true">
+            <clipPath clipPathUnits="objectBoundingBox" id="heresy-wave-{{ section.id }}-{{ block.id }}">
+              <path d="M534.14,-27.11 C386.84,30.11 463.60,152.47 522.29,161.36 L0.00,150.00 L0.00,0.00 Z"></path>
+            </clipPath>
+          </svg>
+          <h3 class="u-fontRektorat u-hSize--Medium Highlights-toggle-wave__primary" data-word-size="{{ title_words.size }}">
+            {% for word in title_words %}<span>{{ word }} </span>{% endfor %}
+          </h3>
+          <h3 class="u-fontRektorat u-hSize--Medium Highlights-toggle-wave__secondary" aria-hidden="true" data-word-size="{{ title_words.size }}" style="color: {{ section.settings.accent }}; clip-path: url(#heresy-wave-{{ section.id }}-{{ block.id }});">
+            {% for word in title_words %}<span>{{ word }} </span>{% endfor %}
+          </h3>
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy ingredients",
+  "settings": [
+    {"type": "image_picker", "id": "image", "label": "Image"},
+    {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "Model wearing peptide lip shape"},
+    {"type": "color", "id": "accent", "label": "Accent", "default": "#b68574"},
+    {"type": "text", "id": "button_label", "label": "Button label", "default": "FULL INGREDIENT LIST"},
+    {"type": "text", "id": "drawer_heading", "label": "Drawer heading", "default": "ingredients"},
+    {"type": "richtext", "id": "full_ingredients", "label": "Full ingredients", "default": "<p>Caprylic/Capric Triglyceride, Dipentaerythrityl Hexahydroxystearate/Hexastearate/Hexarosinate, Synthetic Wax, Silica, Trimethylolpropane Triisostearate, Boron Nitride, Cetyl Ethylhexanoate, C20-40 Alcohols, Pentaerythrityl Tetraisostearate, Polyhydroxystearic Acid, Stearalkonium Hectorite, Disteardimonium Hectorite, Tocopheryl Acetate, Trigonella Foenum-Graecum Seed Extract, Palmitoyl Tripeptide-1, Lactic Acid, Tribehenin, Ethylhexyl Palmitate, Polyethylene, Sorbitan Isostearate, Aluminum Hydroxide, Triethoxycaprylylsilane, Phenoxyethanol, Titanium Dioxide (CI 77891), Iron Oxides (CI 77491, CI 77492, CI 77499), Red 7 (CI 15850), Blue 1 Lake (CI 42090)</p>"},
+    {"type": "richtext", "id": "note", "label": "Note", "default": "<p>If you have questions about a specific ingredient, contact our team.</p>"}
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Title", "default": "peptide"},
+        {"type": "richtext", "id": "description", "label": "Description", "default": "<p>A short chain of amino acids that helps soften lips and boost hydration.</p>"},
+        {"type": "range", "id": "x", "label": "Horizontal position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 58},
+        {"type": "range", "id": "y", "label": "Vertical position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 67}
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Heresy ingredients",
+      "blocks": [
+        {"type": "ingredient", "settings": {"title": "peptide", "description": "<p>a short chain of 3 amino acids that help soften lips for a visibly smoother appearance and are known to boost hydration</p>"}},
+        {"type": "ingredient", "settings": {"title": "FENUGREEK EXTRACT", "description": "<p>derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

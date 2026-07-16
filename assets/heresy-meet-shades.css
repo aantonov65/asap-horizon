@@ -1,0 +1,139 @@
+.heresy-meet-shades {
+  background: #f1f0ed;
+  border-radius: .75rem;
+  flex-direction: column;
+  padding: max(1.5rem, 2.5vw) 0 1.3125rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__header {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .8125rem;
+  width: 100%;
+  margin-bottom: max(1.4375rem, 2.84722vw);
+  padding: 0 max(.75rem, 2.70833vw);
+  display: flex;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__title {
+  color: #67645e;
+  white-space: nowrap;
+  text-transform: lowercase;
+  margin: 0;
+  font-size: max(1.375rem, 2.77778vw);
+  font-weight: 700;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-wrapper {
+  align-items: center;
+  gap: .625rem;
+  width: 100%;
+  display: flex;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatches {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.heresy-meet-shades .heresy-meet-shades__swatch-track {
+  align-items: center;
+  gap: .625rem;
+  min-height: 2.25rem;
+  padding: .1875rem;
+  display: flex;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatch {
+  cursor: pointer;
+  border-radius: 100%;
+  flex: 0 0 1.875rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  position: relative;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatch.heresy-is-selected::after {
+  content: "";
+  border: 1px solid #454545;
+  border-radius: 100%;
+  width: 2.25rem;
+  height: 2.25rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-next,
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev {
+  cursor: pointer;
+  border: 1px solid #67645e;
+  border-radius: 50%;
+  flex: 0 0 1.875rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev { transform: rotate(180deg); }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__content { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+
+.heresy-meet-shades .heresy-meet-shades__cards {
+  gap: max(1rem, 1.38889vw);
+  width: max-content;
+  margin: 0;
+  padding: 0 max(1rem, 1.94444vw);
+  display: flex;
+  list-style: none;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card {
+  flex-direction: column;
+  flex: 0 0 max(12.5rem, 25.4167vw);
+  width: max(12.5rem, 25.4167vw);
+  margin-bottom: max(1.5rem, 2.01389vw);
+  display: flex;
+  scroll-snap-align: start;
+}
+
+.heresy-meet-shades .heresy-meet-shades__card-link { color: inherit; text-decoration: none; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-image { width: 100%; aspect-ratio: 1; margin-bottom: max(.9375rem, 2.08333vw); }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-image .Image { border-radius: .625rem; width: 100%; height: 100%; overflow: hidden; }
+.heresy-meet-shades .heresy-meet-shades__image { width: 100%; height: 100%; object-fit: cover; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-text { flex-direction: column; align-items: flex-start; display: flex; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-text-top { align-items: center; display: flex; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-title { color: #67645e; text-transform: uppercase; margin: 0; font-size: max(.875rem, 1.38889vw); line-height: 1.2; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-description { color: #67645e; margin: .25rem 0 0; font-size: max(.875rem, 1.38889vw); line-height: 1.2; }
+.heresy-meet-shades .Product-swatches-popup-color { flex: 0 0 auto; }
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls {
+  justify-content: space-between;
+  align-items: center;
+  gap: max(1.875rem, 2.08333vw);
+  padding: 0 max(1rem, 1.94444vw);
+  display: flex;
+}
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__buttons { align-items: center; gap: max(.5rem, .555556vw); display: flex; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__button { cursor: pointer; border: 1px solid #67645e; border-radius: 50%; justify-content: center; align-items: center; width: max(1.9375rem, 2.15278vw); height: max(1.9375rem, 2.15278vw); display: flex; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__scrollbar__wrapper { background: #c4c4c4; flex: 1; height: 2px; position: relative; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__scrollbar { background: #67645e; width: 7.142857%; height: 2px; transition: width .1s ease-in-out; position: absolute; inset: 0 auto auto 0; }
+
+@media print, screen and (min-width: 820px) {
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__header { flex-direction: row; justify-content: space-between; align-items: center; }
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatches { max-width: 36rem; }
+}
+
+@media screen and (min-width: 510px) {
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-next,
+  .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev { display: none; }
+}

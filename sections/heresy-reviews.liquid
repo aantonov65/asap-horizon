@@ -1,0 +1,72 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-reviews.css' | asset_url | stylesheet_tag }}
+
+<section class="heresy-reviews" data-heresy-section="{{ section.id }}">
+  <header class="heresy-reviews__header">
+    <div>
+      <p class="heresy-reviews__rating"><strong>{{ section.settings.rating }}</strong> <span aria-label="Rated {{ section.settings.rating }} out of 5">★★★★★</span></p>
+      <p>{{ section.settings.based_on }}</p>
+    </div>
+    <h2>{{ section.settings.heading }}</h2>
+  </header>
+  <div class="heresy-reviews__list">
+    {% for block in section.blocks %}
+      <article class="heresy-reviews__review" {{ block.shopify_attributes }}>
+        <aside>
+          <strong>{{ block.settings.author }}</strong>
+          {% if block.settings.verified %}<span>{{ section.settings.verified_label }}</span>{% endif %}
+          {% if block.settings.reviewing != blank %}<small>{{ section.settings.reviewing_label }}<br>{{ block.settings.reviewing }}</small>{% endif %}
+        </aside>
+        <div class="heresy-reviews__content">
+          <div class="heresy-reviews__topline">
+            <span class="heresy-reviews__stars" aria-label="Rated {{ block.settings.rating }} out of 5">{% for i in (1..5) %}{% if i <= block.settings.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+            <span>{{ block.settings.date }}</span>
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <div class="rte">{{ block.settings.body }}</div>
+          {% if block.settings.recommended %}<p class="heresy-reviews__recommended">✓ {{ section.settings.recommended_label }}</p>{% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy reviews",
+  "settings": [
+    {"type": "text", "id": "heading", "label": "Heading", "default": "reviews"},
+    {"type": "text", "id": "rating", "label": "Average rating", "default": "4.2"},
+    {"type": "text", "id": "based_on", "label": "Review count text", "default": "Based on 2,387 reviews"},
+    {"type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified Buyer"},
+    {"type": "text", "id": "reviewing_label", "label": "Reviewing label", "default": "Reviewing"},
+    {"type": "text", "id": "recommended_label", "label": "Recommended label", "default": "I recommend this product"}
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {"type": "text", "id": "author", "label": "Author", "default": "Mónica M."},
+        {"type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true},
+        {"type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5},
+        {"type": "text", "id": "date", "label": "Date", "default": "1 day ago"},
+        {"type": "text", "id": "title", "label": "Title", "default": "pretty"},
+        {"type": "richtext", "id": "body", "label": "Body", "default": "<p>love this shade</p>"},
+        {"type": "text", "id": "reviewing", "label": "Product reviewed", "default": "peptide lip shape lean"},
+        {"type": "checkbox", "id": "recommended", "label": "Recommends product", "default": true}
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Heresy reviews",
+      "blocks": [
+        {"type": "review", "settings": {"author": "Mónica M.", "date": "1 day ago", "title": "pretty", "body": "<p>love this shade</p>", "reviewing": "peptide lip shape lean"}},
+        {"type": "review", "settings": {"author": "Andjela V.", "date": "2 days ago", "title": "the best!!", "body": "<p>i love that i can use it in combo with the pocket blush 💕 and twist is the best shade</p>", "reviewing": "peptide lip shape lean"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
