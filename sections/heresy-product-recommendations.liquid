@@ -25,7 +25,18 @@
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
           {% liquid
-            assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.webp'
+            case block.settings.fallback
+              when 'tint'
+                assign fallback_asset = 'heresy-routine-sweet-pea.png'
+              when 'blush'
+                assign fallback_asset = 'heresy-routine-piggy.png'
+              when 'bronze'
+                assign fallback_asset = 'heresy-routine-pebble.png'
+              when 'milk'
+                assign fallback_asset = 'heresy-routine-milk-swatch.png'
+              else
+                assign fallback_asset = 'heresy-routine-shape-swatch.png'
+            endcase
             assign defer_recommendation_image = true
           %}
           {% assign card_url = block.settings.product.url | default: routes.all_products_collection_url %}

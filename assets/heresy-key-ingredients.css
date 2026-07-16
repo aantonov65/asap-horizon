@@ -45,4 +45,23 @@
     margin-top: 1rem !important;
     width: calc(100% - 2rem) !important;
   }
+
+  .heresy-key-ingredients .Highlights-wrapper {
+    justify-content: center !important;
+    min-height: calc(100vw - 2rem);
+    padding: 2rem 1rem 4.5rem;
+  }
+
+  .heresy-key-ingredients .Highlights-container {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .heresy-key-ingredients .Highlights-cta {
+    bottom: 1rem;
+    left: 1rem;
+    margin: 0;
+    position: absolute;
+    width: calc(100% - 2rem);
+  }
 }
