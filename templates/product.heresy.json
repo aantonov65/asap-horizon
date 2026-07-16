@@ -113,14 +113,16 @@
           "type": "tab",
           "settings": {
             "heading": "Benefits",
-            "content": "<ul><li>Creamy color glides on for a contoured effect</li><li>Clinically proven to enhance the appearance of lip fullness</li><li>Helps lips feel smoother and more hydrated over time</li></ul>"
+            "content": "<ul><li>Creamy color glides on for a contoured effect</li><li>Clinically proven to enhance the appearance of lip fullness</li><li>Helps lips feel smoother and more hydrated over time</li></ul>",
+            "link_label": ""
           }
         },
         "tab_06": {
           "type": "tab",
           "settings": {
             "heading": "Application",
-            "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. You can follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"
+            "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. You can follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>",
+            "link_label": ""
           }
         },
         "tab_07": {

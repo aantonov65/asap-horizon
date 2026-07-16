@@ -21,10 +21,9 @@
         swatch.setAttribute('aria-pressed', String(selected));
       });
       if (scroll && track) {
-        track.scrollTo({
-          left: Math.max(0, cards[active].offsetLeft - contentOffset()),
-          behavior: scroll === 'instant' || window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        });
+        const left = Math.max(0, cards[active].offsetLeft - contentOffset());
+        if (scroll === 'instant' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) track.scrollLeft = left;
+        else track.scrollTo({ left, behavior: 'smooth' });
       }
       if (progress) progress.style.maxWidth = `${cards.length > 1 ? (active / (cards.length - 1)) * 100 : 100}%`;
       previousButtons.forEach((button) => { button.disabled = active === 0; });
