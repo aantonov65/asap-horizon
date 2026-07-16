@@ -11,38 +11,37 @@
   "sections": {
     "main": {
       "type": "heresy-product-main",
-      "settings": {},
       "blocks": {
         "media_01": {
           "type": "media",
           "settings": {
-            "fallback": "hero_1",
-            "alt": "Peptide lip shape hero image one"
+            "alt": "Peptide lip shape hero image one",
+            "fallback": "hero_1"
           }
         },
         "media_02": {
           "type": "media",
           "settings": {
-            "fallback": "hero_2",
-            "alt": "Peptide lip shape hero image two"
+            "alt": "Peptide lip shape hero image two",
+            "fallback": "hero_2"
           }
         },
         "media_03": {
           "type": "media",
           "settings": {
-            "fallback": "video_1",
             "video": "shopify://files/videos/heresy-product-gallery-3-desktop.mp4",
             "mobile_video": "shopify://files/videos/heresy-product-gallery-3-mobile.mp4",
-            "alt": "Hailey with peptide lip shape"
+            "alt": "Hailey with peptide lip shape",
+            "fallback": "video_1"
           }
         },
         "media_04": {
           "type": "media",
           "settings": {
-            "fallback": "video_2",
             "video": "shopify://files/videos/heresy-product-gallery-4-desktop.mp4",
             "mobile_video": "shopify://files/videos/heresy-product-gallery-4-mobile.mp4",
-            "alt": "Peptide lip shape push video"
+            "alt": "Peptide lip shape push video",
+            "fallback": "video_2"
           }
         },
         "routine_05": {
@@ -148,13 +147,11 @@
         "tab_05",
         "tab_06",
         "tab_07"
-      ]
+      ],
+      "settings": {}
     },
     "meet_shades": {
       "type": "heresy-meet-shades",
-      "settings": {
-        "selected_shade": "push"
-      },
       "blocks": {
         "shade_01": {
           "type": "shade",
@@ -298,11 +295,13 @@
         "shade_12",
         "shade_13",
         "shade_14"
-      ]
+      ],
+      "settings": {
+        "selected_shade": "push"
+      }
     },
     "claims": {
       "type": "heresy-product-claims",
-      "settings": {},
       "blocks": {
         "claim_01": {
           "type": "claim",
@@ -346,28 +345,28 @@
         "claim_03",
         "claim_04",
         "claim_05"
-      ]
+      ],
+      "settings": {}
     },
     "ugc_primary": {
       "type": "heresy-ugc-video",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "video_card_01": {
           "type": "video_card",
           "settings": {
+            "title": "See how HAILEY wears PEPTIDE LIP SHAPE.",
+            "alt": "Peptide Lip Shape pencils",
             "fallback": "gabbie"
           }
         }
       },
       "block_order": [
         "video_card_01"
-      ]
+      ],
+      "settings": {}
     },
     "ugc_secondary": {
       "type": "heresy-ugc-video",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "video_card_01": {
           "type": "video_card",
@@ -378,12 +377,12 @@
       },
       "block_order": [
         "video_card_01"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "ingredients": {
       "type": "heresy-key-ingredients",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "ingredient_01": {
           "type": "ingredient",
@@ -403,12 +402,12 @@
       "block_order": [
         "ingredient_01",
         "ingredient_02"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "application": {
       "type": "heresy-application-steps",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "step_01": {
           "type": "step",
@@ -439,12 +438,12 @@
         "step_01",
         "step_02",
         "step_03"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "study_results": {
       "type": "heresy-study-results",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "result_01": {
           "type": "result",
@@ -548,7 +547,9 @@
         "result_08",
         "result_09",
         "result_10"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "image_banner": {
       "type": "heresy-image-banner",
@@ -557,8 +558,6 @@
     },
     "creator_reviews": {
       "type": "heresy-creator-reviews",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "creator_01": {
           "type": "creator",
@@ -622,12 +621,12 @@
         "creator_03",
         "creator_04",
         "creator_05"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "layer_lips": {
       "type": "heresy-layer-your-lips",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "step_01": {
           "type": "step",
@@ -664,12 +663,12 @@
         "step_01",
         "step_02",
         "step_03"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "summer_routine": {
       "type": "heresy-summer-routine",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "step_01": {
           "type": "step",
@@ -723,12 +722,12 @@
         "step_03",
         "step_04",
         "step_05"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "recycling": {
       "type": "heresy-recycling-guide",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "panel_01": {
           "type": "panel",
@@ -758,12 +757,12 @@
       "block_order": [
         "panel_01",
         "panel_02"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "reviews": {
       "type": "heresy-reviews",
-      "disabled": true,
-      "settings": {},
       "blocks": {
         "review_01": {
           "type": "review",
@@ -789,7 +788,9 @@
       "block_order": [
         "review_01",
         "review_02"
-      ]
+      ],
+      "disabled": true,
+      "settings": {}
     },
     "recommendations": {
       "type": "heresy-product-recommendations",

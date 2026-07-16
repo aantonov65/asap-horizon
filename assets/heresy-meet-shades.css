@@ -124,7 +124,7 @@
 
 .heresy-meet-shades .heresy-meet-shades__card-link { color: inherit; text-decoration: none; }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-image { width: 100%; aspect-ratio: 1; margin-bottom: max(.9375rem, 2.08333vw); }
-.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-image .Image { border-radius: .625rem; width: 100%; height: 100%; overflow: hidden; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-image .Image { border-radius: .625rem; width: 100%; height: 100%; overflow: hidden; padding-bottom: 0 !important; }
 .heresy-meet-shades .heresy-meet-shades__image { width: 100%; height: 100%; object-fit: cover; }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-text { flex-direction: column; align-items: flex-start; display: flex; }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__card-text-top { align-items: center; display: flex; }
