@@ -1,5 +1,7 @@
 .heresy-key-ingredients {
   --heresy-highlight-accent: #b68574;
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
 }
 
 .heresy-key-ingredients .heresy-key-ingredients__image {
@@ -22,4 +24,11 @@
 
 .heresy-key-ingredients .Highlights-ingredients-wrapper-toggle {
   border-radius: 0;
+}
+
+@media screen and (max-width: 819px) {
+  .heresy-key-ingredients {
+    margin-top: 0.75rem !important;
+    width: calc(100% - 1.5rem) !important;
+  }
 }

@@ -1,3 +1,8 @@
+.heresy-application-steps {
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
+}
+
 .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider {
   grid-gap: 1rem;
   border-radius: .75rem;
@@ -115,6 +120,11 @@
 }
 
 @media print, screen and (max-width: 819px) {
+  .heresy-application-steps {
+    margin-top: 0.75rem !important;
+    width: calc(100% - 1.5rem) !important;
+  }
+
   .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-thumbnail:nth-child(3) {
     grid-column: 1 / span 2;
     padding-bottom: 50%;

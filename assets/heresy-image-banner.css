@@ -5,6 +5,8 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
 }
 
 .heresy-image-banner .mod_banner__Z5PZG_Banner__overlay {
@@ -45,4 +47,11 @@
 
 .heresy-image-banner .mod_banner__Z5PZG_Banner__content {
   z-index: 2;
+}
+
+@media screen and (max-width: 819px) {
+  .heresy-image-banner {
+    margin-top: 0.75rem !important;
+    width: calc(100% - 1.5rem) !important;
+  }
 }
