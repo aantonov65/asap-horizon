@@ -6,6 +6,8 @@
   assign current_variant = product.selected_or_first_available_variant
   assign product_form_id = 'heresy-product-form-' | append: section.id
   assign media_blocks = section.blocks | where: 'type', 'media'
+  assign routine_blocks = section.blocks | where: 'type', 'routine_item'
+  assign upsell_blocks = section.blocks | where: 'type', 'upsell_item'
   assign tab_blocks = section.blocks | where: 'type', 'tab'
 %}
 
@@ -273,17 +275,159 @@
         </div>
       {% endform %}
 
+      {% if routine_blocks.size > 0 %}
+        <div class="heresy-complete-routine" data-heresy-routine>
+          <div class="heresy-complete-routine__container">
+            <h2 class="heresy-complete-routine__title u-pSize u-bold">{{ section.settings.routine_heading }}</h2>
+            <div class="heresy-complete-routine__grid">
+              {% for block in routine_blocks %}
+                {% liquid
+                  assign routine_product = block.settings.product
+                  assign routine_variant = routine_product.selected_or_first_available_variant
+                  assign routine_title = block.settings.title
+                  assign routine_price = block.settings.price
+                  assign routine_price_cents = block.settings.price_cents
+                  assign routine_image = block.settings.image
+                  if routine_product != blank
+                    if routine_title == blank
+                      assign routine_title = routine_product.title
+                    endif
+                    assign routine_price = routine_variant.price | money
+                    assign routine_price_cents = routine_variant.price
+                    if routine_image == blank
+                      assign routine_image = routine_variant.featured_image | default: routine_product.featured_image
+                    endif
+                  endif
+                  case block.settings.fallback_image
+                    when 'sweet_pea'
+                      assign routine_fallback = 'heresy-routine-sweet-pea.png'
+                    when 'piggy'
+                      assign routine_fallback = 'heresy-routine-piggy.png'
+                    when 'pebble'
+                      assign routine_fallback = 'heresy-routine-pebble.png'
+                    else
+                      assign routine_fallback = 'heresy-routine-mirror.png'
+                  endcase
+                %}
+                <article
+                  class="heresy-complete-routine__card"
+                  data-heresy-routine-card
+                  data-price-cents="{{ routine_price_cents }}"
+                  data-variant-id="{{ routine_variant.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="heresy-complete-routine__card-inner">
+                    <label class="heresy-complete-routine__checkbox-wrap">
+                      <input class="heresy-complete-routine__checkbox-input" type="checkbox" data-heresy-routine-checkbox aria-label="Include {{ routine_title | escape }}">
+                      <span class="heresy-complete-routine__checkbox-box" aria-hidden="true">
+                        <svg width="13" height="9" viewBox="0 0 13 9" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.753.146a.5.5 0 0 1 .707 0l.707.707a.5.5 0 0 1 0 .708L5.096 8.632a.5.5 0 0 1-.708 0L.146 4.389a.5.5 0 0 1 0-.707l.707-.707a.5.5 0 0 1 .708 0l3.181 3.181L10.753.146Z" fill="white"/></svg>
+                      </span>
+                    </label>
+                    <div class="heresy-complete-routine__card-image">
+                      {% if routine_image != blank %}
+                        {{ routine_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '120, 200, 300, 400', sizes: '80px', alt: routine_title }}
+                      {% else %}
+                        <img src="{{ routine_fallback | asset_url }}" width="200" height="200" loading="lazy" alt="{{ routine_title | escape }}">
+                      {% endif %}
+                    </div>
+                    <div class="heresy-complete-routine__card-body">
+                      <p class="heresy-complete-routine__card-title">{{ routine_title }}</p>
+                      <p class="heresy-complete-routine__card-subtitle">{{ block.settings.subtitle }}</p>
+                      <div class="heresy-complete-routine__price-row">
+                        <p class="heresy-complete-routine__card-price">{{ routine_price }}</p>
+                        {% if block.settings.variant_label != blank %}
+                          <div class="heresy-complete-routine__dropdown-wrap">
+                            <button class="heresy-complete-routine__dropdown" type="button" data-heresy-routine-dropdown aria-expanded="false">
+                              <span>{{ block.settings.variant_label }}</span>
+                              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M4.29 5.29.707 1.707A1 1 0 0 1 1.41 0h7.18a1 1 0 0 1 .7 1.707L5.71 5.29a1 1 0 0 1-1.42 0Z" fill="currentColor"/></svg>
+                            </button>
+                            {% if routine_product != blank and routine_product.variants.size > 1 %}
+                              <div class="heresy-complete-routine__variant-panel" data-heresy-routine-variant-panel hidden>
+                                {% for variant in routine_product.variants limit: 50 %}
+                                  <button type="button" class="heresy-complete-routine__variant-option" data-heresy-routine-variant="{{ variant.id }}" data-price-cents="{{ variant.price }}" data-price="{{ variant.price | money }}" {% unless variant.available %}disabled{% endunless %}>{{ variant.title }}</button>
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
+            <div class="heresy-complete-routine__footer">
+              <button type="button" class="heresy-complete-routine__add" data-heresy-routine-add disabled>{{ section.settings.routine_select_label }}</button>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if upsell_blocks.size > 0 %}
+        <div class="Product__upsell__wrapper" data-heresy-upsells>
+          <div class="Product__upsell__header" role="tablist" aria-label="Product sets">
+            {% for block in upsell_blocks %}
+              {% unless forloop.first %}<span aria-hidden="true">—</span>{% endunless %}
+              <button type="button" class="u-pSize Product__upsell__header__toggle{% if forloop.first %} Product__upsell__header__toggle__active{% endif %}" data-heresy-upsell-tab="{{ forloop.index0 }}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ block.settings.tab_label }}</button>
+            {% endfor %}
+            <span class="Product__upsell__header__indicator" data-heresy-upsell-indicator></span>
+          </div>
+          {% for block in upsell_blocks %}
+            {% liquid
+              assign upsell_product = block.settings.product
+              assign upsell_variant = upsell_product.selected_or_first_available_variant
+              assign upsell_title = block.settings.title
+              assign upsell_price = block.settings.price
+              assign upsell_image = block.settings.image
+              assign upsell_url = block.settings.url
+              if upsell_product != blank
+                if upsell_title == blank
+                  assign upsell_title = upsell_product.title
+                endif
+                assign upsell_price = upsell_variant.price | money
+                assign upsell_url = upsell_product.url
+                if upsell_image == blank
+                  assign upsell_image = upsell_product.featured_image
+                endif
+              endif
+              if block.settings.fallback_image == 'mirror'
+                assign upsell_fallback = 'heresy-routine-mirror.png'
+              else
+                assign upsell_fallback = 'heresy-upsell-lip-combos.png'
+              endif
+            %}
+            <div class="heresy-product-main__upsell-panel{% unless forloop.first %} heresy-is-hidden{% endunless %}" data-heresy-upsell-panel="{{ forloop.index0 }}" role="tabpanel" {{ block.shopify_attributes }}>
+              <div class="Product__upsell">
+                <div class="Product__upsell__image">
+                  {% if upsell_image != blank %}
+                    {{ upsell_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '120, 200, 300, 400', sizes: '80px', alt: upsell_title }}
+                  {% else %}
+                    <img src="{{ upsell_fallback | asset_url }}" width="300" height="300" loading="lazy" alt="{{ upsell_title | escape }}">
+                  {% endif %}
+                </div>
+                <div class="Product__upsell__content">
+                  <div class="Product__upsell__info"><p class="Product__upsell__info__title u-bold">{{ upsell_title }}</p></div>
+                  <div class="Button-container">
+                    <a class="Button heresy-product-main__upsell-cta" href="{{ upsell_url | default: '#' }}">{{ block.settings.cta_label }}&nbsp;-&nbsp;<strong>{{ upsell_price }}</strong></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
       {% if tab_blocks.size > 0 %}
         <div class="Product-tabs">
           {% for block in tab_blocks %}
-            <details class="Product-tab" {{ block.shopify_attributes }}>
-              <summary class="Product-tab-toggle-container">
+            <details class="Product-tab" data-heresy-accordion {{ block.shopify_attributes }}>
+              <summary class="Product-tab-toggle-container" aria-expanded="false">
                 <span>{{ block.settings.heading }}</span>
                 <span class="Product-tab-toggle" aria-hidden="true"></span>
               </summary>
               <div class="u-pSize Product-tab-content-container" role="region">
                 <div class="u-pSize Product-tab-content rte">{{ block.settings.content }}</div>
-                {% if block.settings.link != blank %}<a class="heresy-product-main__tab-link" href="{{ block.settings.link }}">{{ block.settings.link_label }}</a>{% endif %}
+                {% if block.settings.link_label != blank %}<a class="Button heresy-product-main__tab-link" href="{{ block.settings.link | default: '#ingredients' }}">{{ block.settings.link_label }}</a>{% endif %}
               </div>
             </details>
           {% endfor %}
@@ -355,6 +499,8 @@
     {"type": "text", "id": "shade_description", "label": "Shade description", "default": "soft neutral beige"},
     {"type": "color", "id": "shade_color", "label": "Shade color", "default": "#b68574"},
     {"type": "text", "id": "meet_shades_label", "label": "Meet shades label", "default": "Meet the shades"},
+    {"type": "text", "id": "routine_heading", "label": "Routine heading", "default": "COMPLETE YOUR ROUTINE"},
+    {"type": "text", "id": "routine_select_label", "label": "Routine button label", "default": "SELECT ITEMS"},
     {"type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "BUY LIP SHAPE"},
     {"type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "SOLD OUT"},
     {"type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": false},
@@ -380,6 +526,43 @@
       ]
     },
     {
+      "type": "routine_item",
+      "name": "Routine item",
+      "settings": [
+        {"type": "product", "id": "product", "label": "Product"},
+        {"type": "image_picker", "id": "image", "label": "Image override"},
+        {"type": "select", "id": "fallback_image", "label": "Bundled image", "options": [
+          {"value": "sweet_pea", "label": "Sweet pea tint"},
+          {"value": "piggy", "label": "Piggy blush"},
+          {"value": "pebble", "label": "Pebble bronze"},
+          {"value": "mirror", "label": "Rhode mirror"}
+        ], "default": "sweet_pea"},
+        {"type": "text", "id": "title", "label": "Display title", "default": "PEPTIDE LIP TINT"},
+        {"type": "text", "id": "subtitle", "label": "Subtitle", "default": "Limited edition shade"},
+        {"type": "text", "id": "variant_label", "label": "Selected shade", "default": "sweet pea"},
+        {"type": "text", "id": "price", "label": "Fallback price", "default": "€26,00"},
+        {"type": "range", "id": "price_cents", "label": "Fallback price cents", "min": 0, "max": 9900, "step": 100, "default": 2600}
+      ]
+    },
+    {
+      "type": "upsell_item",
+      "name": "Set upsell",
+      "limit": 2,
+      "settings": [
+        {"type": "product", "id": "product", "label": "Product"},
+        {"type": "image_picker", "id": "image", "label": "Image override"},
+        {"type": "select", "id": "fallback_image", "label": "Bundled image", "options": [
+          {"value": "lip_combos", "label": "Peptide lip combos"},
+          {"value": "mirror", "label": "Rhode mirror"}
+        ], "default": "lip_combos"},
+        {"type": "text", "id": "tab_label", "label": "Tab label", "default": "GET THE SET"},
+        {"type": "text", "id": "title", "label": "Display title", "default": "THE PEPTIDE LIP COMBOS"},
+        {"type": "text", "id": "price", "label": "Fallback price", "default": "€56,00"},
+        {"type": "text", "id": "cta_label", "label": "Button label", "default": "BUILD MY SET"},
+        {"type": "url", "id": "url", "label": "Fallback link"}
+      ]
+    },
+    {
       "type": "tab",
       "name": "Information tab",
       "settings": [
@@ -390,7 +573,7 @@
       ]
     }
   ],
-  "max_blocks": 12,
+  "max_blocks": 20,
   "presets": [
     {
       "name": "Heresy product main",
@@ -399,6 +582,12 @@
         {"type": "media", "settings": {"fallback": "hero_2", "alt": "Peptide lip shape hero image two"}},
         {"type": "media", "settings": {"fallback": "video_1", "alt": "Hailey with peptide lip shape"}},
         {"type": "media", "settings": {"fallback": "video_2", "alt": "Peptide lip shape push video"}},
+        {"type": "routine_item", "settings": {"fallback_image": "sweet_pea", "title": "PEPTIDE LIP TINT", "subtitle": "Limited edition shade", "variant_label": "sweet pea", "price": "€26,00", "price_cents": 2600}},
+        {"type": "routine_item", "settings": {"fallback_image": "piggy", "title": "POCKET BLUSH", "subtitle": "The natural flush", "variant_label": "piggy", "price": "€33,00", "price_cents": 3300}},
+        {"type": "routine_item", "settings": {"fallback_image": "pebble", "title": "POCKET BRONZE", "subtitle": "Long-wearing warmth", "variant_label": "pebble", "price": "€33,00", "price_cents": 3300}},
+        {"type": "routine_item", "settings": {"fallback_image": "mirror", "title": "RHODE MIRROR", "subtitle": "The compact mirror", "variant_label": "", "price": "€32,00", "price_cents": 3200}},
+        {"type": "upsell_item", "settings": {"fallback_image": "lip_combos", "tab_label": "GET THE SET", "title": "THE PEPTIDE LIP COMBOS", "price": "€56,00", "cta_label": "BUILD MY SET"}},
+        {"type": "upsell_item", "settings": {"fallback_image": "mirror", "tab_label": "ADD THE MIRROR", "title": "RHODE MIRROR", "price": "€32,00", "cta_label": "ADD"}},
         {"type": "tab", "settings": {"heading": "Benefits", "content": "<ul><li>Creamy color glides on for a contoured effect</li><li>Clinically proven to enhance the appearance of lip fullness</li><li>Helps lips feel smoother and more hydrated over time</li></ul>"}},
         {"type": "tab", "settings": {"heading": "Application", "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. Follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"}},
         {"type": "tab", "settings": {"heading": "Key Ingredients", "content": "<p><strong>PEPTIDE</strong> — a short chain of 3 amino acids that helps soften lips for a visibly smoother appearance and is known to boost hydration.</p><p><strong>FENUGREEK EXTRACT</strong> — derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance.</p>"}}
