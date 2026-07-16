@@ -302,7 +302,6 @@
     },
     "claims": {
       "type": "heresy-product-claims",
-      "disabled": true,
       "settings": {},
       "blocks": {
         "claim_01": {

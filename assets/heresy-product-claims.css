@@ -1,6 +1,73 @@
 .heresy-product-claims {
+  display: flex;
+  flex-flow: column-reverse;
   color: #67645e;
   overflow: hidden;
+  margin: 2.25vw auto 0;
+  width: calc(100% - 4.5vw);
+}
+
+.heresy-product-claims .List-content-wrapper {
+  background-color: #f1f0ed;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: #67645e;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding: 0 1rem 0.5rem;
+  position: relative;
+}
+
+.heresy-product-claims .List-content-title {
+  color: #67645e;
+  margin: 1.5rem 0 0.75rem;
+  font-size: max(1.375rem, 2.77778vw);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.heresy-product-claims .List-content-list-item {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.heresy-product-claims .List-content-list-item + .List-content-list-item {
+  border-top: 1px solid #c4c4c4;
+}
+
+.heresy-product-claims .List-content-list-item-title,
+.heresy-product-claims .List-content-list-item-content,
+.heresy-product-claims .List-content-list-item-title p,
+.heresy-product-claims .List-content-list-item-content p {
+  color: #67645e;
+  font-size: max(0.81rem + 0.2vw, 0.925vw);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.heresy-product-claims .List-content-list-item-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+
+.heresy-product-claims .List-content-image-container {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  min-height: 80vw;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.heresy-product-claims .List-content-image-container .Image {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .heresy-product-claims .heresy-product-claims__image {
@@ -10,4 +77,45 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
+}
+
+@media screen and (min-width: 821px) {
+  .heresy-product-claims {
+    display: grid;
+    gap: 2.25vw;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vw;
+  }
+
+  .heresy-product-claims .List-content-wrapper {
+    border-radius: 12px;
+    min-height: 30rem;
+    padding: 2rem;
+  }
+
+  .heresy-product-claims .List-content-title {
+    margin: 0 0 1.5rem;
+  }
+
+  .heresy-product-claims .List-content-list-item {
+    flex-flow: row;
+  }
+
+  .heresy-product-claims .List-content-list-item-title {
+    margin-bottom: 0;
+  }
+
+  .heresy-product-claims .List-content-list-item-content {
+    max-width: 60%;
+    text-align: right;
+  }
+
+  .heresy-product-claims .List-content-image-container {
+    border-radius: 12px;
+    min-height: 30rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .heresy-product-claims { margin-top: 0.75rem; width: calc(100% - 1.5rem); }
 }
