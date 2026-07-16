@@ -2,7 +2,8 @@
 {{ 'heresy-study-results.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-study-results.js' | asset_url }}" defer></script>
 
-<section class="heresy-study-results Tabbed-content-multi Section__min" data-heresy-section="{{ section.id }}" data-heresy-results>
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-study-results Tabbed-content-multi Section__min" data-heresy-results>
   <div class="Tabbed-content-multi-wrapper">
     <div class="Tabbed-content-multi-group__toggles">
       <button type="button" class="Tabbed-content-multi-group__toggle" data-heresy-results-group="immediate" aria-pressed="true">{{ section.settings.immediate_label }}</button>
@@ -59,6 +60,7 @@
     </div>
   </div>
 </section>
+</div>
 
 {% schema %}
 {

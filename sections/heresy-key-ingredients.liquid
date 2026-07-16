@@ -2,7 +2,8 @@
 {{ 'heresy-key-ingredients.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-highlights.js' | asset_url }}" defer></script>
 
-<section class="heresy-key-ingredients Highlights Section" id="heresy-ingredients-{{ section.id }}" data-heresy-section="{{ section.id }}" data-heresy-highlights style="--heresy-highlight-accent: {{ section.settings.accent }};">
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-key-ingredients Highlights Section" id="heresy-ingredients-{{ section.id }}" data-heresy-highlights style="--heresy-highlight-accent: {{ section.settings.accent }};">
   <div class="Highlights-images-container">
     <div aria-live="polite" class="Highlights-image-container">
       <span class="Image Image--desktop o-placeholder bg-full-height">
@@ -62,6 +63,7 @@
     </div>
   </div>
 </section>
+</div>
 
 {% schema %}
 {

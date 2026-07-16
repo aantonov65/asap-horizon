@@ -1,9 +1,9 @@
 {{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
 {{ 'heresy-image-banner.css' | asset_url | stylesheet_tag }}
 
+<div data-heresy-section="{{ section.id }}">
 <section
   class="heresy-image-banner mod_banner__Z5PZG_Banner"
-  data-heresy-section="{{ section.id }}"
   data-desktop-content-position="{{ section.settings.desktop_position }}"
   data-mobile-content-position="{{ section.settings.mobile_position }}"
   style="--heresy-banner-bg: {{ section.settings.background }}; --heresy-banner-overlay: {{ section.settings.overlay }}; --heresy-banner-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
@@ -41,6 +41,7 @@
     </div>
   {% endif %}
 </section>
+</div>
 
 {% schema %}
 {

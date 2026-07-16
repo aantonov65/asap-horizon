@@ -2,7 +2,8 @@
 {{ 'heresy-application-steps.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-application-steps.js' | asset_url }}" defer></script>
 
-<section class="heresy-application-steps mod_slider_content_ZWt2zW_Section" data-heresy-section="{{ section.id }}" data-heresy-application>
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-application-steps mod_slider_content_ZWt2zW_Section" data-heresy-application>
   <div class="mod_slider_content_ZWt2zW_Content-slider">
     <div class="mod_slider_content_ZWt2zW_Content-slider-wrapper">
       <div class="mod_slider_content_ZWt2zW_Content-slider-thumbnails">
@@ -68,6 +69,7 @@
     </div>
   </div>
 </section>
+</div>
 
 {% schema %}
 {
