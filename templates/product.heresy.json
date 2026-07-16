@@ -31,6 +31,8 @@
           "type": "media",
           "settings": {
             "fallback": "video_1",
+            "video": "shopify://files/videos/heresy-product-gallery-3-desktop.mp4",
+            "mobile_video": "shopify://files/videos/heresy-product-gallery-3-mobile.mp4",
             "alt": "Hailey with peptide lip shape"
           }
         },
@@ -38,6 +40,8 @@
           "type": "media",
           "settings": {
             "fallback": "video_2",
+            "video": "shopify://files/videos/heresy-product-gallery-4-desktop.mp4",
+            "mobile_video": "shopify://files/videos/heresy-product-gallery-4-mobile.mp4",
             "alt": "Peptide lip shape push video"
           }
         },
@@ -481,6 +485,7 @@
             "quote": "<p>“It’s creamy, buildable, and blendable which I really love.”</p>",
             "picks_heading": "Gabbie's picks",
             "picks": "<p>Lip Shape in Balance<br>Blush in Toasted Teddy<br>Lip Tint in Ribbon</p>",
+            "video": "shopify://files/videos/heresy-creator-review-1.mp4",
             "fallback": "gabbie"
           }
         },
@@ -491,6 +496,7 @@
             "quote": "<p>“There’s skincare infused in these… actually help to enhance lip volume and fullness.”</p>",
             "picks_heading": "Bella's picks",
             "picks": "<p>Lip Shape in Lift + Bend<br>Lip Tint in Toast</p>",
+            "video": "shopify://files/videos/heresy-creator-review-2.mp4",
             "fallback": "bella"
           }
         },
@@ -501,6 +507,7 @@
             "quote": "<p>“This is the ultimate my lips but better lip combo. I can confidently say that this is my new go-to lip.”</p>",
             "picks_heading": "ivy's picks",
             "picks": "<p>Lip Shape in Move<br>Lip Tint in Raspberry Jelly</p>",
+            "video": "shopify://files/videos/heresy-creator-review-3.mp4",
             "fallback": "ivy"
           }
         },
@@ -511,6 +518,7 @@
             "quote": "<p>“The color builds so easily and it’s so easy to use. When I go over the lip, it really helps give it a poutier look.”</p>",
             "picks_heading": "kendall's picks",
             "picks": "<p>Lip Shape in Stretch<br>Blush in Sleepy Girl<br>Lip Treatment in Watermelon Slice</p>",
+            "video": "shopify://files/videos/heresy-creator-review-4.mp4",
             "fallback": "kendall"
           }
         },
@@ -521,6 +529,7 @@
             "quote": "<p>“Usually I blend with my finger but not anymore because the Lip Shape comes with a little smudger at the back to give you that beautiful blend without making your fingers messy.”</p>",
             "picks_heading": "ria's picks",
             "picks": "<p>Lip Shape in Spin<br>Lip Tint in Toast</p>",
+            "video": "shopify://files/videos/heresy-creator-review-5.mp4",
             "fallback": "ria"
           }
         }
