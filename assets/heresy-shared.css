@@ -15866,7 +15866,7 @@
     font-size: 3rem;
   }
   [data-heresy-section] h2{
-    font-size: 2.5rem;
+    font-size: 3.25rem;
   }
   [data-heresy-section] h3{
     font-size: 1.9375rem;
@@ -20567,7 +20567,7 @@
     color: #252525;
     content: "rhode";
     font-family: Swiss, Arial, sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: -.09em;
     line-height: 1;
@@ -20575,8 +20575,21 @@
 
   body:has(.heresy-product-main[data-heresy-section]) .header__icon,
   body:has(.heresy-product-main[data-heresy-section]) .header-actions__action {
-    width: 1.5rem;
-    height: 1.5rem;
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .search-action,
+  body:has(.heresy-product-main[data-heresy-section]) header-actions {
+    height: 2.75rem !important;
+    width: 2.75rem !important;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .search-action .header-actions__action,
+  body:has(.heresy-product-main[data-heresy-section]) .action__cart {
+    height: 2.75rem !important;
+    overflow: visible !important;
+    width: 2.75rem !important;
   }
 
   body:has(.heresy-product-main[data-heresy-section]) .header__icon .svg-wrapper svg,
