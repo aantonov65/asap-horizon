@@ -8,8 +8,8 @@
   overflow: hidden;
   height: fit-content;
   min-height: unset !important;
-  margin: 2.25vw auto 0;
-  width: calc(100% - 4.5vw);
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__header {
@@ -155,7 +155,7 @@
 }
 
 @media screen and (max-width: 819px) {
-  .heresy-meet-shades { margin-top: 0.75rem; width: calc(100% - 1.5rem); }
+  .heresy-meet-shades { margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
   .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatches { width: 100%; overflow-x: auto; }
   .heresy-meet-shades .heresy-meet-shades__swatch-track { width: max-content; }
 }
