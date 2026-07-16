@@ -62,10 +62,13 @@
   background-clip: padding-box;
   border: 0;
   cursor: pointer;
-  border-radius: 100%;
-  flex: 0 0 1.875rem;
-  width: 1.875rem;
-  height: 1.875rem;
+  border-radius: 100% !important;
+  flex: 0 0 1.875rem !important;
+  width: 1.875rem !important;
+  height: 1.875rem !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
   position: relative;
   transition: transform .3s ease;
 }
