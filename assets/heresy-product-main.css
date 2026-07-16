@@ -4,7 +4,7 @@
   background: none;
   border-radius: 0 0 12px 12px;
   color: var(--heresy-ink);
-  margin: -2.25vw auto 0;
+  margin: calc(-2.25vw - 1.125rem) auto 0;
   min-height: 85vh;
   overflow: visible;
   position: relative;
