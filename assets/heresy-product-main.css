@@ -1016,6 +1016,10 @@
     margin-top: 1.25rem;
   }
 
+  [data-heresy-section] .Product-main-card-description p:nth-child(2)::before {
+    content: " ";
+  }
+
   [data-heresy-section] .heresy-product-main__shade .Product-swatches-wrapper {
     align-items: flex-start;
     flex-direction: column;

@@ -20497,6 +20497,13 @@
     min-height: 2.875rem;
   }
 
+  body:has(.heresy-product-main[data-heresy-section]) .announcement-bar__text {
+    line-height: 1.1;
+    margin-inline: auto;
+    max-width: 13rem;
+    text-align: center;
+  }
+
   body:has(.heresy-product-main[data-heresy-section]) .header-section {
     position: relative !important;
     top: auto !important;
@@ -20577,5 +20584,11 @@
   body:has(.heresy-product-main[data-heresy-section]) .search-action .svg-wrapper svg {
     height: 1.375rem;
     width: 1.375rem;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header-drawer-icon--open {
+    flex: 0 0 1.375rem !important;
+    height: 1.375rem !important;
+    width: 1.375rem !important;
   }
 }

@@ -11,7 +11,7 @@
     let active = Math.max(0, swatches.findIndex((swatch) => swatch.getAttribute('aria-pressed') === 'true'));
     let inView = false;
 
-    const contentOffset = () => window.innerWidth >= 861 ? 175 : 96;
+    const contentOffset = () => window.innerWidth >= 861 ? 175 : 92;
 
     const setActive = (index, scroll = true) => {
       if (!cards.length) return;
