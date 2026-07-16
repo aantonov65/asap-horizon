@@ -20471,58 +20471,58 @@
 /* The product story uses the compact Rhode mobile chrome instead of Horizon's
    default full-width/sticky header. Scope it to this template only. */
 @media screen and (max-width: 819px) {
-  body:has([data-heresy-section] .heresy-product-main) #header-group {
+  body:has(.heresy-product-main[data-heresy-section]) #header-group {
     background: #fff;
     padding: 1rem 1rem 0;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) #header-group > .shopify-section {
+  body:has(.heresy-product-main[data-heresy-section]) #header-group > .shopify-section {
     border-radius: .75rem;
     overflow: hidden;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) #header-group > .shopify-section + .shopify-section {
+  body:has(.heresy-product-main[data-heresy-section]) #header-group > .shopify-section + .shopify-section {
     margin-top: .5rem;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .announcement-bar {
+  body:has(.heresy-product-main[data-heresy-section]) .announcement-bar {
     background: #f1f0ed !important;
     min-height: 2.875rem;
     padding-block: 0 !important;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .announcement-bar__slider,
-  body:has([data-heresy-section] .heresy-product-main) .announcement-bar__slides,
-  body:has([data-heresy-section] .heresy-product-main) .announcement-bar__slide {
+  body:has(.heresy-product-main[data-heresy-section]) .announcement-bar__slider,
+  body:has(.heresy-product-main[data-heresy-section]) .announcement-bar__slides,
+  body:has(.heresy-product-main[data-heresy-section]) .announcement-bar__slide {
     min-height: 2.875rem;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header-section {
+  body:has(.heresy-product-main[data-heresy-section]) .header-section {
     position: relative !important;
     top: auto !important;
     z-index: 1 !important;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header__row {
+  body:has(.heresy-product-main[data-heresy-section]) .header__row {
     background: #f1f0ed !important;
     min-height: 4.625rem;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header__column--left > .search-action--hidden-on-menu,
-  body:has([data-heresy-section] .heresy-product-main) .account-button {
+  body:has(.heresy-product-main[data-heresy-section]) .header__column--left > .search-action--hidden-on-menu,
+  body:has(.heresy-product-main[data-heresy-section]) .account-button {
     display: none !important;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header__column--right > .search-action--hidden-on-drawer {
+  body:has(.heresy-product-main[data-heresy-section]) .header__column--right > .search-action--hidden-on-drawer {
     display: flex !important;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header-logo__image-container {
+  body:has(.heresy-product-main[data-heresy-section]) .header-logo__image-container {
     font-size: 0 !important;
     line-height: 1;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header-logo__image-container::after {
+  body:has(.heresy-product-main[data-heresy-section]) .header-logo__image-container::after {
     color: #252525;
     content: "rhode";
     font-family: Swiss, Arial, sans-serif;
@@ -20532,8 +20532,8 @@
     line-height: 1;
   }
 
-  body:has([data-heresy-section] .heresy-product-main) .header__icon,
-  body:has([data-heresy-section] .heresy-product-main) .header-actions__action {
+  body:has(.heresy-product-main[data-heresy-section]) .header__icon,
+  body:has(.heresy-product-main[data-heresy-section]) .header-actions__action {
     width: 1.5rem;
     height: 1.5rem;
   }

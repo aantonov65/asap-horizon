@@ -939,7 +939,7 @@
   }
 
   [data-heresy-section] .Product-slider-thumbnails {
-    display: none;
+    display: none !important;
   }
 
   [data-heresy-section] .heresy-product-main__card {
