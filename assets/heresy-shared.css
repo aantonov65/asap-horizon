@@ -20503,9 +20503,43 @@
     z-index: 1 !important;
   }
 
-  body:has(.heresy-product-main[data-heresy-section]) .header__row {
+  body:has(.heresy-product-main[data-heresy-section]) .header__row--top {
     background: #f1f0ed !important;
     min-height: 4.625rem;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header__navigation-bar-row {
+    display: none !important;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header__columns {
+    grid-template-columns: 1fr auto 1fr !important;
+    grid-template-rows: 4.625rem !important;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header__drawer {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    justify-self: start;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header-logo {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: center;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header__column--right > .search-action--hidden-on-drawer {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    justify-self: end;
+    margin-right: 2.5rem;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) header-actions {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    justify-self: end;
   }
 
   body:has(.heresy-product-main[data-heresy-section]) .header__column--left > .search-action--hidden-on-menu,
@@ -20536,5 +20570,12 @@
   body:has(.heresy-product-main[data-heresy-section]) .header-actions__action {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  body:has(.heresy-product-main[data-heresy-section]) .header__icon .svg-wrapper svg,
+  body:has(.heresy-product-main[data-heresy-section]) .header-actions__action .svg-wrapper svg,
+  body:has(.heresy-product-main[data-heresy-section]) .search-action .svg-wrapper svg {
+    height: 1.375rem;
+    width: 1.375rem;
   }
 }
