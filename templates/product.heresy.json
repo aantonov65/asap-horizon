@@ -363,6 +363,7 @@
       "block_order": [
         "video_card_01"
       ],
+      "disabled": true,
       "settings": {}
     },
     "ugc_secondary": {
