@@ -38,9 +38,9 @@
 .heresy-reviews__filter span { display: inline-block; margin-right: .3rem; transform: rotate(90deg); }
 .heresy-reviews__sort select { min-width: 11.5rem; padding-right: 2.25rem; }
 
-.heresy-reviews__list { list-style: none; margin: 0; padding: 0; }
-.heresy-reviews__item { border-bottom: 1px solid rgba(82, 82, 82, .25); padding: 1.5rem 0; }
-.heresy-reviews__review { display: grid; grid-template-columns: 16.25rem minmax(0, 1fr); }
+.heresy-reviews__list { display: block !important; list-style: none !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+.heresy-reviews__item { border-bottom: 1px solid rgba(82, 82, 82, .25); display: block !important; margin: 0 !important; padding: 1.5rem 0 !important; width: 100% !important; }
+.heresy-reviews__review { display: grid !important; grid-template-columns: 16.25rem minmax(0, 1fr) !important; width: 100% !important; }
 .heresy-reviews__side { font-size: .875rem; line-height: 1.6; padding-right: 1.5rem; }
 .heresy-reviews__buyer { display: flex; flex-direction: column; }
 .heresy-reviews__buyer > span { font-size: .75rem; }
@@ -48,7 +48,7 @@
 .heresy-reviews__detail { display: flex; flex-direction: column; margin-top: 1rem; }
 .heresy-reviews__detail a { color: inherit; text-decoration: underline; }
 .heresy-reviews__recommended { font-size: .75rem; margin: 1rem 0; }
-.heresy-reviews__attributes { margin: 0; }
+.heresy-reviews__attributes { margin: 0 !important; }
 .heresy-reviews__attributes > div { display: flex; flex-direction: column; margin-top: .75rem; }
 .heresy-reviews__attributes dt { font-weight: 700; }
 .heresy-reviews__attributes dd { margin: 0; }
@@ -66,7 +66,7 @@
 .heresy-reviews__scale-labels { display: flex; justify-content: space-between; }
 .heresy-reviews__helpful { align-items: center; bottom: 0; display: flex; font-size: .625rem; gap: .45rem; justify-content: flex-end; position: absolute; right: 0; }
 .heresy-reviews__helpful button { background: transparent; border: 0; cursor: pointer; font-size: .625rem; padding: 0; }
-.heresy-reviews__more { background: transparent; border: 1px solid #67645e; border-radius: 999px; display: block; font-size: .875rem; height: 2.5rem; margin: 1.5rem auto 0; min-width: 10rem; padding: 0 1.5rem; }
+.heresy-reviews__more { background: transparent; border: 1px solid #67645e; border-radius: 999px; display: block; font-size: .875rem; height: 2.5rem; margin: 1.5rem auto 0 !important; min-width: 10rem; padding: 0 1.5rem; }
 
 @media screen and (max-width: 819px) {
   .heresy-reviews { margin-top: .75rem !important; padding: 2rem 1rem; width: calc(100% - 1.5rem) !important; }
@@ -75,7 +75,7 @@
   .heresy-reviews__controls { gap: .75rem; }
   .heresy-reviews__filter,
   .heresy-reviews__sort select { font-size: .7rem; min-width: 0; padding: 0 .8rem; }
-  .heresy-reviews__review { grid-template-columns: 1fr; }
+  .heresy-reviews__review { grid-template-columns: 1fr !important; }
   .heresy-reviews__side { padding: 0; }
   .heresy-reviews__attributes { display: grid; gap: .5rem 1rem; grid-template-columns: 1fr 1fr; }
   .heresy-reviews__main { margin-top: 1.5rem; min-height: 20rem; }
