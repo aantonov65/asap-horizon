@@ -403,7 +403,6 @@
         "ingredient_01",
         "ingredient_02"
       ],
-      "disabled": true,
       "settings": {}
     },
     "application": {
@@ -439,7 +438,6 @@
         "step_02",
         "step_03"
       ],
-      "disabled": true,
       "settings": {}
     },
     "study_results": {
@@ -548,12 +546,10 @@
         "result_09",
         "result_10"
       ],
-      "disabled": true,
       "settings": {}
     },
     "image_banner": {
       "type": "heresy-image-banner",
-      "disabled": true,
       "settings": {}
     },
     "creator_reviews": {
