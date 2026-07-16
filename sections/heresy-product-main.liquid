@@ -1,5 +1,6 @@
 {{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
 {{ 'heresy-product-main.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'heresy-media-loader.js' | asset_url }}" defer></script>
 <script src="{{ 'heresy-product-main.js' | asset_url }}" defer></script>
 
 {% liquid
@@ -36,9 +37,9 @@
             endif
             case block.settings.fallback
               when 'hero_1'
-                assign fallback_thumbnail = 'heresy-product-hero-1-desktop.jpg'
+                assign fallback_thumbnail = 'heresy-product-hero-1-desktop.webp'
               when 'hero_2'
-                assign fallback_thumbnail = 'heresy-product-hero-2-desktop.jpg'
+                assign fallback_thumbnail = 'heresy-product-hero-2-desktop.webp'
               when 'video_1'
                 assign fallback_thumbnail = 'heresy-product-video-1-poster.jpg'
                 assign is_video_thumbnail = true
@@ -55,7 +56,7 @@
             aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
           >
             {% unless is_video_thumbnail %}
-              {% render 'heresy-responsive-image', image: thumbnail, fallback_asset: fallback_thumbnail, alt: block.settings.alt, class: 'heresy-product-main__thumbnail-image', width: 160, height: 160 %}
+              {% render 'heresy-responsive-image', image: thumbnail, fallback_asset: fallback_thumbnail, alt: block.settings.alt, class: 'heresy-product-main__thumbnail-image', sizes: '80px', width: 160, height: 160 %}
             {% endunless %}
           </button>
         {% endfor %}
@@ -68,15 +69,15 @@
             assign fallback_video_mobile = blank
             case block.settings.fallback
               when 'hero_1'
-                assign fallback_desktop = 'heresy-product-hero-1-desktop.jpg'
-                assign fallback_mobile = 'heresy-product-hero-1-mobile.jpg'
-                assign fallback_width = 2400
-                assign fallback_height = 1993
+                assign fallback_desktop = 'heresy-product-hero-1-desktop.webp'
+                assign fallback_mobile = 'heresy-product-hero-1-mobile.webp'
+                assign fallback_width = 1600
+                assign fallback_height = 1329
               when 'hero_2'
-                assign fallback_desktop = 'heresy-product-hero-2-desktop.jpg'
-                assign fallback_mobile = 'heresy-product-hero-2-mobile.jpg'
-                assign fallback_width = 2400
-                assign fallback_height = 1993
+                assign fallback_desktop = 'heresy-product-hero-2-desktop.webp'
+                assign fallback_mobile = 'heresy-product-hero-2-mobile.webp'
+                assign fallback_width = 1600
+                assign fallback_height = 1329
               when 'video_1'
                 assign fallback_desktop = 'heresy-product-video-1-poster.jpg'
                 assign fallback_mobile = fallback_desktop
@@ -100,18 +101,18 @@
           >
             {% if block.settings.video != blank or block.settings.mobile_video != blank or fallback_video_desktop != blank %}
               {% if block.settings.video != blank %}
-                {{ block.settings.video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--desktop', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1600x' }}
+                {{ block.settings.video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--desktop', loop: true, muted: true, controls: false, playsinline: true, preload: 'none', image_size: '1600x' }}
               {% elsif fallback_video_desktop != blank %}
-                <video class="Product-video heresy-product-main__video heresy-product-main__video--desktop" autoplay loop muted playsinline preload="metadata" aria-label="{{ block.settings.alt | escape }}">
+                <video class="Product-video heresy-product-main__video heresy-product-main__video--desktop" loop muted playsinline preload="none" aria-label="{{ block.settings.alt | escape }}">
                   <source src="{{ fallback_video_desktop | file_url }}" type="video/mp4">
                 </video>
               {% else %}
                 <img src="{{ fallback_desktop | asset_url }}" class="heresy-product-main__hero-image heresy-product-main__video--desktop" width="{{ fallback_width }}" height="{{ fallback_height }}" loading="lazy" alt="{{ block.settings.alt | escape }}">
               {% endif %}
               {% if block.settings.mobile_video != blank %}
-                {{ block.settings.mobile_video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--mobile', autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1024x' }}
+                {{ block.settings.mobile_video | video_tag: class: 'Product-video heresy-product-main__video heresy-product-main__video--mobile', loop: true, muted: true, controls: false, playsinline: true, preload: 'none', image_size: '1024x' }}
               {% elsif fallback_video_mobile != blank %}
-                <video class="Product-video heresy-product-main__video heresy-product-main__video--mobile" autoplay loop muted playsinline preload="metadata" aria-label="{{ block.settings.alt | escape }}">
+                <video class="Product-video heresy-product-main__video heresy-product-main__video--mobile" loop muted playsinline preload="none" aria-label="{{ block.settings.alt | escape }}">
                   <source src="{{ fallback_video_mobile | file_url }}" type="video/mp4">
                 </video>
               {% endif %}
@@ -120,7 +121,11 @@
                 {% if block.settings.mobile_image != blank %}
                   <source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 1024 }}">
                 {% endif %}
-                {{ block.settings.image | image_url: width: 2480 | image_tag: class: 'heresy-product-main__hero-image', loading: 'eager', widths: '640, 960, 1280, 1600, 2000, 2480', sizes: '(min-width: 990px) 67vw, 100vw', alt: block.settings.alt }}
+                {% if forloop.first %}
+                  {{ block.settings.image | image_url: width: 2000 | image_tag: class: 'heresy-product-main__hero-image', loading: 'eager', fetchpriority: 'high', decoding: 'async', widths: '640, 960, 1280, 1600, 2000', sizes: '(min-width: 990px) 67vw, 100vw', alt: block.settings.alt }}
+                {% else %}
+                  {{ block.settings.image | image_url: width: 2000 | image_tag: class: 'heresy-product-main__hero-image', loading: 'lazy', fetchpriority: 'low', decoding: 'async', widths: '640, 960, 1280, 1600, 2000', sizes: '(min-width: 990px) 67vw, 100vw', alt: block.settings.alt }}
+                {% endif %}
               </picture>
             {% else %}
               <picture>
@@ -131,6 +136,8 @@
                   width="{{ fallback_width }}"
                   height="{{ fallback_height }}"
                   {% if forloop.first %}loading="eager"{% else %}loading="lazy"{% endif %}
+                  {% if forloop.first %}fetchpriority="high"{% else %}fetchpriority="low"{% endif %}
+                  decoding="async"
                   alt="{{ block.settings.alt | escape }}"
                 >
               </picture>
@@ -138,7 +145,7 @@
           </div>
         {% else %}
           <div class="Product-slider-image-container heresy-product-main__media heresy-is-active">
-            {% render 'heresy-responsive-image', image: product.featured_image, fallback_asset: 'heresy-product-hero-1-desktop.jpg', alt: product.title, class: 'heresy-product-main__hero-image', loading: 'eager', width: 2400, height: 1993 %}
+            {% render 'heresy-responsive-image', image: product.featured_image, fallback_asset: 'heresy-product-hero-1-desktop.webp', alt: product.title, class: 'heresy-product-main__hero-image', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 67vw, 100vw', width: 1600, height: 1329 %}
           </div>
         {% endfor %}
       </div>

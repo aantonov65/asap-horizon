@@ -10,7 +10,7 @@
   width: calc(100% - 4.5vw) !important;
 }
 
-.heresy-recycling-guide .heresy-recycling-guide__slides { display: flex; height: 100%; transform: translate3d(calc(var(--heresy-recycling-index) * -100%), 0, 0); transition: transform 1050ms cubic-bezier(.22, 1, .36, 1); will-change: transform; }
+.heresy-recycling-guide .heresy-recycling-guide__slides { display: flex; height: 100%; transform: translate3d(calc(var(--heresy-recycling-index) * -100%), 0, 0); transition: transform 1050ms cubic-bezier(.22, 1, .36, 1); }
 .heresy-recycling-guide .heresy-recycling-guide__slide { flex: 0 0 100%; height: 100%; }
 .heresy-recycling-guide .Slider-with-video { min-height: 0; height: 100%; margin-right: 5vw; display: grid; grid-template-columns: 38% 62%; }
 .heresy-recycling-guide .Slider-with-video-content-wrapper { color: #67645e; padding: max(2rem, 4vw); display: flex; flex-direction: column; justify-content: center; }
@@ -22,7 +22,7 @@
 .heresy-recycling-guide [data-heresy-recycling-kind="packaging"] .heresy-recycling-guide__image { height: 84%; margin: 8% auto; object-fit: contain; width: 84%; }
 .heresy-recycling-guide .product-description-text { z-index: 2; max-width: 12rem; position: absolute; }
 .heresy-recycling-guide .heresy-recycling-guide__navigation { width: 5vw; position: absolute; right: 0; top: 0; bottom: 0; z-index: 4; }
-.heresy-recycling-guide .Slider-with-video-backdrop { color: #fff; background: rgba(103, 100, 94, .55); border-radius: 0; padding: 1rem; text-align: left; backdrop-filter: blur(12px); opacity: .65; }
+.heresy-recycling-guide .Slider-with-video-backdrop { color: #fff; background: rgba(103, 100, 94, .82); border-radius: 0; padding: 1rem; text-align: left; opacity: .65; }
 .heresy-recycling-guide .Slider-with-video-backdrop { display: none !important; height: 100%; width: 100%; }
 .heresy-recycling-guide .Slider-with-video-backdrop.heresy-is-selected { display: block !important; opacity: 1; }
 .heresy-recycling-guide .Slider-with-video-backdrop-content { display: block; height: 100%; position: relative; transform: none; writing-mode: initial; }

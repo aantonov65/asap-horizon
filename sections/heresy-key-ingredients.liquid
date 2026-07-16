@@ -7,7 +7,7 @@
   <div class="Highlights-images-container">
     <div aria-live="polite" class="Highlights-image-container">
       <span class="Image Image--desktop o-placeholder bg-full-height">
-        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-key-ingredients.jpg', alt: section.settings.image_alt, class: 'heresy-key-ingredients__image', width: 1320, height: 1440 %}
+        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-key-ingredients.webp', alt: section.settings.image_alt, class: 'heresy-key-ingredients__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', width: 1120, height: 1222 %}
       </span>
       {% for block in section.blocks %}
         <div

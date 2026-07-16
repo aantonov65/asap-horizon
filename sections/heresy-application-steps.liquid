@@ -9,16 +9,16 @@
       <div class="mod_slider_content_ZWt2zW_Content-slider-thumbnails">
         {% for block in section.blocks %}
           {% liquid
-            assign fallback_asset = 'heresy-application-step-1.jpg'
+            assign fallback_asset = 'heresy-application-step-1.webp'
             if block.settings.fallback == 'step_2'
-              assign fallback_asset = 'heresy-application-step-2.jpg'
+              assign fallback_asset = 'heresy-application-step-2.webp'
             elsif block.settings.fallback == 'step_3'
-              assign fallback_asset = 'heresy-application-step-3.jpg'
+              assign fallback_asset = 'heresy-application-step-3.webp'
             endif
           %}
           <button type="button" class="mod_slider_content_ZWt2zW_Content-slider-thumbnail" data-heresy-application-go="{{ forloop.index0 }}" aria-label="Show step {{ forloop.index }}" {{ block.shopify_attributes }}>
             <span class="Image Image--desktop o-placeholder bg-full-height">
-              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1320, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1120, height: 1222, sizes: '120px' %}
             </span>
           </button>
         {% endfor %}
@@ -50,17 +50,21 @@
       <div class="heresy-application-steps__image-slides">
         {% for block in section.blocks %}
           {% liquid
-            assign fallback_asset = 'heresy-application-step-1.jpg'
+            assign fallback_asset = 'heresy-application-step-1.webp'
             if block.settings.fallback == 'step_2'
-              assign fallback_asset = 'heresy-application-step-2.jpg'
+              assign fallback_asset = 'heresy-application-step-2.webp'
             elsif block.settings.fallback == 'step_3'
-              assign fallback_asset = 'heresy-application-step-3.jpg'
+              assign fallback_asset = 'heresy-application-step-3.webp'
             endif
+            assign defer_application_image = false
+            unless forloop.first
+              assign defer_application_image = true
+            endunless
           %}
           <div class="swiper-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-application-image="{{ forloop.index0 }}">
             <div class="mod_slider_content_ZWt2zW_Content-slider-image-container">
               <span class="Image Image--desktop o-placeholder bg-full-height">
-                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1320, height: 1440 %}
+                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-application-steps__image', width: 1120, height: 1222, sizes: '(max-width: 749px) 100vw, 50vw', defer_image: defer_application_image %}
               </span>
             </div>
           </div>

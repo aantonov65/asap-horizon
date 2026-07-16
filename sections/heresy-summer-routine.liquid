@@ -12,11 +12,17 @@
       </div>
       <div class="heresy-summer-routine__swatch-slides" aria-live="polite">
         {% for block in section.blocks %}
-          {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-swatch.png' %}
+          {% liquid
+            assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-swatch.webp'
+            assign defer_routine_image = false
+            unless forloop.first
+              assign defer_routine_image = true
+            endunless
+          %}
           <div class="Slider-with-navigation-content-image{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-routine-swatch="{{ forloop.index0 }}">
             {% if block.settings.product != blank %}<a href="{{ block.settings.product.url }}">{% endif %}
             <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-              {% render 'heresy-responsive-image', image: block.settings.swatch_image, fallback_asset: fallback_asset, alt: block.settings.swatch_alt, class: 'skip-animation heresy-summer-routine__swatch-image', width: 600, height: 600 %}
+              {% render 'heresy-responsive-image', image: block.settings.swatch_image, fallback_asset: fallback_asset, alt: block.settings.swatch_alt, class: 'skip-animation heresy-summer-routine__swatch-image', width: 600, height: 600, sizes: '(max-width: 749px) 52vw, 24vw', defer_image: defer_routine_image %}
             </span>
             <div class="Slider-with-navigation-content-image-content">
               <p class="u-pSize u-bold u-noMargin">{{ block.settings.product_name }}</p>
@@ -39,10 +45,16 @@
     <div class="Slider-with-navigation-images-container">
       <div class="heresy-summer-routine__model-slides">
         {% for block in section.blocks %}
-          {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.jpg' %}
+          {% liquid
+            assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.webp'
+            assign defer_routine_image = false
+            unless forloop.first
+              assign defer_routine_image = true
+            endunless
+          %}
           <div class="Slider-with-navigation-image-container{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-routine-model="{{ forloop.index0 }}">
             <span class="Image Image--desktop o-placeholder bg-full-height">
-              {% render 'heresy-responsive-image', image: block.settings.model_image, fallback_asset: fallback_asset, alt: block.settings.model_alt, class: 'heresy-summer-routine__model-image', width: 1320, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.model_image, fallback_asset: fallback_asset, alt: block.settings.model_alt, class: 'heresy-summer-routine__model-image', width: 1120, height: 1222, sizes: '(max-width: 749px) 100vw, 50vw', defer_image: defer_routine_image %}
             </span>
           </div>
         {% endfor %}

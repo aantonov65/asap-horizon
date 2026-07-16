@@ -15,6 +15,9 @@
     const setActive = (index, scroll = true) => {
       if (!cards.length) return;
       active = Math.max(0, Math.min(index, cards.length - 1));
+      for (let offset = 0; offset < 3; offset += 1) {
+        window.HeresyMedia?.hydrateWithin(cards[Math.min(active + offset, cards.length - 1)]);
+      }
       swatches.forEach((swatch, swatchIndex) => {
         const selected = swatchIndex === active;
         swatch.classList.toggle('heresy-is-selected', selected);

@@ -8,17 +8,21 @@
     <div class="heresy-layer-your-lips__slides" aria-live="polite">
       {% for block in section.blocks %}
         {% liquid
-          assign fallback_asset = 'heresy-layer-shape.jpg'
+          assign fallback_asset = 'heresy-layer-shape.webp'
           if block.settings.fallback == 'flush'
-            assign fallback_asset = 'heresy-layer-flush.jpg'
+            assign fallback_asset = 'heresy-layer-flush.webp'
           elsif block.settings.fallback == 'tint'
-            assign fallback_asset = 'heresy-layer-tint.jpg'
+            assign fallback_asset = 'heresy-layer-tint.webp'
           endif
+          assign defer_layer_image = false
+          unless forloop.first
+            assign defer_layer_image = true
+          endunless
         %}
         <div class="swiper-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-layer-slide="{{ forloop.index0 }}">
           <div class="Highlights-image-container">
             <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-layer-your-lips__image', width: 1320, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-layer-your-lips__image', width: 1120, height: 1222, sizes: '(max-width: 749px) 100vw, 50vw', defer_image: defer_layer_image %}
             </span>
             <div class="Highlights-image-dot Highlights-image-dot__active u-white u-noMargin" style="top: {{ block.settings.y }}%; left: {{ block.settings.x }}%;">
               <span class="Highlights-image-dot-dot"></span>

@@ -20461,3 +20461,9 @@
     width: 35.9375rem;
   }
 }
+
+/* Skip layout and paint work for the long product story until each section is near view. */
+[data-heresy-section]:not(.heresy-product-main) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}

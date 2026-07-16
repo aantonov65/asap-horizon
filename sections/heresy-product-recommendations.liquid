@@ -24,12 +24,18 @@
     <div class="heresy-product-recommendations__track">
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
-          {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.jpg' %}
+          {% liquid
+            assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.webp'
+            assign defer_recommendation_image = false
+            if forloop.index > 3
+              assign defer_recommendation_image = true
+            endif
+          %}
           {% assign card_url = block.settings.product.url | default: routes.all_products_collection_url %}
           <article class="heresy-product-recommendations__card" {{ block.shopify_attributes }}>
             <a href="{{ card_url }}">
               <div class="heresy-product-recommendations__image-wrap">
-                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-product-recommendations__image', width: 1000, height: 1200 %}
+                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-product-recommendations__image', width: 1120, height: 1222, sizes: '(max-width: 749px) 75vw, 24vw', defer_image: defer_recommendation_image %}
               </div>
               <div class="heresy-product-recommendations__meta">
                 <h3>{{ block.settings.title | default: block.settings.product.title }}</h3>

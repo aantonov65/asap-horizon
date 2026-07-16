@@ -12,9 +12,11 @@
         {% assign desktop_asset = desktop_asset | append: 'png' %}
         {% assign mobile_asset = mobile_asset | append: 'png' %}
       {% else %}
-        {% assign desktop_asset = desktop_asset | append: 'jpg' %}
-        {% assign mobile_asset = mobile_asset | append: 'jpg' %}
+        {% assign desktop_asset = desktop_asset | append: 'webp' %}
+        {% assign mobile_asset = mobile_asset | append: 'webp' %}
       {% endif %}
+      {% assign defer_recycling_image = false %}
+      {% unless forloop.first %}{% assign defer_recycling_image = true %}{% endunless %}
       <article class="heresy-recycling-guide__slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-recycling-slide="{{ forloop.index0 }}" data-heresy-recycling-kind="{{ block.settings.fallback }}" {{ block.shopify_attributes }}>
         <div class="Slider-with-video Image-position--RIGHT Image-position--image">
           <div class="Slider-with-video-content-wrapper">
@@ -35,12 +37,12 @@
               </div>
             {% endif %}
             <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-              {% render 'heresy-responsive-image', image: block.settings.desktop_image, fallback_asset: desktop_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 1320, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.desktop_image, fallback_asset: desktop_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 960, height: 1047, sizes: '50vw', defer_image: defer_recycling_image %}
             </span>
           </div>
           <div class="Slider-with-video-image-container u-hideMobile__flex Slider-with-video-image-container--mobile">
             <span class="Image Image--mobile o-placeholder bg-full-height skip-animation">
-              {% render 'heresy-responsive-image', image: block.settings.mobile_image, fallback_asset: mobile_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 1024, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.mobile_image, fallback_asset: mobile_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-recycling-guide__image', width: 750, height: 1055, sizes: '100vw', defer_image: defer_recycling_image %}
             </span>
           </div>
         </div>

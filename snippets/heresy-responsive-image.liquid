@@ -6,25 +6,61 @@ Renders a merchant-selected image with a bundled Heresy asset fallback.
 @param {string} alt - Alternative text.
 @param {string} class - CSS classes for the image.
 @param {string} [loading] - Image loading strategy.
+@param {string} [sizes] - Responsive image sizes value.
+@param {boolean} [defer_image] - Defer the real image source until it nears the viewport.
+@param {string} [fetchpriority] - Browser fetch priority.
 @param {number} [width] - Fallback intrinsic width.
 @param {number} [height] - Fallback intrinsic height.
 {% enddoc %}
 
 {% liquid
   assign image_loading = loading | default: 'lazy'
+  assign image_sizes = sizes | default: '100vw'
   assign image_width = width | default: 1600
   assign image_height = height | default: 1600
+  assign image_priority = fetchpriority | default: 'auto'
 %}
 
 {% if image != blank %}
-  {{ image | image_url: width: 2480 | image_tag: class: class, loading: image_loading, widths: '320, 480, 640, 800, 960, 1024, 1280, 1440, 1800, 2000, 2480', sizes: '100vw', alt: alt }}
+  {% if defer_image %}
+    {% capture deferred_srcset %}
+      {{ image | image_url: width: 320 }} 320w,
+      {{ image | image_url: width: 480 }} 480w,
+      {{ image | image_url: width: 640 }} 640w,
+      {{ image | image_url: width: 800 }} 800w,
+      {{ image | image_url: width: 960 }} 960w,
+      {{ image | image_url: width: 1280 }} 1280w,
+      {{ image | image_url: width: 1600 }} 1600w
+    {% endcapture %}
+    <img
+      src="{{ 'heresy-placeholder.svg' | asset_url }}"
+      data-heresy-src="{{ image | image_url: width: image_width }}"
+      data-heresy-srcset="{{ deferred_srcset | strip_newlines | strip | escape }}"
+      class="{{ class }}"
+      width="{{ image_width }}"
+      height="{{ image_height }}"
+      loading="lazy"
+      decoding="async"
+      sizes="{{ image_sizes }}"
+      alt="{{ alt | escape }}"
+    >
+  {% else %}
+    {{ image | image_url: width: 2480 | image_tag: class: class, loading: image_loading, fetchpriority: image_priority, decoding: 'async', widths: '320, 480, 640, 800, 960, 1024, 1280, 1440, 1800, 2000, 2480', sizes: image_sizes, alt: alt }}
+  {% endif %}
 {% else %}
   <img
-    src="{{ fallback_asset | asset_url }}"
+    {% if defer_image %}
+      src="{{ 'heresy-placeholder.svg' | asset_url }}"
+      data-heresy-src="{{ fallback_asset | asset_url }}"
+    {% else %}
+      src="{{ fallback_asset | asset_url }}"
+    {% endif %}
     class="{{ class }}"
     width="{{ image_width }}"
     height="{{ image_height }}"
     loading="{{ image_loading }}"
+    decoding="async"
+    fetchpriority="{{ image_priority }}"
     alt="{{ alt | escape }}"
   >
 {% endif %}

@@ -5,6 +5,7 @@
     const toggles = [...root.querySelectorAll('[data-heresy-layer-toggle]')];
     const slides = [...root.querySelectorAll('[data-heresy-layer-slide]')];
     const show = (index) => {
+      window.HeresyMedia?.hydrateWithin(slides[index]);
       toggles.forEach((toggle, toggleIndex) => {
         const active = toggleIndex === index;
         toggle.classList.toggle('Highlights-toggle__active', active);

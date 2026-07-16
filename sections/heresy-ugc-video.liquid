@@ -6,7 +6,7 @@
   {% if section.settings.heading != blank %}<h2 class="heresy-ugc-video__heading">{{ section.settings.heading }}</h2>{% endif %}
   <div class="heresy-ugc-video__track">
     {% for block in section.blocks %}
-      {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.jpg' %}
+      {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.webp' %}
       <article class="heresy-ugc-video__card" {{ block.shopify_attributes }}>
         <div class="heresy-ugc-video__media">
           <div class="heresy-ugc-video__poster" data-heresy-ugc-poster>
@@ -22,7 +22,7 @@
                 alt="{{ block.settings.alt | escape }}"
               >
             {% else %}
-              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', width: 2480, height: 2705 %}
+              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', sizes: '(max-width: 749px) calc(100vw - 24px), calc(100vw - 4.5vw)', width: 1320, height: 1440 %}
             {% endif %}
 
             {% if block.settings.video != blank or block.settings.video_url != blank %}
@@ -35,13 +35,13 @@
             {% endif %}
           </div>
           {% if block.settings.video != blank %}
-            {{ block.settings.video | video_tag: class: 'heresy-ugc-video__video', controls: true, loop: false, muted: false, playsinline: true, preload: 'metadata', image_size: '1920x' }}
+            {{ block.settings.video | video_tag: class: 'heresy-ugc-video__video', controls: true, loop: false, muted: false, playsinline: true, preload: 'none', image_size: '1280x' }}
           {% elsif block.settings.video_url != blank %}
             <video
               class="heresy-ugc-video__video"
               controls
               playsinline
-              preload="metadata"
+              preload="none"
               {% if block.settings.poster_url != blank %}poster="{{ block.settings.poster_url | escape }}"{% endif %}
             >
               <source src="{{ block.settings.video_url | escape }}" type="video/mp4">

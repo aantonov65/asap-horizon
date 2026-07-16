@@ -18,13 +18,17 @@
 
     const media = [...root.querySelectorAll('[data-heresy-media]')];
     const mediaButtons = [...root.querySelectorAll('[data-heresy-media-button]')];
+    const mobileMedia = window.matchMedia('(max-width: 749px)');
+    let activeMediaIndex = 0;
     const showMedia = (index) => {
+      activeMediaIndex = index;
       media.forEach((item, itemIndex) => {
         item.classList.toggle('heresy-is-active', itemIndex === index);
-        const video = item.querySelector('video');
-        if (!video) return;
-        if (itemIndex === index) video.play().catch(() => {});
-        else video.pause();
+        const videos = [...item.querySelectorAll('video')];
+        videos.forEach((video) => video.pause());
+        if (itemIndex !== index || document.hidden) return;
+        const preferredVideo = item.querySelector(mobileMedia.matches ? '.heresy-product-main__video--mobile' : '.heresy-product-main__video--desktop');
+        preferredVideo?.play().catch(() => {});
       });
       mediaButtons.forEach((button, buttonIndex) => {
         const selected = buttonIndex === index;
@@ -33,6 +37,12 @@
       });
     };
     mediaButtons.forEach((button, index) => button.addEventListener('click', () => showMedia(index)));
+    mobileMedia.addEventListener?.('change', () => showMedia(activeMediaIndex));
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) media.forEach((item) => item.querySelectorAll('video').forEach((video) => video.pause()));
+      else showMedia(activeMediaIndex);
+    });
+    showMedia(0);
 
     const variantsScript = root.querySelector('[data-heresy-product-variants]');
     const variants = variantsScript ? JSON.parse(variantsScript.textContent || '[]') : [];

@@ -27,12 +27,18 @@
   <div class="mod_shades_carousel_1Jliaa_MeetShades__content" data-heresy-shade-track>
     <ul class="heresy-meet-shades__cards">
       {% for block in section.blocks %}
-        {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-shade-' | append: '.jpg' %}
+        {% liquid
+          assign fallback_asset = block.settings.fallback | prepend: 'heresy-shade-' | append: '.webp'
+          assign defer_shade_image = false
+          if forloop.index > 4
+            assign defer_shade_image = true
+          endif
+        %}
         <li class="mod_shades_carousel_1Jliaa_MeetShades__card" data-heresy-shade-card="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
           {% if block.settings.product != blank %}<a class="heresy-meet-shades__card-link" href="{{ block.settings.product.url }}">{% endif %}
           <div class="mod_shades_carousel_1Jliaa_MeetShades__card-image">
             <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-meet-shades__image', width: 640, height: 640 %}
+              {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-meet-shades__image', width: 640, height: 640, sizes: '(max-width: 819px) 78vw, 25vw', defer_image: defer_shade_image %}
             </span>
           </div>
           <div class="mod_shades_carousel_1Jliaa_MeetShades__card-text">
