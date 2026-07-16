@@ -12,7 +12,7 @@
 %}
 
 <section
-  class="heresy-product-main Product Product__new"
+  class="heresy-product-main"
   id="heresy-product-main-{{ section.id }}"
   data-heresy-section="{{ section.id }}"
   data-heresy-product
@@ -144,7 +144,7 @@
       </div>
     </div>
 
-    <div class="Product-main-card js-product-main-card heresy-product-main__card">
+    <div class="heresy-product-main__card">
       {% if section.settings.eyebrow != blank %}<p class="heresy-product-main__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
       <h1 class="u-fontRektorat u-hSize--Medium Product-main-card-title">{{ section.settings.title | default: product.title }}</h1>
       <div class="Product-main-card-content-price-container u-noMargin">

@@ -94,7 +94,7 @@
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev { transform: rotate(180deg); }
-.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__content { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__content { overflow-x: auto; scrollbar-width: none; }
 
 .heresy-meet-shades .heresy-meet-shades__cards {
   gap: 24px;
@@ -111,7 +111,6 @@
   width: max(12.5rem, 25.4167vw);
   margin-bottom: max(1.5rem, 2.01389vw);
   display: flex;
-  scroll-snap-align: start;
 }
 
 .heresy-meet-shades .heresy-meet-shades__card-link { color: inherit; text-decoration: none; }
