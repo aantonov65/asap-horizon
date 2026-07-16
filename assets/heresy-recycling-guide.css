@@ -1,4 +1,5 @@
 .heresy-recycling-guide {
+  --heresy-recycling-index: 0;
   background: #f1f0ed;
   border-radius: .75rem;
   position: relative;
@@ -9,24 +10,27 @@
   width: calc(100% - 4.5vw) !important;
 }
 
-.heresy-recycling-guide .heresy-recycling-guide__slides,
-.heresy-recycling-guide .heresy-recycling-guide__slide { height: 100%; }
-.heresy-recycling-guide .heresy-recycling-guide__slide { display: none; }
-.heresy-recycling-guide .heresy-recycling-guide__slide.heresy-is-active { display: block; }
+.heresy-recycling-guide .heresy-recycling-guide__slides { display: flex; height: 100%; transform: translate3d(calc(var(--heresy-recycling-index) * -100%), 0, 0); transition: transform 1050ms cubic-bezier(.22, 1, .36, 1); will-change: transform; }
+.heresy-recycling-guide .heresy-recycling-guide__slide { flex: 0 0 100%; height: 100%; }
 .heresy-recycling-guide .Slider-with-video { min-height: 0; height: 100%; margin-right: 5vw; display: grid; grid-template-columns: 38% 62%; }
 .heresy-recycling-guide .Slider-with-video-content-wrapper { color: #67645e; padding: max(2rem, 4vw); display: flex; flex-direction: column; justify-content: center; }
 .heresy-recycling-guide .Slider-with-video-image-container { position: relative; min-width: 0; overflow: hidden; }
 .heresy-recycling-guide .Slider-with-video-image-container .Image { width: 100%; height: 100%; }
 .heresy-recycling-guide .Slider-with-video-image-container .Image { padding-bottom: 0 !important; }
-.heresy-recycling-guide .heresy-recycling-guide__image { width: 100%; height: 100%; object-fit: cover; }
+.heresy-recycling-guide .heresy-recycling-guide__image { height: 100%; object-fit: cover; width: 100%; }
 .heresy-recycling-guide [data-heresy-recycling-kind="packaging"] .Slider-with-video-image-container { background: #f1f0ed; }
-.heresy-recycling-guide [data-heresy-recycling-kind="packaging"] .heresy-recycling-guide__image { object-fit: contain; }
+.heresy-recycling-guide [data-heresy-recycling-kind="packaging"] .heresy-recycling-guide__image { height: 84%; margin: 8% auto; object-fit: contain; width: 84%; }
 .heresy-recycling-guide .product-description-text { z-index: 2; max-width: 12rem; position: absolute; }
 .heresy-recycling-guide .heresy-recycling-guide__navigation { width: 5vw; position: absolute; right: 0; top: 0; bottom: 0; z-index: 4; }
 .heresy-recycling-guide .Slider-with-video-backdrop { color: #fff; background: rgba(103, 100, 94, .55); border-radius: 0; padding: 1rem; text-align: left; backdrop-filter: blur(12px); opacity: .65; }
-.heresy-recycling-guide .Slider-with-video-backdrop { display: none; width: 100%; height: 100%; }
-.heresy-recycling-guide .Slider-with-video-backdrop.heresy-is-selected { display: block; opacity: 1; }
-.heresy-recycling-guide .Slider-with-video-backdrop-content { display: flex; height: 100%; justify-content: space-between; align-items: center; writing-mode: vertical-rl; transform: rotate(180deg); }
+.heresy-recycling-guide .Slider-with-video-backdrop { display: none !important; height: 100%; width: 100%; }
+.heresy-recycling-guide .Slider-with-video-backdrop.heresy-is-selected { display: block !important; opacity: 1; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content { display: block; height: 100%; position: relative; transform: none; writing-mode: initial; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content > span { left: 50%; position: absolute; transform: translateX(-50%) rotate(180deg); white-space: nowrap; writing-mode: vertical-rl; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content > .u-pSize { top: 0; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content > .u-fontRektorat { bottom: 0; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content .u-fontRektorat { font-size: clamp(1.25rem, 1.7vw, 2rem); font-weight: 400; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content .u-pSize { letter-spacing: .03em; text-transform: uppercase; }
 
 @media screen and (max-width: 819px) {
   .heresy-recycling-guide { height: auto; min-height: 46rem !important; margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
@@ -34,5 +38,10 @@
   .heresy-recycling-guide .Slider-with-video-content-wrapper { padding: 1.5rem 1rem; }
   .heresy-recycling-guide .Slider-with-video-image-container { min-height: 30rem; }
   .heresy-recycling-guide .heresy-recycling-guide__navigation { width: 100%; height: 5rem; top: auto; }
-  .heresy-recycling-guide .Slider-with-video-backdrop-content { writing-mode: initial; transform: none; }
+  .heresy-recycling-guide .Slider-with-video-backdrop-content { align-items: center; display: flex; justify-content: space-between; }
+  .heresy-recycling-guide .Slider-with-video-backdrop-content > span { position: static; transform: none; writing-mode: initial; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heresy-recycling-guide .heresy-recycling-guide__slides { transition-duration: 1ms; }
 }
