@@ -6,15 +6,39 @@
   class="heresy-product-recommendations"
   data-heresy-section="{{ section.id }}"
   data-heresy-recommendations
-  {% unless recommendations.performed? %}data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent=related"{% endunless %}
+  {% if section.blocks.size == 0 and recommendations.performed? == false %}data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent=related"{% endif %}
 >
-  {% if recommendations.performed? %}
-    {% if recommendations.products_count > 0 %}
-      <header class="heresy-product-recommendations__header">
-        <h2>{{ section.settings.heading }}</h2>
-        <span>{{ section.settings.swipe_label }}</span>
-      </header>
-      <div class="heresy-product-recommendations__track">
+  {% liquid
+    assign has_cards = false
+    if section.blocks.size > 0
+      assign has_cards = true
+    elsif recommendations.performed? and recommendations.products_count > 0
+      assign has_cards = true
+    endif
+  %}
+  {% if has_cards %}
+    <header class="heresy-product-recommendations__header">
+      <h2>{{ section.settings.heading }}</h2>
+      <span>{{ section.settings.swipe_label }}</span>
+    </header>
+    <div class="heresy-product-recommendations__track">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-model.jpg' %}
+          {% assign card_url = block.settings.product.url | default: routes.all_products_collection_url %}
+          <article class="heresy-product-recommendations__card" {{ block.shopify_attributes }}>
+            <a href="{{ card_url }}">
+              <div class="heresy-product-recommendations__image-wrap">
+                {% render 'heresy-responsive-image', image: block.settings.image, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'heresy-product-recommendations__image', width: 1000, height: 1200 %}
+              </div>
+              <div class="heresy-product-recommendations__meta">
+                <h3>{{ block.settings.title | default: block.settings.product.title }}</h3>
+                <span>{% if block.settings.product != blank %}{{ block.settings.product.price | money }}{% else %}{{ block.settings.price }}{% endif %}</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      {% else %}
         {% for recommended_product in recommendations.products %}
           <article class="heresy-product-recommendations__card">
             <a href="{{ recommended_product.url }}">
@@ -32,9 +56,9 @@
             </a>
           </article>
         {% endfor %}
-      </div>
-    {% endif %}
-  {% else %}
+      {% endif %}
+    </div>
+  {% elsif section.blocks.size == 0 %}
     <span class="heresy-product-recommendations__loading" aria-live="polite">{{ section.settings.loading_label }}</span>
   {% endif %}
 </section>
@@ -48,6 +72,21 @@
     {"type": "text", "id": "loading_label", "label": "Loading label", "default": "Loading recommendations…"},
     {"type": "range", "id": "limit", "label": "Maximum products", "min": 2, "max": 10, "step": 1, "default": 4}
   ],
-  "presets": [{"name": "Heresy recommendations"}]
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {"type": "product", "id": "product", "label": "Product"},
+        {"type": "text", "id": "title", "label": "Title", "default": "peptide lip tint"},
+        {"type": "text", "id": "price", "label": "Fallback price", "default": "€20,00"},
+        {"type": "image_picker", "id": "image", "label": "Image"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "rhode skincare product"},
+        {"type": "select", "id": "fallback", "label": "Bundled fallback", "options": [{"value": "shape", "label": "Peptide lip shape"}, {"value": "tint", "label": "Peptide lip tint"}, {"value": "blush", "label": "Pocket blush"}, {"value": "bronze", "label": "Pocket bronze"}, {"value": "milk", "label": "Highlight milk"}], "default": "tint"}
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{"name": "Heresy recommendations", "blocks": [{"type": "product_card", "settings": {"title": "peptide lip tint", "price": "€20,00", "fallback": "tint"}}, {"type": "product_card", "settings": {"title": "pocket blush", "price": "€33,00", "fallback": "blush"}}, {"type": "product_card", "settings": {"title": "pocket bronze", "price": "€33,00", "fallback": "bronze"}}, {"type": "product_card", "settings": {"title": "highlight milk", "price": "€30,00", "fallback": "milk"}}]}]
 }
 {% endschema %}

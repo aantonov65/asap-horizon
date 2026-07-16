@@ -363,7 +363,6 @@
       "block_order": [
         "video_card_01"
       ],
-      "disabled": true,
       "settings": {}
     },
     "ugc_secondary": {
@@ -786,7 +785,40 @@
     },
     "recommendations": {
       "type": "heresy-product-recommendations",
-      "disabled": true,
+      "blocks": {
+        "recommendation_01": {
+          "type": "product_card",
+          "settings": {"title": "peptide lip tint", "price": "€20,00", "fallback": "tint"}
+        },
+        "recommendation_02": {
+          "type": "product_card",
+          "settings": {"title": "pocket blush", "price": "€33,00", "fallback": "blush"}
+        },
+        "recommendation_03": {
+          "type": "product_card",
+          "settings": {"title": "pocket bronze", "price": "€33,00", "fallback": "bronze"}
+        },
+        "recommendation_04": {
+          "type": "product_card",
+          "settings": {"title": "highlight milk", "price": "€30,00", "fallback": "milk"}
+        },
+        "recommendation_05": {
+          "type": "product_card",
+          "settings": {"title": "peptide lip shape", "price": "€32,00", "fallback": "shape"}
+        }
+      },
+      "block_order": ["recommendation_01", "recommendation_02", "recommendation_03", "recommendation_04", "recommendation_05"],
+      "settings": {"heading": "you may also like", "swipe_label": "swipe"}
+    },
+    "heresy_footer": {
+      "type": "heresy-footer",
+      "blocks": {
+        "footer_navigate": {"type": "link_column", "settings": {"heading": "NAVIGATE", "fallback_links": "<p>Shop<br>Our Story<br>Rhode Futures<br>Impact<br>VLOG<br>Where to Find Us</p>"}},
+        "footer_social": {"type": "link_column", "settings": {"heading": "SOCIAL", "fallback_links": "<p>Instagram<br>YouTube<br>TikTok<br>Pinterest</p>"}},
+        "footer_official": {"type": "link_column", "settings": {"heading": "OFFICIAL", "fallback_links": "<p>Privacy<br>Terms<br>Accessibility Statement<br>FAQ<br>Contact<br>Events</p>"}},
+        "footer_support": {"type": "link_column", "settings": {"heading": "SUPPORT", "fallback_links": "<p>We’re here M-F 9am - 5pm PST.<br>Drop us a note anytime.</p>"}}
+      },
+      "block_order": ["footer_navigate", "footer_social", "footer_official", "footer_support"],
       "settings": {}
     }
   },
@@ -805,6 +837,7 @@
     "summer_routine",
     "recycling",
     "reviews",
-    "recommendations"
+    "recommendations",
+    "heresy_footer"
   ]
 }

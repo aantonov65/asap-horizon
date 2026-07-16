@@ -1,0 +1,64 @@
+{{ 'heresy-shared.css' | asset_url | stylesheet_tag }}
+{{ 'heresy-footer.css' | asset_url | stylesheet_tag }}
+
+<section class="heresy-footer" data-heresy-section="{{ section.id }}">
+  <div class="heresy-footer__wordmark" aria-hidden="true">rhode</div>
+  <div class="heresy-footer__content">
+    <div class="heresy-footer__newsletter">
+      <div class="heresy-footer__intro">{{ section.settings.intro }}</div>
+      {% form 'customer', class: 'heresy-footer__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="HeresyFooterEmail-{{ section.id }}">{{ section.settings.email_label }}</label>
+        <input id="HeresyFooterEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="{{ section.settings.email_label }}" required>
+        <button type="submit">{{ section.settings.submit_label }}</button>
+        {% if form.posted_successfully? %}<p role="status">{{ section.settings.success_message }}</p>{% endif %}
+        {% if form.errors %}<div role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+      {% endform %}
+      <p class="heresy-footer__privacy">{{ section.settings.privacy_copy }}</p>
+    </div>
+    <div class="heresy-footer__links">
+      {% for block in section.blocks %}
+        <div class="heresy-footer__column" {{ block.shopify_attributes }}>
+          <h2>{{ block.settings.heading }}</h2>
+          {% if block.settings.menu != blank %}
+            <ul>
+              {% for link in block.settings.menu.links %}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{% endfor %}
+            </ul>
+          {% else %}
+            <div class="heresy-footer__fallback-links">{{ block.settings.fallback_links }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="heresy-footer__bottom">
+    <span>{{ localization.country.name }} / {{ localization.country.currency.iso_code }}</span>
+    <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heresy footer",
+  "settings": [
+    {"type": "richtext", "id": "intro", "label": "Newsletter intro", "default": "<p>Join us on the rhode to an effortless glow.</p><p>Glaze your inbox with tips, tricks & exclusive content from Hailey.</p>"},
+    {"type": "text", "id": "email_label", "label": "Email field label", "default": "Email Address"},
+    {"type": "text", "id": "submit_label", "label": "Submit label", "default": "SUBSCRIBE"},
+    {"type": "text", "id": "success_message", "label": "Success message", "default": "Thank you for joining us."},
+    {"type": "inline_richtext", "id": "privacy_copy", "label": "Privacy copy", "default": "By signing up, you agree to our Privacy Policy*."}
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        {"type": "text", "id": "heading", "label": "Heading", "default": "NAVIGATE"},
+        {"type": "link_list", "id": "menu", "label": "Menu"},
+        {"type": "richtext", "id": "fallback_links", "label": "Fallback copy", "default": "<p>Shop<br>Our Story<br>Rhode Futures<br>Impact<br>VLOG<br>Where to Find Us</p>"}
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{"name": "Heresy footer", "blocks": [{"type": "link_column", "settings": {"heading": "NAVIGATE", "fallback_links": "<p>Shop<br>Our Story<br>Rhode Futures<br>Impact<br>VLOG<br>Where to Find Us</p>"}}, {"type": "link_column", "settings": {"heading": "SOCIAL", "fallback_links": "<p>Instagram<br>YouTube<br>TikTok<br>Pinterest</p>"}}, {"type": "link_column", "settings": {"heading": "OFFICIAL", "fallback_links": "<p>Privacy<br>Terms<br>Accessibility Statement<br>FAQ<br>Contact<br>Events</p>"}}, {"type": "link_column", "settings": {"heading": "SUPPORT", "fallback_links": "<p>We’re here M-F 9am - 5pm PST.<br>Drop us a note anytime.</p>"}}]}]
+}
+{% endschema %}
