@@ -12,7 +12,9 @@
       <div class="mod_shades_carousel_1Jliaa_MeetShades__swatches">
         <div class="heresy-meet-shades__swatch-track">
           {% for block in section.blocks %}
-            <button type="button" class="mod_shades_carousel_1Jliaa_MeetShades__swatch{% if forloop.first %} heresy-is-selected{% endif %}" data-heresy-shade-go="{{ forloop.index0 }}" aria-label="Select {{ block.settings.title | escape }} shade" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" style="background-color: {{ block.settings.color }};"></button>
+            {% assign shade_is_selected = false %}
+            {% if block.settings.title == section.settings.selected_shade %}{% assign shade_is_selected = true %}{% endif %}
+            <button type="button" class="mod_shades_carousel_1Jliaa_MeetShades__swatch{% if shade_is_selected %} heresy-is-selected{% endif %}" data-heresy-shade-go="{{ forloop.index0 }}" aria-label="Select {{ block.settings.title | escape }} shade" aria-pressed="{% if shade_is_selected %}true{% else %}false{% endif %}" style="background-color: {{ block.settings.color }};"></button>
           {% endfor %}
         </div>
       </div>
@@ -64,7 +66,8 @@
 {
   "name": "Heresy meet shades",
   "settings": [
-    {"type": "text", "id": "heading", "label": "Heading", "default": "meet the shades"}
+    {"type": "text", "id": "heading", "label": "Heading", "default": "meet the shades"},
+    {"type": "select", "id": "selected_shade", "label": "Initially selected shade", "options": [{"value": "lift", "label": "Lift"}, {"value": "push", "label": "Push"}, {"value": "press", "label": "Press"}, {"value": "bend", "label": "Bend"}, {"value": "squeeze", "label": "Squeeze"}, {"value": "lunge", "label": "Lunge"}, {"value": "twist", "label": "Twist"}, {"value": "balance", "label": "Balance"}, {"value": "lean", "label": "Lean"}, {"value": "jump", "label": "Jump"}, {"value": "stretch", "label": "Stretch"}, {"value": "flex", "label": "Flex"}, {"value": "spin", "label": "Spin"}, {"value": "move", "label": "Move"}], "default": "push"}
   ],
   "blocks": [
     {

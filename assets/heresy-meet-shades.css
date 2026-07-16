@@ -6,6 +6,8 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  height: fit-content;
+  min-height: unset !important;
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__header {
@@ -51,13 +53,18 @@
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatch {
+  background-clip: padding-box;
+  border: 0;
   cursor: pointer;
   border-radius: 100%;
   flex: 0 0 1.875rem;
   width: 1.875rem;
   height: 1.875rem;
   position: relative;
+  transition: transform .3s ease;
 }
+
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatch:hover { transform: scale(1.08); }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__swatch.heresy-is-selected::after {
   content: "";
@@ -73,6 +80,7 @@
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-next,
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev {
+  background: transparent;
   cursor: pointer;
   border: 1px solid #67645e;
   border-radius: 50%;
@@ -82,13 +90,14 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  transition: opacity .3s ease;
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__thumbs-prev { transform: rotate(180deg); }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__content { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
 
 .heresy-meet-shades .heresy-meet-shades__cards {
-  gap: max(1rem, 1.38889vw);
+  gap: 24px;
   width: max-content;
   margin: 0;
   padding: 0 max(1rem, 1.94444vw);
@@ -126,7 +135,9 @@
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__buttons { align-items: center; gap: max(.5rem, .555556vw); display: flex; }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__button { cursor: pointer; border: 1px solid #67645e; border-radius: 50%; justify-content: center; align-items: center; width: max(1.9375rem, 2.15278vw); height: max(1.9375rem, 2.15278vw); display: flex; }
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__scrollbar__wrapper { background: #c4c4c4; flex: 1; height: 2px; position: relative; }
-.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__scrollbar { background: #67645e; width: 7.142857%; height: 2px; transition: width .1s ease-in-out; position: absolute; inset: 0 auto auto 0; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__button { background: transparent; transition: opacity .3s ease; }
+.heresy-meet-shades button:disabled { cursor: default; opacity: .35; }
+.heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__scrollbar { background: #67645e; width: 100%; max-width: 0; height: 2px; transition: max-width .3s ease-in-out; position: absolute; inset: 0 auto auto 0; }
 
 @media print, screen and (min-width: 820px) {
   .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__header { flex-direction: row; justify-content: space-between; align-items: center; }

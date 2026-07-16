@@ -1,6 +1,7 @@
 (() => {
   const money = (cents, format) => {
     const amount = Number(cents || 0) / 100;
+    if (format === 'EUR') return `€${amount.toFixed(2).replace('.', ',')}`;
     try {
       return new Intl.NumberFormat(document.documentElement.lang || 'en', {
         style: 'currency',
@@ -100,6 +101,151 @@
       });
       observer.observe(mainButton);
     }
+
+    const routine = root.querySelector('[data-heresy-routine]');
+    if (routine) {
+      const cards = [...routine.querySelectorAll('[data-heresy-routine-card]')];
+      const routineButton = routine.querySelector('[data-heresy-routine-add]');
+      const updateRoutine = () => {
+        const selected = cards.filter((card) => card.querySelector('[data-heresy-routine-checkbox]')?.checked);
+        cards.forEach((card) => card.classList.toggle('heresy-is-selected', selected.includes(card)));
+        const total = selected.reduce((sum, card) => sum + Number(card.dataset.priceCents || 0), 0);
+        if (routineButton) {
+          routineButton.disabled = selected.length === 0;
+          routineButton.textContent = selected.length ? `ADD - ${money(total, currency)}` : (routineButton.dataset.defaultLabel || routineButton.textContent);
+          if (!routineButton.dataset.defaultLabel) routineButton.dataset.defaultLabel = routineButton.textContent;
+        }
+      };
+
+      cards.forEach((card) => {
+        const checkbox = card.querySelector('[data-heresy-routine-checkbox]');
+        checkbox?.addEventListener('change', updateRoutine);
+        card.addEventListener('click', (event) => {
+          if (event.target.closest('button, a, label, input')) return;
+          if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+            updateRoutine();
+          }
+        });
+
+        const dropdown = card.querySelector('[data-heresy-routine-dropdown]');
+        const panel = card.querySelector('[data-heresy-routine-variant-panel]');
+        if (panel) {
+          panel.hidden = false;
+          dropdown?.addEventListener('click', () => {
+            const opening = !panel.classList.contains('heresy-is-open');
+            root.querySelectorAll('[data-heresy-routine-variant-panel].heresy-is-open').forEach((other) => other.classList.remove('heresy-is-open'));
+            root.querySelectorAll('[data-heresy-routine-dropdown][aria-expanded="true"]').forEach((other) => other.setAttribute('aria-expanded', 'false'));
+            panel.classList.toggle('heresy-is-open', opening);
+            dropdown.setAttribute('aria-expanded', String(opening));
+          });
+          panel.querySelectorAll('[data-heresy-routine-variant]').forEach((option) => {
+            option.addEventListener('click', () => {
+              card.dataset.variantId = option.dataset.heresyRoutineVariant || '';
+              card.dataset.priceCents = option.dataset.priceCents || '0';
+              const label = dropdown?.querySelector('span');
+              const price = card.querySelector('.heresy-complete-routine__card-price');
+              if (label) label.textContent = option.textContent.trim();
+              if (price) price.textContent = option.dataset.price || money(option.dataset.priceCents, currency);
+              panel.classList.remove('heresy-is-open');
+              dropdown?.setAttribute('aria-expanded', 'false');
+              updateRoutine();
+            });
+          });
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (routine.contains(event.target) && event.target.closest('[data-heresy-routine-dropdown], [data-heresy-routine-variant-panel]')) return;
+        routine.querySelectorAll('[data-heresy-routine-variant-panel].heresy-is-open').forEach((panel) => panel.classList.remove('heresy-is-open'));
+        routine.querySelectorAll('[data-heresy-routine-dropdown][aria-expanded="true"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+      });
+
+      routineButton?.addEventListener('click', async () => {
+        const items = cards
+          .filter((card) => card.querySelector('[data-heresy-routine-checkbox]')?.checked && card.dataset.variantId)
+          .map((card) => ({ id: Number(card.dataset.variantId), quantity: 1 }));
+        if (!items.length) return;
+        routineButton.disabled = true;
+        try {
+          await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ items }),
+          });
+          document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+        } finally {
+          updateRoutine();
+        }
+      });
+      if (routineButton) routineButton.dataset.defaultLabel = routineButton.textContent;
+      updateRoutine();
+    }
+
+    const upsells = root.querySelector('[data-heresy-upsells]');
+    if (upsells) {
+      const tabs = [...upsells.querySelectorAll('[data-heresy-upsell-tab]')];
+      const panels = [...upsells.querySelectorAll('[data-heresy-upsell-panel]')];
+      const indicator = upsells.querySelector('[data-heresy-upsell-indicator]');
+      const setUpsell = (index) => {
+        tabs.forEach((tab, tabIndex) => {
+          const selected = tabIndex === index;
+          tab.classList.toggle('Product__upsell__header__toggle__active', selected);
+          tab.setAttribute('aria-selected', String(selected));
+        });
+        panels.forEach((panel, panelIndex) => panel.classList.toggle('heresy-is-hidden', panelIndex !== index));
+        const activeTab = tabs[index];
+        if (indicator && activeTab) {
+          indicator.style.width = `${activeTab.offsetWidth}px`;
+          indicator.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+        }
+      };
+      tabs.forEach((tab, index) => tab.addEventListener('click', () => setUpsell(index)));
+      requestAnimationFrame(() => setUpsell(0));
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    root.querySelectorAll('[data-heresy-accordion]').forEach((details) => {
+      const summary = details.querySelector('summary');
+      const content = details.querySelector('.Product-tab-content-container');
+      if (!summary || !content) return;
+      content.style.height = details.open ? `${content.scrollHeight}px` : '0px';
+      summary.setAttribute('aria-expanded', String(details.open));
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (details.dataset.animating === 'true') return;
+        const opening = !details.open;
+        if (reduceMotion) {
+          details.open = opening;
+          content.style.height = opening ? 'auto' : '0px';
+          summary.setAttribute('aria-expanded', String(opening));
+          return;
+        }
+        details.dataset.animating = 'true';
+        if (opening) {
+          details.open = true;
+          content.style.height = '0px';
+          summary.setAttribute('aria-expanded', 'true');
+          requestAnimationFrame(() => {
+            content.style.height = `${content.scrollHeight}px`;
+          });
+        } else {
+          content.style.height = `${content.scrollHeight}px`;
+          summary.setAttribute('aria-expanded', 'false');
+          requestAnimationFrame(() => {
+            content.style.height = '0px';
+          });
+        }
+        const finish = (transitionEvent) => {
+          if (transitionEvent.propertyName !== 'height') return;
+          content.removeEventListener('transitionend', finish);
+          if (opening) content.style.height = 'auto';
+          else details.open = false;
+          details.dataset.animating = 'false';
+        };
+        content.addEventListener('transitionend', finish);
+      });
+    });
   };
 
   const initAll = (scope = document) => scope.querySelectorAll('[data-heresy-product]').forEach(init);

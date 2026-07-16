@@ -386,8 +386,339 @@
   opacity: 0.8;
 }
 
+[data-heresy-section] .heresy-complete-routine {
+  margin-top: 2rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__container {
+  border-bottom: 1px solid #c4c4c4;
+  border-top: 1px solid #c4c4c4;
+  padding: 2rem 0;
+}
+
+[data-heresy-section] .heresy-complete-routine__title {
+  color: var(--heresy-ink);
+  font-size: max(0.875rem, 1.38889vw);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+[data-heresy-section] .heresy-complete-routine__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+[data-heresy-section] .heresy-complete-routine__card {
+  background: #fff;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  color: var(--heresy-ink);
+  min-width: 0;
+  padding: 0.625rem 0.875rem;
+  position: relative;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+[data-heresy-section] .heresy-complete-routine__card.heresy-is-selected {
+  border-color: var(--heresy-ink);
+}
+
+[data-heresy-section] .heresy-complete-routine__card-inner {
+  align-items: center;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  min-height: 5rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-wrap {
+  cursor: pointer;
+  position: absolute;
+  right: 0.8125rem;
+  top: 0.8125rem;
+  z-index: 2;
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-input {
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-box {
+  align-items: center;
+  border: 1px solid var(--heresy-ink);
+  border-radius: 0.375rem;
+  display: flex;
+  height: 1.3125rem;
+  justify-content: center;
+  transition: background-color 0.25s ease;
+  width: 1.3125rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-box svg {
+  opacity: 0;
+  transform: scale(0.65);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-input:checked + .heresy-complete-routine__checkbox-box {
+  background: var(--heresy-ink);
+}
+
+[data-heresy-section] .heresy-complete-routine__checkbox-input:checked + .heresy-complete-routine__checkbox-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-heresy-section] .heresy-complete-routine__card-image {
+  height: 5rem;
+  width: 3.75rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__card-image img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+[data-heresy-section] .heresy-complete-routine__card-body {
+  min-width: 0;
+  padding-right: 1.25rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__card-title,
+[data-heresy-section] .heresy-complete-routine__card-subtitle,
+[data-heresy-section] .heresy-complete-routine__card-price {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  margin: 0;
+}
+
+[data-heresy-section] .heresy-complete-routine__card-title,
+[data-heresy-section] .heresy-complete-routine__card-price {
+  font-weight: 700;
+}
+
+[data-heresy-section] .heresy-complete-routine__card-subtitle {
+  margin-top: 0.25rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__price-row {
+  align-items: flex-end;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__dropdown-wrap {
+  min-width: 0;
+  position: relative;
+}
+
+[data-heresy-section] .heresy-complete-routine__dropdown {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 0.875rem;
+  gap: 0.35rem;
+  max-width: 8rem;
+  padding: 0 0 0.18rem;
+  white-space: nowrap;
+}
+
+[data-heresy-section] .heresy-complete-routine__dropdown svg {
+  flex: 0 0 auto;
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+[data-heresy-section] .heresy-complete-routine__dropdown[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+[data-heresy-section] .heresy-complete-routine__variant-panel {
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(103, 100, 94, 0.12);
+  display: grid;
+  left: 0;
+  max-height: 0;
+  min-width: 8rem;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  transform: translateY(-0.35rem);
+  transition: max-height 0.55s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease, transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: 12;
+}
+
+[data-heresy-section] .heresy-complete-routine__variant-panel.heresy-is-open {
+  max-height: 16rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-heresy-section] .heresy-complete-routine__variant-option {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+[data-heresy-section] .heresy-complete-routine__variant-option:hover,
+[data-heresy-section] .heresy-complete-routine__variant-option:focus-visible {
+  background: #f1f0ed;
+}
+
+[data-heresy-section] .heresy-complete-routine__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+[data-heresy-section] .heresy-complete-routine__add,
+[data-heresy-section] .heresy-product-main__upsell-cta,
+[data-heresy-section] .heresy-product-main__tab-link {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--heresy-ink);
+  border-radius: 3.125rem;
+  color: var(--heresy-ink);
+  display: inline-flex;
+  font: inherit;
+  justify-content: center;
+  line-height: 1;
+  padding: 0.6875rem 1.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+[data-heresy-section] .heresy-complete-routine__add {
+  width: 100%;
+}
+
+[data-heresy-section] .heresy-complete-routine__add:disabled {
+  border-color: rgba(103, 100, 94, 0.5);
+  color: rgba(103, 100, 94, 0.5);
+  cursor: default;
+}
+
+[data-heresy-section] .Product__upsell__wrapper {
+  border-top: 1px solid #c4c4c4;
+  margin-bottom: 1rem;
+  padding: 0.75rem 0;
+}
+
+[data-heresy-section] .Product__upsell__header {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  width: max-content;
+}
+
+[data-heresy-section] .Product__upsell__header__toggle {
+  background: none;
+  border: 0;
+  color: rgba(103, 100, 94, 0.5);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0 0 0.2rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+[data-heresy-section] .Product__upsell__header__toggle__active {
+  color: var(--heresy-ink);
+}
+
+[data-heresy-section] .Product__upsell__header__indicator {
+  background: var(--heresy-ink);
+  bottom: 0;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1), width 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+[data-heresy-section] .heresy-product-main__upsell-panel {
+  max-height: 12rem;
+  opacity: 1;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: max-height 0.55s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease, transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+[data-heresy-section] .heresy-product-main__upsell-panel.heresy-is-hidden {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+[data-heresy-section] .Product__upsell {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+[data-heresy-section] .Product__upsell__image {
+  flex: 0 0 5rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+[data-heresy-section] .Product__upsell__image img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+[data-heresy-section] .Product__upsell__content {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+[data-heresy-section] .Product__upsell__info__title {
+  font-size: max(0.875rem, 1.38889vw);
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+[data-heresy-section] .Product__upsell__content .Button-container {
+  width: 100%;
+}
+
+[data-heresy-section] .heresy-product-main__upsell-cta {
+  width: 100%;
+}
+
 [data-heresy-section] .Product-tabs {
-  padding-top: 2.25rem;
+  padding-top: 0;
 }
 
 [data-heresy-section] .Product-tab {
@@ -407,6 +738,8 @@
   list-style: none;
   margin: 0;
   padding: 0.75rem 0;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 [data-heresy-section] .Product-tab-toggle-container::-webkit-details-marker {
@@ -450,13 +783,20 @@
 }
 
 [data-heresy-section] .Product-tab-content-container {
+  height: 0;
+  opacity: 0;
   overflow: hidden;
-  padding: 0 0 1rem;
-  transition: all 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+  padding: 0;
+  transition: height 0.7s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.35s ease;
+}
+
+[data-heresy-section] .Product-tab[open] .Product-tab-content-container {
+  opacity: 1;
 }
 
 [data-heresy-section] .Product-tab-content {
   max-width: 90%;
+  padding-bottom: 1rem;
 }
 
 [data-heresy-section] .Product-tab-content > :first-child {
@@ -464,10 +804,8 @@
 }
 
 [data-heresy-section] .heresy-product-main__tab-link {
-  color: inherit;
-  display: inline-block;
-  font-size: 0.75rem;
-  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  margin: 0 0 1rem;
 }
 
 [data-heresy-section] .Product-sticky-bar {
@@ -499,6 +837,38 @@
 @media screen and (min-width: 1240px) {
   [data-heresy-section] .heresy-product-main__card {
     max-width: min(42vw, 50rem);
+  }
+
+  [data-heresy-section] .heresy-complete-routine {
+    margin-top: 2.5rem;
+  }
+
+  [data-heresy-section] .heresy-complete-routine__container {
+    margin-bottom: -0.625rem;
+    padding: 1.25rem 0 1.75rem;
+  }
+
+  [data-heresy-section] .heresy-complete-routine__title {
+    margin-bottom: 1rem;
+  }
+
+  [data-heresy-section] .heresy-complete-routine__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-heresy-section] .heresy-complete-routine__add {
+    width: auto;
+  }
+
+  [data-heresy-section] .Product__upsell__content {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  [data-heresy-section] .Product__upsell__content .Button-container {
+    flex: 1;
+    max-width: 20rem;
   }
 }
 
