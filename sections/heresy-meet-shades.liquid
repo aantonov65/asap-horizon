@@ -29,10 +29,7 @@
       {% for block in section.blocks %}
         {% liquid
           assign fallback_asset = block.settings.fallback | prepend: 'heresy-shade-' | append: '.webp'
-          assign defer_shade_image = false
-          if forloop.index > 4
-            assign defer_shade_image = true
-          endif
+          assign defer_shade_image = true
         %}
         <li class="mod_shades_carousel_1Jliaa_MeetShades__card" data-heresy-shade-card="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
           {% if block.settings.product != blank %}<a class="heresy-meet-shades__card-link" href="{{ block.settings.product.url }}">{% endif %}

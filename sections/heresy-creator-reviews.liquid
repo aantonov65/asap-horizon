@@ -8,10 +8,7 @@
     {% for block in section.blocks %}
       {% liquid
         assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.webp'
-        assign defer_creator_image = false
-        unless forloop.first
-          assign defer_creator_image = true
-        endunless
+        assign defer_creator_image = true
         case block.settings.fallback
           when 'gabbie'
             assign fallback_video_filename = 'heresy-creator-review-1.mp4'
@@ -70,7 +67,7 @@
       {% assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '-thumb.webp' %}
       <button type="button" class="mod_before_after_AAAprW_Navigation__block{% if forloop.first %} heresy-is-selected{% endif %}" data-heresy-creator-go="{{ forloop.index0 }}" aria-label="Show {{ block.settings.creator | escape }} review" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
         <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-          {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', sizes: '120px', width: 220, height: 240 %}
+          {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', sizes: '120px', width: 220, height: 240, defer_image: true %}
         </span>
       </button>
     {% endfor %}

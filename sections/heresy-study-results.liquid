@@ -57,7 +57,7 @@
   <div class="Tabbed-content-multi-images-container Tabbed-content-multi-images-container__left">
     <div class="Tabbed-content-multi-image-container">
       <span class="Image Image--desktop o-placeholder bg-full-height">
-        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-study-results.webp', alt: section.settings.image_alt, class: 'heresy-study-results__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', width: 1120, height: 1222 %}
+        {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-study-results.webp', alt: section.settings.image_alt, class: 'heresy-study-results__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', width: 1120, height: 1222, defer_image: true %}
       </span>
     </div>
   </div>

@@ -14,10 +14,7 @@
           elsif block.settings.fallback == 'tint'
             assign fallback_asset = 'heresy-layer-tint.webp'
           endif
-          assign defer_layer_image = false
-          unless forloop.first
-            assign defer_layer_image = true
-          endunless
+          assign defer_layer_image = true
         %}
         <div class="swiper-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-layer-slide="{{ forloop.index0 }}">
           <div class="Highlights-image-container">

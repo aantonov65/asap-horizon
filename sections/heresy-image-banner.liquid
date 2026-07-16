@@ -12,12 +12,12 @@
   <div class="mod_banner__Z5PZG_Banner__image">
     <div class="u-hideMd">
       <span class="Image Image--mobile o-placeholder bg-full-height skip-animation">
-        {% render 'heresy-responsive-image', image: section.settings.mobile_image, fallback_asset: 'heresy-image-banner-mobile.webp', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', sizes: '100vw', width: 750, height: 1335 %}
+        {% render 'heresy-responsive-image', image: section.settings.mobile_image, fallback_asset: 'heresy-image-banner-mobile.webp', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', sizes: '100vw', width: 750, height: 1335, defer_image: true %}
       </span>
     </div>
     <div class="u-showMd">
       <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-        {% render 'heresy-responsive-image', image: section.settings.desktop_image, fallback_asset: 'heresy-image-banner-desktop.webp', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', sizes: '100vw', width: 1600, height: 900 %}
+        {% render 'heresy-responsive-image', image: section.settings.desktop_image, fallback_asset: 'heresy-image-banner-desktop.webp', alt: section.settings.image_alt, class: 'skip-animation heresy-image-banner__media', sizes: '100vw', width: 1600, height: 900, defer_image: true %}
       </span>
     </div>
   </div>

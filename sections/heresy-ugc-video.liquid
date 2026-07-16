@@ -11,18 +11,20 @@
         <div class="heresy-ugc-video__media">
           <div class="heresy-ugc-video__poster" data-heresy-ugc-poster>
             {% if block.settings.poster != blank %}
-              {{ block.settings.poster | image_url: width: 2480 | image_tag: class: 'heresy-ugc-video__image', loading: 'lazy', widths: '480, 720, 960, 1280, 1600, 1920, 2480', sizes: '(max-width: 749px) calc(100vw - 32px), calc(100vw - 4.5vw)', alt: block.settings.alt }}
+              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', sizes: '(max-width: 749px) calc(100vw - 24px), calc(100vw - 4.5vw)', width: 1320, height: 1440, defer_image: true %}
             {% elsif block.settings.poster_url != blank %}
               <img
-                src="{{ block.settings.poster_url | escape }}"
+                src="{{ 'heresy-placeholder.svg' | asset_url }}"
+                data-heresy-src="{{ block.settings.poster_url | escape }}"
                 class="heresy-ugc-video__image"
                 width="1920"
                 height="1080"
                 loading="lazy"
+                decoding="async"
                 alt="{{ block.settings.alt | escape }}"
               >
             {% else %}
-              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', sizes: '(max-width: 749px) calc(100vw - 24px), calc(100vw - 4.5vw)', width: 1320, height: 1440 %}
+              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.alt, class: 'heresy-ugc-video__image', sizes: '(max-width: 749px) calc(100vw - 24px), calc(100vw - 4.5vw)', width: 1320, height: 1440, defer_image: true %}
             {% endif %}
 
             {% if block.settings.video != blank or block.settings.video_url != blank %}

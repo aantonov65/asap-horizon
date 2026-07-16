@@ -17,7 +17,7 @@
   </div>
   <div class="List-content-image-container">
     <span class="Image Image--desktop o-placeholder bg-full-height">
-      {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-product-claims.webp', alt: section.settings.image_alt, class: 'heresy-product-claims__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', width: 1120, height: 1222 %}
+      {% render 'heresy-responsive-image', image: section.settings.image, fallback_asset: 'heresy-product-claims.webp', alt: section.settings.image_alt, class: 'heresy-product-claims__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', width: 1120, height: 1222, defer_image: true %}
     </span>
   </div>
 </section>
