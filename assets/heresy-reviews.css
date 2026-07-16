@@ -1,41 +1,83 @@
 .heresy-reviews {
   background: #f1f0ed;
   border-radius: .75rem;
-  color: #67645e;
-  padding: clamp(1rem, 3vw, 3rem);
+  color: #525252;
+  margin: 2.25vw auto 0 !important;
+  padding: 3.75vw 7.5vw 2vw;
+  width: calc(100% - 4.5vw) !important;
 }
 
-.heresy-reviews__header {
-  align-items: end;
+.heresy-reviews button,
+.heresy-reviews select { color: inherit; font: inherit; }
+.heresy-reviews__header { min-height: 6.625rem; }
+.heresy-reviews__average { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 0 1rem; width: 11rem; }
+.heresy-reviews__average strong { font-size: 3rem; font-weight: 400; line-height: .9; }
+.heresy-reviews__average .heresy-reviews__stars { line-height: 1.4; }
+.heresy-reviews__average > span:last-child { flex: 0 0 100%; font-size: .875rem; line-height: 1.6; }
+.heresy-reviews__stars { font-size: 1.35rem; letter-spacing: .04em; line-height: 1; white-space: nowrap; }
+
+.heresy-reviews__controls {
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(82, 82, 82, .25);
   display: flex;
   justify-content: space-between;
-  margin-bottom: clamp(3rem, 8vw, 8rem);
+  min-height: 3.3125rem;
 }
-
-.heresy-reviews__header h2 {
-  font-family: HeresyRektorat, serif;
-  font-size: clamp(4rem, 10vw, 10rem);
-  font-weight: 400;
-  line-height: .75;
-  margin: 0;
+.heresy-reviews__filter,
+.heresy-reviews__sort select {
+  background: transparent;
+  border: 1px solid #67645e;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: .875rem;
+  height: 2.0625rem;
+  line-height: 1;
+  padding: 0 1.25rem;
+  text-transform: uppercase;
 }
+.heresy-reviews__filter span { display: inline-block; margin-right: .3rem; transform: rotate(90deg); }
+.heresy-reviews__sort select { min-width: 11.5rem; padding-right: 2.25rem; }
 
-.heresy-reviews__header p { margin: .25rem 0; }
-.heresy-reviews__rating { font-size: 1.5rem; }
-.heresy-reviews__rating span,
-.heresy-reviews__stars { letter-spacing: .08em; }
-.heresy-reviews__review { border-top: 1px solid rgba(103, 100, 94, .3); display: grid; gap: 2rem; grid-template-columns: minmax(10rem, 1fr) 3fr; padding: 2rem 0; }
-.heresy-reviews__review aside { display: flex; flex-direction: column; gap: .35rem; }
-.heresy-reviews__review aside span,
-.heresy-reviews__review aside small { font-size: .75rem; }
-.heresy-reviews__review aside small { margin-top: 2rem; }
-.heresy-reviews__content { max-width: 48rem; }
+.heresy-reviews__list { list-style: none; margin: 0; padding: 0; }
+.heresy-reviews__item { border-bottom: 1px solid rgba(82, 82, 82, .25); padding: 1.5rem 0; }
+.heresy-reviews__review { display: grid; grid-template-columns: 16.25rem minmax(0, 1fr); }
+.heresy-reviews__side { font-size: .875rem; line-height: 1.6; padding-right: 1.5rem; }
+.heresy-reviews__buyer { display: flex; flex-direction: column; }
+.heresy-reviews__buyer > span { font-size: .75rem; }
+.heresy-reviews__buyer > span span { font-size: .55rem; }
+.heresy-reviews__detail { display: flex; flex-direction: column; margin-top: 1rem; }
+.heresy-reviews__detail a { color: inherit; text-decoration: underline; }
+.heresy-reviews__recommended { font-size: .75rem; margin: 1rem 0; }
+.heresy-reviews__attributes { margin: 0; }
+.heresy-reviews__attributes > div { display: flex; flex-direction: column; margin-top: .75rem; }
+.heresy-reviews__attributes dt { font-weight: 700; }
+.heresy-reviews__attributes dd { margin: 0; }
+
+.heresy-reviews__main { min-height: 23.1rem; position: relative; }
 .heresy-reviews__topline { display: flex; font-size: .75rem; justify-content: space-between; }
-.heresy-reviews__content h3 { font-size: 1.25rem; font-weight: 400; margin: 1.5rem 0 .75rem; }
-.heresy-reviews__recommended { font-size: .75rem; margin-top: 2rem; }
+.heresy-reviews__main h3 { font-size: .875rem; font-weight: 700; margin: 1.35rem 0 .2rem; text-transform: none; }
+.heresy-reviews__body { font-size: .875rem; line-height: 1.6; }
+.heresy-reviews__body p { margin: 0; }
+.heresy-reviews__ease { font-size: .75rem; margin-top: 2.5rem; width: 18.75rem; }
+.heresy-reviews__ease strong { display: block; font-size: .75rem; margin-bottom: .65rem; }
+.heresy-reviews__scale { border-top: 1px solid #67645e; height: .45rem; position: relative; }
+.heresy-reviews__scale::before { background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), #67645e calc(25% - 1px) 25%); content: ""; inset: -1px 0 0; position: absolute; }
+.heresy-reviews__scale span { background: #67645e; border-radius: 50%; height: .8rem; left: calc((var(--heresy-review-score) - 1) * 25%); position: absolute; top: -.4rem; transform: translateX(-50%); width: .8rem; }
+.heresy-reviews__scale-labels { display: flex; justify-content: space-between; }
+.heresy-reviews__helpful { align-items: center; bottom: 0; display: flex; font-size: .625rem; gap: .45rem; justify-content: flex-end; position: absolute; right: 0; }
+.heresy-reviews__helpful button { background: transparent; border: 0; cursor: pointer; font-size: .625rem; padding: 0; }
+.heresy-reviews__more { background: transparent; border: 1px solid #67645e; border-radius: 999px; display: block; font-size: .875rem; height: 2.5rem; margin: 1.5rem auto 0; min-width: 10rem; padding: 0 1.5rem; }
 
-@media (max-width: 749px) {
-  .heresy-reviews__header { align-items: start; flex-direction: column-reverse; gap: 2rem; }
+@media screen and (max-width: 819px) {
+  .heresy-reviews { margin-top: .75rem !important; padding: 2rem 1rem; width: calc(100% - 1.5rem) !important; }
+  .heresy-reviews__header { min-height: 5rem; }
+  .heresy-reviews__average strong { font-size: 2.25rem; }
+  .heresy-reviews__controls { gap: .75rem; }
+  .heresy-reviews__filter,
+  .heresy-reviews__sort select { font-size: .7rem; min-width: 0; padding: 0 .8rem; }
   .heresy-reviews__review { grid-template-columns: 1fr; }
-  .heresy-reviews__review aside small { margin-top: .5rem; }
+  .heresy-reviews__side { padding: 0; }
+  .heresy-reviews__attributes { display: grid; gap: .5rem 1rem; grid-template-columns: 1fr 1fr; }
+  .heresy-reviews__main { margin-top: 1.5rem; min-height: 20rem; }
+  .heresy-reviews__ease { max-width: 100%; width: 18.75rem; }
 }
