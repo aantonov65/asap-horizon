@@ -45,6 +45,70 @@
             "alt": "Peptide lip shape push video"
           }
         },
+        "routine_05": {
+          "type": "routine_item",
+          "settings": {
+            "fallback_image": "sweet_pea",
+            "title": "PEPTIDE LIP TINT",
+            "subtitle": "Limited edition shade",
+            "variant_label": "sweet pea",
+            "price": "€26,00",
+            "price_cents": 2600
+          }
+        },
+        "routine_06": {
+          "type": "routine_item",
+          "settings": {
+            "fallback_image": "piggy",
+            "title": "POCKET BLUSH",
+            "subtitle": "The natural flush",
+            "variant_label": "piggy",
+            "price": "€33,00",
+            "price_cents": 3300
+          }
+        },
+        "routine_07": {
+          "type": "routine_item",
+          "settings": {
+            "fallback_image": "pebble",
+            "title": "POCKET BRONZE",
+            "subtitle": "Long-wearing warmth",
+            "variant_label": "pebble",
+            "price": "€33,00",
+            "price_cents": 3300
+          }
+        },
+        "routine_08": {
+          "type": "routine_item",
+          "settings": {
+            "fallback_image": "mirror",
+            "title": "RHODE MIRROR",
+            "subtitle": "The compact mirror",
+            "variant_label": "",
+            "price": "€32,00",
+            "price_cents": 3200
+          }
+        },
+        "upsell_09": {
+          "type": "upsell_item",
+          "settings": {
+            "fallback_image": "lip_combos",
+            "tab_label": "GET THE SET",
+            "title": "THE PEPTIDE LIP COMBOS",
+            "price": "€56,00",
+            "cta_label": "BUILD MY SET"
+          }
+        },
+        "upsell_10": {
+          "type": "upsell_item",
+          "settings": {
+            "fallback_image": "mirror",
+            "tab_label": "ADD THE MIRROR",
+            "title": "RHODE MIRROR",
+            "price": "€32,00",
+            "cta_label": "ADD"
+          }
+        },
         "tab_05": {
           "type": "tab",
           "settings": {
@@ -56,14 +120,15 @@
           "type": "tab",
           "settings": {
             "heading": "Application",
-            "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. Follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"
+            "content": "<p>Glide Peptide Lip Shape along the outline of your lips and use your finger to diffuse the color. You can follow your natural lip line, overline for extra volume, or fill in your lips entirely.</p>"
           }
         },
         "tab_07": {
           "type": "tab",
           "settings": {
             "heading": "Key Ingredients",
-            "content": "<p><strong>PEPTIDE</strong> — a short chain of 3 amino acids that helps soften lips for a visibly smoother appearance and is known to boost hydration.</p><p><strong>FENUGREEK EXTRACT</strong> — derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance.</p>"
+            "content": "<p>PEPTIDE — a short chain of 3 amino acids that help soften lips for a visibly smoother appearance and are known to boost hydration</p><p>FENUGREEK EXTRACT — derived from organic fenugreek sprouts, it visibly enhances the look of lip volume and gives lips a firmer appearance</p>",
+            "link_label": "SEE FULL INGREDIENTS"
           }
         }
       },
@@ -72,6 +137,12 @@
         "media_02",
         "media_03",
         "media_04",
+        "routine_05",
+        "routine_06",
+        "routine_07",
+        "routine_08",
+        "upsell_09",
+        "upsell_10",
         "tab_05",
         "tab_06",
         "tab_07"
@@ -79,8 +150,9 @@
     },
     "meet_shades": {
       "type": "heresy-meet-shades",
-      "disabled": true,
-      "settings": {},
+      "settings": {
+        "selected_shade": "push"
+      },
       "blocks": {
         "shade_01": {
           "type": "shade",
