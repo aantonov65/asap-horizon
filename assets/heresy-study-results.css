@@ -18,11 +18,11 @@
 }
 
 .heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"] {
-  display: none;
+  display: none !important;
 }
 
 .heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"].heresy-is-active {
-  display: flex;
+  display: flex !important;
 }
 
 .heresy-study-results .Tabbed-content-multi-group__toggle,
