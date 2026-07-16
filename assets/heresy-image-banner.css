@@ -36,6 +36,11 @@
 .heresy-image-banner .u-hideMd .Image { aspect-ratio: 360 / 641; }
 .heresy-image-banner .u-showMd .Image { aspect-ratio: 1604 / 902; }
 
+.heresy-image-banner .u-hideMd .Image,
+.heresy-image-banner .u-showMd .Image {
+  padding-bottom: 0 !important;
+}
+
 .heresy-image-banner .heresy-image-banner__media {
   position: absolute;
   inset: 0;

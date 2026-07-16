@@ -5,7 +5,16 @@
 
 .heresy-study-results .heresy-study-results__panels {
   position: relative;
-  min-height: 26rem;
+  min-height: 25.4375rem;
+}
+
+.heresy-study-results .heresy-study-results__type-toggles {
+  display: flex;
+  flex-direction: column;
+}
+
+.heresy-study-results .heresy-study-results__type-toggles .Tabbed-content-multi-toggle {
+  width: 100%;
 }
 
 .heresy-study-results .Tabbed-content-multi-container {
@@ -35,6 +44,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.heresy-study-results .Tabbed-content-multi-image-container .Image {
+  width: 120%;
+  height: 120%;
+  padding-bottom: 0 !important;
 }
 
 @media screen and (max-width: 819px) {
