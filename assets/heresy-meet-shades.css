@@ -2,7 +2,7 @@
   background: #f1f0ed;
   border-radius: .75rem;
   flex-direction: column;
-  padding: max(1.5rem, 2.5vw) 0 1.3125rem;
+  padding: max(1.5rem, 2.5vw) 0 1.3125rem !important;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -138,6 +138,7 @@
   gap: max(1.875rem, 2.08333vw);
   padding: 0 max(1rem, 1.94444vw);
   display: flex;
+  margin-top: 1rem !important;
 }
 
 .heresy-meet-shades .mod_shades_carousel_1Jliaa_MeetShades__controls__buttons { align-items: center; gap: max(.5rem, .555556vw); display: flex; }
