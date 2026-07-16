@@ -12,7 +12,7 @@
         control.setAttribute('aria-pressed', String(active));
       });
     };
-    controls.forEach((control, index) => control.addEventListener('click', () => show(index)));
+    controls.forEach((control, index) => control.addEventListener('click', () => show((index + 1) % slides.length)));
     show(0);
   };
   const initAll = (scope = document) => scope.querySelectorAll('[data-heresy-recycling]').forEach(init);

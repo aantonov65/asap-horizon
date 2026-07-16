@@ -1,3 +1,8 @@
+.heresy-layer-your-lips {
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
+}
+
 .heresy-layer-your-lips .heresy-layer-your-lips__slides,
 .heresy-layer-your-lips .heresy-layer-your-lips__slides .swiper-slide,
 .heresy-layer-your-lips .Highlights-image-container,
@@ -29,4 +34,10 @@
 
 .heresy-layer-your-lips .Highlights-toggle__active svg path {
   stroke: var(--heresy-layer-accent);
+}
+
+.heresy-layer-your-lips .Image { padding-bottom: 0 !important; }
+
+@media screen and (max-width: 819px) {
+  .heresy-layer-your-lips { margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
 }

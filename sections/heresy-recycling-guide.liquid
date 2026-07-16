@@ -2,7 +2,8 @@
 {{ 'heresy-recycling-guide.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-recycling-guide.js' | asset_url }}" defer></script>
 
-<section class="heresy-recycling-guide Slider-with-video-container Section" data-heresy-section="{{ section.id }}" data-heresy-recycling>
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-recycling-guide Slider-with-video-container Section" data-heresy-recycling>
   <div class="heresy-recycling-guide__slides" aria-live="polite">
     {% for block in section.blocks %}
       {% assign desktop_asset = block.settings.fallback | prepend: 'heresy-recycling-' | append: '-desktop.' %}
@@ -57,6 +58,7 @@
     {% endfor %}
   </div>
 </section>
+</div>
 
 {% schema %}
 {

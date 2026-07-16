@@ -2,7 +2,8 @@
 {{ 'heresy-summer-routine.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-summer-routine.js' | asset_url }}" defer></script>
 
-<section class="heresy-summer-routine Slider-with-navigation Section" data-heresy-section="{{ section.id }}" data-heresy-routine>
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-summer-routine Slider-with-navigation Section" data-heresy-routine>
   <div class="Slider-with-navigation-wrapper reverse-grid">
     <div class="Slider-with-navigation-content">
       <div>
@@ -49,6 +50,7 @@
     </div>
   </div>
 </section>
+</div>
 
 {% schema %}
 {

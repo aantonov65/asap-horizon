@@ -2,7 +2,8 @@
 {{ 'heresy-creator-reviews.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-creator-reviews.js' | asset_url }}" defer></script>
 
-<section class="heresy-creator-reviews mod_before_after_AAAprW_Section Section Section__min" data-heresy-section="{{ section.id }}" data-heresy-creators>
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-creator-reviews mod_before_after_AAAprW_Section Section Section__min" data-heresy-creators>
   <div class="heresy-creator-reviews__panels">
     {% for block in section.blocks %}
       {% liquid
@@ -71,6 +72,7 @@
     {% endfor %}
   </nav>
 </section>
+</div>
 
 {% schema %}
 {

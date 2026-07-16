@@ -3,12 +3,14 @@
   border-radius: .75rem;
   position: relative;
   overflow: hidden;
+  margin: 2.25vw auto 0 !important;
+  width: calc(100% - 4.5vw) !important;
 }
 
 .heresy-creator-reviews .heresy-creator-reviews__panel {
   display: none;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  min-height: 52rem;
+  min-height: 47.25vw;
 }
 
 .heresy-creator-reviews .heresy-creator-reviews__panel.heresy-is-active { display: grid; }
@@ -43,8 +45,10 @@
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block { aspect-ratio: 1; border-radius: .5rem; overflow: hidden; opacity: .5; }
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block.heresy-is-selected { opacity: 1; outline: 1px solid #67645e; }
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block .Image { width: 100%; height: 100%; }
+.heresy-creator-reviews .Image { padding-bottom: 0 !important; }
 
 @media screen and (max-width: 819px) {
+  .heresy-creator-reviews { margin-top: 0.75rem !important; width: calc(100% - 1.5rem) !important; }
   .heresy-creator-reviews .heresy-creator-reviews__panel { grid-template-columns: 1fr; min-height: 0; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Videos { aspect-ratio: 11 / 12; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Right { padding: 2rem 1rem 7rem; }

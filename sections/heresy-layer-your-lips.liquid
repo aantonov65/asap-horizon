@@ -2,7 +2,8 @@
 {{ 'heresy-layer-your-lips.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'heresy-layer-your-lips.js' | asset_url }}" defer></script>
 
-<section class="heresy-layer-your-lips Highlights Section" data-heresy-section="{{ section.id }}" data-heresy-layer-lips style="--heresy-layer-accent: {{ section.settings.accent }};">
+<div data-heresy-section="{{ section.id }}">
+<section class="heresy-layer-your-lips Highlights Section" data-heresy-layer-lips style="--heresy-layer-accent: {{ section.settings.accent }};">
   <div class="Highlights-images-container reverse-grid">
     <div class="heresy-layer-your-lips__slides" aria-live="polite">
       {% for block in section.blocks %}
@@ -47,6 +48,7 @@
     <div></div>
   </div>
 </section>
+</div>
 
 {% schema %}
 {

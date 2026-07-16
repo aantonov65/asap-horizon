@@ -618,7 +618,6 @@
         "creator_04",
         "creator_05"
       ],
-      "disabled": true,
       "settings": {}
     },
     "layer_lips": {
@@ -660,7 +659,6 @@
         "step_02",
         "step_03"
       ],
-      "disabled": true,
       "settings": {}
     },
     "summer_routine": {
@@ -719,7 +717,6 @@
         "step_04",
         "step_05"
       ],
-      "disabled": true,
       "settings": {}
     },
     "recycling": {
@@ -754,7 +751,6 @@
         "panel_01",
         "panel_02"
       ],
-      "disabled": true,
       "settings": {}
     },
     "reviews": {
