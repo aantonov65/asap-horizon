@@ -30,7 +30,8 @@
 .heresy-ugc-video__video { display: block; height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }
 .heresy-ugc-video__play-overlay { align-items: center; color: #fff; display: flex; flex-direction: column; gap: 1.25rem; inset: 50% auto auto 50%; position: absolute; text-align: center; transform: translate(-50%, -50%); width: min(90%, 62rem); }
 .heresy-ugc-video__play-label { font-family: Swiss, Arial, sans-serif; font-size: max(calc(1.5rem + .2vw), 1.85vw); font-weight: 400; line-height: 1.1; margin: 0; text-shadow: 0 1px 3px rgba(0, 0, 0, .18); }
-.heresy-ugc-video__play { align-items: center; background: rgba(255, 255, 255, .8); border: 0; border-radius: 50%; color: #fff; cursor: pointer; display: flex; height: 4rem; justify-content: center; padding: 0 0 0 .2rem; transition: background-color 180ms ease, transform 180ms ease; width: 4rem; }
+.heresy-ugc-video__play { align-items: center; background: rgba(255, 255, 255, .8); border: 0; border-radius: 50% !important; color: #fff; cursor: pointer; display: flex; height: 4rem; justify-content: center; padding: 0 0 0 .2rem; transition: background-color 180ms ease, transform 180ms ease; width: 4rem; }
+.heresy-ugc-video__play svg { pointer-events: none; }
 .heresy-ugc-video__play:hover { background: rgba(255, 255, 255, .92); transform: scale(1.04); }
 .heresy-ugc-video__play:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
