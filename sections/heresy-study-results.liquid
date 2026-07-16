@@ -18,7 +18,7 @@
     <div class="heresy-study-results__panels" aria-live="polite">
       {% for group in groups %}
         {% for result_type in result_types %}
-          <div class="Tabbed-content-multi-container{% if group == 'immediate' and result_type == 'consumer' %} heresy-is-active{% endif %}" data-heresy-results-panel="{{ group }}-{{ result_type }}">
+          <div class="Tabbed-content-multi-container{% if group == 'immediate' and result_type == 'consumer' %} heresy-is-active{% endif %}" data-tab-type="results" data-heresy-results-panel="{{ group }}-{{ result_type }}">
             <ul class="Tabbed-content-multi-result-container">
               {% for block in section.blocks %}
                 {% if block.settings.group == group and block.settings.result_type == result_type %}
