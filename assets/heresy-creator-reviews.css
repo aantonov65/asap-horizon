@@ -3,7 +3,7 @@
   background: #f1f0ed;
   border-radius: .75rem;
   height: 47.25vw;
-  display: grid;
+  display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin: 2.25vw auto 0 !important;
   overflow: hidden;
@@ -76,7 +76,7 @@
 .heresy-creator-reviews .Image { padding-bottom: 0 !important; }
 
 @media screen and (max-width: 819px) {
-  .heresy-creator-reviews { display: block; height: auto; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
+  .heresy-creator-reviews { display: block !important; height: auto; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
   .heresy-creator-reviews .heresy-creator-reviews__media-viewport { aspect-ratio: 24 / 25; }
   .heresy-creator-reviews .heresy-creator-reviews__content-viewport { min-height: 20rem; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Videos { aspect-ratio: 24 / 25; }
