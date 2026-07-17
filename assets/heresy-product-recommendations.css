@@ -2,7 +2,7 @@
   background: #f1f0ed;
   border-radius: .75rem;
   color: #67645e;
-  margin: 2.25vw auto 0;
+  margin: 2.25vw auto 0 !important;
   min-height: 8rem;
   overflow: hidden;
   padding: clamp(1rem, 2.25vw, 2.5rem);
@@ -39,7 +39,7 @@
 .heresy-product-recommendations__loading { display: block; padding: 3rem; text-align: center; }
 
 @media (max-width: 749px) {
-  .heresy-product-recommendations { margin: 1rem auto 0; padding: 1rem; width: calc(100% - 2rem); }
+  .heresy-product-recommendations { margin: 1rem auto 0 !important; padding: 1rem; width: calc(100% - 2rem); }
   .heresy-product-recommendations__track { grid-auto-columns: 84vw; }
   .heresy-product-recommendations__arrows button { height: 2.75rem; width: 2.75rem; }
 }
