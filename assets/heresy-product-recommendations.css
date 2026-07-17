@@ -12,8 +12,8 @@
 }
 
 .heresy-product-recommendations:empty { display: none; }
-.heresy-product-recommendations__controls { align-items: center; display: flex; justify-content: space-between; margin-bottom: 1rem; }
-.heresy-product-recommendations__controls > span { font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+.heresy-product-recommendations__controls { align-items: center; display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+.heresy-product-recommendations__controls > span { display: none; }
 .heresy-product-recommendations__arrows { display: flex; gap: .5rem; }
 .heresy-product-recommendations__arrows button { align-items: center; border: 1px solid currentColor; border-radius: 50%; color: inherit; display: flex; height: 3rem; justify-content: center; transition: background-color 300ms ease, color 300ms ease, transform 300ms ease; width: 3rem; }
 .heresy-product-recommendations__arrows button:hover { background: #67645e; color: #f1f0ed; }

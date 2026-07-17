@@ -28,7 +28,7 @@
 .heresy-recycling-guide .Slider-with-video-backdrop-content { display: block; height: 100%; position: relative; transform: none; writing-mode: initial; }
 .heresy-recycling-guide .Slider-with-video-backdrop-content > span { left: 50%; position: absolute; transform: translateX(-50%) rotate(180deg); white-space: nowrap; writing-mode: vertical-rl; }
 .heresy-recycling-guide .Slider-with-video-backdrop-content > .u-pSize { top: 0; }
-.heresy-recycling-guide .Slider-with-video-backdrop-content > .u-fontRektorat { bottom: 1rem; }
+.heresy-recycling-guide .Slider-with-video-backdrop-content > .u-fontRektorat { bottom: clamp(1.75rem, 2.25vw, 2.75rem); }
 .heresy-recycling-guide .Slider-with-video-backdrop-content .u-fontRektorat { font-size: clamp(1.25rem, 1.7vw, 2rem); font-weight: 400; }
 .heresy-recycling-guide .Slider-with-video-backdrop-content .u-pSize { letter-spacing: .03em; text-transform: uppercase; }
 

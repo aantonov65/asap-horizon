@@ -12,9 +12,11 @@ body:has(.heresy-footer) > footer { display: none; }
 
 .heresy-footer__wordmark-row {
   align-items: center;
+  border-bottom: 1px solid rgba(103, 100, 94, .35);
   display: flex;
   min-height: 25vw;
   overflow: hidden;
+  padding-bottom: clamp(1rem, 2vw, 2.5rem);
   width: 100%;
 }
 
@@ -44,7 +46,7 @@ body:has(.heresy-footer) > footer { display: none; }
   100% { transform: scale(.94); }
 }
 
-.heresy-footer__content { border-top: 1px solid rgba(103, 100, 94, .35); display: grid; gap: 6vw; grid-template-columns: minmax(18rem, 1fr) 2fr; padding: 2rem 0 4rem; }
+.heresy-footer__content { display: grid; gap: 6vw; grid-template-columns: minmax(18rem, 1fr) 2fr; padding: 2rem 0 4rem; }
 .heresy-footer__intro { font-size: clamp(1.2rem, 1.75vw, 2rem); line-height: 1.15; max-width: 36rem; }
 .heresy-footer__intro p { margin: 0; }
 .heresy-footer__form { align-items: center; border-bottom: 1px solid currentColor; display: grid; grid-template-columns: 1fr auto; margin-top: 2rem; max-width: 36rem; }
