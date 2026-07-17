@@ -10,8 +10,9 @@
         <h2 class="u-hSize u-noMargin">{{ section.settings.heading }}</h2>
         <div class="heresy-summer-routine__subheading">{{ section.settings.subheading }}</div>
       </div>
-      <div class="heresy-summer-routine__swatch-slides" aria-live="polite">
-        {% for block in section.blocks %}
+      <div class="heresy-summer-routine__swatch-viewport">
+        <div class="heresy-summer-routine__swatch-slides" aria-live="polite">
+          {% for block in section.blocks %}
           {% liquid
             assign fallback_asset = block.settings.fallback | prepend: 'heresy-routine-' | append: '-swatch.webp'
             assign defer_routine_image = true
@@ -28,7 +29,8 @@
             </div>
             {% if block.settings.product != blank %}</a>{% endif %}
           </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
       <div class="Slider-with-navigation-content-navigation">
         {% for block in section.blocks %}

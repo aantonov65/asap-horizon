@@ -2,35 +2,51 @@
   background: #f1f0ed;
   border-radius: .75rem;
   color: #67645e;
+  margin: 2.25vw auto 0;
   min-height: 8rem;
   overflow: hidden;
-  padding: clamp(1rem, 2vw, 2rem);
-  margin: 2.25vw auto 0;
+  padding: clamp(1rem, 2.25vw, 2.5rem);
   width: calc(100% - 4.5vw);
 }
 
 .heresy-product-recommendations:empty { display: none; }
-.heresy-product-recommendations__header { align-items: end; display: flex; justify-content: space-between; margin-bottom: 1.25rem; }
-.heresy-product-recommendations__header h2 { font-family: HeresyRektorat, serif; font-size: clamp(3rem, 6vw, 6rem); font-weight: 400; line-height: .85; margin: 0; }
-.heresy-product-recommendations__header span { font-size: .75rem; text-transform: uppercase; }
-.heresy-product-recommendations__track { cursor: grab; display: grid; gap: .5rem; grid-auto-columns: minmax(17rem, 24vw); grid-auto-flow: column; overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: .5rem; scroll-behavior: smooth; scrollbar-width: none; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.heresy-product-recommendations__controls { align-items: center; display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.heresy-product-recommendations__controls > span { font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+.heresy-product-recommendations__arrows { display: flex; gap: .5rem; }
+.heresy-product-recommendations__arrows button { align-items: center; border: 1px solid currentColor; border-radius: 50%; color: inherit; display: flex; height: 3rem; justify-content: center; transition: background-color 300ms ease, color 300ms ease, transform 300ms ease; width: 3rem; }
+.heresy-product-recommendations__arrows button:hover { background: #67645e; color: #f1f0ed; }
+.heresy-product-recommendations__arrows button:active { transform: scale(.96); }
+.heresy-product-recommendations__arrows svg { height: 1.35rem; width: 1.35rem; }
+.heresy-product-recommendations__track { cursor: grab; display: grid; gap: .75rem; grid-auto-columns: calc((100% - 1.5rem) / 3); grid-auto-flow: column; overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: .25rem; scroll-behavior: smooth; scrollbar-width: none; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.heresy-product-recommendations__track:active { cursor: grabbing; }
 .heresy-product-recommendations__track::-webkit-scrollbar { display: none; }
 .heresy-product-recommendations__card { min-width: 0; scroll-snap-align: start; }
-.heresy-product-recommendations__card a { color: inherit; text-decoration: none; }
-.heresy-product-recommendations__image-wrap { aspect-ratio: 1; background: #e6e3dc; border-radius: .65rem; overflow: hidden; }
-.heresy-product-recommendations__image { display: block; height: 100%; object-fit: contain; transition: transform 320ms ease; width: 100%; }
-.heresy-product-recommendations__card a:hover .heresy-product-recommendations__image { transform: scale(1.02); }
-.heresy-product-recommendations__meta { align-items: start; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem .25rem; }
-.heresy-product-recommendations__meta h3 { font-size: .9rem; font-weight: 400; margin: 0; }
+.heresy-product-recommendations__card a { color: inherit; display: block; text-decoration: none; }
+.heresy-product-recommendations__image-wrap { aspect-ratio: 1; background: #e6e3dc; border-radius: .65rem; overflow: hidden; position: relative; }
+.heresy-product-recommendations__image { display: block; height: 100%; inset: 0; object-fit: cover; position: absolute; transition: opacity 650ms cubic-bezier(.16, 1, .3, 1), transform 900ms cubic-bezier(.16, 1, .3, 1); width: 100%; }
+.heresy-product-recommendations__image--primary { opacity: 1; transform: scale(1); }
+.heresy-product-recommendations__image--hover { opacity: 0; transform: scale(1.025); }
+.heresy-product-recommendations__cta { background: rgba(255, 255, 255, .92); border-radius: 999px; bottom: 1rem; color: #67645e; font-size: .85rem; left: 1rem; overflow: hidden; padding: .9rem 1.25rem; position: absolute; right: 1rem; text-align: center; text-overflow: ellipsis; transform: translate3d(0, calc(100% + 2rem), 0); transition: transform 700ms cubic-bezier(.16, 1, .3, 1); white-space: nowrap; z-index: 3; }
+.heresy-product-recommendations__card a:hover .heresy-product-recommendations__image--primary,
+.heresy-product-recommendations__card a:focus-visible .heresy-product-recommendations__image--primary { opacity: 0; transform: scale(.985); }
+.heresy-product-recommendations__card a:hover .heresy-product-recommendations__image--hover,
+.heresy-product-recommendations__card a:focus-visible .heresy-product-recommendations__image--hover { opacity: 1; transform: scale(1); }
+.heresy-product-recommendations__card a:hover .heresy-product-recommendations__cta,
+.heresy-product-recommendations__card a:focus-visible .heresy-product-recommendations__cta { transform: translate3d(0, 0, 0); }
+.heresy-product-recommendations__meta { align-items: start; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem .25rem 0; }
+.heresy-product-recommendations__meta h2 { font-size: .9rem; font-weight: 400; margin: 0; text-transform: lowercase; }
 .heresy-product-recommendations__meta span { flex-shrink: 0; font-size: .9rem; }
 .heresy-product-recommendations__loading { display: block; padding: 3rem; text-align: center; }
 
 @media (max-width: 749px) {
-  .heresy-product-recommendations { margin-top: 1rem; width: calc(100% - 2rem); }
-  .heresy-product-recommendations__track { grid-auto-columns: 75vw; }
+  .heresy-product-recommendations { margin: 1rem auto 0; padding: 1rem; width: calc(100% - 2rem); }
+  .heresy-product-recommendations__track { grid-auto-columns: 84vw; }
+  .heresy-product-recommendations__arrows button { height: 2.75rem; width: 2.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heresy-product-recommendations__track { scroll-behavior: auto; }
-  .heresy-product-recommendations__image { transition: none; }
+  .heresy-product-recommendations__image,
+  .heresy-product-recommendations__cta,
+  .heresy-product-recommendations__arrows button { transition-duration: 1ms; }
 }

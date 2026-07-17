@@ -78,12 +78,12 @@
 @media screen and (max-width: 819px) {
   .heresy-creator-reviews { display: block; height: auto; margin-top: 1rem !important; width: calc(100% - 2rem) !important; }
   .heresy-creator-reviews .heresy-creator-reviews__media-viewport { aspect-ratio: 24 / 25; }
-  .heresy-creator-reviews .heresy-creator-reviews__content-viewport { min-height: 24rem; }
+  .heresy-creator-reviews .heresy-creator-reviews__content-viewport { min-height: 20rem; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Videos { aspect-ratio: 24 / 25; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Right {
     align-items: flex-start;
-    min-height: 24rem !important;
-    padding: 10rem 1rem 1.5rem;
+    min-height: 20rem !important;
+    padding: 7.5rem 1rem 1.5rem;
   }
   .heresy-creator-reviews .mod_before_after_AAAprW_Navigation {
     bottom: auto;

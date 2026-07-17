@@ -788,23 +788,23 @@
       "blocks": {
         "recommendation_01": {
           "type": "product_card",
-          "settings": {"title": "peptide lip tint", "price": "€20,00", "fallback": "tint"}
+          "settings": {"title": "highlight milk", "price": "€37,00", "fallback": "highlight"}
         },
         "recommendation_02": {
           "type": "product_card",
-          "settings": {"title": "pocket blush", "price": "€33,00", "fallback": "blush"}
+          "settings": {"title": "pocket brush", "price": "€36,00", "fallback": "brush"}
         },
         "recommendation_03": {
           "type": "product_card",
-          "settings": {"title": "pocket bronze", "price": "€33,00", "fallback": "bronze"}
+          "settings": {"title": "glazing milk", "price": "€42,00", "fallback": "glazing"}
         },
         "recommendation_04": {
           "type": "product_card",
-          "settings": {"title": "highlight milk", "price": "€30,00", "fallback": "milk"}
+          "settings": {"title": "glazing mist", "price": "€39,00", "fallback": "mist"}
         },
         "recommendation_05": {
           "type": "product_card",
-          "settings": {"title": "peptide lip shape", "price": "€32,00", "fallback": "shape"}
+          "settings": {"title": "snap-on lip case", "price": "€60,00", "fallback": "lip_case"}
         }
       },
       "block_order": ["recommendation_01", "recommendation_02", "recommendation_03", "recommendation_04", "recommendation_05"],

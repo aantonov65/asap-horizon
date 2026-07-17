@@ -4,7 +4,7 @@
   box-sizing: border-box;
   color: #67645e;
   overflow: hidden;
-  margin: max(1rem, 2.25vw) auto 0;
+  margin: 2.25vw auto 0 !important;
   padding: 0;
   width: calc(100% - 4.5vw);
 }
@@ -36,7 +36,7 @@
 .heresy-ugc-video__play:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 @media (max-width: 497px) {
-  .heresy-ugc-video { border-radius: .75rem; margin-top: 1rem; width: calc(100% - 2rem); }
+  .heresy-ugc-video { border-radius: .75rem; margin: 1rem auto 0 !important; width: calc(100% - 2rem); }
   .heresy-ugc-video__media { border-radius: .75rem; }
   .heresy-ugc-video__play-overlay { gap: .875rem; top: 60%; width: calc(100% - 2rem); }
   .heresy-ugc-video__play-label { font-size: 1.125rem; }

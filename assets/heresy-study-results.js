@@ -11,7 +11,9 @@
 
     const render = () => {
       const activeKey = `${group}-${type}`;
-      root.style.setProperty('--heresy-results-group-index', group === 'four_week' ? 1 : 0);
+      const clinical = type === 'clinical';
+      root.classList.toggle('heresy-results-is-clinical', clinical);
+      root.style.setProperty('--heresy-results-group-index', !clinical && group === 'four_week' ? 1 : 0);
       groupButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.heresyResultsGroup === group)));
       const activeGroupButton = groupButtons.find((button) => button.dataset.heresyResultsGroup === group);
       if (indicator && activeGroupButton) {
@@ -38,7 +40,11 @@
       button.addEventListener('focus', activate);
     });
     typeButtons.forEach((button) => {
-      const activate = () => { type = button.dataset.heresyResultsType; render(); };
+      const activate = () => {
+        type = button.dataset.heresyResultsType;
+        if (type === 'clinical') group = 'immediate';
+        render();
+      };
       button.addEventListener('click', activate);
       button.addEventListener('keyup', (event) => { if (event.key === 'Enter') activate(); });
     });

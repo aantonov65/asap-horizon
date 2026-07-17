@@ -2,7 +2,9 @@
 {{ 'heresy-footer.css' | asset_url | stylesheet_tag }}
 
 <section class="heresy-footer" data-heresy-section="{{ section.id }}">
-  <div class="heresy-footer__wordmark" aria-hidden="true">rhode</div>
+  <div class="heresy-footer__wordmark-row">
+    <div class="heresy-footer__wordmark" aria-hidden="true">rhode</div>
+  </div>
   <div class="heresy-footer__content">
     <div class="heresy-footer__newsletter">
       <div class="heresy-footer__intro">{{ section.settings.intro }}</div>
