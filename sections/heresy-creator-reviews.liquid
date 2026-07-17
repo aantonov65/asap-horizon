@@ -4,7 +4,8 @@
 
 <div data-heresy-section="{{ section.id }}">
 <section class="heresy-creator-reviews mod_before_after_AAAprW_Section Section Section__min" data-heresy-creators>
-  <div class="heresy-creator-reviews__panels">
+  <div class="heresy-creator-reviews__media-viewport">
+    <div class="heresy-creator-reviews__media-track">
     {% for block in section.blocks %}
       {% liquid
         assign fallback_asset = block.settings.fallback | prepend: 'heresy-creator-' | append: '.webp'
@@ -22,29 +23,34 @@
             assign fallback_video_filename = 'heresy-creator-review-5.mp4'
         endcase
       %}
-      <article class="heresy-creator-reviews__panel{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-creator-panel="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-        <div class="mod_before_after_AAAprW_Videos">
-          <div class="mod_before_after_AAAprW_Video">
-            <div class="mod_before_after_AAAprW_Video-poster" data-heresy-creator-poster>
-              <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
-                {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', defer_image: defer_creator_image, width: 1320, height: 1440 %}
-              </span>
-              {% if block.settings.video != blank or fallback_video_filename != blank %}
-                <button type="button" aria-label="Play {{ block.settings.creator | escape }} video" class="mod_before_after_AAAprW_Play-cursor" data-heresy-creator-play>
-                  <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M19.1328 11.0005L0.932812 21.5083L0.932812 0.492746L19.1328 11.0005Z" fill="white"></path></svg>
-                </button>
-              {% endif %}
-            </div>
-            {% if block.settings.video != blank %}
-              {{ block.settings.video | video_tag: class: 'heresy-creator-reviews__video', controls: true, loop: true, muted: true, playsinline: true, preload: 'none' }}
-            {% elsif fallback_video_filename != blank %}
-              <video class="heresy-creator-reviews__video" controls loop muted playsinline preload="none" aria-label="{{ block.settings.image_alt | escape }}">
-                <source src="{{ fallback_video_filename | file_url }}" type="video/mp4">
-              </video>
+      <div class="mod_before_after_AAAprW_Videos heresy-creator-reviews__media-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-creator-media="{{ forloop.index0 }}">
+        <div class="mod_before_after_AAAprW_Video">
+          <div class="mod_before_after_AAAprW_Video-poster" data-heresy-creator-poster>
+            <span class="Image Image--desktop o-placeholder bg-full-height skip-animation">
+              {% render 'heresy-responsive-image', image: block.settings.poster, fallback_asset: fallback_asset, alt: block.settings.image_alt, class: 'skip-animation heresy-creator-reviews__image', sizes: '(max-width: 819px) calc(100vw - 24px), 50vw', defer_image: defer_creator_image, width: 1320, height: 1440 %}
+            </span>
+            {% if block.settings.video != blank or fallback_video_filename != blank %}
+              <button type="button" aria-label="Play {{ block.settings.creator | escape }} video" class="mod_before_after_AAAprW_Play-cursor" data-heresy-creator-play>
+                <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><path d="M19.1328 11.0005L0.932812 21.5083L0.932812 0.492746L19.1328 11.0005Z" fill="white"></path></svg>
+              </button>
             {% endif %}
           </div>
+          {% if block.settings.video != blank %}
+            {{ block.settings.video | video_tag: class: 'heresy-creator-reviews__video', controls: true, loop: true, muted: true, playsinline: true, preload: 'none' }}
+          {% elsif fallback_video_filename != blank %}
+            <video class="heresy-creator-reviews__video" controls loop muted playsinline preload="none" aria-label="{{ block.settings.image_alt | escape }}">
+              <source src="{{ fallback_video_filename | file_url }}" type="video/mp4">
+            </video>
+          {% endif %}
         </div>
-        <div class="mod_before_after_AAAprW_Right">
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <div class="heresy-creator-reviews__content-viewport">
+    <div class="heresy-creator-reviews__content-track">
+      {% for block in section.blocks %}
+        <article class="mod_before_after_AAAprW_Right heresy-creator-reviews__content-slide{% if forloop.first %} heresy-is-active{% endif %}" data-heresy-creator-content="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
           <div class="mod_before_after_AAAprW_ContentBlock">
             <div class="mod_before_after_AAAprW_Title">{{ block.settings.quote }}</div>
             <div class="mod_before_after_AAAprW_Notes">
@@ -58,9 +64,9 @@
               </div>
             </div>
           </div>
-        </div>
-      </article>
-    {% endfor %}
+        </article>
+      {% endfor %}
+    </div>
   </div>
   <nav class="mod_before_after_AAAprW_Navigation" aria-label="Creator reviews">
     {% for block in section.blocks %}
