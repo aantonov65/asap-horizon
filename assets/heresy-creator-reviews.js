@@ -59,6 +59,7 @@
         stop();
         show(index);
       });
+      control.addEventListener('pointerleave', start);
       control.addEventListener('focus', () => show(index));
     });
     root.querySelectorAll('[data-heresy-creator-play]').forEach((button) => button.addEventListener('click', () => {

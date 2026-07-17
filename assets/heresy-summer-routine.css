@@ -80,7 +80,7 @@
   .heresy-summer-routine .Slider-with-navigation-content { border-radius: 0 0 .75rem .75rem; }
   .heresy-summer-routine .Slider-with-navigation-content h2 { font-size: 1.5rem; line-height: 1.15; }
   .heresy-summer-routine .heresy-summer-routine__subheading { font-size: .875rem; line-height: 1.45; }
-  .heresy-summer-routine .heresy-summer-routine__swatch-slides { height: 7.75rem; margin: 1rem 0; overflow: visible; }
+  .heresy-summer-routine .heresy-summer-routine__swatch-slides { height: 7.75rem; margin: 1rem 0; overflow: hidden; }
   .heresy-summer-routine .Slider-with-navigation-content-image { height: 7.75rem; overflow: hidden; }
   .heresy-summer-routine .Slider-with-navigation-content-image .Image {
     aspect-ratio: auto;
