@@ -14,7 +14,8 @@
   height: 100% !important;
   min-height: 0 !important;
   transform: translate3d(calc(var(--heresy-creator-index) * -100%), 0, 0);
-  transition: transform 1050ms cubic-bezier(.22, 1, .36, 1);
+  transition: transform var(--heresy-slide-duration) var(--heresy-slide-ease);
+  will-change: transform;
 }
 
 .heresy-creator-reviews .heresy-creator-reviews__panel {
@@ -45,17 +46,20 @@
 .heresy-creator-reviews .mod_before_after_AAAprW_Note:last-child { text-align: right; }
 
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation {
-  display: grid;
-  gap: .5rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: flex;
+  gap: max(1rem, 1.66667vw);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
   position: absolute;
   right: max(2rem, 4vw);
   top: 2rem;
   width: calc(50% - max(2rem, 4vw) * 2);
   z-index: 5;
 }
+.heresy-creator-reviews .mod_before_after_AAAprW_Navigation::-webkit-scrollbar { display: none; }
 
-.heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block { aspect-ratio: 1; border-radius: .5rem; opacity: .5; overflow: hidden; transition: opacity 280ms ease, outline-color 280ms ease; }
+.heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block { aspect-ratio: 1; border-radius: .75rem; flex: 0 0 max(3.375rem, 7.08333vw); opacity: .5; overflow: hidden; transition: opacity 300ms cubic-bezier(.075, .82, .165, 1), outline-color 300ms cubic-bezier(.075, .82, .165, 1); }
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block.heresy-is-selected { opacity: 1; outline: 1px solid #67645e; }
 .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block .Image { height: 100%; width: 100%; }
 .heresy-creator-reviews .Image { padding-bottom: 0 !important; }
@@ -75,6 +79,7 @@
     top: calc((100vw - 2rem) * 25 / 24 + 1rem);
     width: calc(100% - 2rem);
   }
+  .heresy-creator-reviews .mod_before_after_AAAprW_Navigation__block { flex-basis: calc((100% - 4rem) / 5); }
   .heresy-creator-reviews .mod_before_after_AAAprW_Title { font-size: 1.25rem; line-height: 1.25; }
   .heresy-creator-reviews .mod_before_after_AAAprW_Notes { gap: 1rem; margin-top: 2rem; }
 }

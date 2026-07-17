@@ -16,7 +16,11 @@
       panels.forEach((panel, panelIndex) => panel.classList.toggle('Highlights-image-dot__active', panelIndex === index));
     };
 
-    toggles.forEach((toggle, index) => toggle.addEventListener('click', () => activate(index)));
+    toggles.forEach((toggle, index) => {
+      toggle.addEventListener('click', () => activate(index));
+      toggle.addEventListener('pointerenter', () => activate(index));
+      toggle.addEventListener('focus', () => activate(index));
+    });
     root.querySelector('[data-heresy-ingredients-open]')?.addEventListener('click', () => {
       drawer?.classList.add('Highlights-ingredients-wrapper__active');
       drawer?.focus();

@@ -1,4 +1,5 @@
 .heresy-application-steps {
+  --heresy-application-index: 0;
   margin: 2.25vw auto 0 !important;
   width: calc(100% - 4.5vw) !important;
 }
@@ -86,15 +87,16 @@
   display: flex;
 }
 
+.heresy-application-steps .heresy-application-steps__content-slides,
+.heresy-application-steps .heresy-application-steps__image-slides {
+  display: flex;
+  transform: translate3d(calc(var(--heresy-application-index) * -100%), 0, 0);
+  transition: transform var(--heresy-slide-duration) var(--heresy-slide-ease);
+  will-change: transform;
+}
+.heresy-application-steps .heresy-application-steps__content-slides { overflow: hidden; width: 100%; }
 .heresy-application-steps .heresy-application-steps__content-slides .swiper-slide,
-.heresy-application-steps .heresy-application-steps__image-slides .swiper-slide {
-  display: none;
-}
-
-.heresy-application-steps .heresy-application-steps__content-slides .heresy-is-active,
-.heresy-application-steps .heresy-application-steps__image-slides .heresy-is-active {
-  display: block;
-}
+.heresy-application-steps .heresy-application-steps__image-slides .swiper-slide { flex: 0 0 100%; min-width: 0; }
 
 .heresy-application-steps .mod_slider_content_ZWt2zW_Content-slider-images-container {
   z-index: 0;
@@ -137,4 +139,9 @@
     grid-column: 1 / span 2;
     padding-bottom: 50%;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heresy-application-steps .heresy-application-steps__content-slides,
+  .heresy-application-steps .heresy-application-steps__image-slides { transition-duration: 1ms; }
 }

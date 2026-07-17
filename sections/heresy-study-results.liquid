@@ -18,29 +18,31 @@
     <div class="heresy-study-results__panels" aria-live="polite">
       <div class="heresy-study-results__track">
         {% for group in groups %}
-          {% for result_type in result_types %}
-            <div class="Tabbed-content-multi-container{% if group == 'immediate' and result_type == 'consumer' %} heresy-is-active{% endif %}" data-tab-type="results" data-heresy-results-panel="{{ group }}-{{ result_type }}">
-              <ul class="Tabbed-content-multi-result-container">
-                {% for block in section.blocks %}
-                  {% if block.settings.group == group and block.settings.result_type == result_type %}
-                    <li class="Tabbed-content-multi-result" {{ block.shopify_attributes }}>
-                      <div class="Tabbed-content-multi-result-percentage">{{ block.settings.value }}</div>
-                      <div class="Tabbed-content-multi-result-claim u-noMargin">{{ block.settings.claim }}</div>
-                    </li>
+          <div class="heresy-study-results__group-slide" data-heresy-results-group-slide="{{ group }}">
+            {% for result_type in result_types %}
+              <div class="Tabbed-content-multi-container{% if group == 'immediate' and result_type == 'consumer' %} heresy-is-active{% endif %}" data-tab-type="results" data-heresy-results-panel="{{ group }}-{{ result_type }}">
+                <ul class="Tabbed-content-multi-result-container">
+                  {% for block in section.blocks %}
+                    {% if block.settings.group == group and block.settings.result_type == result_type %}
+                      <li class="Tabbed-content-multi-result" {{ block.shopify_attributes }}>
+                        <div class="Tabbed-content-multi-result-percentage">{{ block.settings.value }}</div>
+                        <div class="Tabbed-content-multi-result-claim u-noMargin">{{ block.settings.claim }}</div>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+                <div class="Tabbed-content-multi-result-disclaimer">
+                  {% if result_type == 'clinical' %}
+                    {{ section.settings.clinical_disclaimer }}
+                  {% elsif group == 'immediate' %}
+                    {{ section.settings.immediate_disclaimer }}
+                  {% else %}
+                    {{ section.settings.four_week_disclaimer }}
                   {% endif %}
-                {% endfor %}
-              </ul>
-              <div class="Tabbed-content-multi-result-disclaimer">
-                {% if result_type == 'clinical' %}
-                  {{ section.settings.clinical_disclaimer }}
-                {% elsif group == 'immediate' %}
-                  {{ section.settings.immediate_disclaimer }}
-                {% else %}
-                  {{ section.settings.four_week_disclaimer }}
-                {% endif %}
+                </div>
               </div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         {% endfor %}
       </div>
     </div>

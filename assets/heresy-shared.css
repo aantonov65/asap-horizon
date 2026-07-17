@@ -13,6 +13,8 @@
   src: url(heresy-rektorat-heavy.woff2) format("woff2");
 }
 [data-heresy-section]{
+  --heresy-slide-duration: 1000ms;
+  --heresy-slide-ease: ease;
   font-family: sans-serif;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;

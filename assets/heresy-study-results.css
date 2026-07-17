@@ -1,6 +1,5 @@
 .heresy-study-results {
   --heresy-results-group-index: 0;
-  --heresy-results-index: 0;
   margin: 2.25vw auto 0 !important;
   width: calc(100% - 4.5vw) !important;
 }
@@ -14,8 +13,15 @@
 .heresy-study-results .heresy-study-results__track {
   display: flex;
   min-height: 25.4375rem;
-  transform: translate3d(calc(var(--heresy-results-index) * -100%), 0, 0);
-  transition: transform 950ms cubic-bezier(.22, 1, .36, 1);
+  transform: translate3d(calc(var(--heresy-results-group-index) * -100%), 0, 0);
+  transition: transform var(--heresy-slide-duration) var(--heresy-slide-ease);
+  will-change: transform;
+}
+
+.heresy-study-results .heresy-study-results__group-slide {
+  display: grid;
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 .heresy-study-results .heresy-study-results__type-toggles {
@@ -29,7 +35,15 @@
 
 .heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"] {
   display: flex !important;
-  flex: 0 0 100%;
+  grid-area: 1 / 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--heresy-slide-duration) var(--heresy-slide-ease);
+}
+
+.heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"].heresy-is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .heresy-study-results .Tabbed-content-multi-group__toggle,
@@ -46,8 +60,7 @@
 }
 
 .heresy-study-results .Tabbed-content-multi-group__toggles__indicator {
-  transform: translate3d(calc(var(--heresy-results-group-index) * 100%), 0, 0);
-  transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+  transition: left 300ms ease-in-out, max-width 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 
 .heresy-study-results .heresy-study-results__image {
@@ -60,7 +73,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heresy-study-results .heresy-study-results__track,
-  .heresy-study-results .Tabbed-content-multi-group__toggles__indicator { transition-duration: 1ms; }
+  .heresy-study-results .Tabbed-content-multi-group__toggles__indicator,
+  .heresy-study-results .Tabbed-content-multi-container[data-tab-type="results"] { transition-duration: 1ms; }
 }
 
 .heresy-study-results .Tabbed-content-multi-image-container .Image {
