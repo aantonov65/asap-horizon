@@ -36,7 +36,7 @@
 .heresy-product-recommendations__card a:hover .heresy-product-recommendations__cta,
 .heresy-product-recommendations__card a:focus-visible .heresy-product-recommendations__cta { transform: translate3d(0, 0, 0); }
 .heresy-product-recommendations__meta { align-items: start; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem .25rem 0; }
-.heresy-product-recommendations__meta h2 { font-size: .9rem; font-weight: 400; margin: 0; text-transform: lowercase; }
+.heresy-product-recommendations__meta h2 { font-size: .9rem !important; font-weight: 400 !important; line-height: 1.2 !important; margin: 0 !important; text-transform: lowercase; }
 .heresy-product-recommendations__meta span { flex-shrink: 0; font-size: .9rem; }
 .heresy-product-recommendations__loading { display: block; padding: 3rem; text-align: center; }
 

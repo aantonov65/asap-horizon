@@ -55,9 +55,8 @@
 .heresy-summer-routine .Slider-with-navigation-content-image-content .divider { background: #67645e; width: 100%; height: 1px; margin: .5rem 0; display: block; }
 .heresy-summer-routine .Slider-with-navigation-content-navigation { display: grid; grid-template-columns: repeat(5, 1fr); }
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item { color: #67645e; border-top: 1px solid #aaa8a3; border-radius: 0; padding: .75rem .25rem; text-align: left; opacity: .45; }
-.heresy-summer-routine .Slider-with-navigation-content-navigation-item__active { border-top-color: #67645e; opacity: 1; }
+.heresy-summer-routine .Slider-with-navigation-content-navigation-item__active { background: #b68574; border-color: #b68574; color: #fff; opacity: 1; }
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item > span:first-child { transition: background-color .5s ease, border-color .5s ease, color .5s ease; }
-.heresy-summer-routine .Slider-with-navigation-content-navigation-item__active > span:first-child { background: #b68574; border-color: #b68574; color: #fff; }
 .heresy-summer-routine .Slider-with-navigation-content-navigation-item-label { display: block; margin-top: .25rem; font-size: .75rem; }
 .heresy-summer-routine .Slider-with-navigation-image-container,
 .heresy-summer-routine .Slider-with-navigation-image-container .Image { width: 100% !important; height: 100% !important; min-height: 0 !important; }
@@ -111,6 +110,7 @@
   .heresy-summer-routine .Slider-with-navigation-content-navigation-item {
     background: transparent;
     border: 0;
+    color: #67645e;
     height: 4.75rem;
     opacity: 1;
     padding: 0;
