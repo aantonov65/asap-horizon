@@ -695,25 +695,25 @@
 [data-heresy-section] .column-block > :last-child{
   margin-bottom: 0;
 }
-[data-heresy-section] div,
-[data-heresy-section] dl,
-[data-heresy-section] dt,
-[data-heresy-section] dd,
-[data-heresy-section] ul,
-[data-heresy-section] ol,
-[data-heresy-section] li,
-[data-heresy-section] h1,
-[data-heresy-section] h2,
-[data-heresy-section] h3,
-[data-heresy-section] h4,
-[data-heresy-section] h5,
-[data-heresy-section] h6,
-[data-heresy-section] pre,
-[data-heresy-section] form,
-[data-heresy-section] p,
-[data-heresy-section] blockquote,
-[data-heresy-section] th,
-[data-heresy-section] td{
+:where([data-heresy-section]) div,
+:where([data-heresy-section]) dl,
+:where([data-heresy-section]) dt,
+:where([data-heresy-section]) dd,
+:where([data-heresy-section]) ul,
+:where([data-heresy-section]) ol,
+:where([data-heresy-section]) li,
+:where([data-heresy-section]) h1,
+:where([data-heresy-section]) h2,
+:where([data-heresy-section]) h3,
+:where([data-heresy-section]) h4,
+:where([data-heresy-section]) h5,
+:where([data-heresy-section]) h6,
+:where([data-heresy-section]) pre,
+:where([data-heresy-section]) form,
+:where([data-heresy-section]) p,
+:where([data-heresy-section]) blockquote,
+:where([data-heresy-section]) th,
+:where([data-heresy-section]) td{
   margin: 0;
   padding: 0;
 }
